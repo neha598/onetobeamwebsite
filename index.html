@@ -1116,35 +1116,124 @@ footer {
     }
 }
 
-/* =========================================================
-   ANIMATIONS
-========================================================= */
-.reveal {
-    opacity: 0;
-    transform: translateY(35px);
-    transition:
-        opacity 0.8s ease,
-        transform 0.8s ease;
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container,
+    .nav-inner {
+        width: min(100% - 40px, var(--max-width));
+    }
+    section {
+        padding: 100px 0;
+    }
+    .nav-links {
+        margin-right: 140px;
+        gap: 28px;
+    }
+    .hero {
+        min-height: 90vh;
+        padding-top: 140px;
+        padding-bottom: 80px;
+    }
+    .hero h1 {
+        letter-spacing: -5px;
+    }
+    .hero-bottom {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    .hero-text {
+        max-width: 420px;
+    }
+    .intro-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+    }
+    .intro-big {
+        font-size: clamp(32px, 4vw, 52px);
+    }
+    .offerings-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    .offering-card {
+        padding: 32px;
+    }
+    .iplex-header {
+        flex-direction: row;
+        gap: 40px;
+        margin-bottom: 45px;
+    }
+    .iplex-demo {
+        min-height: 550px;
+    }
+    .iplex-panel {
+        width: 300px;
+        left: 20px;
+        bottom: 20px;
+        padding: 18px;
+    }
+    .iplex-tabs {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+    .solutions-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .solution-card:nth-child(odd) {
+        border-right: 1px solid var(--line);
+    }
+    .roomorph-grid {
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 60px;
+    }
+    .roomorph-image {
+        height: 500px;
+    }
+    .work-grid {
+        grid-template-columns: repeat(12, 1fr);
+        gap: 14px;
+    }
+    .work-card:nth-child(1) { grid-column: span 7; }
+    .work-card:nth-child(2) { grid-column: span 5; }
+    .work-card:nth-child(3) { grid-column: span 5; }
+    .work-card:nth-child(4) { grid-column: span 7; }
+    .work-card { min-height: 380px; }
+    .client-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .client { height: 180px; }
+    .features-container { padding: 20px; }
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .iplex-features {
+        margin-top: 60px;
+        padding-top: 45px;
+    }
+    .testimonial { padding: 50px 0; }
+    .quote { font-size: clamp(30px, 4vw, 52px); }
+    .cta { padding: 120px 0; }
+    .cta h2 { font-size: clamp(40px, 6vw, 80px); }
+    .marquee span { font-size: clamp(22px, 3.5vw, 38px); margin-right: 35px; }
+    .footer-grid {
+        grid-template-columns: 2fr repeat(3, 1fr);
+        gap: 30px;
+    }
+    .footer-brand { grid-column: auto; }
+    .footer-bottom { flex-direction: row; justify-content: space-between; }
 }
 
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* =========================================================
-   MOBILE
-========================================================= */
-@media (max-width: 850px) {
+@media (min-width: 481px) and (max-width: 768px) {
     .container,
     .nav-inner {
         width: min(100% - 30px, var(--max-width));
     }
     section {
-        padding: 80px 0;
+        padding: 90px 0;
     }
     .testimonial {
-        padding: 40px 0; /* Reduced padding for mobile specifically */
+        padding: 45px 0;
     }
     .nav-links {
         position: fixed;
@@ -1152,7 +1241,7 @@ footer {
         left: 15px;
         right: 15px;
         padding: 25px;
-        margin-right: 0; 
+        margin-right: 0;
         background: rgba(15,15,15,0.96);
         backdrop-filter: blur(20px);
         border: 1px solid var(--line);
@@ -1172,7 +1261,8 @@ footer {
     }
     .hero {
         min-height: 90vh;
-        padding-bottom: 60px;
+        padding-top: 140px;
+        padding-bottom: 70px;
     }
     .hero h1 {
         letter-spacing: -4px;
@@ -1182,25 +1272,45 @@ footer {
         align-items: flex-start;
         gap: 25px;
     }
+    .hero-text {
+        max-width: 100%;
+    }
     .intro-grid {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 40px;
     }
-    
+    .intro-big {
+        font-size: clamp(30px, 5vw, 48px);
+    }
     .offerings-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
     }
-    
+    .offering-card {
+        padding: 30px;
+    }
     .iplex-header {
         flex-direction: column;
+        gap: 35px;
+        margin-bottom: 45px;
+        text-align: center;
+    }
+    .iplex-copy {
+        max-width: 100%;
+        align-self: auto;
     }
     .iplex-demo {
-        min-height: 570px;
+        min-height: 500px;
     }
     .iplex-panel {
         width: calc(100% - 30px);
         left: 15px;
         bottom: 15px;
+        padding: 18px;
+    }
+    .iplex-tabs {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
     }
     .solutions-grid {
         grid-template-columns: 1fr;
@@ -1213,7 +1323,7 @@ footer {
         gap: 40px;
     }
     .roomorph-image {
-        height: 450px;
+        height: 420px;
     }
     .work-grid {
         grid-template-columns: 1fr;
@@ -1221,13 +1331,29 @@ footer {
     .work-card,
     .work-card:nth-child(n) {
         grid-column: span 1;
-        min-height: 380px;
+        min-height: 360px;
     }
     .client-grid {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
+    .client { height: 160px; }
+    .features-container {
+        padding: 16px;
+    }
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .iplex-features {
+        margin-top: 50px;
+        padding-top: 40px;
+    }
+    .cta { padding: 100px 0; }
+    .cta h2 { font-size: clamp(38px, 7vw, 70px); }
+    .marquee span { font-size: clamp(20px, 4vw, 34px); margin-right: 30px; }
     .footer-grid {
         grid-template-columns: 1fr 1fr;
+        gap: 25px;
     }
     .footer-brand {
         grid-column: span 2;
@@ -1236,15 +1362,371 @@ footer {
         flex-direction: column;
         gap: 10px;
     }
-    .features-container {
+}
+
+@media (max-width: 480px) {
+    .container,
+    .nav-inner {
+        width: min(100% - 20px, var(--max-width));
+    }
+    section {
+        padding: 70px 0;
+    }
+    .testimonial {
+        padding: 40px 0;
+    }
+    .nav-links {
+        top: 78px;
+        left: 12px;
+        right: 12px;
+        padding: 20px;
+        border-radius: 16px;
+    }
+    .logo {
+        left: 16px;
+        font-size: 18px;
+    }
+    .logo img {
+        height: 28px;
+    }
+    .menu-button {
+        right: 16px;
+        font-size: 22px;
+    }
+    .nav-links a {
+        font-size: 14px;
+        padding: 8px 0;
+    }
+    .hero {
+        min-height: 85vh;
+        padding-top: 130px;
+        padding-bottom: 60px;
+    }
+    .hero-kicker {
+        font-size: 10px;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .hero h1 {
+        letter-spacing: -3px;
+        max-width: 100%;
+    }
+    .hero-text {
+        font-size: 14px;
+    }
+    .hero-actions {
+        width: 100%;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .hero-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+    .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .intro-big {
+        font-size: clamp(26px, 6vw, 40px);
+        letter-spacing: -2px;
+    }
+    .intro-copy {
+        font-size: 15px;
+    }
+    .section-label {
+        font-size: 10px;
+        margin-bottom: 14px;
+    }
+    .section-title {
+        font-size: clamp(28px, 6vw, 48px);
+        letter-spacing: -2px;
+    }
+    .section-description {
+        font-size: 15px;
+        margin-top: 18px;
+    }
+    .offerings-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 40px;
+    }
+    .offering-card {
+        padding: 24px;
+    }
+    .offering-badge {
+        font-size: 10px;
+        padding: 5px 10px;
+        margin-bottom: 18px;
+    }
+    .offering-card h3 {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+    .offering-card p {
+        font-size: 14px;
+    }
+    .iplex {
+        background: var(--bg);
+    }
+    .iplex-header {
+        flex-direction: column;
+        gap: 30px;
+        margin-bottom: 35px;
+        text-align: center;
+    }
+    .iplex-title {
+        font-size: clamp(32px, 7vw, 56px);
+        letter-spacing: -3px;
+    }
+    .iplex-copy {
+        max-width: 100%;
+        font-size: 15px;
+    }
+    .iplex-demo {
+        min-height: 420px;
+        border-radius: var(--radius-md);
+    }
+    .iplex-topbar {
+        top: 16px;
+        left: 16px;
+        right: 16px;
+    }
+    .iplex-brand {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    .iplex-live {
+        padding: 6px 10px;
+        font-size: 10px;
+    }
+    .iplex-panel {
+        width: calc(100% - 24px);
+        left: 12px;
+        bottom: 12px;
         padding: 16px;
+        border-radius: 16px;
+    }
+    .iplex-panel-title {
+        font-size: 18px;
+    }
+    .iplex-panel-sub {
+        font-size: 11px;
+        margin-bottom: 16px;
+    }
+    .iplex-tabs {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 5px;
+        margin-bottom: 14px;
+    }
+    .iplex-tab {
+        padding: 7px;
+        font-size: 10px;
+        border-radius: 7px;
+    }
+    .iplex-info {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        padding-top: 12px;
+    }
+    .info-label {
+        font-size: 9px;
+    }
+    .info-value {
+        font-size: 13px;
+    }
+    .solutions-grid {
+        grid-template-columns: 1fr;
+        margin-top: 45px;
+    }
+    .solution-card {
+        min-height: auto;
+        padding: 28px;
+    }
+    .solution-card:nth-child(odd) {
+        border-right: 0;
+    }
+    .solution-number {
+        font-size: 11px;
+    }
+    .solution-card h3 {
+        margin-top: 45px;
+        font-size: 28px;
+        letter-spacing: -1px;
+    }
+    .solution-card p {
+        max-width: 100%;
+        font-size: 13px;
+    }
+    .solution-arrow {
+        right: 24px;
+        bottom: 24px;
+        width: 36px;
+        height: 36px;
+    }
+    .roomorph-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .roomorph-image {
+        height: 360px;
+        border-radius: var(--radius-md);
+    }
+    .roomorph-badge {
+        left: 14px;
+        bottom: 14px;
+        padding: 12px;
+        border-radius: 12px;
+        font-size: 11px.
+    }
+    .roomorph-controls {
+        margin-top: 30px.
+    }
+    .control {
+        padding: 14px 0;
+        font-size: 14px.
+    }
+    .work-grid {
+        grid-template-columns: 1fr;
+        gap: 14px.
+        margin-top: 45px.
+    }
+    .work-card,
+    .work-card:nth-child(n) {
+        grid-column: span 1.
+        min-height: 320px.
+        border-radius: 16px.
+    }
+    .work-overlay {
+        padding: 20px.
+    }
+    .work-overlay small {
+        font-size: 10px.
+    }
+    .work-overlay h3 {
+        font-size: 22px.
+    }
+    .client-grid {
+        grid-template-columns: repeat(2, 1fr).
+    }
+    .client {
+        height: 140px.
+        font-size: 14px.
+    }
+    .features-container {
+        padding: 14px.
     }
     .features-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr.
+        gap: 16px.
+        margin-top: 35px.
+    }
+    .feature-card {
+        border-radius: var(--radius-md).
+    }
+    .feature-image {
+        aspect-ratio: 16/10.
+    }
+    .feature-content {
+        padding: 20px.
+    }
+    .feature-number {
+        font-size: 10px.
+        margin-bottom: 6px.
+    }
+    .feature-content h3 {
+        font-size: 18px.
+        margin-bottom: 8px.
+    }
+    .feature-content p {
+        font-size: 13px.
+        line-height: 1.5.
     }
     .iplex-features {
-        margin-top: 50px;
-        padding-top: 40px;
+        margin-top: 40px.
+        padding-top: 30px.
+    }
+    .cta {
+        padding: 80px 0.
+    }
+    .cta h2 {
+        font-size: clamp(32px, 8vw, 56px).
+        letter-spacing: -3px.
+    }
+    .cta p {
+        font-size: 15px.
+        margin: 20px auto 28px.
+    }
+    .marquee {
+        animation-duration: 20s.
+    }
+    .marquee span {
+        font-size: clamp(18px, 4vw, 28px).
+        letter-spacing: -1px.
+        margin-right: 24px.
+    }
+    .services-strip {
+        padding: 6px 0.
+    }
+    .footer-grid {
+        grid-template-columns: 1fr.
+        gap: 28px.
+    }
+    .footer-brand {
+        grid-column: auto.
+        text-align: center.
+    }
+    .footer-logo img {
+        height: 28px.
+    }
+    .footer-description {
+        max-width: 100%.
+        margin-left: auto.
+        margin-right: auto.
+    }
+    .footer-column h4 {
+        font-size: 11px.
+        margin-bottom: 14px.
+    }
+    .footer-column a {
+        font-size: 13px.
+        margin-bottom: 8px.
+    }
+    .footer-bottom {
+        flex-direction: column.
+        gap: 12px.
+        font-size: 10px.
+    }
+    .modal {
+        max-height: 95vh.
+        border-radius: var(--radius-md).
+        margin: 12px.
+    }
+    .modal-header {
+        padding: 24px 24px 12px.
+    }
+    .modal-header h3 {
+        font-size: 22px.
+    }
+    .modal-form {
+        padding: 0 24px 24px.
+    }
+    .form-row {
+        grid-template-columns: 1fr.
+        gap: 0.
+    }
+    .form-group {
+        margin-bottom: 16px.
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 16px.
+        font-size: 16px.
+    }
+    .modal-submit {
+        padding: 18px.
+        font-size: 15px.
     }
 }
 </style>
