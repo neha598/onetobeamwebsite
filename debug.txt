@@ -1,0 +1,3 @@
+﻿ style="background: var(--surface-2); border: 1px solid var(--line);">
+                        <!-- Bird Eye View Image Placeholder -->
+                    </di

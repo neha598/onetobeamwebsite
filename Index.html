@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneToBeam — Real Estate Visualization & Digital Experiences</title>
+<meta name="description" content="OneToBeam creates immersive real estate visualization, virtual tours, interactive floor plans and digital property experiences.">
+
+<style>
+/* =========================================================
+   ROOT
+========================================================= */
+:root {
+    --bg: #0a0a0a;
+    --bg-soft: #101010;
+    --surface: #151515;
+    --surface-2: #1b1b1b;
+    --text: #f5f5f2;
+    --muted: #9b9b97;
+    --line: rgba(255,255,255,0.10);
+    
+    --accent: #c6a55c; 
+    --accent-dark: #a88b48;
+    
+    --max-width: 1280px;
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 12px;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+.container {
+    width: min(var(--max-width), calc(100% - 48px));
+    margin: auto;
+}
+
+section {
+    padding: 120px 0;
+}
+
+.section-label {
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.section-title {
+    font-size: clamp(38px, 5vw, 70px);
+    line-height: 0.98;
+    letter-spacing: -3px;
+    font-weight: 500;
+}
+
+.section-description {
+    color: var(--muted);
+    max-width: 620px;
+    margin-top: 24px;
+    font-size: 17px;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 78px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(10,10,10,0.70);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid transparent;
+    transition: 0.3s ease;
+}
+
+.navbar.scrolled {
+    border-bottom-color: var(--line);
+}
+
+.nav-inner {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    height: 100%;
+}
+
+.logo {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 34px;
+    align-items: center;
+    margin-right: 170px;
+}
+
+.nav-links a {
+    font-size: 13px;
+    color: #cfcfcb;
+    transition: 0.25s ease;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+.nav-button {
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 11px 18px;
+    background: var(--accent);
+    color: #111;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.menu-button {
+    display: none;
+    background: none;
+    border: 0;
+    color: white;
+    font-size: 25px;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+    padding-top: 150px;
+    padding-bottom: 90px;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,0.05) 10%,
+            rgba(0,0,0,0.45) 60%,
+            #0a0a0a 100%
+        ),
+        url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2200&q=90")
+        center/cover no-repeat;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            circle at 75% 35%,
+            rgba(198,165,92,0.10),
+            transparent 35%
+        );
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ddd;
+    margin-bottom: 28px;
+}
+
+.hero-kicker::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.hero h1 {
+    max-width: 1050px;
+    font-size: clamp(54px, 8vw, 120px);
+    line-height: 0.88;
+    letter-spacing: -7px;
+    font-weight: 500;
+}
+
+.hero h1 span {
+    color: var(--accent);
+}
+
+.hero-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: 55px;
+}
+
+.hero-text {
+    max-width: 520px;
+    color: #c5c5c0;
+    font-size: 16px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 22px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #111;
+}
+
+.btn-primary:hover {
+    background: white;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: black;
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+.intro {
+    border-bottom: 1px solid var(--line);
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+}
+
+.intro-big {
+    font-size: clamp(35px, 4.5vw, 64px);
+    line-height: 1;
+    letter-spacing: -3px;
+    font-weight: 400;
+}
+
+.intro-big span {
+    color: var(--muted);
+}
+
+.intro-copy {
+    color: var(--muted);
+    max-width: 470px;
+    font-size: 16px;
+}
+
+/* =========================================================
+   OFFERINGS (BYOC & STUDIO)
+========================================================= */
+.offerings {
+    border-bottom: 1px solid var(--line);
+}
+
+.offerings-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 60px;
+}
+
+.offering-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 40px;
+    transition: 0.35s ease;
+}
+
+.offering-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.offering-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: rgba(198,165,92,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(198,165,92,0.25);
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+}
+
+.offering-card h3 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+}
+
+.offering-card p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   IPLEX
+========================================================= */
+.iplex {
+    background: #0d0d0d;
+}
+
+.iplex-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 55px;
+}
+
+.iplex-title {
+    font-size: clamp(48px, 7vw, 90px);
+    line-height: 0.9;
+    letter-spacing: -5px;
+}
+
+.iplex-title span {
+    color: var(--accent);
+}
+
+.iplex-copy {
+    max-width: 420px;
+    color: var(--muted);
+    align-self: flex-end;
+}
+
+.iplex-demo {
+    position: relative;
+    min-height: 650px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.65),
+            transparent 55%
+        ),
+        url("images/iplex/Main.png")
+        center/cover;
+}
+
+.iplex-topbar {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    right: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+}
+
+.iplex-brand {
+    padding: 10px 15px;
+    background: rgba(10,10,10,0.75);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50px;
+    font-size: 13px;
+}
+
+.iplex-live {
+    padding: 8px 12px;
+    border-radius: 50px;
+    background: rgba(198,165,92,0.12);
+    color: var(--accent);
+    border: 1px solid rgba(198,165,92,0.25);
+    font-size: 11px;
+}
+
+.iplex-panel {
+    position: absolute;
+    left: 25px;
+    bottom: 25px;
+    width: 320px;
+    padding: 20px;
+    background: rgba(12,12,12,0.80);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 20px;
+}
+
+.iplex-panel-title {
+    font-size: 22px;
+    margin-bottom: 4px;
+}
+
+.iplex-panel-sub {
+    color: #999;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.iplex-tabs {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 7px;
+    margin-bottom: 18px;
+}
+
+.iplex-tab {
+    border: 1px solid rgba(255,255,255,0.10);
+    background: rgba(255,255,255,0.04);
+    padding: 9px;
+    border-radius: 9px;
+    color: #999;
+    font-size: 11px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.iplex-tab.active {
+    background: var(--accent);
+    color: black;
+    border-color: var(--accent);
+}
+
+.iplex-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--line);
+    padding-top: 15px;
+    gap: 15px;
+}
+
+.info-label {
+    font-size: 10px;
+    color: #777;
+    text-transform: uppercase;
+}
+
+.info-value {
+    font-size: 14px;
+    margin-top: 3px;
+}
+
+/* =========================================================
+   IPLEX FEATURES
+========================================================= */
+.iplex-features {
+    margin-top: 80px;
+    padding-top: 60px;
+    border-top: 1px solid var(--line);
+}
+
+.features-container {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--surface);
+    padding: 24px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 50px;
+}
+
+.feature-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: 0.35s ease;
+}
+
+.feature-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.feature-image {
+    aspect-ratio: 1 / 1;
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.feature-content {
+    padding: 24px;
+}
+
+.feature-number {
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.feature-content h3 {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    margin-bottom: 10px;
+}
+
+.feature-content p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* =========================================================
+   SOLUTIONS
+========================================================= */
+.solutions {
+    background: var(--bg);
+}
+
+.solutions-grid {
+    margin-top: 65px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    border-top: 1px solid var(--line);
+}
+
+.solution-card {
+    min-height: 340px;
+    padding: 38px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    transition: 0.35s ease;
+    overflow: hidden;
+}
+
+.solution-card:nth-child(odd) {
+    border-right: 1px solid var(--line);
+}
+
+.solution-card:hover {
+    background: #111;
+}
+
+.solution-number {
+    color: #555;
+    font-size: 12px;
+}
+
+.solution-card h3 {
+    margin-top: 65px;
+    font-size: 35px;
+    letter-spacing: -1.5px;
+    font-weight: 400;
+}
+
+.solution-card p {
+    max-width: 400px;
+    color: var(--muted);
+    margin-top: 14px;
+    font-size: 14px;
+}
+
+.solution-arrow {
+    position: absolute;
+    right: 35px;
+    bottom: 32px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    transition: 0.3s;
+}
+
+.solution-card:hover .solution-arrow {
+    background: var(--accent);
+    color: black;
+}
+
+/* =========================================================
+   WORK
+========================================================= */
+.work-grid {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    gap: 18px;
+}
+
+.work-card {
+    position: relative;
+    min-height: 420px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #181818;
+}
+
+.work-card:nth-child(1) {
+    grid-column: span 7;
+}
+
+.work-card:nth-child(2) {
+    grid-column: span 5;
+}
+
+.work-card:nth-child(3) {
+    grid-column: span 5;
+}
+
+.work-card:nth-child(4) {
+    grid-column: span 7;
+}
+
+.work-card img {
+    height: 100%;
+    object-fit: cover;
+    transition: 0.7s ease;
+}
+
+.work-card:hover img {
+    transform: scale(1.05);
+}
+
+.work-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px;
+    background:
+        linear-gradient(
+            transparent 45%,
+            rgba(0,0,0,0.85)
+        );
+}
+
+.work-overlay small {
+    color: #bbb;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.work-overlay h3 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+/* =========================================================
+   CLIENTS
+========================================================= */
+.clients {
+    border-top: 1px solid var(--line);
+}
+
+.client-grid {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+}
+
+.client {
+    height: 280px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    place-items: center;
+    color: #686865;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.client:hover {
+    color: white;
+    background: #111;
+}
+
+/* =========================================================
+   TESTIMONIAL (UPDATED FOR CAROUSEL)
+========================================================= */
+.testimonial {
+    background: var(--accent);
+    color: #111;
+    padding: 60px 0; /* Reduced padding from 120px to make the box smaller */
+}
+
+.testimonial-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.testimonial-carousel {
+    overflow: hidden;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.testimonial-track {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+}
+
+.testimonial-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+}
+
+.quote {
+    font-size: clamp(35px, 5vw, 68px);
+    line-height: 1;
+    letter-spacing: -3px;
+}
+
+.quote-author {
+    margin-top: 40px;
+    font-size: 13px;
+    opacity: 0.65;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+.cta {
+    text-align: center;
+    padding: 160px 0;
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(198,165,92,0.08),
+            transparent 45%
+        );
+}
+
+.cta h2 {
+    font-size: clamp(50px, 8vw, 110px);
+    line-height: 0.88;
+    letter-spacing: -6px;
+    font-weight: 400;
+}
+
+.cta p {
+    max-width: 520px;
+    color: var(--muted);
+    margin: 28px auto 35px;
+}
+
+/* =========================================================
+   SERVICES STRIP (MARQUEE)
+========================================================= */
+.services-strip {
+    padding: 8px 0; 
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+}
+
+.marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 25s linear infinite;
+}
+
+.marquee span {
+    font-size: clamp(20px, 3vw, 40px); 
+    font-weight: 400;
+    letter-spacing: -1.5px;
+    color: #333;
+    margin-right: 45px;
+    white-space: nowrap;
+}
+
+.marquee span:nth-child(even) {
+    color: var(--accent);
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+footer {
+    border-top: 1px solid var(--line);
+    padding: 70px 0 30px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr repeat(3,1fr);
+    gap: 40px;
+}
+
+.footer-logo {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.footer-logo span {
+    color: var(--accent);
+}
+
+.footer-description {
+    color: var(--muted);
+    max-width: 300px;
+    margin-top: 18px;
+    font-size: 13px;
+}
+
+.footer-column h4 {
+    font-size: 12px;
+    color: white;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-column a {
+    display: block;
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 10px;
+    transition: 0.2s;
+}
+
+.footer-column a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    margin-top: 70px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    color: #555;
+    font-size: 11px;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    max-width: 520px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: translateY(20px) scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal {
+    transform: translateY(0) scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--surface-2);
+    color: var(--text);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease;
+}
+
+.modal-close:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--surface);
+}
+
+.modal-header {
+    padding: 32px 32px 16px;
+    text-align: center;
+}
+
+.modal-header h3 {
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -1px;
+    margin-bottom: 6px;
+}
+
+.modal-header p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.modal-form {
+    padding: 0 32px 32px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+.form-group label .required {
+    color: var(--accent);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #666;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(198,165,92,0.15);
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239b9b97' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 44px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.modal-submit {
+    width: 100%;
+    padding: 16px;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+/* Mobile modal adjustments */
+@media (max-width: 850px) {
+    .modal {
+        max-height: 95vh;
+        border-radius: var(--radius-md);
+    }
+    .modal-header {
+        padding: 24px 24px 12px;
+    }
+    .modal-form {
+        padding: 0 24px 24px;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+@media (max-width: 850px) {
+    .container,
+    .nav-inner {
+        width: min(100% - 30px, var(--max-width));
+    }
+    section {
+        padding: 80px 0;
+    }
+    .testimonial {
+        padding: 40px 0; /* Reduced padding for mobile specifically */
+    }
+    .nav-links {
+        position: fixed;
+        top: 78px;
+        left: 15px;
+        right: 15px;
+        padding: 25px;
+        margin-right: 0; 
+        background: rgba(15,15,15,0.96);
+        backdrop-filter: blur(20px);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+        display: none;
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .menu-button {
+        display: block;
+    }
+    .nav-button {
+        display: none;
+    }
+    .hero {
+        min-height: 90vh;
+        padding-bottom: 60px;
+    }
+    .hero h1 {
+        letter-spacing: -4px;
+    }
+    .hero-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+    }
+    .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+    
+    .offerings-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .iplex-header {
+        flex-direction: column;
+    }
+    .iplex-demo {
+        min-height: 570px;
+    }
+    .iplex-panel {
+        width: calc(100% - 30px);
+        left: 15px;
+        bottom: 15px;
+    }
+    .solutions-grid {
+        grid-template-columns: 1fr;
+    }
+    .solution-card:nth-child(odd) {
+        border-right: 0;
+    }
+    .roomorph-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .roomorph-image {
+        height: 450px;
+    }
+    .work-grid {
+        grid-template-columns: 1fr;
+    }
+    .work-card,
+    .work-card:nth-child(n) {
+        grid-column: span 1;
+        min-height: 380px;
+    }
+    .client-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .footer-brand {
+        grid-column: span 2;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .features-container {
+        padding: 16px;
+    }
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    .iplex-features {
+        margin-top: 50px;
+        padding-top: 40px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+<header class="navbar" id="navbar">
+    <div class="nav-inner">
+        <a href="#" class="logo">
+            <img src="images/logo-horizontal-white-8-533x125.webp" alt="OneToBeam" style="height: 32px; width: auto;">
+        </a>
+        <nav class="nav-links" id="navLinks">
+            <a href="#solutions">Solutions</a>
+            <a href="#iplex">i-PLEX</a>
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+        </nav>
+        <a href="#contact" class="nav-button">
+            Book a Demo
+        </a>
+        <button class="menu-button" id="menuButton">
+            ☰
+        </button>
+    </div>
+</header>
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+<section class="hero">
+    <div class="container hero-content">
+        <div class="hero-kicker">
+            Interactive Real Estate Visualization & Real Estate Marketing Technology
+        </div>
+        <h1>
+            Where Property Becomes<br>
+            <span>Experience.</span>
+        </h1>
+        <div class="hero-bottom">
+            <p class="hero-text">
+                We transform real estate projects into immersive digital experiences that help people explore, understand and connect with properties.
+            </p>
+            <div class="hero-actions">
+                <a href="#iplex" class="btn btn-primary">
+                    Explore i-PLEX
+                </a>
+                <a href="#work" class="btn btn-outline">
+                    View our work
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     INTRO
+========================================================= -->
+<section class="intro" id="about">
+    <div class="container intro-grid">
+        <div class="intro-big reveal">
+            Real estate is no longer
+            <span>just something people see.</span>
+        </div>
+        <div class="intro-copy reveal">
+            At OneToBeam, we create visual and Interactive Real Estate Visualization for Property Developers that allow buyers to explore a property before they step inside it.
+            <br><br>
+           From interactive project experiences to 3D virtual tours, Interactive floor plans and off-Plan Property Visualization — everything is designed to make property easier to understand and easier to sell.
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     OFFERINGS (BYOC & STUDIO)
+========================================================= -->
+<section class="offerings" id="offerings">
+    <div class="container">
+        <div class="section-label reveal">
+            Engagement Models
+        </div>
+        <h2 class="section-title reveal">
+            Two ways to <span style="color:var(--accent)">build.</span>
+        </h2>
+
+        <div class="offerings-grid">
+            <div class="offering-card reveal">
+                <div class="offering-badge">BYOC</div>
+                <h3>i-PLEX BYOC</h3>
+                <p><strong>Bring Your Own Content.</strong> You provide the 3D models, floor plans, and media. We place it all directly into the powerful i-PLEX platform and your customers can experience all your content interactively.</p>
+            </div>
+
+            <div class="offering-card reveal">
+                <div class="offering-badge">STUDIO</div>
+                <h3>i-PLEX Studio</h3>
+                <p><strong>End-to-end creation.</strong> Need content created? Our specialized studio team will design and create all the 3D content, visualizations, and virtual tours from scratch, fully integrated into your i-PLEX experience.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     IPLEX
+========================================================= -->
+<section class="iplex" id="iplex">
+    <div class="container">
+        <div class="iplex-header reveal">
+            <div>
+                <div class="section-label">
+                    Featured Experience
+                </div>
+                <h2 class="iplex-title">
+                    Meet<br>
+                    <span>i-PLEX.</span>
+                </h2>
+            </div>
+            <p class="iplex-copy">
+                A complete interactive Property experience digitally for real estate projects.
+                <br><br>
+               Explore Interactive Property Walkthrough, Virtual Property Tour, Interactive Masterplan, interactive floor plans, amenities, configurations, Interactive Unit selector and locations — all within one connected experience.
+            </p>
+        </div>
+
+        <div class="iplex-demo reveal">
+            <div class="iplex-topbar">
+                <div class="iplex-brand">
+                    i-PLEX
+                </div>
+                <div class="iplex-live">
+                    ● LIVE EXPERIENCE
+                </div>
+            </div>
+
+            <div class="iplex-panel">
+                <div class="iplex-panel-title">
+                    Select your experience
+                </div>
+                <div class="iplex-panel-sub">
+                    Explore this property interactively
+                </div>
+
+                <div class="iplex-tabs">
+                    <button class="iplex-tab active">
+                        360°
+                    </button>
+                    <button class="iplex-tab">
+                        Floor Plan
+                    </button>
+                    <button class="iplex-tab">
+                        Units
+                    </button>
+                    <button class="iplex-tab">
+                        Amenities
+                    </button>
+                    <button class="iplex-tab">
+                        Location
+                    </button>
+                    <button class="iplex-tab">
+                        Gallery
+                    </button>
+                </div>
+
+                <div class="iplex-info">
+                    <div>
+                        <div class="info-label">
+                            Property
+                        </div>
+                        <div class="info-value">
+                            Premium Residence
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info-label">
+                            Available
+                        </div>
+                        <div class="info-value">
+                            42 Units
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info-label">
+                            Configuration
+                        </div>
+                        <div class="info-value">
+                            2 & 3 BHK
+                        </div>
+                    </div>
+                    <div>
+                        <div class="info-label">
+                            Experience
+                        </div>
+                        <div class="info-value">
+                            Interactive
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     IPLEX FEATURES
+========================================================= -->
+<section id="features">
+    <div class="container">
+        <div class="iplex-features reveal">
+            <div class="section-label">
+                i-PLEX Features
+            </div>
+            <h2 class="section-title">
+                Everything you need<br>
+                to <span style="color:var(--accent)">showcase</span> your project.
+            </h2>
+
+            <div class="features-container">
+                <div class="features-grid">
+                    <div class="feature-card reveal">
+                        <div class="feature-image" style="background-image: url('images/Iplex features/Bird eye view.png');">
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-number">01</div>
+                            <h3>Bird Eye View</h3>
+                            <p>Experience your property from a bird's eye view before it's even built. Get a comprehensive aerial perspective of the entire development.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card reveal">
+                        <div class="feature-image" style="background-image: url('images/Iplex features/Master layout.png');">
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-number">02</div>
+                            <h3>Master Layout</h3>
+                            <p>Get a complete view of the project, including the overall project area, built-up area, layouts, and key development details. Understand how the entire property is planned and positioned at a glance.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card reveal">
+                        <div class="feature-image" style="background-image: url('images/Iplex features/Maps.png');">
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-number">03</div>
+                            <h3>Maps & Location</h3>
+                            <p>See your property's nearby landmarks, connectivity, and surroundings with integrated maps for better location context.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card reveal">
+                        <div class="feature-image" style="background-image: url('images/Iplex features/amenities.png');">
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-number">04</div>
+                            <h3>Amenities Explorer</h3>
+                            <p>Showcase amenities with high-quality images and detailed views -- from pools and gyms to gardens and community spaces.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card reveal">
+                        <div class="feature-image" style="background-image: url('images/Iplex features/simulation.png');">
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-number">05</div>
+                            <h3>Simulations</h3>
+                            <p>Day-to-night lighting simulation, route map navigation, shadow studies, and more -- dynamic visualizations at your fingertips.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card reveal">
+                        <div class="feature-image" style="background-image: url('images/Iplex features/filter.png');">
+                        </div>
+                        <div class="feature-content">
+                            <div class="feature-number">06</div>
+                            <h3>Select with Filters</h3>
+                            <p>Quickly find available units based on your preferred floor, size, and facing. Explore the right options instantly and make unit selection faster and easier.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     SOLUTIONS
+========================================================= -->
+<section class="solutions" id="solutions">
+    <div class="container">
+        <div class="section-label reveal">
+            What we do
+        </div>
+        <h2 class="section-title reveal">
+            Visualize.<br>
+            Experience.<br>
+            Sell.
+        </h2>
+        <p class="section-description reveal">
+            A complete set of visualization and digital experiences built specifically for real estate.
+        </p>
+        <p class="section-description reveal" style="margin-top: 15px;">
+            Comprehensive digital solutions tailored for modern real estate marketing, enabling buyers to fully understand properties before they are built.
+        </p>
+    </div>
+</section>
+
+<!-- =========================================================
+     WORK
+========================================================= -->
+<section id="work">
+    <div class="container">
+        <div class="section-label reveal">
+            Selected Work
+        </div>
+        <h2 class="section-title reveal">
+            Built for<br>
+            real places.
+        </h2>
+        <p class="section-description reveal">
+            A selection of visual experiences created for real estate projects and property brands.
+        </p>
+
+        <div class="work-grid">
+            <div class="work-card reveal">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1500&q=90" alt="Luxury interior">
+                <div class="work-overlay">
+                    <small>3D Visualization</small>
+                    <h3>Luxury Residence</h3>
+                </div>
+            </div>
+
+            <div class="work-card reveal">
+                <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=90" alt="Modern interior">
+                <div class="work-overlay">
+                    <small>Virtual Experience</small>
+                    <h3>Modern Living</h3>
+                </div>
+            </div>
+
+            <div class="work-card reveal">
+                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=90" alt="Interior visualization">
+                <div class="work-overlay">
+                    <small>Interior Visualization</small>
+                    <h3>Urban Residence</h3>
+                </div>
+            </div>
+
+            <div class="work-card reveal">
+                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1500&q=90" alt="Real estate property">
+                <div class="work-overlay">
+                    <small>Digital Property Experience</small>
+                    <h3>Premium Development</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     CLIENTS
+========================================================= -->
+<section class="clients">
+    <div class="container">
+        <div class="section-label reveal">
+            Trusted by teams
+        </div>
+        <h2 class="section-title reveal">
+            Built with<br>
+            industry leaders.
+        </h2>
+
+        <div class="client-grid reveal">
+            <div class="client">
+                <img src="images/Client/Client 1.webp" alt="Client 1" style="max-height: 40px; width: auto; opacity: 0.6; transition: opacity 0.3s;">
+            </div>
+            <div class="client">
+                <img src="images/Client/Client 2.webp" alt="Client 2" style="max-height: 40px; width: auto; opacity: 0.6; transition: opacity 0.3s;">
+            </div>
+            <div class="client">
+                <img src="images/Client/Client 3.webp" alt="Client 3" style="max-height: 40px; width: auto; opacity: 0.6; transition: opacity 0.3s;">
+            </div>
+            <div class="client">
+                <img src="images/Client/Client 4.webp" alt="Client 4" style="max-height: 40px; width: auto; opacity: 0.6; transition: opacity 0.3s;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     TESTIMONIAL
+========================================================= -->
+<section class="testimonial">
+    <div class="container">
+        <div class="testimonial-inner reveal">
+            <div class="section-label" style="color:#111;">
+                Client Experience
+            </div>
+            
+            <div class="testimonial-carousel">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <!-- Slide 1 -->
+                    <div class="testimonial-slide">
+                        <div class="quote">
+                            "The right visual experience can completely change how customers understand a property."
+                        </div>
+                        <div class="quote-author">
+                            — OneToBeam Client
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="testimonial-slide">
+                        <div class="quote">
+                            "Working with them transformed our pre-sales entirely. Buyers can now feel the space before a single brick is laid."
+                        </div>
+                        <div class="quote-author">
+                            — Real Estate Developer
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="testimonial-slide">
+                        <div class="quote">
+                            "The i-PLEX integration allowed us to showcase 42 units interactively. It's an absolute game-changer for our sales team."
+                        </div>
+                        <div class="quote-author">
+                            — Marketing Director
+                        </div>
+                    </div>
+                    <!-- Slide 4 -->
+                    <div class="testimonial-slide">
+                        <div class="quote">
+                            "Incredible attention to detail. The lighting simulations and material accuracy make the virtual tours indistinguishable from reality."
+                        </div>
+                        <div class="quote-author">
+                            — Architecture Firm
+                        </div>
+                    </div>
+                    <!-- Slide 5 -->
+                    <div class="testimonial-slide">
+                        <div class="quote">
+                            "They delivered exactly what we needed to elevate our digital presence. Our client engagement has doubled since launching the interactive maps."
+                        </div>
+                        <div class="quote-author">
+                            — Property Manager
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- =========================================================
+     CTA
+========================================================= -->
+<section class="cta" id="contact">
+    <div class="container reveal">
+        <div class="section-label">
+            Start a project
+        </div>
+        <h2>
+            Let's build<br>
+            the next<br>
+            experience.
+        </h2>
+        <p>
+            Have a real estate project that needs better visualization, interaction or digital presentation?
+        </p>
+        <a href="mailto:Enquiry@onetobeam.com" class="btn btn-primary">
+            Talk to OneToBeam →
+        </a>
+    </div>
+</section>
+
+<!-- =========================================================
+     SERVICES STRIP (MARQUEE)
+========================================================= -->
+<div class="services-strip">
+    <div class="marquee">
+        <!-- Adding 4 complete identical sets to seamlessly cover 50% translation up to ultra-wide screens -->
+        <span>3D Visualization</span>
+        <span>Virtual Tours</span>
+        <span>i-PLEX</span>
+        <span>Real Estate Technology</span>
+        
+        <span>3D Visualization</span>
+        <span>Virtual Tours</span>
+        <span>i-PLEX</span>
+        <span>Real Estate Technology</span>
+        
+        <span>3D Visualization</span>
+        <span>Virtual Tours</span>
+        <span>i-PLEX</span>
+        <span>Real Estate Technology</span>
+        
+        <span>3D Visualization</span>
+        <span>Virtual Tours</span>
+        <span>i-PLEX</span>
+        <span>Real Estate Technology</span>
+    </div>
+</div>
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="images/logo-horizontal-white-8-533x125.webp" alt="OneToBeam" style="height: 32px; width: auto;">
+                </div>
+                <p class="footer-description">
+                    Real estate visualization, immersive experiences and digital property technology.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Explore</h4>
+                <a href="#iplex">i-PLEX</a>
+                <a href="#work">Our Work</a>
+                <a href="#solutions">Solutions</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Company</h4>
+                <a href="#about">About</a>
+                <a href="#">Contact</a>
+                <a href="#">Careers</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Connect</h4>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+                <a href="mailto:Enquiry@onetobeam.com">Enquiry@onetobeam.com</a>
+                <a href="tel:+919663732362">+91 96637 32362</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>
+                © 2026 OneToBeam. All rights reserved.
+            </span>
+            <span>
+                Real Estate Visualization & Technology
+            </span>
+        </div>
+    </div>
+</footer>
+
+<!-- =========================================================
+     BOOK A DEMO MODAL
+========================================================= -->
+<div class="modal-overlay" id="demoModal">
+    <div class="modal">
+        <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+        <div class="modal-header">
+            <h3>Book a Demo</h3>
+            <p>Schedule a personalized walkthrough of i-PLEX</p>
+        </div>
+        <form class="modal-form" id="demoForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required placeholder="Your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="your@email.com">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Phone No. <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+91 9XXXX XXXXX">
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender">
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                        <option value="prefer-not">Prefer not to say</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Description <span class="required">*</span></label>
+                <textarea id="description" name="description" rows="4" required placeholder="Tell us about your project, requirements, or preferred demo time..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary modal-submit">Submit Request</button>
+        </form>
+    </div>
+</div>
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+<script>
+/* =========================================================
+   NAVBAR SCROLL
+========================================================= */
+const navbar = document.getElementById("navbar");
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 30) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
+});
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+const menuButton = document.getElementById("menuButton");
+const navLinks = document.getElementById("navLinks");
+
+menuButton.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+    });
+});
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+const observer = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    },
+    { threshold: 0.12 }
+);
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
+
+/* =========================================================
+   IPLEX TABS
+========================================================= */
+const tabs = document.querySelectorAll(".iplex-tab");
+
+tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+        tabs.forEach(item => {
+            item.classList.remove("active");
+        });
+        tab.classList.add("active");
+    });
+});
+
+/* =========================================================
+   TESTIMONIAL CAROUSEL
+========================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('testimonialTrack');
+    const slides = document.querySelectorAll('.testimonial-slide');
+    
+    if (track && slides.length > 0) {
+        let currentSlide = 0;
+        
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }, 5000); // Transitions every 5 seconds
+    }
+});
+
+/* =========================================================
+   SMOOTH ANCHOR SCROLL
+========================================================= */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+        const target = document.querySelector(this.getAttribute("href"));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth" });
+    });
+});
+
+/* =========================================================
+   BOOK A DEMO MODAL
+========================================================= */
+const demoModal = document.getElementById("demoModal");
+const modalClose = document.getElementById("modalClose");
+const demoForm = document.getElementById("demoForm");
+const navButton = document.querySelector(".nav-button");
+
+function openModal() {
+    demoModal.classList.add("active");
+    document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+    demoModal.classList.remove("active");
+    document.body.style.overflow = "";
+}
+
+// Open modal when "Book a Demo" button is clicked
+if (navButton) {
+    navButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        openModal();
+    });
+}
+
+// Close modal when close button is clicked
+if (modalClose) {
+    modalClose.addEventListener("click", closeModal);
+}
+
+// Close modal when clicking overlay (outside modal)
+demoModal.addEventListener("click", (e) => {
+    if (e.target === demoModal) {
+        closeModal();
+    }
+});
+
+// Close modal on Escape key
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && demoModal.classList.contains("active")) {
+        closeModal();
+    }
+});
+
+// Handle form submission
+if (demoForm) {
+    demoForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(demoForm);
+        const data = Object.fromEntries(formData);
+        
+        // Here you would typically send to your backend
+        console.log("Demo request submitted:", data);
+        
+        // Show success message
+        alert("Thank you! We'll contact you shortly to schedule your demo.");
+        
+        // Reset form and close modal
+        demoForm.reset();
+        closeModal();
+    });
+}
+</script>
+
+</body>
+</html>
