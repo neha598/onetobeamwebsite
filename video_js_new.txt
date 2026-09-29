@@ -1,0 +1,68 @@
+/* =========================================================
+   FEATURE VIDEO HOVER
+========================================================= */
+document.addEventListener('DOMContentLoaded', () => {
+    const featureCards = document.querySelectorAll('.feature-card');
+    
+    featureCards.forEach(card => {
+        const video = card.querySelector('.feature-video');
+        const image = card.querySelector('.feature-image');
+        
+        if (!video || !image) return;
+        
+        // Preload video metadata
+        video.load();
+        
+        let isPlaying = false;
+        
+        const playVideo = () => {
+            if (isPlaying) return;
+            video.play()
+                .then(() => {
+                    isPlaying = true;
+                    video.style.opacity = '1';
+                    image.style.opacity = '0';
+                })
+                .catch(err => {
+                    console.warn('Video play failed:', err.message);
+                    // Fallback: show video element, hide image
+                    video.style.opacity = '1';
+                    image.style.opacity = '0';
+                    isPlaying = true;
+                });
+        };
+        
+        const pauseVideo = () => {
+            if (!isPlaying) return;
+            video.pause();
+            video.currentTime = 0;
+            video.style.opacity = '0';
+            image.style.opacity = '1';
+            isPlaying = false;
+        };
+        
+        // Mouse events
+        card.addEventListener('mouseenter', playVideo);
+        card.addEventListener('mouseleave', pauseVideo);
+        
+        // Touch events for mobile
+        card.addEventListener('touchstart', playVideo, { passive: true });
+        card.addEventListener('touchend', pauseVideo, { passive: true });
+        
+        // Keyboard accessibility
+        card.addEventListener('focusin', playVideo);
+        card.addEventListener('focusout', pauseVideo);
+        
+        // Handle video errors
+        video.addEventListener('error', (e) => {
+            console.error('Video error:', e);
+            // Fallback to image
+            video.style.opacity = '0';
+            image.style.opacity = '1';
+            isPlaying = false;
+        });
+        
+        // Preload
+        video.load();
+    });
+});
