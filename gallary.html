@@ -1,0 +1,2452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery & Portfolio — OneToBeam | Virtual Tours & Experiential 3D</title>
+    <meta name="description" content="Explore OneToBeam's comprehensive portfolio of Floor Plan to Virtual Tours, Photo Shoot to Virtual Tours, and interactive Virtual Configurators for real estate developers and designers." />
+    <meta name="keywords" content="virtual tour portfolio, 3D architectural models, virtual staging real estate, photo shoot to virtual tour, plotted development virtual tour, real estate 3D visualization" />
+    <meta name="author" content="OneToBeam" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://onetobeam.com/gallery.html" />
+    <link rel="icon" type="image/webp" href="images/OneToBeam Logo.webp" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OneToBeam" />
+    <meta property="og:title" content="Gallery & Portfolio — OneToBeam Virtual Tours & 3D" />
+    <meta property="og:description" content="Explore OneToBeam's portfolio of Floor Plan to Virtual Tours, Virtual Staging, and interactive real estate configurators." />
+    <meta property="og:url" content="https://onetobeam.com/gallery.html" />
+    <meta property="og:image" content="https://www.onetobeam.com/website/images/OneToBeam%20Logo.webp" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gallery & Portfolio — OneToBeam" />
+    <meta name="twitter:description" content="Explore OneToBeam's portfolio of Floor Plan to Virtual Tours, Virtual Staging, and interactive real estate configurators." />
+    <meta name="twitter:image" content="https://www.onetobeam.com/website/images/OneToBeam%20Logo.webp" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "OneToBeam Gallery & Portfolio",
+      "url": "https://onetobeam.com/gallery.html",
+      "description": "Comprehensive portfolio of virtual tours, 3D architectural models, and virtual staging for real estate developers.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "OneToBeam",
+        "logo": "https://www.onetobeam.com/website/images/OneToBeam%20Logo.webp"
+      }
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* =========================================================
+   RESET & DESIGN SYSTEM TOKENS
+========================================================= */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #0a0a0a;
+        --surface: #151515;
+        --surface-2: #1b1b1b;
+        --surface-3: #222222;
+        --accent: #c6a55c;
+        --accent-light: #e5cb87;
+        --accent-dark: #a88b48;
+        --text: #f5f5f2;
+        --text-muted: #9b9b97;
+        --text-dim: #70706c;
+        --line: rgba(255, 255, 255, 0.08);
+        --line-light: rgba(255, 255, 255, 0.15);
+        --radius-sm: 8px;
+        --radius-md: 14px;
+        --radius-lg: 20px;
+        --radius-full: 9999px;
+        --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-serif: "Playfair Display", Georgia, serif;
+        --container-max: 1280px;
+        --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      html {
+        scroll-behavior: smooth;
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body {
+        min-height: 100vh;
+        overflow-x: hidden;
+        background: #0a0a0a;
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      img,
+      video {
+        max-width: 100%;
+        display: block;
+      }
+
+      button {
+        font-family: inherit;
+        border: none;
+        background: none;
+        cursor: pointer;
+      }
+
+      /* =========================================================
+   HEADER / NAVBAR
+========================================================= */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 78px;
+        z-index: 1000;
+        background: rgba(10, 10, 10, 0.72);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line);
+        transition: 0.3s ease;
+      }
+
+      .nav-inner {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        height: 100%;
+      }
+
+      .logo {
+        position: absolute;
+        left: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 21px;
+        font-weight: 700;
+        letter-spacing: -0.8px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .logo img {
+        height: 32px;
+        width: auto;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 34px;
+        align-items: center;
+        margin-right: 170px;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+        color: #cfcfcb;
+        transition: 0.25s ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: white;
+      }
+
+      /* Nav Dropdown */
+      .nav-dropdown {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 0;
+        margin: -8px 0;
+      }
+
+      .dropdown-trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: #cfcfcb;
+        transition: 0.25s ease;
+        cursor: pointer;
+        padding: 4px 0;
+        user-select: none;
+      }
+
+      .dropdown-trigger:hover,
+      .nav-dropdown:hover .dropdown-trigger,
+      .nav-dropdown.active .dropdown-trigger,
+      .nav-dropdown.open .dropdown-trigger {
+        color: var(--accent);
+      }
+
+      .dropdown-arrow {
+        transition: transform 0.25s ease;
+      }
+
+      .nav-dropdown:hover .dropdown-arrow,
+      .nav-dropdown.open .dropdown-arrow {
+        transform: rotate(180deg);
+      }
+
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(0);
+        min-width: 170px;
+        background: rgba(18, 18, 18, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 8px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+        z-index: 1002;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      /* Invisible bridge to prevent mouseleave when moving from trigger to menu */
+      .dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -12px;
+        left: 0;
+        right: 0;
+        height: 14px;
+        background: transparent;
+      }
+
+      .nav-dropdown:hover .dropdown-menu,
+      .nav-dropdown:focus-within .dropdown-menu,
+      .nav-dropdown.open .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .dropdown-menu a {
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-size: 13px;
+        color: #c5c5c0;
+        display: block;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+
+      .dropdown-menu a:hover,
+      .dropdown-menu a.active {
+        background: rgba(198, 165, 92, 0.14);
+        color: var(--accent);
+        font-weight: 600;
+        transform: translateX(4px);
+      }
+
+      /* Book a Demo Button in Nav */
+      .nav-button {
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 11px 18px;
+        background: var(--accent);
+        color: #111 !important;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 600;
+        transition: 0.25s ease;
+      }
+
+      .nav-button:hover {
+        background: #d8b76c;
+        color: #111 !important;
+      }
+
+      .menu-button {
+        display: none;
+        background: none;
+        border: 0;
+        color: white;
+        font-size: 25px;
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+
+      /* =========================================================
+   HERO SECTION
+========================================================= */
+      .gallery-hero {
+        padding: 160px 24px 50px;
+        max-width: var(--container-max);
+        margin: 0 auto;
+        position: relative;
+        text-align: center;
+      }
+
+      .gallery-hero::before {
+        content: "";
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: min(600px, 90vw);
+        height: 350px;
+        background: radial-gradient(
+          ellipse,
+          rgba(198, 165, 92, 0.12) 0%,
+          rgba(198, 165, 92, 0.03) 50%,
+          transparent 70%
+        );
+        filter: blur(60px);
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .hero-kicker {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--accent);
+        background: rgba(198, 165, 92, 0.1);
+        border: 1px solid rgba(198, 165, 92, 0.25);
+        padding: 6px 16px;
+        border-radius: var(--radius-full);
+        margin-bottom: 24px;
+        font-weight: 600;
+      }
+
+      .hero-kicker::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 8px var(--accent);
+      }
+
+      .gallery-hero h1 {
+        position: relative;
+        z-index: 1;
+        font-size: clamp(38px, 6vw, 68px);
+        font-weight: 700;
+        line-height: 1.1;
+        letter-spacing: -1.5px;
+        margin-bottom: 24px;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .gallery-hero h1 span {
+        color: var(--accent);
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-weight: 400;
+      }
+
+      .gallery-hero p {
+        position: relative;
+        z-index: 1;
+        font-size: 18px;
+        color: var(--text-muted);
+        max-width: 720px;
+        margin: 0 auto 36px;
+        line-height: 1.7;
+      }
+
+      .gallery-stats {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        padding-top: 30px;
+        border-top: 1px solid var(--line);
+      }
+
+      .stat-item {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .stat-number {
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .stat-label {
+        font-size: 13px;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* =========================================================
+   CATEGORY FILTER BAR
+========================================================= */
+      .filter-wrapper {
+        position: sticky;
+        top: 72px;
+        z-index: 90;
+        background: rgba(10, 10, 10, 0.92);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 14px 24px;
+      }
+
+      .filter-container {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .filter-container::-webkit-scrollbar {
+        display: none;
+      }
+
+      .filter-btn {
+        padding: 10px 22px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-muted);
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-full);
+        transition: var(--transition);
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .filter-btn .count {
+        font-size: 11px;
+        padding: 2px 7px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text-muted);
+        transition: var(--transition);
+      }
+
+      .filter-btn:hover {
+        color: var(--text);
+        border-color: rgba(198, 165, 92, 0.4);
+        background: var(--surface-2);
+      }
+
+      .filter-btn.active {
+        color: #111;
+        background: var(--accent);
+        border-color: var(--accent);
+        font-weight: 600;
+      }
+
+      .filter-btn.active .count {
+        background: rgba(0, 0, 0, 0.2);
+        color: #111;
+      }
+
+      /* =========================================================
+   GALLERY GRID & PORTFOLIO CARDS
+========================================================= */
+      .gallery-section {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding: 60px 24px 100px;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+
+      .gallery-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, opacity 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      .gallery-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-6px);
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5), 0 0 25px rgba(198, 165, 92, 0.12);
+      }
+
+      .gallery-media {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        background: var(--surface-2);
+      }
+
+      .gallery-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.45s ease, transform 0.5s ease;
+      }
+
+      .gallery-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: #000;
+        opacity: 0;
+        transform: scale(1);
+        transition: opacity 0.45s ease;
+        pointer-events: none;
+      }
+
+      .gallery-card:hover .gallery-image {
+        opacity: 0;
+      }
+
+      .gallery-card:hover .gallery-video {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Hover Play Indicator Badge */
+      .play-badge {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        z-index: 5;
+        background: rgba(10, 10, 10, 0.75);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #f5f5f2;
+        padding: 5px 12px;
+        border-radius: var(--radius-full);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        transition: var(--transition);
+        pointer-events: none;
+      }
+
+      .gallery-card:hover .play-badge {
+        background: rgba(198, 165, 92, 0.95);
+        color: #111;
+        border-color: var(--accent);
+      }
+
+      .play-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+
+      .gallery-card:hover .play-dot {
+        background: #111;
+        animation: pulse 1s infinite alternate;
+      }
+
+      @keyframes pulse {
+        0% { transform: scale(0.8); opacity: 0.5; }
+        100% { transform: scale(1.2); opacity: 1; }
+      }
+
+      /* Category Pill over image */
+      .category-pill {
+        position: absolute;
+        bottom: 14px;
+        left: 14px;
+        z-index: 5;
+        background: rgba(10, 10, 10, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(198, 165, 92, 0.35);
+        color: var(--accent);
+        padding: 4px 10px;
+        border-radius: var(--radius-full);
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Card Content */
+      .gallery-content {
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      .gallery-type-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--accent);
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .gallery-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 18px;
+        line-height: 1.3;
+        transition: color 0.25s ease;
+      }
+
+      .gallery-card:hover .gallery-title {
+        color: var(--accent);
+      }
+
+      .gallery-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: auto;
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+        gap: 12px;
+      }
+
+      .btn-preview {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--accent);
+        transition: var(--transition);
+      }
+
+      .btn-preview svg {
+        transition: transform 0.25s ease;
+      }
+
+      .gallery-card:hover .btn-preview svg {
+        transform: translate(2px, -2px);
+      }
+
+      .btn-enquire {
+        font-size: 11px;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: var(--radius-full);
+        background: rgba(198, 165, 92, 0.12);
+        border: 1px solid rgba(198, 165, 92, 0.3);
+        color: var(--accent);
+        transition: var(--transition);
+      }
+
+      .btn-enquire:hover {
+        background: var(--accent);
+        color: #111;
+        border-color: var(--accent);
+      }
+
+      /* =========================================================
+   CTA SECTION
+========================================================= */
+      .gallery-cta {
+        max-width: var(--container-max);
+        margin: 0 auto 100px;
+        padding: 0 24px;
+      }
+
+      .cta-box {
+        position: relative;
+        background: linear-gradient(135deg, rgba(25, 25, 25, 0.95), rgba(18, 18, 18, 0.95));
+        border: 1px solid rgba(198, 165, 92, 0.25);
+        border-radius: var(--radius-lg);
+        padding: 60px 40px;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .cta-box::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at center,
+          rgba(198, 165, 92, 0.12) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .cta-box h2 {
+        font-size: clamp(30px, 4vw, 44px);
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: var(--text);
+      }
+
+      .cta-box h2 span {
+        color: var(--accent);
+        font-family: var(--font-serif);
+        font-style: italic;
+      }
+
+      .cta-box p {
+        font-size: 17px;
+        color: var(--text-muted);
+        max-width: 640px;
+        margin: 0 auto 36px;
+        line-height: 1.7;
+      }
+
+      .cta-actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .btn-gold {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 28px;
+        border-radius: var(--radius-full);
+        background: var(--accent);
+        color: #111 !important;
+        font-weight: 600;
+        font-size: 14px;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(198, 165, 92, 0.3);
+      }
+
+      .btn-gold:hover {
+        background: var(--accent-light);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(198, 165, 92, 0.45);
+      }
+
+      .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        border-radius: var(--radius-full);
+        border: 1px solid var(--line-light);
+        color: var(--text);
+        font-weight: 500;
+        font-size: 14px;
+        transition: var(--transition);
+      }
+
+      .btn-outline:hover {
+        background: var(--surface-2);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      /* =========================================================
+   FOOTER
+========================================================= */
+      .footer {
+        background: #070707;
+        border-top: 1px solid var(--line);
+        padding: 80px 24px 40px;
+      }
+
+      .footer-inner {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+        gap: 48px;
+        margin-bottom: 60px;
+      }
+
+      .footer-brand p {
+        color: var(--text-muted);
+        font-size: 14px;
+        line-height: 1.7;
+        margin-top: 16px;
+        max-width: 320px;
+      }
+
+      .footer-col h4 {
+        font-size: 14px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text);
+        margin-bottom: 20px;
+      }
+
+      .footer-col ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .footer-col a {
+        font-size: 14px;
+        color: var(--text-muted);
+        transition: color 0.2s ease;
+      }
+
+      .footer-col a:hover {
+        color: var(--accent);
+      }
+
+      .footer-contact p {
+        font-size: 14px;
+        color: var(--text-muted);
+        line-height: 1.7;
+        margin-bottom: 12px;
+      }
+
+      .footer-bottom {
+        max-width: var(--container-max);
+        margin: 0 auto;
+        padding-top: 30px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13px;
+        color: var(--text-dim);
+      }
+
+      /* =========================================================
+   BOOK A DEMO MODAL
+========================================================= */
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+      }
+
+      .modal.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .modal-card {
+        position: relative;
+        background: var(--surface);
+        border: 1px solid var(--line-light);
+        border-radius: var(--radius-lg);
+        padding: 40px;
+        max-width: 580px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: var(--surface-2);
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+
+      .modal-close:hover {
+        background: var(--surface-3);
+        color: var(--text);
+      }
+
+      .modal-header {
+        margin-bottom: 28px;
+      }
+
+      .modal-header h3 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        color: var(--text);
+      }
+
+      .modal-header p {
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+
+      .modal-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .form-group label {
+        font-size: 12px;
+        font-weight: 600;
+        color: #d1d1cd;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 12px 16px;
+        font-size: 14px;
+        color: var(--text);
+        font-family: inherit;
+        transition: var(--transition);
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(198, 165, 92, 0.2);
+      }
+
+      .modal-submit {
+        background: var(--accent) !important;
+        color: #111 !important;
+        font-weight: 700;
+        padding: 14px;
+        border-radius: var(--radius-full);
+        font-size: 14px;
+        cursor: pointer;
+        transition: var(--transition);
+        margin-top: 8px;
+        box-shadow: 0 4px 15px rgba(198, 165, 92, 0.3);
+      }
+
+      .modal-submit:hover {
+        background: var(--accent-light) !important;
+        transform: translateY(-2px);
+      }
+
+      /* =========================================================
+   WHATSAPP FLOATING WIDGET
+========================================================= */
+      .whatsapp-widget {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 54px;
+        height: 54px;
+        background: #25d366;
+        border-radius: 50%;
+        box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+        transition: var(--transition);
+      }
+
+      .whatsapp-widget:hover {
+        transform: scale(1.1);
+        box-shadow: 0 12px 28px rgba(37, 211, 102, 0.5);
+      }
+
+      .whatsapp-widget svg {
+        width: 30px;
+        height: 30px;
+        fill: #fff;
+      }
+
+      /* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+      @media (max-width: 1100px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-inner {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-inner {
+          width: 100%;
+          padding: 0 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .logo {
+          position: static;
+          transform: none;
+        }
+
+        .menu-button {
+          position: static;
+          transform: none;
+          display: block;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 65px;
+          left: 0;
+          right: 0;
+          background: rgba(15, 15, 15, 0.98);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          padding: 24px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+          border-bottom: 1px solid var(--line);
+          display: none;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .nav-dropdown {
+          width: 100%;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 0;
+          margin: 0;
+        }
+
+        .dropdown-trigger {
+          width: 100%;
+          justify-content: space-between;
+          padding: 8px 0;
+        }
+
+        .dropdown-menu {
+          position: static;
+          transform: none !important;
+          width: 100%;
+          min-width: auto;
+          background: rgba(25, 25, 25, 0.7);
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+          display: none;
+          margin-top: 4px;
+          margin-bottom: 6px;
+          box-shadow: none;
+        }
+
+        .dropdown-menu::before {
+          display: none;
+        }
+
+        .nav-dropdown.open .dropdown-menu {
+          display: flex;
+        }
+
+        .menu-button {
+          display: block;
+        }
+
+        .nav-button {
+          display: none;
+        }
+
+        .gallery-hero {
+          padding-top: 130px;
+          padding-bottom: 40px;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+          max-width: 520px;
+          margin: 0 auto;
+        }
+
+        .gallery-stats {
+          gap: 20px;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-inner {
+          grid-template-columns: 1fr;
+          gap: 36px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 16px;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- =========================================================
+     NAVIGATION
+========================================================= -->
+    <header class="navbar" id="navbar">
+      <div class="nav-inner">
+        <a href="index.html" class="logo">
+          <img
+            src="images/OneToBeam Logo.webp"
+            alt="OneToBeam"
+            style="height: 32px; width: auto"
+          />
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html#solutions">Solutions</a>
+
+          <div class="nav-dropdown active" id="iplexDropdown">
+            <a href="javascript:void(0)" class="dropdown-trigger">
+              Gallery
+              <svg
+                class="dropdown-arrow"
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="index.html#iplex">i-PLEX</a>
+              <a href="blog.html">Blog</a>
+              <a href="gallery.html" class="active">Gallery</a>
+            </div>
+          </div>
+
+          <a href="index.html#about">About</a>
+        </nav>
+
+        <a href="#demo" class="nav-button" id="bookDemoNav"> Book a Demo </a>
+
+        <button
+          class="menu-button"
+          id="menuButton"
+          aria-label="Open Navigation"
+        >
+          ☰
+        </button>
+      </div>
+    </header>
+
+    <!-- =========================================================
+     HERO SECTION
+========================================================= -->
+    <section class="gallery-hero">
+      <div class="hero-kicker">Portfolio &amp; Work Showcase</div>
+      <h1>Our Work &amp; <span>Gallery</span></h1>
+      <p>
+        Explore OneToBeam’s portfolio of interactive virtual tours, architectural 3D simulations, photoshoot walkthroughs, and custom virtual configurators.
+      </p>
+
+      <div class="gallery-stats">
+        <div class="stat-item">
+          <span class="stat-number">16+</span>
+          <span class="stat-label">Live Showcases</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Interactive 3D</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">8K</span>
+          <span class="stat-label">Visual Fidelity</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">3x</span>
+          <span class="stat-label">Buyer Engagement</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     CATEGORY FILTER BAR (REPLICATED FROM DEVNEW)
+========================================================= -->
+    <div class="filter-wrapper">
+      <div class="filter-container" id="filter-buttons">
+        <button class="filter-btn active" data-filter="all">
+          Show all <span class="count">16</span>
+        </button>
+        <button class="filter-btn" data-filter="floorPlan">
+          Floor Plan To Virtual Tour <span class="count">5</span>
+        </button>
+        <button class="filter-btn" data-filter="photoShoot">
+          Photo Shoot To Virtual Tour <span class="count">7</span>
+        </button>
+        <button class="filter-btn" data-filter="virtualConfigurator">
+          Virtual Configurator <span class="count">4</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- =========================================================
+     GALLERY GRID (16 PORTFOLIO SHOWCASES)
+========================================================= -->
+    <section class="gallery-section">
+      <div class="gallery-grid" id="filterable-cards">
+        <!-- CARD 1 -->
+        <article class="gallery-card" data-name="floorPlan">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/1-3bhk-virtual-tour-from-3d-model-1052x576.webp"
+              alt="3BHK - Virtual tour From 3D Model"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/VIRTUAL TOUR FROM 3D MODEL , 3BHK/Recording 2026-09-29 182948.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual tour From 3D Model</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual tour From 3D Model</div>
+            <h3 class="gallery-title">3BHK</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://onetobeam.com/virtual_tours/Century/Argon/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Virtual Tour
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="3BHK (Virtual tour From 3D Model)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="gallery-card" data-name="photoShoot">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/7-factory-virtual-tour-from-photoshoot-1054x581.webp"
+              alt="Factory - Virtual Tour From PhotoShoot"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/VIRTUAL TOUR FROM PHOTOSHOOT , FACTORY/Recording 2026-09-29 182158.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual Tour From PhotoShoot</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Tour From PhotoShoot</div>
+            <h3 class="gallery-title">Factory</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://onetobeam.com/virtual_tours/MicroCottons20220227/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Virtual Tour
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="Factory (Virtual Tour From PhotoShoot)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="gallery-card" data-name="floorPlan">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/3d-modelling.png"
+              alt="3D Modelling - Virtual tour From 3D Model"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/VIRTUAL TOUR FROM 3D/Recording 2026-09-29 181941.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual tour From 3D Model</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual tour From 3D Model</div>
+            <h3 class="gallery-title">3D Modelling</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://onetobeam.com/virtual_tours/Designpreneur/SLD2(%20Color%20Corrected%20)/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Virtual Tour
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="3D Modelling (Virtual tour From 3D Model)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 4 -->
+        <article class="gallery-card" data-name="virtualConfigurator">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/week-2-504x252.webp"
+              alt="Bedroom - Virtual Configurator"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/VIRTUAL CONFIGURATOR . BEDROOM/Recording 2026-09-29 182506.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual Configurator</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Configurator</div>
+            <h3 class="gallery-title">Bedroom</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://idesignmyhome.com/WeeklyChallenge/Week1/index.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Configurator
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="Bedroom (Virtual Configurator)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 5 -->
+        <article class="gallery-card" data-name="floorPlan">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/2-3bhk-virtual-tour-from-3d-model-1031x610.webp"
+              alt="3BHK - Virtual tour From 3D Model"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/virtual-tour.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual tour From 3D Model</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual tour From 3D Model</div>
+            <h3 class="gallery-title">3BHK</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://onetobeam.com/virtual_tours/HabitatAuraV2/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Virtual Tour
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="3BHK Habitat Aura (Virtual tour From 3D Model)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 6 -->
+        <article class="gallery-card" data-name="photoShoot">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/8-co-living-spaces-virtual-tour-from-photoshoot-953x510.webp"
+              alt="Co-Living Spaces - Virtual Tour From PhotoShoot"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/VIRTUAL TOUR FROM PHOTOSHOOT , CO-LIVING SPACES/Recording 2026-09-29 183145.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual Tour From PhotoShoot</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Tour From PhotoShoot</div>
+            <h3 class="gallery-title">Co-Living Spaces</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://onetobeam.com/virtual_tours/TribeStays/TribeStudentAccomodation/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Virtual Tour
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="Co-Living Spaces (Virtual Tour From PhotoShoot)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 7 -->
+        <article class="gallery-card" data-name="photoShoot">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/3-villa-virtual-tour-from-3d-model-974x526.webp"
+              alt="Villa - Virtual Tour From PhotoShoot"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/VIRTUAL TOUR FROM PHOTOSHOOT , VILLA/Recording 2026-09-29 183452.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual Tour From PhotoShoot</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Tour From PhotoShoot</div>
+            <h3 class="gallery-title">Villa</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://onetobeam.com/virtual_tours/Misty_woods/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Virtual Tour
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="Villa Misty Woods (Virtual Tour From PhotoShoot)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 8 -->
+        <article class="gallery-card" data-name="photoShoot">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/9-school-virtual-tour-from-photoshoot-1017x554.webp"
+              alt="School - Virtual Tour From PhotoShoot"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/virtual-photoshoot.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual Tour From PhotoShoot</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Tour From PhotoShoot</div>
+            <h3 class="gallery-title">School</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://onetobeam.com/virtual_tours/Demo/School/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Virtual Tour
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="School (Virtual Tour From PhotoShoot)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 9 -->
+        <article class="gallery-card" data-name="virtualConfigurator">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/week-2-493x513.webp"
+              alt="Living Room - Virtual Configurator"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/VIRTUAL CONFIGURATOR , LIVINGROOM/Recording 2026-09-29 183730.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual Configurator</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Configurator</div>
+            <h3 class="gallery-title">Living Room</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://idesignmyhome.com/WeeklyChallenge/Week2/index.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Configurator
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="Living Room (Virtual Configurator)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 10 -->
+        <article class="gallery-card" data-name="floorPlan">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/4-plotted-development-virtual-tour-from-3d-model-1088x612.webp"
+              alt="Plotted Development - Virtual tour From 3D Model"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/VIRTUAL TOUR FROM 3D MODEL , PLOTTED DEVELOPMENT/Recording 2026-09-29 183919.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual tour From 3D Model</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual tour From 3D Model</div>
+            <h3 class="gallery-title">Plotted Development</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://onetobeam.com/virtual_tours/SakarHomes/Tapabhumi/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Virtual Tour
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="Plotted Development (Virtual tour From 3D Model)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 11 -->
+        <article class="gallery-card" data-name="photoShoot">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/10-gym-virtual-tour-from-photoshoot-997x548.webp"
+              alt="Gym - Virtual Tour From PhotoShoot"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/virtual-photoshoot.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual Tour From PhotoShoot</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Tour From PhotoShoot</div>
+            <h3 class="gallery-title">Gym</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://onetobeam.com/virtual_tours/Demo/Gym2/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Virtual Tour
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="Gym (Virtual Tour From PhotoShoot)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 12 -->
+        <article class="gallery-card" data-name="virtualConfigurator">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/virtual-tour-1600x766.webp"
+              alt="Virtual Tour - Virtual Configurator"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/VIRTUAL CONFIGURATOR, VIRTUAL TOUR/Recording 2026-09-29 184207.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual Configurator</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Configurator</div>
+            <h3 class="gallery-title">Virtual Tour</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://onetobeam.com/virtual_tours/DIZI/Production/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Configurator
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="Virtual Tour (Virtual Configurator)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 13 -->
+        <article class="gallery-card" data-name="floorPlan">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/5-holiday-home-2-virtual-tour-from-3d-model-1047x575.webp"
+              alt="Holiday Home 2 - Virtual tour From 3D Model"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/VIRUAL TOUR FROM 3D MODEL , HOLIDAY HOME 2/Recording 2026-09-29 184514.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual tour From 3D Model</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual tour From 3D Model</div>
+            <h3 class="gallery-title">Holiday Home 2</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://onetobeam.com/otb-vt/public/3D_Designs/l4zbq0rapr/VT"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Virtual Tour
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="Holiday Home 2 (Virtual tour From 3D Model)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 14 -->
+        <article class="gallery-card" data-name="photoShoot">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/11-salon-spa-virtual-tour-from-photoshoot-1001x535.webp"
+              alt="Salon / Spa - Virtual Tour From PhotoShoot"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/virtual-photoshoot.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual Tour From PhotoShoot</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Tour From PhotoShoot</div>
+            <h3 class="gallery-title">Salon / Spa</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://onetobeam.com/virtual_tours/Demo/Salon_Spa1/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Virtual Tour
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="Salon / Spa (Virtual Tour From PhotoShoot)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 15 -->
+        <article class="gallery-card" data-name="photoShoot">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/12-restaurant-virtual-tour-from-photoshoot-950x508.webp"
+              alt="Restaurant - Virtual Tour From PhotoShoot"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/virtual-photoshoot.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual Tour From PhotoShoot</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Tour From PhotoShoot</div>
+            <h3 class="gallery-title">Restaurant</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://onetobeam.com/virtual_tours/Demo/Restaurant/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Virtual Tour
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="Restaurant (Virtual Tour From PhotoShoot)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD 16 -->
+        <article class="gallery-card" data-name="virtualConfigurator">
+          <div class="gallery-media">
+            <img
+              class="gallery-image"
+              src="gallery/images/week-5-504x503.webp"
+              alt="Kids Bedroom - Virtual Configurator"
+              loading="lazy"
+            />
+            <video
+              class="gallery-video"
+              src="gallery/video/VIRTUAL CONFIGURATOR , KIDS BEDROOM/Recording 2026-09-29 184834.mp4"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
+            <div class="play-badge">
+              <span class="play-dot"></span>
+              <span class="badge-text">Hover to Play</span>
+            </div>
+            <div class="category-pill">Virtual Configurator</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Configurator</div>
+            <h3 class="gallery-title">Kids Bedroom</h3>
+            <div class="gallery-card-footer">
+              <a
+                href="https://idesignmyhome.com/WeeklyChallenge/Week3/index.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-preview"
+              >
+                Launch Configurator
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
+              <button class="btn-enquire card-enquire-btn" data-title="Kids Bedroom (Virtual Configurator)">Book Demo</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     CALL TO ACTION (CTA)
+========================================================= -->
+    <section class="gallery-cta">
+      <div class="cta-box">
+        <h2>Bring Your Real Estate Project to <span>Life</span></h2>
+        <p>
+          Whether you need interactive 3D virtual showflats from CAD/BIM floor plans, 360 photoshoot virtual tours, or bespoke design configurators — OneToBeam delivers results that accelerate property sales.
+        </p>
+        <div class="cta-actions">
+          <a href="#demo" class="btn-gold" id="ctaBookDemo">
+            Schedule a Personalized Walkthrough
+          </a>
+          <a
+            href="https://wa.me/919663732362?text=Hi%20OneToBeam%2C%20I%27d%20like%20to%20learn%20more%20about%20your%20virtual%20tour%20solutions."
+            class="btn-outline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Chat with an Expert
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     FOOTER
+========================================================= -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <img
+              src="images/OneToBeam Logo.webp"
+              alt="OneToBeam"
+              style="height: 32px; width: auto"
+            />
+          </a>
+          <p>
+            OneToBeam empowers property developers, architects, and sales teams with next-generation interactive visualization, virtual tours, and 3D architectural experiences.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#solutions">Solutions</a></li>
+            <li><a href="index.html#iplex">i-PLEX</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="index.html#work">Work</a></li>
+            <li><a href="index.html#about">About</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Showcases</h4>
+          <ul>
+            <li><a href="gallery.html?cat=floorPlan">Floor Plan to Virtual Tour</a></li>
+            <li><a href="gallery.html?cat=photoShoot">Photo Shoot to Virtual Tour</a></li>
+            <li><a href="gallery.html?cat=virtualConfigurator">Virtual Configurator</a></li>
+            <li><a href="index.html#iplex">i-PLEX Interactive Suite</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col footer-contact">
+          <h4>Connect</h4>
+          <p>Experience the future of real estate marketing firsthand.</p>
+          <p>
+            Email:
+            <a href="mailto:contact@onetobeam.com" style="color: var(--accent);"
+              >contact@onetobeam.com</a
+            >
+          </p>
+          <p>
+            WhatsApp:
+            <a
+              href="https://wa.me/919663732362"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="color: var(--accent);"
+              >+91 96637 32362</a
+            >
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 OneToBeam. All rights reserved.</p>
+        <p>Crafted for immersive real estate visualization</p>
+      </div>
+    </footer>
+
+    <!-- =========================================================
+     BOOK A DEMO MODAL FORM
+========================================================= -->
+    <div class="modal" id="demoModal" role="dialog" aria-modal="true">
+      <div class="modal-card">
+        <button class="modal-close" id="modalClose" aria-label="Close modal">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div class="modal-header">
+          <h3>Book a Demo</h3>
+          <p>Schedule a personalized walkthrough of our interactive visualization solutions</p>
+        </div>
+        <form class="modal-form" id="demoForm">
+          <input
+            type="hidden"
+            name="access_key"
+            value="2dccbe3a-dec7-44ec-9a2e-09b7ba0d1e7f"
+          />
+          <input
+            type="hidden"
+            name="subject"
+            value="New Demo Request — OneToBeam Gallery"
+          />
+          <input type="hidden" name="from_name" value="OneToBeam Website" />
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" required placeholder="Your full name" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required placeholder="your@email.com" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone No. *</label>
+              <input type="tel" id="phone" name="phone" required placeholder="+91 9XXXX XXXXX" />
+            </div>
+            <div class="form-group">
+              <label for="company">Company Name *</label>
+              <input type="text" id="company" name="company" required placeholder="Your company name" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="description">Project Details *</label>
+            <textarea
+              id="description"
+              name="description"
+              rows="4"
+              required
+              placeholder="Tell us about your upcoming project (e.g. Virtual Tour, Floor Plan 3D, or Configurator)..."
+            ></textarea>
+          </div>
+          <button type="submit" class="modal-submit">
+            Submit Request
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- =========================================================
+     WHATSAPP FLOATING WIDGET
+========================================================= -->
+    <a
+      href="https://wa.me/919663732362?text=Hi%20OneToBeam%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services."
+      class="whatsapp-widget"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Chat with OneToBeam on WhatsApp"
+    >
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.003 2.667C8.64 2.667 2.667 8.64 2.667 16c0 2.352.617 4.643 1.789 6.663L2.667 29.333l6.835-1.787A13.28 13.28 0 0 0 16 29.333h.003c7.36 0 13.333-5.973 13.333-13.333S23.363 2.667 16.003 2.667zm0 24.32h-.002a11.02 11.02 0 0 1-5.616-1.539l-.403-.24-4.058 1.061 1.085-3.956-.263-.406A10.99 10.99 0 0 1 5.013 16c0-6.063 4.935-11 11-11 2.937 0 5.698 1.145 7.774 3.221A10.93 10.93 0 0 1 27 16.001c0 6.063-4.935 10.986-10.997 10.986zm6.03-8.23c-.33-.165-1.953-.964-2.256-1.074-.303-.11-.523-.165-.743.166-.22.33-.852 1.074-1.045 1.294-.192.22-.385.248-.715.083-.33-.165-1.394-.514-2.656-1.638-.982-.876-1.644-1.958-1.836-2.288-.192-.33-.02-.508.145-.672.148-.148.33-.385.495-.578.165-.192.22-.33.33-.55.11-.22.055-.413-.027-.578-.083-.165-.743-1.79-1.018-2.45-.268-.643-.54-.556-.743-.566l-.633-.011c-.22 0-.578.083-.88.413-.303.33-1.155 1.128-1.155 2.752 0 1.623 1.182 3.192 1.347 3.412.165.22 2.326 3.553 5.637 4.982.788.34 1.402.543 1.882.695.79.252 1.51.216 2.079.131.634-.094 1.953-.798 2.229-1.568.275-.77.275-1.43.192-1.568-.083-.138-.303-.22-.633-.385z"
+        />
+      </svg>
+    </a>
+
+    <!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Mobile Navigation & Dropdown
+        const menuButton = document.getElementById("menuButton");
+        const navLinks = document.getElementById("navLinks");
+        const iplexDropdown = document.getElementById("iplexDropdown");
+
+        if (menuButton && navLinks) {
+          menuButton.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+          });
+        }
+
+        if (iplexDropdown) {
+          const trigger = iplexDropdown.querySelector(".dropdown-trigger");
+          if (trigger) {
+            trigger.addEventListener("click", (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              iplexDropdown.classList.toggle("open");
+            });
+          }
+
+          document.addEventListener("click", (e) => {
+            if (!iplexDropdown.contains(e.target)) {
+              iplexDropdown.classList.remove("open");
+            }
+          });
+        }
+
+        document.querySelectorAll(".nav-links a").forEach((link) => {
+          link.addEventListener("click", () => {
+            if (link.classList.contains("dropdown-trigger")) {
+              return;
+            }
+            if (navLinks) navLinks.classList.remove("active");
+            if (iplexDropdown) iplexDropdown.classList.remove("open");
+          });
+        });
+
+        // =========================================================
+        // VIDEO HOVER SYSTEM (SMOOTH PLAY/PAUSE ON HOVER)
+        // =========================================================
+        const galleryCards = document.querySelectorAll(".gallery-card");
+
+        galleryCards.forEach((card) => {
+          const video = card.querySelector(".gallery-video");
+          const image = card.querySelector(".gallery-image");
+          const badgeText = card.querySelector(".badge-text");
+
+          if (!video || !image) return;
+
+          let isPlaying = false;
+
+          const playVideo = () => {
+            if (isPlaying) return;
+            video
+              .play()
+              .then(() => {
+                isPlaying = true;
+                video.style.opacity = "1";
+                image.style.opacity = "0";
+                if (badgeText) badgeText.textContent = "Playing";
+              })
+              .catch((err) => {
+                // If video cannot play (pending upload or autoplay policy), keep image visible
+                isPlaying = false;
+                video.style.opacity = "0";
+                image.style.opacity = "1";
+              });
+          };
+
+          video.addEventListener("error", () => {
+            video.style.opacity = "0";
+            image.style.opacity = "1";
+          });
+
+          const pauseVideo = () => {
+            if (!isPlaying) return;
+            video.pause();
+            video.currentTime = 0;
+            video.style.opacity = "0";
+            image.style.opacity = "1";
+            if (badgeText) badgeText.textContent = "Hover to Play";
+            isPlaying = false;
+          };
+
+          // Mouse events
+          card.addEventListener("mouseenter", playVideo);
+          card.addEventListener("mouseleave", pauseVideo);
+
+          // Mobile touch events
+          card.addEventListener("touchstart", playVideo, { passive: true });
+          card.addEventListener("touchend", pauseVideo, { passive: true });
+        });
+
+        // =========================================================
+        // CATEGORY FILTERING SYSTEM (MATCHING DEVNEW)
+        // =========================================================
+        const filterButtons = document.querySelectorAll("#filter-buttons button");
+        const filterableCards = document.querySelectorAll("#filterable-cards .gallery-card");
+
+        function filterCards(filterName) {
+          filterButtons.forEach((btn) => {
+            if (btn.getAttribute("data-filter") === filterName) {
+              btn.classList.add("active");
+            } else {
+              btn.classList.remove("active");
+            }
+          });
+
+          filterableCards.forEach((card) => {
+            const cardName = card.getAttribute("data-name");
+            if (filterName === "all" || cardName === filterName) {
+              card.style.display = "flex";
+              setTimeout(() => {
+                card.style.opacity = "1";
+                card.style.transform = "translateY(0)";
+              }, 10);
+            } else {
+              card.style.display = "none";
+              card.style.opacity = "0";
+              card.style.transform = "translateY(15px)";
+            }
+          });
+        }
+
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", (e) => {
+            const filterName = button.getAttribute("data-filter");
+            filterCards(filterName);
+          });
+        });
+
+        // URL parameter support (e.g. gallery.html?cat=floorPlan)
+        const urlParams = new URLSearchParams(window.location.search);
+        const catParam = urlParams.get("cat");
+        if (catParam) {
+          filterCards(catParam);
+        }
+
+        // =========================================================
+        // DEMO BOOKING MODAL
+        // =========================================================
+        const demoModal = document.getElementById("demoModal");
+        const modalClose = document.getElementById("modalClose");
+        const bookDemoNav = document.getElementById("bookDemoNav");
+        const ctaBookDemo = document.getElementById("ctaBookDemo");
+        const demoForm = document.getElementById("demoForm");
+        const projectDescInput = document.getElementById("description");
+
+        function openDemoModal(customContext = "") {
+          if (!demoModal) return;
+          if (customContext && projectDescInput) {
+            projectDescInput.value = `Interested in a demo for: ${customContext}. Please schedule a walkthrough.`;
+          }
+          demoModal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeDemoModal() {
+          if (!demoModal) return;
+          demoModal.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        if (bookDemoNav) {
+          bookDemoNav.addEventListener("click", (e) => {
+            e.preventDefault();
+            openDemoModal();
+          });
+        }
+
+        if (ctaBookDemo) {
+          ctaBookDemo.addEventListener("click", (e) => {
+            e.preventDefault();
+            openDemoModal();
+          });
+        }
+
+        document.querySelectorAll(".card-enquire-btn").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const projectTitle = btn.getAttribute("data-title");
+            openDemoModal(projectTitle);
+          });
+        });
+
+        if (modalClose) {
+          modalClose.addEventListener("click", closeDemoModal);
+        }
+
+        if (demoModal) {
+          demoModal.addEventListener("click", (e) => {
+            if (e.target === demoModal) {
+              closeDemoModal();
+            }
+          });
+        }
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            closeDemoModal();
+          }
+        });
+
+        // Form submission via Web3Forms
+        if (demoForm) {
+          demoForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const submitBtn = demoForm.querySelector(".modal-submit");
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = "Sending...";
+            submitBtn.disabled = true;
+
+            const formData = new FormData(demoForm);
+
+            try {
+              const res = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData,
+              });
+              const json = await res.json();
+              if (json.success) {
+                alert("Thank you! Your demo request has been received. We will get in touch shortly.");
+                demoForm.reset();
+                closeDemoModal();
+              } else {
+                alert("Something went wrong. Please reach out to us directly on WhatsApp or Email.");
+              }
+            } catch (err) {
+              alert("Submission error. Please connect with us directly on WhatsApp or Email.");
+            } finally {
+              submitBtn.textContent = originalText;
+              submitBtn.disabled = false;
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

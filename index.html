@@ -3,11 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OneToBeam — Real Estate Visualization & Digital Experiences</title>
+    <title>OneToBeam — Interactive Real Estate Visualization & Virtual Experiences</title>
     <meta
       name="description"
-      content="OneToBeam creates immersive real estate visualization, virtual tours, interactive floor plans and digital property experiences."
+      content="OneToBeam transforms real estate marketing with immersive 3D virtual showflats, interactive floor plans, architectural visualization, and digital sales galleries."
     />
+    <meta name="keywords" content="real estate visualization, virtual showflat, 3D floor plan, architectural visualization, digital sales gallery, interactive property tour, proptech, real estate CGI" />
+    <meta name="author" content="OneToBeam" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://onetobeam.com/" />
+    <link rel="icon" type="image/webp" href="images/OneToBeam Logo.webp" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OneToBeam" />
+    <meta property="og:title" content="OneToBeam — Where Property Becomes Experience" />
+    <meta property="og:description" content="Immersive 3D virtual showflats, interactive floor plans, and digital sales galleries for property developers." />
+    <meta property="og:url" content="https://onetobeam.com/" />
+    <meta property="og:image" content="https://www.onetobeam.com/website/images/OneToBeam%20Logo.webp" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="OneToBeam — Real Estate Visualization & Technology" />
+    <meta name="twitter:description" content="Immersive 3D virtual showflats, interactive floor plans, and digital sales galleries for property developers." />
+    <meta name="twitter:image" content="https://www.onetobeam.com/website/images/OneToBeam%20Logo.webp" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://onetobeam.com/#organization",
+          "name": "OneToBeam",
+          "url": "https://onetobeam.com/",
+          "logo": "https://www.onetobeam.com/website/images/OneToBeam%20Logo.webp",
+          "description": "Interactive Real Estate Visualization & PropTech Solutions.",
+          "sameAs": [
+            "https://www.linkedin.com/company/onetobeam"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://onetobeam.com/#website",
+          "url": "https://onetobeam.com/",
+          "name": "OneToBeam",
+          "description": "Where Property Becomes Experience - Immersive Real Estate Visualization",
+          "publisher": { "@id": "https://onetobeam.com/#organization" }
+        }
+      ]
+    }
+    </script>
 
     <style>
       /* =========================================================
@@ -170,6 +218,104 @@
         color: white;
       }
 
+      /* Nav Dropdown */
+      .nav-dropdown {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 0;
+        margin: -8px 0;
+      }
+
+      .dropdown-trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        color: #cfcfcb;
+        transition: 0.25s ease;
+        cursor: pointer;
+        padding: 4px 0;
+        user-select: none;
+      }
+
+      .dropdown-trigger:hover,
+      .nav-dropdown:hover .dropdown-trigger,
+      .nav-dropdown.active .dropdown-trigger,
+      .nav-dropdown.open .dropdown-trigger {
+        color: var(--accent);
+      }
+
+      .dropdown-arrow {
+        transition: transform 0.25s ease;
+      }
+
+      .nav-dropdown:hover .dropdown-arrow,
+      .nav-dropdown.open .dropdown-arrow {
+        transform: rotate(180deg);
+      }
+
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(0);
+        min-width: 170px;
+        background: rgba(18, 18, 18, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 8px;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.2s ease, visibility 0.2s ease;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+        z-index: 1002;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      /* Invisible bridge to prevent mouseleave when moving from trigger to menu */
+      .dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -12px;
+        left: 0;
+        right: 0;
+        height: 14px;
+        background: transparent;
+      }
+
+      .nav-dropdown:hover .dropdown-menu,
+      .nav-dropdown:focus-within .dropdown-menu,
+      .nav-dropdown.open .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      .dropdown-menu a {
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-size: 13px;
+        color: #c5c5c0;
+        display: block;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+
+      .dropdown-menu a:hover,
+      .dropdown-menu a.active {
+        background: rgba(198, 165, 92, 0.14);
+        color: var(--accent);
+        font-weight: 600;
+        transform: translateX(4px);
+      }
+
       .nav-button {
         position: absolute;
         right: 30px;
@@ -213,7 +359,7 @@
             rgba(0, 0, 0, 0.45) 60%,
             #0a0a0a 100%
           ),
-          url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2200&q=90")
+          url("images/hero image.png")
             center/cover no-repeat;
       }
 
@@ -468,7 +614,7 @@
 
       .features-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 24px;
         margin-top: 50px;
       }
@@ -490,16 +636,17 @@
       .feature-media {
         position: relative;
         width: 100%;
-        aspect-ratio: 1 / 1;
+        aspect-ratio: 4 / 3;
         border-radius: var(--radius-md) var(--radius-md) 0 0;
         overflow: hidden;
-        background: var(--surface-2);
+        background: #0d0d0d;
       }
 
       .feature-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        object-position: center;
         transition:
           opacity 0.4s ease,
           transform 0.4s ease;
@@ -511,23 +658,12 @@
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
+        background: #0d0d0d;
         opacity: 0;
-        transform: scale(1.05);
-        transition:
-          opacity 0.4s ease,
-          transform 0.4s ease;
+        transform: scale(1);
+        transition: opacity 0.4s ease;
         pointer-events: none;
-      }
-
-      .feature-video:not([poster]) {
-        background: var(--surface-2);
-      }
-
-      .feature-video[poster] {
-        background-image: attr(poster);
-        background-size: cover;
-        background-position: center;
       }
 
       .feature-video:loading {
@@ -563,7 +699,7 @@
 
       .feature-card:hover .feature-image {
         opacity: 0;
-        transform: scale(1.05);
+        transform: scale(1);
       }
 
       .feature-card:hover .feature-video {
@@ -671,51 +807,82 @@
         margin-top: 60px;
         display: grid;
         grid-template-columns: repeat(12, 1fr);
-        gap: 18px;
+        gap: 22px;
       }
 
       .work-card {
         position: relative;
-        min-height: 420px;
-        border-radius: 20px;
+        border-radius: 24px;
         overflow: hidden;
         background: #181818;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+      }
+
+      .work-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
       }
 
       .work-card:nth-child(1) {
-        grid-column: span 7;
+        grid-column: span 12;
+        min-height: 560px;
       }
 
-      .work-card:nth-child(2) {
-        grid-column: span 5;
-      }
-
+      .work-card:nth-child(2),
       .work-card:nth-child(3) {
-        grid-column: span 5;
+        grid-column: span 6;
+        min-height: 480px;
       }
 
-      .work-card:nth-child(4) {
-        grid-column: span 7;
-      }
-
-      .work-card img {
+      .work-card img,
+      .work-card video {
+        position: absolute;
+        inset: 0;
+        width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: 0.7s ease;
+        display: block;
+        transition: opacity 0.5s ease, transform 0.7s ease;
       }
 
-      .work-card:hover img {
-        transform: scale(1.05);
+      .work-card .work-thumb {
+        z-index: 1;
+        opacity: 1;
+      }
+
+      .work-card .work-video {
+        z-index: 2;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .work-card:hover .work-thumb,
+      .work-card.is-playing .work-thumb {
+        opacity: 0;
+      }
+
+      .work-card:hover .work-video,
+      .work-card.is-playing .work-video {
+        opacity: 1;
+      }
+
+      .work-card:hover img,
+      .work-card:hover video {
+        transform: scale(1.02);
       }
 
       .work-overlay {
         position: absolute;
         inset: 0;
+        z-index: 3;
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
         padding: 25px;
         background: linear-gradient(transparent 45%, rgba(0, 0, 0, 0.85));
+        pointer-events: none;
       }
 
       .work-overlay small {
@@ -729,6 +896,42 @@
         font-size: 28px;
         font-weight: 400;
         margin-top: 5px;
+      }
+
+      .work-filter-bar {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+        margin-bottom: -20px;
+      }
+
+      .work-filter-btn {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        color: var(--muted);
+        padding: 9px 20px;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.25s ease;
+      }
+
+      .work-filter-btn:hover,
+      .work-filter-btn.active {
+        background: rgba(198, 165, 92, 0.15);
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .work-card.is-filtered-out {
+        display: none !important;
+      }
+
+      .work-card.is-single-filtered {
+        grid-column: span 12 !important;
+        min-height: 520px;
       }
 
       /* =========================================================
@@ -747,19 +950,33 @@
       }
 
       .client {
-        height: 280px;
+        height: 220px;
         border-right: 1px solid var(--line);
         border-bottom: 1px solid var(--line);
         display: grid;
         place-items: center;
-        color: #686865;
-        font-size: 16px;
-        transition: 0.3s;
+        padding: 24px;
+        transition: all 0.35s ease;
+      }
+
+      .client img {
+        max-height: 85px;
+        max-width: 80%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        opacity: 0.9;
+        filter: brightness(1.05);
+        transition: all 0.35s ease;
       }
 
       .client:hover {
-        color: white;
-        background: #111;
+        background: #141414;
+      }
+
+      .client:hover img {
+        opacity: 1;
+        transform: scale(1.08);
       }
 
       /* =========================================================
@@ -1250,22 +1467,16 @@
         }
         .work-grid {
           grid-template-columns: repeat(12, 1fr);
-          gap: 14px;
+          gap: 16px;
         }
         .work-card:nth-child(1) {
-          grid-column: span 7;
+          grid-column: span 12;
+          min-height: 460px;
         }
-        .work-card:nth-child(2) {
-          grid-column: span 5;
-        }
+        .work-card:nth-child(2),
         .work-card:nth-child(3) {
-          grid-column: span 5;
-        }
-        .work-card:nth-child(4) {
-          grid-column: span 7;
-        }
-        .work-card {
-          min-height: 380px;
+          grid-column: span 6;
+          min-height: 400px;
         }
 
         .client-grid {
@@ -1317,9 +1528,24 @@
 
       /* --- MOBILE & SMALL TABLET (768px & Below) --- */
       @media (max-width: 768px) {
-        .container,
-        .nav-inner {
+        .container {
           width: min(100% - 30px, var(--max-width));
+        }
+        .nav-inner {
+          width: 100%;
+          padding: 0 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .logo {
+          position: static;
+          transform: none;
+        }
+        .menu-button {
+          position: static;
+          transform: none;
+          display: block;
         }
         section {
           padding: 90px 0;
@@ -1345,8 +1571,39 @@
         .nav-links.active {
           display: flex;
         }
-        .menu-button {
-          display: block;
+        .nav-dropdown {
+          width: 100%;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 0;
+          margin: 0;
+        }
+        .dropdown-trigger {
+          width: 100%;
+          justify-content: space-between;
+          padding: 8px 0;
+          font-size: 14px;
+        }
+        .dropdown-menu {
+          position: static;
+          transform: none !important;
+          width: 100%;
+          min-width: auto;
+          background: rgba(25, 25, 25, 0.7);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          opacity: 1;
+          visibility: visible;
+          pointer-events: auto;
+          display: none;
+          margin-top: 4px;
+          margin-bottom: 6px;
+          box-shadow: none;
+        }
+        .dropdown-menu::before {
+          display: none;
+        }
+        .nav-dropdown.open .dropdown-menu {
+          display: flex;
         }
         .nav-button {
           display: none;
@@ -1428,6 +1685,7 @@
           grid-template-columns: 1fr;
           gap: 18px;
         }
+        .feature-media,
         .feature-image {
           aspect-ratio: 16/9;
         }
@@ -1703,9 +1961,18 @@
           padding: 14px 0;
           font-size: 14px;
         }
+        .work-filter-bar {
+          gap: 8px;
+          margin-top: 22px;
+          margin-bottom: -15px;
+        }
+        .work-filter-btn {
+          padding: 7px 15px;
+          font-size: 12px;
+        }
         .work-grid {
           gap: 14px;
-          margin-top: 45px;
+          margin-top: 40px;
         }
         .work-card,
         .work-card:nth-child(n) {
@@ -1722,8 +1989,11 @@
           font-size: 20px;
         }
         .client {
-          height: 120px;
-          font-size: 14px;
+          height: 140px;
+          padding: 16px;
+        }
+        .client img {
+          max-height: 60px;
         }
         .features-container {
           padding: 12px;
@@ -1865,8 +2135,19 @@
         </a>
         <nav class="nav-links" id="navLinks">
           <a href="#solutions">Solutions</a>
-          <a href="#iplex">i-PLEX</a>
-          <a href="#work">Work</a>
+          <div class="nav-dropdown active" id="iplexDropdown">
+            <a href="javascript:void(0)" class="dropdown-trigger">
+              i-PLEX
+              <svg class="dropdown-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="#iplex" class="active">i-PLEX</a>
+              <a href="blog.html">Blog</a>
+              <a href="gallery.html">Gallery</a>
+            </div>
+          </div>
           <a href="#about">About</a>
         </nav>
         <a href="#contact" class="nav-button"> Book a Demo </a>
@@ -1900,7 +2181,6 @@
           </p>
           <div class="hero-actions">
             <a href="#iplex" class="btn btn-primary"> Explore i-PLEX </a>
-            <a href="#work" class="btn btn-outline"> View our work </a>
           </div>
         </div>
       </div>
@@ -2012,11 +2292,12 @@
 
           <div class="features-container">
             <div class="features-grid">
+              <!-- Card 01 -->
               <div class="feature-card reveal">
                 <div class="feature-media">
                   <img
                     class="feature-image"
-                    src="https://www.onetobeam.com/website/images/Iplex features/Bird eye view.png"
+                    src="images/Iplex features/Bird eye view.png"
                     alt="Bird Eye View"
                     loading="lazy"
                   />
@@ -2028,7 +2309,7 @@
                     playsinline
                     preload="metadata"
                     type="video/mp4"
-                    poster="https://www.onetobeam.com/website/images/Iplex features/Bird eye view.png"
+                    poster="images/Iplex features/Bird eye view.png"
                   ></video>
                 </div>
                 <div class="feature-content">
@@ -2042,11 +2323,12 @@
                 </div>
               </div>
 
+              <!-- Card 02 -->
               <div class="feature-card reveal">
                 <div class="feature-media">
                   <img
                     class="feature-image"
-                    src="https://www.onetobeam.com/website/images/Iplex features/Master layout.png"
+                    src="images/Iplex features/Master layout.png"
                     alt="Master Layout"
                     loading="lazy"
                   />
@@ -2058,7 +2340,7 @@
                     playsinline
                     preload="metadata"
                     type="video/mp4"
-                    poster="https://www.onetobeam.com/website/images/Iplex features/Master layout.png"
+                    poster="images/Iplex features/Master layout.png"
                   ></video>
                 </div>
                 <div class="feature-content">
@@ -2073,11 +2355,12 @@
                 </div>
               </div>
 
+              <!-- Card 03 -->
               <div class="feature-card reveal">
                 <div class="feature-media">
                   <img
                     class="feature-image"
-                    src="https://www.onetobeam.com/website/images/Iplex features/Maps.png"
+                    src="images/Iplex features/Maps.png"
                     alt="Maps & Location"
                     loading="lazy"
                   />
@@ -2089,7 +2372,7 @@
                     playsinline
                     preload="metadata"
                     type="video/mp4"
-                    poster="https://www.onetobeam.com/website/images/Iplex features/Maps.png"
+                    poster="images/Iplex features/Maps.png"
                   ></video>
                 </div>
                 <div class="feature-content">
@@ -2103,23 +2386,24 @@
                 </div>
               </div>
 
+              <!-- Card 04 -->
               <div class="feature-card reveal">
                 <div class="feature-media">
                   <img
                     class="feature-image"
-                    src="https://www.onetobeam.com/website/images/Iplex features/amenities.png"
+                    src="images/Iplex features/amenities.png"
                     alt="Amenities Explorer"
                     loading="lazy"
                   />
                   <video
                     class="feature-video"
-                    src="Video/amenities.mp4"
+                    src="Video/Amenities.mp4"
                     loop
                     muted
                     playsinline
                     preload="metadata"
                     type="video/mp4"
-                    poster="https://www.onetobeam.com/website/images/Iplex features/amenities.png"
+                    poster="images/Iplex features/amenities.png"
                   ></video>
                 </div>
                 <div class="feature-content">
@@ -2133,23 +2417,24 @@
                 </div>
               </div>
 
+              <!-- Card 05 -->
               <div class="feature-card reveal">
                 <div class="feature-media">
                   <img
                     class="feature-image"
-                    src="https://www.onetobeam.com/website/images/Iplex features/simulation.png"
+                    src="images/Iplex features/simulation.png"
                     alt="Simulations"
                     loading="lazy"
                   />
                   <video
                     class="feature-video"
-                    src="Video/simulation.mp4"
+                    src="Video/Simulation.mp4"
                     loop
                     muted
                     playsinline
                     preload="metadata"
                     type="video/mp4"
-                    poster="https://www.onetobeam.com/website/images/Iplex features/simulation.png"
+                    poster="images/Iplex features/simulation.png"
                   ></video>
                 </div>
                 <div class="feature-content">
@@ -2163,11 +2448,12 @@
                 </div>
               </div>
 
+              <!-- Card 06 -->
               <div class="feature-card reveal">
                 <div class="feature-media">
                   <img
                     class="feature-image"
-                    src="https://www.onetobeam.com/website/images/Iplex features/filter.png"
+                    src="images/Iplex features/filter.png"
                     alt="Select with Filters"
                     loading="lazy"
                   />
@@ -2179,7 +2465,7 @@
                     playsinline
                     preload="metadata"
                     type="video/mp4"
-                    poster="https://www.onetobeam.com/website/images/Iplex features/filter.png"
+                    poster="images/Iplex features/filter.png"
                   ></video>
                 </div>
                 <div class="feature-content">
@@ -2189,6 +2475,64 @@
                     Quickly find available units based on your preferred floor,
                     size, and facing. Explore the right options instantly and
                     make unit selection faster and easier.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Card 07 -->
+              <div class="feature-card reveal">
+                <div class="feature-media">
+                  <img
+                    class="feature-image"
+                    src="images/Iplex features/Config Types.png"
+                    alt="Config Types"
+                    loading="lazy"
+                  />
+                  <video
+                    class="feature-video"
+                    src="Video/Config Types.mp4"
+                    loop
+                    muted
+                    playsinline
+                    preload="metadata"
+                    type="video/mp4"
+                    poster="images/Iplex features/Config Types.png"
+                  ></video>
+                </div>
+                <div class="feature-content">
+                  <div class="feature-number">07</div>
+                  <h3>Config Types</h3>
+                  <p>
+                    Explore interactive 2D &amp; 3D apartment configurations, compare floor layouts, room dimensions, and interior variations in real time.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Card 08 -->
+              <div class="feature-card reveal">
+                <div class="feature-media">
+                  <img
+                    class="feature-image"
+                    src="images/Iplex features/Analytics.png"
+                    alt="Analytics"
+                    loading="lazy"
+                  />
+                  <video
+                    class="feature-video"
+                    src="Video/Analytics.mp4"
+                    loop
+                    muted
+                    playsinline
+                    preload="metadata"
+                    type="video/mp4"
+                    poster="images/Iplex features/Analytics.png"
+                  ></video>
+                </div>
+                <div class="feature-content">
+                  <div class="feature-number">08</div>
+                  <h3>Analytics</h3>
+                  <p>
+                    Track buyer interest, popular configurations, unit inquiries, and viewing duration with integrated real-time project analytics.
                   </p>
                 </div>
               </div>
@@ -2228,56 +2572,85 @@
       <div class="container">
         <div class="section-label reveal">Selected Work</div>
         <h2 class="section-title reveal">
-          Built for<br />
-          real places.
+          Different filters in i-PLEX.<br />
+          <span style="color: var(--accent)">Plotted, Apartment and Villa.</span>
         </h2>
         <p class="section-description reveal">
           A selection of visual experiences created for real estate projects and
-          property brands.
+          property brands across every development type.
         </p>
 
+        <div class="work-filter-bar reveal">
+          <button class="work-filter-btn active" data-filter="all">All</button>
+          <button class="work-filter-btn" data-filter="plotted">Plotted</button>
+          <button class="work-filter-btn" data-filter="apartment">Apartment</button>
+          <button class="work-filter-btn" data-filter="villa">Villa</button>
+        </div>
+
         <div class="work-grid">
-          <div class="work-card reveal">
+          <div class="work-card reveal" data-type="villa">
             <img
-              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1500&q=90"
-              alt="Luxury interior"
+              class="work-thumb"
+              src="Video/Build for real places/Maharaja Ikon.png"
+              alt="Villa"
+              loading="lazy"
             />
+            <video
+              class="work-video"
+              src="Video/Build for real places/Ikon mahraja project.mp4"
+              poster="Video/Build for real places/Maharaja Ikon.png"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
             <div class="work-overlay">
-              <small>3D Visualization</small>
-              <h3>Luxury Residence</h3>
+              <small>Selected Work</small>
+              <h3>Villa</h3>
             </div>
           </div>
 
-          <div class="work-card reveal">
+          <div class="work-card reveal" data-type="apartment">
             <img
-              src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1200&q=90"
-              alt="Modern interior"
+              class="work-thumb"
+              src="Video/Build for real places/roach.png"
+              alt="Apartment"
+              loading="lazy"
             />
+            <video
+              class="work-video"
+              src="Video/Build for real places/roach.mp4"
+              poster="Video/Build for real places/roach.png"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
             <div class="work-overlay">
-              <small>Virtual Experience</small>
-              <h3>Modern Living</h3>
+              <small>Selected Work</small>
+              <h3>Apartment</h3>
             </div>
           </div>
 
-          <div class="work-card reveal">
+          <div class="work-card reveal" data-type="plotted">
             <img
-              src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=90"
-              alt="Interior visualization"
+              class="work-thumb"
+              src="Video/Build for real places/Sahassra.png"
+              alt="Plotted"
+              loading="lazy"
             />
+            <video
+              class="work-video"
+              src="Video/Build for real places/shashra.mp4"
+              poster="Video/Build for real places/Sahassra.png"
+              loop
+              muted
+              playsinline
+              preload="metadata"
+            ></video>
             <div class="work-overlay">
-              <small>Interior Visualization</small>
-              <h3>Urban Residence</h3>
-            </div>
-          </div>
-
-          <div class="work-card reveal">
-            <img
-              src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1500&q=90"
-              alt="Real estate property"
-            />
-            <div class="work-overlay">
-              <small>Digital Property Experience</small>
-              <h3>Premium Development</h3>
+              <small>Selected Work</small>
+              <h3>Plotted</h3>
             </div>
           </div>
         </div>
@@ -2298,50 +2671,30 @@
         <div class="client-grid reveal">
           <div class="client">
             <img
-              src="https://www.onetobeam.com/website/images/Client/Client 1.webp"
+              src="images/Client/Client 1.webp"
               alt="Client 1"
-              style="
-                max-height: 40px;
-                width: auto;
-                opacity: 0.6;
-                transition: opacity 0.3s;
-              "
+              loading="lazy"
             />
           </div>
           <div class="client">
             <img
-              src="https://www.onetobeam.com/website/images/Client/Client 2.webp"
+              src="images/Client/Client 2.webp"
               alt="Client 2"
-              style="
-                max-height: 40px;
-                width: auto;
-                opacity: 0.6;
-                transition: opacity 0.3s;
-              "
+              loading="lazy"
             />
           </div>
           <div class="client">
             <img
-              src="https://www.onetobeam.com/website/images/Client/Client 3.webp"
+              src="images/Client/Client 3.webp"
               alt="Client 3"
-              style="
-                max-height: 40px;
-                width: auto;
-                opacity: 0.6;
-                transition: opacity 0.3s;
-              "
+              loading="lazy"
             />
           </div>
           <div class="client">
             <img
-              src="https://www.onetobeam.com/website/images/Client/Client 4.webp"
+              src="images/Client/Client 4.webp"
               alt="Client 4"
-              style="
-                max-height: 40px;
-                width: auto;
-                opacity: 0.6;
-                transition: opacity 0.3s;
-              "
+              loading="lazy"
             />
           </div>
         </div>
@@ -2422,7 +2775,12 @@
           Have a real estate project that needs better visualization,
           interaction or digital presentation?
         </p>
-        <a href="mailto:Enquiry@onetobeam.com" class="btn btn-primary">
+        <a
+          href="https://wa.me/919663732362?text=Hi%20OneToBeam%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services."
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary"
+        >
           Talk to OneToBeam →
         </a>
       </div>
@@ -2642,14 +3000,34 @@
 ========================================================= */
       const menuButton = document.getElementById("menuButton");
       const navLinks = document.getElementById("navLinks");
+      const iplexDropdown = document.getElementById("iplexDropdown");
 
       menuButton.addEventListener("click", () => {
         navLinks.classList.toggle("active");
       });
 
+      if (iplexDropdown) {
+        const trigger = iplexDropdown.querySelector(".dropdown-trigger");
+        if (trigger) {
+          trigger.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            iplexDropdown.classList.toggle("open");
+          });
+        }
+
+        document.addEventListener("click", (e) => {
+          if (!iplexDropdown.contains(e.target)) {
+            iplexDropdown.classList.remove("open");
+          }
+        });
+      }
+
       document.querySelectorAll(".nav-links a").forEach((link) => {
         link.addEventListener("click", () => {
+          if (link.classList.contains("dropdown-trigger")) return;
           navLinks.classList.remove("active");
+          if (iplexDropdown) iplexDropdown.classList.remove("open");
         });
       });
 
@@ -2826,11 +3204,10 @@
                 image.style.opacity = "0";
               })
               .catch((err) => {
-                console.warn("Video play failed:", err.message);
-                // Fallback: show video element, hide image
-                video.style.opacity = "1";
-                image.style.opacity = "0";
-                isPlaying = true;
+                // If video cannot play yet (e.g. pending upload or browser policy), keep image visible
+                isPlaying = false;
+                video.style.opacity = "0";
+                image.style.opacity = "1";
               });
           };
 
@@ -2862,6 +3239,86 @@
             video.style.opacity = "0";
             image.style.opacity = "1";
             isPlaying = false;
+          });
+        });
+      });
+
+      // Work cards video hover system (plays smoothly on hover, pauses on leave)
+      const workCards = document.querySelectorAll(".work-card");
+      workCards.forEach((card) => {
+        const video = card.querySelector(".work-video");
+        const thumb = card.querySelector(".work-thumb");
+        if (!video) return;
+
+        // Ensure video is initially paused
+        video.pause();
+
+        const playVideo = () => {
+          video
+            .play()
+            .then(() => {
+              card.classList.add("is-playing");
+              video.style.opacity = "1";
+              if (thumb) thumb.style.opacity = "0";
+            })
+            .catch(() => {});
+        };
+
+        const pauseVideo = () => {
+          video.pause();
+          video.currentTime = 0;
+          card.classList.remove("is-playing");
+          video.style.opacity = "0";
+          if (thumb) thumb.style.opacity = "1";
+        };
+
+        card.addEventListener("mouseenter", playVideo);
+        card.addEventListener("mouseleave", pauseVideo);
+
+        // Mobile touch interaction: tap to play/pause
+        card.addEventListener(
+          "touchstart",
+          () => {
+            if (video.paused) {
+              playVideo();
+            } else {
+              pauseVideo();
+            }
+          },
+          { passive: true }
+        );
+      });
+
+      // Work Section Filter Tabs (Plotted, Apartment, Villa)
+      const workFilterBtns = document.querySelectorAll(".work-filter-btn");
+      workFilterBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const filter = btn.dataset.filter;
+          workFilterBtns.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          workCards.forEach((card) => {
+            const type = card.dataset.type;
+            const video = card.querySelector(".work-video");
+            const thumb = card.querySelector(".work-thumb");
+            if (filter === "all" || type === filter) {
+              card.classList.remove("is-filtered-out");
+              if (filter !== "all") {
+                card.classList.add("is-single-filtered");
+              } else {
+                card.classList.remove("is-single-filtered");
+              }
+            } else {
+              card.classList.add("is-filtered-out");
+              card.classList.remove("is-single-filtered");
+              if (video && !video.paused) {
+                video.pause();
+                video.currentTime = 0;
+                card.classList.remove("is-playing");
+                video.style.opacity = "0";
+                if (thumb) thumb.style.opacity = "1";
+              }
+            }
           });
         });
       });

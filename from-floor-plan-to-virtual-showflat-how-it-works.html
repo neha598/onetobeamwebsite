@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+      <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>From Floor Plan to Virtual Showflat: How It Works â€” OneToBeam Blog</title>
+    <meta name="description" content="A floor plan tells you how a property is designed. Discover how 3D architectural modeling and virtual tours turn 2D blueprints into an interactive experience." />
+    <meta name="keywords" content="virtual showflat, floor plan to virtual tour, 3D real estate visualization, off plan property marketing, proptech" />
+    <meta name="author" content="OneToBeam" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://onetobeam.com/from-floor-plan-to-virtual-showflat-how-it-works.html" />
+    <link rel="icon" type="image/webp" href="images/OneToBeam Logo.webp" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="OneToBeam" />
+    <meta property="og:title" content="From Floor Plan to Virtual Showflat: How It Works â€” OneToBeam" />
+    <meta property="og:description" content="A floor plan tells you how a property is designed. Discover how 3D architectural modeling and virtual tours turn 2D blueprints into an interactive experience." />
+    <meta property="og:url" content="https://onetobeam.com/from-floor-plan-to-virtual-showflat-how-it-works.html" />
+    <meta property="og:image" content="https://onetobeam.com/blogs/images/From%20Floor%20Plan%20to%20Virtual%20Showflat_%20How%20It%20Works.jpeg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="From Floor Plan to Virtual Showflat: How It Works â€” OneToBeam" />
+    <meta name="twitter:description" content="A floor plan tells you how a property is designed. Discover how 3D architectural modeling and virtual tours turn 2D blueprints into an interactive experience." />
+    <meta name="twitter:image" content="https://onetobeam.com/blogs/images/From%20Floor%20Plan%20to%20Virtual%20Showflat_%20How%20It%20Works.jpeg" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "From Floor Plan to Virtual Showflat: How It Works",
+      "description": "A floor plan tells you how a property is designed. Discover how 3D architectural modeling and virtual tours turn 2D blueprints into an interactive experience.",
+      "image": "https://onetobeam.com/blogs/images/From%20Floor%20Plan%20to%20Virtual%20Showflat_%20How%20It%20Works.jpeg",
+      "url": "https://onetobeam.com/from-floor-plan-to-virtual-showflat-how-it-works.html",
+      "author": {
+        "@type": "Organization",
+        "name": "OneToBeam Editorial"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "OneToBeam",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.onetobeam.com/website/images/OneToBeam%20Logo.webp"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://onetobeam.com/from-floor-plan-to-virtual-showflat-how-it-works.html"
+      }
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --bg-soft: #101010;
+        --surface: #151515;
+        --surface-2: #1b1b1b;
+        --text: #f5f5f2;
+        --muted: #9b9b97;
+        --line: rgba(255, 255, 255, 0.1);
+        --accent: #c6a55c;
+        --accent-dark: #a88b48;
+        --max-width: 1280px;
+        --radius-lg: 28px;
+        --radius-md: 18px;
+        --radius-sm: 12px;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.5;
+        overflow-x: hidden;
+      }
+      img { width: 100%; display: block; }
+      a { color: inherit; text-decoration: none; }
+      button { font: inherit; }
+      .container { width: min(var(--max-width), calc(100% - 48px)); margin: auto; }
+      .article-container { width: min(840px, calc(100% - 40px)); margin: auto; }
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center;
+        padding: 14px 22px; border-radius: 50px; font-size: 13px; font-weight: 600;
+        transition: 0.25s ease;
+      }
+      .btn-primary { background: var(--accent); color: #111; }
+      .btn-primary:hover { background: #d8b76c; color: #111; transform: translateY(-2px); }
+
+      /* NAVBAR */
+      .navbar {
+        position: fixed; top: 0; left: 0; width: 100%; height: 78px;
+        display: flex; align-items: center; z-index: 1000;
+        background: rgba(10, 10, 10, 0.7); backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px); border-bottom: 1px solid var(--line);
+        transition: 0.3s ease;
+      }
+      .nav-inner {
+        width: 100%; margin: auto; display: flex; align-items: center;
+        justify-content: flex-end; position: relative; height: 100%;
+      }
+      .logo { position: absolute; left: 30px; top: 50%; transform: translateY(-50%); font-size: 21px; font-weight: 700; }
+      .nav-links { display: flex; gap: 34px; align-items: center; margin-right: 170px; }
+      .nav-links a { font-size: 13px; color: #cfcfcb; transition: 0.25s ease; }
+      .nav-links a:hover { color: white; }
+
+      .nav-dropdown { position: relative; display: inline-flex; align-items: center; padding: 8px 0; margin: -8px 0; }
+      .dropdown-trigger { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #cfcfcb; cursor: pointer; padding: 4px 0; user-select: none; }
+      .dropdown-trigger:hover, .nav-dropdown:hover .dropdown-trigger, .nav-dropdown.active .dropdown-trigger, .nav-dropdown.open .dropdown-trigger { color: var(--accent); }
+      .dropdown-arrow { transition: transform 0.25s ease; }
+      .nav-dropdown:hover .dropdown-arrow, .nav-dropdown.open .dropdown-arrow { transform: rotate(180deg); }
+      .dropdown-menu {
+        position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(0);
+        min-width: 170px; background: rgba(18, 18, 18, 0.98); backdrop-filter: blur(20px);
+        border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 8px; opacity: 0;
+        visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, visibility 0.2s ease;
+        box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6); z-index: 1002; display: flex; flex-direction: column; gap: 2px;
+      }
+      .dropdown-menu::before {
+        content: ""; position: absolute; top: -12px; left: 0; right: 0; height: 14px; background: transparent;
+      }
+      .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu, .nav-dropdown.open .dropdown-menu {
+        opacity: 1; visibility: visible; pointer-events: auto;
+      }
+      .dropdown-menu a {
+        padding: 10px 14px; border-radius: 8px; font-size: 13px; color: #c5c5c0; display: block;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease; white-space: nowrap; cursor: pointer;
+      }
+      .dropdown-menu a:hover, .dropdown-menu a.active { background: rgba(198, 165, 92, 0.14); color: var(--accent); font-weight: 600; transform: translateX(4px); }
+      .nav-button {
+        position: absolute; right: 30px; top: 50%; transform: translateY(-50%);
+        padding: 11px 18px; background: var(--accent); color: #111; border-radius: 50px; font-size: 13px; font-weight: 600;
+        transition: 0.25s ease;
+      }
+      .nav-button:hover { background: #d8b76c; color: #111; }
+      .menu-button {
+        display: none; background: none; border: 0; color: white; font-size: 25px; position: absolute; right: 30px; top: 50%; transform: translateY(-50%);
+        cursor: pointer;
+      }
+
+      /* HEADER */
+      .article-header { padding-top: 150px; padding-bottom: 30px; }
+      .back-nav { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 13px; margin-bottom: 25px; transition: color 0.2s ease; }
+      .back-nav:hover { color: var(--accent); }
+      .article-category {
+        display: inline-block; padding: 5px 12px; background: rgba(198, 165, 92, 0.12); color: var(--accent);
+        border: 1px solid rgba(198, 165, 92, 0.25); border-radius: 50px; font-size: 11px; font-weight: 600;
+        letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px;
+      }
+      .article-title { font-size: clamp(32px, 4.2vw, 54px); line-height: 1.15; letter-spacing: -1.5px; font-weight: 600; margin-bottom: 20px; color: var(--text); }
+      .article-lead { font-size: 18px; color: #d0d0cc; line-height: 1.65; margin-bottom: 25px; }
+      .article-meta { display: flex; align-items: center; gap: 16px; color: #777; font-size: 13px; padding-bottom: 25px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+
+      .article-hero-media { margin: 35px auto 55px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+      .article-hero-media img { width: 100%; max-height: 520px; object-fit: cover; }
+
+      /* CONTENT */
+      .article-body { padding-bottom: 80px; }
+      .article-body p { font-size: 17px; line-height: 1.8; color: #d1d1cd; margin-bottom: 26px; }
+      .article-body h2 { font-size: clamp(24px, 2.8vw, 32px); font-weight: 600; letter-spacing: -1px; margin-top: 48px; margin-bottom: 18px; color: var(--text); }
+      .article-list { list-style: none; padding: 0; margin: 24px 0 32px; }
+      .article-list li {
+        font-size: 16px; color: #cfcfcb; margin-bottom: 12px; position: relative; padding-left: 26px; line-height: 1.6;
+      }
+      .article-list li::before {
+        content: "â€¢"; position: absolute; left: 8px; color: var(--accent); font-weight: bold; font-size: 20px; line-height: 1;
+      }
+
+      .action-banner {
+        background: linear-gradient(135deg, #181818 0%, #121212 100%);
+        border: 1px solid rgba(198, 165, 92, 0.3); border-radius: var(--radius-md); padding: 36px; margin: 50px 0;
+        display: flex; align-items: center; justify-content: space-between; gap: 30px;
+      }
+      .action-banner h3 { margin: 0 0 8px 0; color: white; font-size: 22px; font-weight: 600; }
+      .action-banner p { margin: 0; font-size: 14px; color: var(--muted); }
+
+      .author-box {
+        display: flex; align-items: center; gap: 20px; padding: 30px; background: var(--surface);
+        border: 1px solid var(--line); border-radius: var(--radius-md); margin-top: 60px;
+      }
+      .author-avatar {
+        width: 60px; height: 60px; border-radius: 50%; background: var(--surface-2); display: grid;
+        place-items: center; border: 1px solid var(--accent); color: var(--accent); font-weight: bold; font-size: 20px; flex-shrink: 0;
+      }
+      .author-info h4 { font-size: 16px; margin-bottom: 4px; font-weight: 600; }
+      .author-info p { font-size: 13px; color: var(--muted); margin: 0; }
+
+      /* RELATED */
+      .related-section { background: var(--surface); border-top: 1px solid var(--line); padding: 75px 0; }
+      .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 30px; }
+      .related-card {
+        background: #111; border: 1px solid var(--line); border-radius: var(--radius-md);
+        overflow: hidden; transition: 0.3s ease; display: flex; flex-direction: column; text-decoration: none; color: inherit;
+      }
+      .related-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+      .related-media { aspect-ratio: 16 / 9; overflow: hidden; background: var(--surface-2); }
+      .related-media img { width: 100%; height: 100%; object-fit: cover; }
+      .related-content { padding: 24px; display: flex; flex-direction: column; flex-grow: 1; }
+      .related-content h3 { font-size: 18px; margin-bottom: 10px; font-weight: 600; line-height: 1.4; color: var(--text); }
+      .related-content p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+      /* FOOTER */
+      footer { padding: 70px 0 30px; background: var(--bg); }
+      .footer-grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 40px; }
+      .footer-logo img { height: 32px; width: auto; margin-bottom: 18px; }
+      .footer-description { color: var(--muted); font-size: 14px; max-width: 300px; line-height: 1.6; }
+      .footer-column h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; color: white; margin-bottom: 18px; font-weight: 600; }
+      .footer-column a { display: block; color: var(--muted); font-size: 14px; margin-bottom: 10px; transition: 0.25s ease; }
+      .footer-column a:hover { color: white; }
+      .footer-bottom { margin-top: 50px; padding-top: 25px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; color: #666; font-size: 12px; }
+
+      /* RESPONSIVE MEDIA QUERIES */
+      @media (max-width: 768px) {
+        .nav-inner {
+          width: 100%;
+          padding: 0 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .logo {
+          position: static;
+          transform: none;
+        }
+        .menu-button {
+          position: static;
+          transform: none;
+          display: block;
+        }
+        .nav-button { display: none; }
+        .nav-links {
+          position: fixed; top: 78px; left: 15px; right: 15px; padding: 25px; margin-right: 0;
+          background: rgba(15, 15, 15, 0.96); backdrop-filter: blur(20px); border: 1px solid var(--line);
+          border-radius: 18px; flex-direction: column; align-items: flex-start; display: none;
+        }
+        .nav-links.active { display: flex; }
+        .nav-dropdown { width: 100%; flex-direction: column; align-items: flex-start; padding: 0; margin: 0; }
+        .dropdown-trigger { width: 100%; justify-content: space-between; padding: 8px 0; font-size: 14px; }
+        .dropdown-menu {
+          position: static; transform: none !important; width: 100%; min-width: auto;
+          background: rgba(25, 25, 25, 0.7); border: 1px solid rgba(255, 255, 255, 0.08);
+          opacity: 1; visibility: visible; pointer-events: auto; display: none; margin-top: 4px; margin-bottom: 6px; box-shadow: none;
+        }
+        .dropdown-menu::before { display: none; }
+        .nav-dropdown.open .dropdown-menu { display: flex; }
+        .action-banner { flex-direction: column; align-items: flex-start; }
+        .related-grid { grid-template-columns: 1fr; }
+        .footer-grid { grid-template-columns: 1fr 1fr; }
+        .footer-brand { grid-column: span 2; }
+      }
+
+      @media (max-width: 480px) {
+        .article-header { padding-top: 110px; padding-bottom: 20px; }
+        .article-title { font-size: 28px; }
+        .article-lead { font-size: 16px; }
+        .article-hero-media { margin: 25px auto 40px; border-radius: var(--radius-md); }
+        .action-banner { padding: 24px; }
+        .author-box { padding: 20px; flex-direction: column; text-align: center; }
+        .footer-grid { grid-template-columns: 1fr; }
+        .footer-brand { grid-column: auto; text-align: center; }
+        .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVIGATION -->
+    <header class="navbar" id="navbar">
+      <div class="nav-inner">
+        <a href="index.html" class="logo">
+          <img src="images/OneToBeam Logo.webp" alt="OneToBeam" style="height: 32px; width: auto" />
+        </a>
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html#solutions">Solutions</a>
+          <div class="nav-dropdown active" id="iplexDropdown">
+            <a href="javascript:void(0)" class="dropdown-trigger">
+              Blog
+              <svg class="dropdown-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <div class="dropdown-menu">
+              <a href="index.html#iplex">i-PLEX</a>
+              <a href="blog.html" class="active">Blog</a>
+              <a href="gallery.html">Gallery</a>
+            </div>
+          </div>
+          <a href="index.html#work">Work</a>
+          <a href="index.html#about">About</a>
+        </nav>
+        <a href="index.html#contact" class="nav-button"> Book a Demo </a>
+        <button class="menu-button" id="menuButton" aria-label="Open Navigation">☰</button>
+      </div>
+    </header>
+
+    <!-- ARTICLE HEADER -->
+    <header class="article-header">
+      <div class="article-container">
+        <a href="blog.html" class="back-nav">← Back to all articles</a>
+        <div>
+          <span class="article-category">Virtual Showflat</span>
+        </div>
+        <h1 class="article-title">From Floor Plan to Virtual Showflat: How It Works</h1>
+        <p class="article-lead">A floor plan tells you how a property is designed. It shows the rooms, dimensions, entrances, balconies and overall layout. But for many buyers, understanding a home from a 2D drawing alone can be difficult.</p>
+        <div class="article-meta">
+          <span>By OneToBeam Editorial</span>
+          <span>•</span>
+          <span>October 2026</span>
+          <span>•</span>
+          <span>5 min read</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO IMAGE -->
+    <div class="article-container">
+      <div class="article-hero-media">
+        <img src="blogs/images/From Floor Plan to Virtual Showflat_ How It Works.jpeg" alt="From Floor Plan to Virtual Showflat: How It Works" />
+      </div>
+    </div>
+
+    <!-- ARTICLE BODY -->
+    <article class="article-body">
+      <div class="article-container">
+        <p>This is where the process of going from floor plan to virtual tour becomes useful. By combining architectural information with 3D visualization, a simple floor plan can become an interactive experience that allows buyers to explore a property before it is built.</p>
+        <h2>What Happens to the Floor Plan?</h2>
+        <p>The process starts with the information already available from the developer or architect.</p>
+        <ul class="article-list">
+          <li>This can include:</li>
+          <li>2D floor plans</li>
+          <li>CAD drawings</li>
+          <li>3D models</li>
+          <li>Architectural renders</li>
+          <li>Material references</li>
+          <li>Furniture layouts</li>
+          <li>Apartment configurations</li>
+        </ul>
+        <p>The floor plan provides the basic structure. The other information helps build the visual environment around it.</p>
+        <h2>From 2D Layout to 3D Space</h2>
+        <p>The next step is converting the floor plan into a three-dimensional representation.</p>
+        <p>Walls, rooms, doors, windows, balconies and other architectural elements are modelled based on the provided drawings. Furniture, materials and finishes can then be added to make the space easier to understand visually.</p>
+        <p>This is the key transition in a floor plan to virtual tour workflow: a flat architectural drawing becomes a space that can be viewed and explored.</p>
+        <ul class="article-list">
+          <li>Making the Virtual Showflat Interactive</li>
+        </ul>
+        <p>Once the 3D environment is created, it can be turned into an interactive virtual showflat.</p>
+        <p>Instead of simply watching a video, buyers can move through different parts of the apartment, look around rooms, understand the layout and explore different areas at their own pace.</p>
+        <p>For example, a buyer could move from the living room to the balcony, look towards the bedroom and understand how the spaces connect.</p>
+        <p>The experience can also include different configurations, materials or design options where required.</p>
+        <h2>Connect the Floor Plan With the Experience</h2>
+        <p>The real value comes when the floor plan and virtual tour are connected.</p>
+        <p>A buyer could select an apartment from the project layout, open its floor plan and then enter its virtual representation. This creates a much clearer connection between what the drawing shows and what the space could look like.</p>
+        <p>For developers, this can be particularly useful for projects that are still under construction.</p>
+        <h2>How i-PLEX Brings It Together</h2>
+        <p>i-PLEX can take the floor plan to virtual tour concept further by connecting apartment visualization with the larger project experience.</p>
+        <ul class="article-list">
+          <li>A buyer can explore:</li>
+        </ul>
+        <p>Master Layout → Building → Floor → Unit → Floor Plan → Configuration → Virtual Experience</p>
+        <p>This allows the apartment to be understood in context rather than as an isolated floor plan or standalone render.</p>
+        <p>Existing project content such as floor plans, renders, videos and 3D models can be brought together into one interactive platform.</p>
+        <h2>Why Go From Floor Plan to Virtual Tour?</h2>
+        <p>A floor plan is useful for understanding the technical layout. A virtual tour adds another layer by helping buyers visualize the space.</p>
+        <ul class="article-list">
+          <li>Together, they can help buyers:</li>
+        </ul>
+        <h2>Understand room connections and proportions</h2>
+        <h2>Explore the apartment remotely</h2>
+        <ul class="article-list">
+          <li>Compare configurations</li>
+        </ul>
+        <p>Visualize spaces before construction is complete</p>
+        <p>Get a better understanding of the proposed design</p>
+        <p>The goal isn't to replace the floor plan. It is to make the information behind it easier to experience.</p>
+        <p>From a drawing on a page to a space buyers can explore — that's the value of going from floor plan to virtual tour.</p>
+
+
+        <!-- ACTION CALLOUT -->
+        <div class="action-banner">
+          <div>
+            <h3>Bring Your Project to Life</h3>
+            <p>Discover how OneToBeam creates immersive virtual showflats and interactive property experiences.</p>
+          </div>
+          <a href="https://wa.me/919663732362?text=Hi%20OneToBeam%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services." target="_blank" rel="noopener noreferrer" class="btn btn-primary">Talk to OneToBeam →</a>
+        </div>
+
+        <!-- AUTHOR -->
+        <div class="author-box">
+          <div class="author-avatar">OB</div>
+          <div class="author-info">
+            <h4>OneToBeam Editorial Team</h4>
+            <p>Insights on architectural visualization, interactive sales galleries, and digital property experiences.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- RELATED ARTICLES -->
+    <section class="related-section">
+      <div class="container">
+        <div class="section-label">Related Reading</div>
+        <h2 style="font-size: 28px; letter-spacing: -1px; margin-bottom: 25px;">More from our blog</h2>
+                        <div class="related-grid">
+          <a href="how-property-developers-can-turn-floor-plans-into-interactive-virtual-experiences.html" class="related-card">
+            <div class="related-media">
+              <img src="blogs/images/How Property Developers Can Turn Floor Plans Into Interactive Virtual Experiences.jpeg" alt="How Property Developers Can Turn Floor Plans Into Interactive Virtual Experiences" />
+            </div>
+            <div class="related-content">
+              <h3>How Property Developers Can Turn Floor Plans Into Interactive Virtual Experiences</h3>
+              <p>Learn how developers convert architectural drawings into interactive digital spaces where buyers explore rooms, finishes, and balcony views.</p>
+            </div>
+          </a>
+          <a href="how-to-market-an-unbuilt-property-online.html" class="related-card">
+            <div class="related-media">
+              <img src="blogs/images/How to Market an Unbuilt Property Online.jpeg" alt="How to Market an Unbuilt Property Online" />
+            </div>
+            <div class="related-content">
+              <h3>How to Market an Unbuilt Property Online</h3>
+              <p>Practical digital strategies to market off-plan properties effectively, bridge the buyer imagination gap, and generate high-intent pre-construction leads.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <img src="images/OneToBeam Logo.webp" alt="OneToBeam" />
+            </div>
+            <p class="footer-description">
+              Real estate visualization, immersive experiences and digital property technology.
+            </p>
+          </div>
+          <div class="footer-column">
+            <h4>Explore</h4>
+            <a href="index.html#iplex">i-PLEX</a>
+            <a href="blog.html">Blog & Insights</a>
+            <a href="gallery.html">Gallery & Work</a>
+            <a href="index.html#work">Our Work</a>
+          </div>
+          <div class="footer-column">
+            <h4>Company</h4>
+            <a href="index.html#about">About</a>
+            <a href="mailto:Enquiry@onetobeam.com">Contact</a>
+          </div>
+          <div class="footer-column">
+            <h4>Connect</h4>
+            <a href="mailto:Enquiry@onetobeam.com">Enquiry@onetobeam.com</a>
+            <a href="tel:+919663732362">+91 96637 32362</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2026 OneToBeam. All rights reserved.</span>
+          <span>Real Estate Visualization & Technology</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const menuButton = document.getElementById("menuButton");
+      const navLinks = document.getElementById("navLinks");
+      const iplexDropdown = document.getElementById("iplexDropdown");
+
+      menuButton.addEventListener("click", () => navLinks.classList.toggle("active"));
+
+      if (iplexDropdown) {
+        const trigger = iplexDropdown.querySelector(".dropdown-trigger");
+        if (trigger) {
+          trigger.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            iplexDropdown.classList.toggle("open");
+          });
+        }
+
+        document.addEventListener("click", (e) => {
+          if (!iplexDropdown.contains(e.target)) {
+            iplexDropdown.classList.remove("open");
+          }
+        });
+      }
+
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (link.classList.contains("dropdown-trigger")) return;
+          navLinks.classList.remove("active");
+          if (iplexDropdown) iplexDropdown.classList.remove("open");
+        });
+      });
+    </script>
+  </body>
+</html>
+
+
