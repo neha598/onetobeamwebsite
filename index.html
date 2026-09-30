@@ -3431,13 +3431,25 @@
         }
         .iplex-header {
           flex-direction: column;
-          gap: 35px;
-          margin-bottom: 45px;
+          align-items: center;
+          gap: 25px;
+          margin-bottom: 40px;
+          text-align: center;
+        }
+        .iplex-header > div:first-child {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .iplex-title {
           text-align: center;
         }
         .iplex-copy {
           max-width: 100%;
           align-self: auto;
+          text-align: center;
         }
         .iplex-demo {
           height: 500px;
@@ -3685,15 +3697,26 @@
           background: var(--bg);
         }
         .iplex-header {
-          gap: 30px;
-          margin-bottom: 35px;
+          gap: 20px;
+          margin-bottom: 30px;
+          align-items: center;
+          text-align: center;
+        }
+        .iplex-header > div:first-child {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
         }
         .iplex-title {
           font-size: clamp(32px, 7vw, 56px);
-          letter-spacing: -3px;
+          letter-spacing: -2px;
+          text-align: center;
         }
         .iplex-copy {
           font-size: 15px;
+          text-align: center;
         }
         .iplex-demo {
           height: 380px;
