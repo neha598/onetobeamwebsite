@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1258,23 +1258,11 @@
           height: 110px;
         }
       }
-      @media (max-width: 768px) {
-        .solar-ecosystem {
-          padding-left: 20px !important;
-          padding-right: 20px !important;
-          box-sizing: border-box;
-          overflow: hidden;
-        }
-        .solar-stage-outer {
-          padding: 0 10px;
-          box-sizing: border-box;
-        }
-        .planet-popup-box {
-          max-width: calc(100vw - 40px);
-        }
-      }
 
       @media (max-width: 600px) {
+        .solar-ecosystem {
+          padding: 70px 0 80px;
+        }
         .solar-stage-outer {
           min-height: 500px;
         }
@@ -1638,7 +1626,7 @@
 
       @keyframes spin {
         to {
-          transform: rotate(360&deg;
+          transform: rotate(360deg);
         }
       }
 
@@ -3478,7 +3466,7 @@
         .work-card,
         .work-card:nth-child(n) {
           grid-column: span 1;
-          min-height: 360&deg;
+          min-height: 360px;
         }
         .client-grid {
           grid-template-columns: repeat(2, 1fr);
@@ -3982,12 +3970,50 @@
         </h1>
         <div class="hero-bottom">
           <p class="hero-text">
-            Turn floor plans, CGI, 360&deg; renders, videos and project content into one connected interactive property experienceâ€”built for selling properties before and during construction.
+            Turn floor plans, CGI, 360Â° renders, videos and project content into one connected interactive property experienceâ€”built for selling properties before and during construction.
           </p>
           <div class="hero-actions">
             <a href="#iplex" class="btn btn-primary">Explore Live i-PLEX</a>
             <a href="#contact" class="btn btn-outline" onclick="if(window.openModal){openModal();return false;}">Book a Demo</a>
           </div>
+        </div>
+        <div class="hero-journey-flow">
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg></span>
+            <span>Masterplan</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v8h4"></path><path d="M18 9h2a2 2 0 0 1 2 2v11h-4"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path></svg></span>
+            <span>Buildings</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></span>
+            <span>Floors</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span>
+            <span>Units</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h8v12"></path><path d="M11 15h10"></path><path d="M17 15v6"></path></svg></span>
+            <span>Floor Plans</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><circle cx="12" cy="12" r="2.5"></circle></svg></span>
+            <span>Virtual Tours</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"></path></svg></span>
+            <span>Amenities</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+            <span>Location</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span>
+            <span>Enquiry</span>
+          </span>
         </div>
       </div>
     </section>
@@ -4045,15 +4071,28 @@
 ========================================================= -->
     <section class="solar-ecosystem" id="solar-ecosystem">
       <div class="container">
-                <div class="solar-header reveal">
+        <div class="solar-header reveal">
           <div class="section-label">Launch Ecosystem</div>
           <h2 class="solar-title">
-            Supports various types of media to provide a <span style="color: var(--accent)">seamless experience.</span>
+            All attributes revolve around <span style="color: var(--accent)">i-PLEX.</span>
           </h2>
           <p class="solar-lead">
             Every perspective, sales module, and visualization tool connects into one unified, interactive property platform.
           </p>
-        </div>
+
+          <!-- Controls Bar (No Grid View) -->
+          <div class="solar-controls">
+            <div class="solar-badge">
+              <span class="pulse-dot"></span>
+              <span>9 Connected Capabilities</span>
+            </div>
+
+            <button type="button" class="solar-btn" id="btnPauseOrbit" aria-label="Toggle Orbit Rotation" title="Pause or Resume Orbit">
+              <svg class="icon-pause" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              <svg class="icon-play" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span class="pause-label">Pause Orbit</span>
+            </button>
+          </div>
         </div>
 
         <!-- TILTED ELLIPTICAL ORBIT STAGE -->
@@ -4083,13 +4122,15 @@
             <div class="solar-center-sun" id="solarCenterSun">
               <div class="sun-halo-glow"></div>
               <div class="sun-inner-sphere">
+                <div class="sun-core-tag">PLATFORM CORE</div>
                 <h3 class="sun-core-title">i-PLEX</h3>
+                <div class="sun-core-sub">INTERACTIVE PROJECT LAUNCH EXPERIENCE</div>
                 <div class="sun-divider">
                   <span class="sun-div-line"></span>
                   <span class="sun-div-diamond">â—ˆ</span>
                   <span class="sun-div-line"></span>
                 </div>
-                <p class="sun-core-tagline">Seamless Experience</p>
+                <p class="sun-core-tagline">One Platform. Every Perspective. Your Project, Reimagined.</p>
               </div>
             </div>
 
@@ -4106,7 +4147,7 @@
                   <span class="planet-desc">Aerial view from all 4 directions</span>
                 </div>
                 <div class="planet-popup-box">
-                  <button type="button" class="popup-close-btn" aria-label="Close">&times;</button>
+                  <button type="button" class="popup-close-btn" aria-label="Close">Ã—</button>
                   <div class="popup-video-wrap">
                     <video src="https://www.onetobeam.com/website/Video/Bird%20eye%20view.mp4" poster="https://www.onetobeam.com/website/images/iplex-features/bird-eye-view.webp" loop muted playsinline preload="metadata"></video>
                   </div>
@@ -4118,24 +4159,24 @@
                 </div>
               </div>
 
-              <!-- 1: 360&deg; EXTERIOR -->
-              <div class="solar-planet-node" data-idx="1" data-name="360&deg; Exterior">
+              <!-- 1: 360Â° EXTERIOR -->
+              <div class="solar-planet-node" data-idx="1" data-name="360Â° Exterior">
                 <div class="planet-card-inner">
                   <div class="planet-icon-badge">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 12A9.5 9.5 0 1 1 12 2.5"/><polyline points="21.5 2.5 21.5 12 12 12"/><text x="7" y="15" font-size="6.5" font-weight="bold" fill="currentColor">360&deg;</text></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 12A9.5 9.5 0 1 1 12 2.5"/><polyline points="21.5 2.5 21.5 12 12 12"/><text x="7" y="15" font-size="6.5" font-weight="bold" fill="currentColor">360</text></svg>
                   </div>
-                  <span class="planet-title">360&deg; Exterior</span>
+                  <span class="planet-title">360Â° Exterior</span>
                   <span class="planet-desc">Explore project from every angle</span>
                 </div>
                 <div class="planet-popup-box">
-                  <button type="button" class="popup-close-btn" aria-label="Close">&times;</button>
+                  <button type="button" class="popup-close-btn" aria-label="Close">Ã—</button>
                   <div class="popup-video-wrap">
                     <video src="https://www.onetobeam.com/website/Video/Bird%20eye%20view.mp4" poster="https://www.onetobeam.com/website/images/iplex-features/bird-eye-view.webp" loop muted playsinline preload="metadata"></video>
                   </div>
                   <div class="popup-meta">
-                    <span class="popup-kicker">360&deg; Immersion</span>
-                    <div class="popup-title">360&deg; Exterior</div>
-                    <p class="popup-desc">Explore the project from every angle in high-resolution 360&deg;</p>
+                    <span class="popup-kicker">360Â° Immersion</span>
+                    <div class="popup-title">360Â° Exterior</div>
+                    <p class="popup-desc">Explore the project from every angle in high-resolution 360Â°.</p>
                   </div>
                 </div>
               </div>
@@ -4150,7 +4191,7 @@
                   <span class="planet-desc">View entire project size & build area</span>
                 </div>
                 <div class="planet-popup-box">
-                  <button type="button" class="popup-close-btn" aria-label="Close">&times;</button>
+                  <button type="button" class="popup-close-btn" aria-label="Close">Ã—</button>
                   <div class="popup-video-wrap">
                     <video src="https://www.onetobeam.com/website/Video/Master%20layout.mp4" poster="https://www.onetobeam.com/website/images/iplex-features/master-layout.webp" loop muted playsinline preload="metadata"></video>
                   </div>
@@ -4172,14 +4213,14 @@
                   <span class="planet-desc">2D & isometric floor plans</span>
                 </div>
                 <div class="planet-popup-box">
-                  <button type="button" class="popup-close-btn" aria-label="Close">&times;</button>
+                  <button type="button" class="popup-close-btn" aria-label="Close">Ã—</button>
                   <div class="popup-video-wrap">
                     <video src="https://www.onetobeam.com/website/Video/Config%20Types.mp4" poster="https://www.onetobeam.com/website/images/iplex-features/config-types.webp" loop muted playsinline preload="metadata"></video>
                   </div>
                   <div class="popup-meta">
                     <span class="popup-kicker">Architecture & Units</span>
                     <div class="popup-title">Configurations</div>
-                    <p class="popup-desc">2D & isometric/3D floor plans with unit 360&deg; walkthroughs.</p>
+                    <p class="popup-desc">2D & isometric/3D floor plans with unit 360 walkthroughs.</p>
                   </div>
                 </div>
               </div>
@@ -4194,7 +4235,7 @@
                   <span class="planet-desc">View from your future home</span>
                 </div>
                 <div class="planet-popup-box">
-                  <button type="button" class="popup-close-btn" aria-label="Close">&times;</button>
+                  <button type="button" class="popup-close-btn" aria-label="Close">Ã—</button>
                   <div class="popup-video-wrap">
                     <video src="https://www.onetobeam.com/website/Video/Simulation.mp4" poster="https://www.onetobeam.com/website/images/iplex-features/simulation.webp" loop muted playsinline preload="metadata"></video>
                   </div>
@@ -4206,24 +4247,24 @@
                 </div>
               </div>
 
-              <!-- 5: AMENITIES 360&deg; -->
-              <div class="solar-planet-node" data-idx="5" data-name="Amenities 360&deg;">
+              <!-- 5: AMENITIES 360 -->
+              <div class="solar-planet-node" data-idx="5" data-name="Amenities 360">
                 <div class="planet-card-inner">
                   <div class="planet-icon-badge">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18c1.5-1 3.5-1 5 0s3.5 1 5 0 3.5-1 5 0"/><path d="M2 22c1.5-1 3.5-1 5 0s3.5 1 5 0 3.5-1 5 0 3.5-1 5 0 3.5-1 5 0"/><path d="M17 14V4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v10"/><line x1="11" y1="6" x2="17" y2="6"/><line x1="11" y1="10" x2="17" y2="10"/></svg>
                   </div>
-                  <span class="planet-title">Amenities 360&deg;</span>
+                  <span class="planet-title">Amenities 360</span>
                   <span class="planet-desc">Explore club & recreational spaces</span>
                 </div>
                 <div class="planet-popup-box">
-                  <button type="button" class="popup-close-btn" aria-label="Close">&times;</button>
+                  <button type="button" class="popup-close-btn" aria-label="Close">Ã—</button>
                   <div class="popup-video-wrap">
                     <video src="https://www.onetobeam.com/website/Video/Amenities.mp4" poster="https://www.onetobeam.com/website/images/iplex-features/amenities.webp" loop muted playsinline preload="metadata"></video>
                   </div>
                   <div class="popup-meta">
                     <span class="popup-kicker">Lifestyle Experience</span>
-                    <div class="popup-title">Amenities 360&deg;</div>
-                    <p class="popup-desc">Explore lifestyle, pools, and recreational spaces in 360&deg;</p>
+                    <div class="popup-title">Amenities 360</div>
+                    <p class="popup-desc">Explore lifestyle, pools, and recreational spaces in 360Â°.</p>
                   </div>
                 </div>
               </div>
@@ -4238,7 +4279,7 @@
                   <span class="planet-desc">Day, night & seasons</span>
                 </div>
                 <div class="planet-popup-box">
-                  <button type="button" class="popup-close-btn" aria-label="Close">&times;</button>
+                  <button type="button" class="popup-close-btn" aria-label="Close">Ã—</button>
                   <div class="popup-video-wrap">
                     <video src="https://www.onetobeam.com/website/Video/Simulation.mp4" poster="https://www.onetobeam.com/website/images/iplex-features/simulation.webp" loop muted playsinline preload="metadata"></video>
                   </div>
@@ -4260,7 +4301,7 @@
                   <span class="planet-desc">Floor, unit size & facing</span>
                 </div>
                 <div class="planet-popup-box">
-                  <button type="button" class="popup-close-btn" aria-label="Close">&times;</button>
+                  <button type="button" class="popup-close-btn" aria-label="Close">Ã—</button>
                   <div class="popup-video-wrap">
                     <video src="https://www.onetobeam.com/website/Video/filter.mp4" poster="https://www.onetobeam.com/website/images/iplex-features/filter.webp" loop muted playsinline preload="metadata"></video>
                   </div>
@@ -4282,7 +4323,7 @@
                   <span class="planet-desc">Nearby places & landmark data</span>
                 </div>
                 <div class="planet-popup-box">
-                  <button type="button" class="popup-close-btn" aria-label="Close">&times;</button>
+                  <button type="button" class="popup-close-btn" aria-label="Close">Ã—</button>
                   <div class="popup-video-wrap">
                     <video src="https://www.onetobeam.com/website/Video/Maps.mp4" poster="https://www.onetobeam.com/website/images/iplex-features/maps.webp" loop muted playsinline preload="metadata"></video>
                   </div>
@@ -4689,7 +4730,7 @@
           <div class="value-pillar-card">
             <div class="pillar-num">01</div>
             <h3>Better Buyer Engagement</h3>
-            <p>Interactive 360&deg; virtual tours and self-guided exploration keep prospective buyers actively immersed 4x longer than static PDF brochures and flat renders.</p>
+            <p>Interactive 360Ã‚Â° virtual tours and self-guided exploration keep prospective buyers actively immersed 4x longer than static PDF brochures and flat renders.</p>
           </div>
 
           <div class="value-pillar-card">
@@ -5142,7 +5183,7 @@
                 </span>
               </summary>
               <div class="faq-answer">
-                <p>i-PLEX is an interactive virtual sales gallery for property developments. It connects masterplans, buildings, floor plans, 3D/360&deg; renders, amenities, and project details into a single seamless digital experience for buyers and sales teams.</p>
+                <p>i-PLEX is an interactive virtual sales gallery for property developments. It connects masterplans, buildings, floor plans, 3D/360Â° renders, amenities, and project details into a single seamless digital experience for buyers and sales teams.</p>
               </div>
             </details>
 
@@ -5160,13 +5201,13 @@
 
             <details class="faq-item" name="iplex-faq">
               <summary class="faq-question">
-                <h3>Can I use my existing CGI and 360&deg; renders?</h3>
+                <h3>Can I use my existing CGI and 360Â° renders?</h3>
                 <span class="faq-toggle-icon" aria-hidden="true">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                 </span>
               </summary>
               <div class="faq-answer">
-                <p>Yes. Through our BYOC (Bring Your Own Content) model, i-PLEX can integrate your existing CGI renders, 360&deg; panoramas, floor plans, drone footage, site plans, and videos created by your current architects or visualization studios.</p>
+                <p>Yes. Through our BYOC (Bring Your Own Content) model, i-PLEX can integrate your existing CGI renders, 360Â° panoramas, floor plans, drone footage, site plans, and videos created by your current architects or visualization studios.</p>
               </div>
             </details>
 
@@ -5190,7 +5231,7 @@
                 </span>
               </summary>
               <div class="faq-answer">
-                <p>No, a 3D model is not strictly required. i-PLEX can be built using 2D floor plans, standard CGI renders, 360&deg; panoramas, masterplan drawings, and photography. If you have 3D models, they can also be incorporated.</p>
+                <p>No, a 3D model is not strictly required. i-PLEX can be built using 2D floor plans, standard CGI renders, 360Â° panoramas, masterplan drawings, and photography. If you have 3D models, they can also be incorporated.</p>
               </div>
             </details>
 
@@ -5202,7 +5243,7 @@
                 </span>
               </summary>
               <div class="faq-answer">
-                <p>Yes. Through i-PLEX Studio, OneToBeam provides end-to-end visualization services. We can create 3D renders, CGI, 360&deg; virtual tours, floor plans, and animations from scratch, and deliver the completed interactive sales experience.</p>
+                <p>Yes. Through i-PLEX Studio, OneToBeam provides end-to-end visualization services. We can create 3D renders, CGI, 360Â° virtual tours, floor plans, and animations from scratch, and deliver the completed interactive sales experience.</p>
               </div>
             </details>
 
@@ -5310,7 +5351,7 @@
           <span style="color: var(--accent)">Interactive Sales Experience.</span>
         </h2>
         <p>
-          Already have CGI, floor plans or 360&deg; content? Bring it to i-PLEX. Starting from scratch? Our studio can build the complete experience with you.
+          Already have CGI, floor plans or 360Â° content? Bring it to i-PLEX. Starting from scratch? Our studio can build the complete experience with you.
         </p>
 
         <div class="cta-actions">
@@ -5973,13 +6014,6 @@
         // Active Popup State
         let activePlanet = null;
 
-                let activePlanet = null;
-        let isTouchDevice = false;
-
-        window.addEventListener('touchstart', function() {
-          isTouchDevice = true;
-        }, { passive: true, once: true });
-
         function openPlanet(planet) {
           if (activePlanet && activePlanet !== planet) {
             closePlanet(activePlanet);
@@ -6008,43 +6042,44 @@
         }
 
         planets.forEach((planet) => {
+          // Desktop Hover
           planet.addEventListener('mouseenter', () => {
-            if (!isTouchDevice) {
-              openPlanet(planet);
-            }
+            openPlanet(planet);
           });
 
           planet.addEventListener('mouseleave', () => {
-            if (!isTouchDevice) {
-              closePlanet(planet);
-            }
+            closePlanet(planet);
           });
 
+          // Click / Touch Toggle
           planet.addEventListener('click', (e) => {
-            e.stopPropagation();
             if (e.target.closest('.popup-close-btn')) {
+              e.stopPropagation();
               closePlanet(planet);
               return;
             }
-            if (activePlanet === planet) {
+            if (planet.classList.contains('is-active')) {
               closePlanet(planet);
             } else {
               openPlanet(planet);
             }
           });
+
+          const closeBtn = planet.querySelector('.popup-close-btn');
+          if (closeBtn) {
+            closeBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              closePlanet(planet);
+            });
+          }
         });
 
+        // Close when tapping outside on mobile
         document.addEventListener('click', (e) => {
           if (activePlanet && !e.target.closest('.solar-planet-node')) {
             closePlanet(activePlanet);
           }
         });
-
-        document.addEventListener('touchstart', (e) => {
-          if (activePlanet && !e.target.closest('.solar-planet-node')) {
-            closePlanet(activePlanet);
-          }
-        }, { passive: true });
       })();
 
 
@@ -6065,7 +6100,4 @@
     </script>
   </body>
 </html>
-
-
-
 
