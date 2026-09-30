@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1403,6 +1403,64 @@
         }
         .touchpoint-card {
           padding: 24px 20px;
+        }
+      }
+
+
+      /* Value Pillars Grid in Solutions Section */
+      .value-pillars-grid {
+        margin-top: 50px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .value-pillar-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 34px 28px;
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .value-pillar-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-5px);
+        background: var(--surface-2);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      }
+
+      .pillar-num {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+      }
+
+      .value-pillar-card h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 12px;
+        letter-spacing: -0.5px;
+      }
+
+      .value-pillar-card p {
+        font-size: 14.5px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      @media (max-width: 900px) {
+        .value-pillars-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+          margin-top: 36px;
+        }
+        .value-pillar-card {
+          padding: 26px 20px;
         }
       }
 
@@ -3421,23 +3479,6 @@
     </section>
 
     <!-- =========================================================
-     INTRO
-========================================================= -->
-    <section class="intro" id="about">
-      <div class="container intro-grid">
-        <div class="intro-big reveal">
-          Real estate is no longer
-          <span>just something people see.</span>
-        </div>
-        <div class="intro-copy reveal">
-          At OneToBeam, we create interactive property experiences for property developers that allow buyers to explore a development before they step inside it.
-          <br /><br />
-          From virtual sales galleries to 3D virtual tours, interactive floor plans and off-plan property visualization—everything is designed to make property easier to understand and easier to sell.
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================
      OFFERINGS (BYOC & STUDIO)
 ========================================================= -->
     <section class="offerings" id="offerings">
@@ -3853,20 +3894,40 @@
       </div>
     </section>
 
-    <!-- =========================================================
-     SOLUTIONS
+        <!-- =========================================================
+     SOLUTIONS / VALUE PILLARS
 ========================================================= -->
     <section class="solutions" id="solutions">
       <div class="container">
-        <div class="section-label reveal">What we do</div>
+        <div class="section-label reveal">Why i-PLEX</div>
         <h2 class="section-title reveal">
           Visualize.<br />
           Experience.<br />
-          Sell.
+          <span style="color: var(--accent)">Sell.</span>
         </h2>
-        <p class="section-description reveal">
+        <p class="section-description reveal" style="max-width: 720px; margin-top: 14px;">
           Comprehensive visualization and interactive experiences built specifically for real estate, enabling buyers to fully understand and experience properties before they are built.
         </p>
+
+        <div class="value-pillars-grid reveal">
+          <div class="value-pillar-card">
+            <div class="pillar-num">01</div>
+            <h3>Better Buyer Engagement</h3>
+            <p>Interactive 360Â° virtual tours and self-guided exploration keep prospective buyers actively immersed 4x longer than static PDF brochures and flat renders.</p>
+          </div>
+
+          <div class="value-pillar-card">
+            <div class="pillar-num">02</div>
+            <h3>Higher Brand Recall</h3>
+            <p>A cutting-edge interactive property showcase sets your development apart from competitors, establishing premium credibility and lasting recall in the buyer's mind.</p>
+          </div>
+
+          <div class="value-pillar-card">
+            <div class="pillar-num">03</div>
+            <h3>Effective for Sales Teams</h3>
+            <p>Makes customer presentations effortless. Sales teams and channel partners can clearly explain complex masterplans, floor layouts, and unit views on touchscreens or remote calls with zero friction.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -4141,7 +4202,7 @@
           <span style="color: var(--accent)">Down to the Single Click.</span>
         </h2>
         <p class="section-description reveal" style="max-width: 720px; margin-top: 14px;">
-          i-PLEX captures buyer interactions across towers, floors, and individual apartment typologies in real time. Visual click heatmaps reveal which units generate the highest customer demand, helping sales teams prioritize high-intent leads and close faster.
+          i-PLEX captures buyer interactions across towers, floors, and individual apartment typologies in real time. Visual heatmaps reveal which units generate the highest customer demand, helping sales teams prioritize high-intent leads and close faster.
         </p>
 
         <div class="analytics-display reveal">
@@ -4445,6 +4506,23 @@
       </div>
     </section>
 
+    <!-- =========================================================
+     ABOUT / INTRO
+========================================================= -->
+    <section class="intro" id="about">
+      <div class="container intro-grid">
+        <div class="intro-big reveal">
+          <div class="section-label" style="margin-bottom: 20px;">About OneToBeam</div>
+          Real estate is no longer
+          <span>just something people see.</span>
+        </div>
+        <div class="intro-copy reveal">
+          At OneToBeam, we create interactive property experiences for property developers that allow buyers to explore a development before they step inside it.
+          <br /><br />
+          From virtual sales galleries to 3D virtual tours, interactive floor plans and off-plan property visualization&mdash;everything is designed to make property easier to understand and easier to sell.
+        </div>
+      </div>
+    </section>
     <!-- =========================================================
      CTA
 ========================================================= -->
