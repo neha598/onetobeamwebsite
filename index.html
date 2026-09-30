@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -203,19 +203,35 @@
 
       .nav-links {
         display: flex;
-        gap: 34px;
+        gap: 8px;
         align-items: center;
         margin-right: 170px;
       }
 
       .nav-links a {
         font-size: 13px;
+        font-weight: 500;
         color: #cfcfcb;
+        padding: 8px 18px;
+        min-width: 78px;
+        text-align: center;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
         transition: 0.25s ease;
       }
 
       .nav-links a:hover {
-        color: white;
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-links a.active {
+        color: #ffffff;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.12);
       }
 
       /* Nav Dropdown */
@@ -471,64 +487,44 @@
         color: black;
       }
 
-      /* =========================================================
-   CORE PROPOSITION
-========================================================= */
-      .proposition {
-        border-bottom: 1px solid var(--line);
-        padding: 90px 0;
-      }
-
-      .proposition-heading {
-        font-size: clamp(30px, 3.8vw, 52px);
-        line-height: 1.08;
-        letter-spacing: -2px;
-        font-weight: 500;
-        max-width: 920px;
-      }
-
-      .proposition-heading span {
-        color: var(--accent);
-      }
-
-      .proposition-copy {
-        color: var(--muted);
-        max-width: 720px;
-        margin-top: 22px;
-        font-size: 17px;
-        line-height: 1.6;
-      }
-
-      .journey-flow {
+            /* Hero Journey Flow Pills */
+      .hero-journey-flow {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 12px 14px;
-        margin-top: 36px;
+        gap: 10px 12px;
+        margin-top: 42px;
+        max-width: 1200px;
+        position: relative;
+        z-index: 3;
       }
 
-      .journey-item {
+      .hero-journey-flow .journey-item {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
-        font-size: clamp(13.5px, 1.25vw, 15.5px);
+        gap: 9px;
+        font-size: 13.5px;
         font-weight: 500;
-        color: var(--text);
+        color: #f5f5f2;
         white-space: nowrap;
-        background: rgba(255, 255, 255, 0.035);
-        border: 1px solid var(--line);
+        background: rgba(18, 18, 18, 0.72);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
         border-radius: 999px;
         padding: 9px 18px;
         transition: all 0.25s ease;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
       }
 
-      .journey-item:hover {
+      .hero-journey-flow .journey-item:hover {
         border-color: var(--accent);
-        background: rgba(255, 255, 255, 0.06);
+        background: rgba(198, 165, 92, 0.15);
+        color: #ffffff;
         transform: translateY(-2px);
       }
 
-      .journey-icon {
+      .hero-journey-flow .journey-icon {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -536,22 +532,32 @@
         flex-shrink: 0;
       }
 
-      .journey-icon svg {
+      .hero-journey-flow .journey-icon svg {
         display: block;
+        width: 15px;
+        height: 15px;
+      }
+
+      @media (max-width: 1024px) {
+        .hero-journey-flow {
+          gap: 8px 10px;
+          margin-top: 32px;
+        }
+        .hero-journey-flow .journey-item {
+          padding: 8px 14px;
+          font-size: 13px;
+        }
       }
 
       @media (max-width: 768px) {
-        .proposition {
-          padding: 70px 0;
+        .hero-journey-flow {
+          gap: 8px 8px;
+          margin-top: 28px;
         }
-        .journey-flow {
-          gap: 10px 10px;
-          margin-top: 26px;
-        }
-        .journey-item {
-          padding: 8px 14px;
-          font-size: 13.5px;
-          gap: 8px;
+        .hero-journey-flow .journey-item {
+          padding: 7px 12px;
+          font-size: 12.5px;
+          gap: 6px;
         }
       }
 
@@ -3253,7 +3259,7 @@
           />
         </a>
         <nav class="nav-links" id="navLinks">
-          <a href="#iplex">i-PLEX</a>
+          <a href="#iplex" class="active">i-PLEX</a>
           <a href="blog.html">Blog</a>
           <a href="gallery.html">Gallery</a>
           <a href="#about">About</a>
@@ -3291,22 +3297,7 @@
             <a href="#contact" class="btn btn-outline" onclick="if(window.openModal){openModal();return false;}">Book a Demo</a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- =========================================================
-     CORE PROPOSITION
-========================================================= -->
-    <section class="proposition">
-      <div class="container">
-        <h2 class="proposition-heading reveal">
-          Everything buyers need to explore your development.<br />
-          <span>One interactive experience.</span>
-        </h2>
-        <p class="proposition-copy reveal">
-          i-PLEX connects the different parts of a property development into one intuitive digital journey—from the overall development to individual units and interiors.
-        </p>
-        <div class="journey-flow reveal">
+        <div class="hero-journey-flow">
           <span class="journey-item">
             <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg></span>
             <span>Masterplan</span>
