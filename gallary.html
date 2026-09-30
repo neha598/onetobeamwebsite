@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -543,82 +543,21 @@
         aspect-ratio: 16 / 10;
         overflow: hidden;
         background: var(--surface-2);
+        display: block;
+        cursor: pointer;
+        text-decoration: none;
       }
 
       .gallery-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: opacity 0.45s ease, transform 0.5s ease;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      .gallery-video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        background: #000;
-        opacity: 0;
-        transform: scale(1);
-        transition: opacity 0.45s ease;
-        pointer-events: none;
-      }
-
-      .gallery-card:hover .gallery-image {
-        opacity: 0;
-      }
-
-      .gallery-card:hover .gallery-video {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      /* Hover Play Indicator Badge */
-      .play-badge {
-        position: absolute;
-        top: 14px;
-        right: 14px;
-        z-index: 5;
-        background: rgba(10, 10, 10, 0.75);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        color: #f5f5f2;
-        padding: 5px 12px;
-        border-radius: var(--radius-full);
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        transition: var(--transition);
-        pointer-events: none;
-      }
-
-      .gallery-card:hover .play-badge {
-        background: rgba(198, 165, 92, 0.95);
-        color: #111;
-        border-color: var(--accent);
-      }
-
-      .play-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--accent);
-      }
-
-      .gallery-card:hover .play-dot {
-        background: #111;
-        animation: pulse 1s infinite alternate;
-      }
-
-      @keyframes pulse {
-        0% { transform: scale(0.8); opacity: 0.5; }
-        100% { transform: scale(1.2); opacity: 1; }
+      .gallery-card:hover .gallery-image,
+      .gallery-media:hover .gallery-image {
+        transform: scale(1.05);
       }
 
       /* Category Pill over image */
@@ -1199,35 +1138,9 @@
         </a>
 
         <nav class="nav-links" id="navLinks">
-          <a href="index.html#solutions">Solutions</a>
-
-          <div class="nav-dropdown active" id="iplexDropdown">
-            <a href="javascript:void(0)" class="dropdown-trigger">
-              Gallery
-              <svg
-                class="dropdown-arrow"
-                width="10"
-                height="6"
-                viewBox="0 0 10 6"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 1L5 5L9 1"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </a>
-            <div class="dropdown-menu">
-              <a href="index.html#iplex">i-PLEX</a>
-              <a href="blog.html">Blog</a>
-              <a href="gallery.html" class="active">Gallery</a>
-            </div>
-          </div>
-
+          <a href="index.html#iplex">i-PLEX</a>
+          <a href="blog.html">Blog</a>
+          <a href="gallery.html" class="active">Gallery</a>
           <a href="index.html#about">About</a>
         </nav>
 
@@ -1300,27 +1213,20 @@
       <div class="gallery-grid" id="filterable-cards">
         <!-- CARD 1 -->
         <article class="gallery-card" data-name="floorPlan">
-          <div class="gallery-media">
+          <a
+            href="https://onetobeam.com/virtual_tours/Century/Argon/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/1-3bhk-virtual-tour-from-3d-model-1052x576.webp"
               alt="3BHK - Virtual tour From 3D Model"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/VIRTUAL TOUR FROM 3D MODEL , 3BHK/Recording 2026-09-29 182948.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual tour From 3D Model</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual tour From 3D Model</div>
             <h3 class="gallery-title">3BHK</h3>
@@ -1345,27 +1251,20 @@
 
         <!-- CARD 2 -->
         <article class="gallery-card" data-name="photoShoot">
-          <div class="gallery-media">
+          <a
+            href="https://onetobeam.com/virtual_tours/MicroCottons20220227/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/7-factory-virtual-tour-from-photoshoot-1054x581.webp"
               alt="Factory - Virtual Tour From PhotoShoot"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/VIRTUAL TOUR FROM PHOTOSHOOT , FACTORY/Recording 2026-09-29 182158.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual Tour From PhotoShoot</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual Tour From PhotoShoot</div>
             <h3 class="gallery-title">Factory</h3>
@@ -1390,27 +1289,20 @@
 
         <!-- CARD 3 -->
         <article class="gallery-card" data-name="floorPlan">
-          <div class="gallery-media">
+          <a
+            href="https://onetobeam.com/virtual_tours/Designpreneur/SLD2(%20Color%20Corrected%20)/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/3d-modelling.png"
               alt="3D Modelling - Virtual tour From 3D Model"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/VIRTUAL TOUR FROM 3D/Recording 2026-09-29 181941.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual tour From 3D Model</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual tour From 3D Model</div>
             <h3 class="gallery-title">3D Modelling</h3>
@@ -1435,27 +1327,20 @@
 
         <!-- CARD 4 -->
         <article class="gallery-card" data-name="virtualConfigurator">
-          <div class="gallery-media">
+          <a
+            href="https://idesignmyhome.com/WeeklyChallenge/Week1/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/week-2-504x252.webp"
               alt="Bedroom - Virtual Configurator"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/VIRTUAL CONFIGURATOR . BEDROOM/Recording 2026-09-29 182506.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual Configurator</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual Configurator</div>
             <h3 class="gallery-title">Bedroom</h3>
@@ -1480,27 +1365,20 @@
 
         <!-- CARD 5 -->
         <article class="gallery-card" data-name="floorPlan">
-          <div class="gallery-media">
+          <a
+            href="https://onetobeam.com/virtual_tours/HabitatAuraV2/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/2-3bhk-virtual-tour-from-3d-model-1031x610.webp"
               alt="3BHK - Virtual tour From 3D Model"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/virtual-tour.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual tour From 3D Model</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual tour From 3D Model</div>
             <h3 class="gallery-title">3BHK</h3>
@@ -1525,27 +1403,20 @@
 
         <!-- CARD 6 -->
         <article class="gallery-card" data-name="photoShoot">
-          <div class="gallery-media">
+          <a
+            href="https://onetobeam.com/virtual_tours/TribeStays/TribeStudentAccomodation/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/8-co-living-spaces-virtual-tour-from-photoshoot-953x510.webp"
               alt="Co-Living Spaces - Virtual Tour From PhotoShoot"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/VIRTUAL TOUR FROM PHOTOSHOOT , CO-LIVING SPACES/Recording 2026-09-29 183145.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual Tour From PhotoShoot</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual Tour From PhotoShoot</div>
             <h3 class="gallery-title">Co-Living Spaces</h3>
@@ -1570,27 +1441,20 @@
 
         <!-- CARD 7 -->
         <article class="gallery-card" data-name="photoShoot">
-          <div class="gallery-media">
+          <a
+            href="https://onetobeam.com/virtual_tours/Misty_woods/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/3-villa-virtual-tour-from-3d-model-974x526.webp"
               alt="Villa - Virtual Tour From PhotoShoot"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/VIRTUAL TOUR FROM PHOTOSHOOT , VILLA/Recording 2026-09-29 183452.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual Tour From PhotoShoot</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual Tour From PhotoShoot</div>
             <h3 class="gallery-title">Villa</h3>
@@ -1615,27 +1479,20 @@
 
         <!-- CARD 8 -->
         <article class="gallery-card" data-name="photoShoot">
-          <div class="gallery-media">
+          <a
+            href="https://onetobeam.com/virtual_tours/Demo/School/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/9-school-virtual-tour-from-photoshoot-1017x554.webp"
               alt="School - Virtual Tour From PhotoShoot"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/virtual-photoshoot.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual Tour From PhotoShoot</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual Tour From PhotoShoot</div>
             <h3 class="gallery-title">School</h3>
@@ -1660,27 +1517,20 @@
 
         <!-- CARD 9 -->
         <article class="gallery-card" data-name="virtualConfigurator">
-          <div class="gallery-media">
+          <a
+            href="https://idesignmyhome.com/WeeklyChallenge/Week2/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/week-2-493x513.webp"
               alt="Living Room - Virtual Configurator"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/VIRTUAL CONFIGURATOR , LIVINGROOM/Recording 2026-09-29 183730.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual Configurator</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual Configurator</div>
             <h3 class="gallery-title">Living Room</h3>
@@ -1705,27 +1555,20 @@
 
         <!-- CARD 10 -->
         <article class="gallery-card" data-name="floorPlan">
-          <div class="gallery-media">
+          <a
+            href="https://onetobeam.com/virtual_tours/SakarHomes/Tapabhumi/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/4-plotted-development-virtual-tour-from-3d-model-1088x612.webp"
               alt="Plotted Development - Virtual tour From 3D Model"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/VIRTUAL TOUR FROM 3D MODEL , PLOTTED DEVELOPMENT/Recording 2026-09-29 183919.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual tour From 3D Model</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual tour From 3D Model</div>
             <h3 class="gallery-title">Plotted Development</h3>
@@ -1750,27 +1593,20 @@
 
         <!-- CARD 11 -->
         <article class="gallery-card" data-name="photoShoot">
-          <div class="gallery-media">
+          <a
+            href="https://onetobeam.com/virtual_tours/Demo/Gym2/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/10-gym-virtual-tour-from-photoshoot-997x548.webp"
               alt="Gym - Virtual Tour From PhotoShoot"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/virtual-photoshoot.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual Tour From PhotoShoot</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual Tour From PhotoShoot</div>
             <h3 class="gallery-title">Gym</h3>
@@ -1795,27 +1631,20 @@
 
         <!-- CARD 12 -->
         <article class="gallery-card" data-name="virtualConfigurator">
-          <div class="gallery-media">
+          <a
+            href="https://onetobeam.com/virtual_tours/DIZI/Production/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/virtual-tour-1600x766.webp"
               alt="Virtual Tour - Virtual Configurator"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/VIRTUAL CONFIGURATOR, VIRTUAL TOUR/Recording 2026-09-29 184207.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual Configurator</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual Configurator</div>
             <h3 class="gallery-title">Virtual Tour</h3>
@@ -1840,27 +1669,20 @@
 
         <!-- CARD 13 -->
         <article class="gallery-card" data-name="floorPlan">
-          <div class="gallery-media">
+          <a
+            href="https://onetobeam.com/otb-vt/public/3D_Designs/l4zbq0rapr/VT"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/5-holiday-home-2-virtual-tour-from-3d-model-1047x575.webp"
               alt="Holiday Home 2 - Virtual tour From 3D Model"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/VIRUAL TOUR FROM 3D MODEL , HOLIDAY HOME 2/Recording 2026-09-29 184514.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual tour From 3D Model</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual tour From 3D Model</div>
             <h3 class="gallery-title">Holiday Home 2</h3>
@@ -1885,27 +1707,20 @@
 
         <!-- CARD 14 -->
         <article class="gallery-card" data-name="photoShoot">
-          <div class="gallery-media">
+          <a
+            href="https://onetobeam.com/virtual_tours/Demo/Salon_Spa1/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/11-salon-spa-virtual-tour-from-photoshoot-1001x535.webp"
               alt="Salon / Spa - Virtual Tour From PhotoShoot"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/virtual-photoshoot.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual Tour From PhotoShoot</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual Tour From PhotoShoot</div>
             <h3 class="gallery-title">Salon / Spa</h3>
@@ -1930,27 +1745,20 @@
 
         <!-- CARD 15 -->
         <article class="gallery-card" data-name="photoShoot">
-          <div class="gallery-media">
+          <a
+            href="https://onetobeam.com/virtual_tours/Demo/Restaurant/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/12-restaurant-virtual-tour-from-photoshoot-950x508.webp"
               alt="Restaurant - Virtual Tour From PhotoShoot"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/virtual-photoshoot.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual Tour From PhotoShoot</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual Tour From PhotoShoot</div>
             <h3 class="gallery-title">Restaurant</h3>
@@ -1975,27 +1783,20 @@
 
         <!-- CARD 16 -->
         <article class="gallery-card" data-name="virtualConfigurator">
-          <div class="gallery-media">
+          <a
+            href="https://idesignmyhome.com/WeeklyChallenge/Week3/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="gallery-media"
+          >
             <img
               class="gallery-image"
               src="gallery/images/week-5-504x503.webp"
               alt="Kids Bedroom - Virtual Configurator"
               loading="lazy"
             />
-            <video
-              class="gallery-video"
-              src="gallery/video/VIRTUAL CONFIGURATOR , KIDS BEDROOM/Recording 2026-09-29 184834.mp4"
-              loop
-              muted
-              playsinline
-              preload="metadata"
-            ></video>
-            <div class="play-badge">
-              <span class="play-dot"></span>
-              <span class="badge-text">Hover to Play</span>
-            </div>
             <div class="category-pill">Virtual Configurator</div>
-          </div>
+          </a>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual Configurator</div>
             <h3 class="gallery-title">Kids Bedroom</h3>
@@ -2247,61 +2048,7 @@
           });
         });
 
-        // =========================================================
-        // VIDEO HOVER SYSTEM (SMOOTH PLAY/PAUSE ON HOVER)
-        // =========================================================
-        const galleryCards = document.querySelectorAll(".gallery-card");
 
-        galleryCards.forEach((card) => {
-          const video = card.querySelector(".gallery-video");
-          const image = card.querySelector(".gallery-image");
-          const badgeText = card.querySelector(".badge-text");
-
-          if (!video || !image) return;
-
-          let isPlaying = false;
-
-          const playVideo = () => {
-            if (isPlaying) return;
-            video
-              .play()
-              .then(() => {
-                isPlaying = true;
-                video.style.opacity = "1";
-                image.style.opacity = "0";
-                if (badgeText) badgeText.textContent = "Playing";
-              })
-              .catch((err) => {
-                // If video cannot play (pending upload or autoplay policy), keep image visible
-                isPlaying = false;
-                video.style.opacity = "0";
-                image.style.opacity = "1";
-              });
-          };
-
-          video.addEventListener("error", () => {
-            video.style.opacity = "0";
-            image.style.opacity = "1";
-          });
-
-          const pauseVideo = () => {
-            if (!isPlaying) return;
-            video.pause();
-            video.currentTime = 0;
-            video.style.opacity = "0";
-            image.style.opacity = "1";
-            if (badgeText) badgeText.textContent = "Hover to Play";
-            isPlaying = false;
-          };
-
-          // Mouse events
-          card.addEventListener("mouseenter", playVideo);
-          card.addEventListener("mouseleave", pauseVideo);
-
-          // Mobile touch events
-          card.addEventListener("touchstart", playVideo, { passive: true });
-          card.addEventListener("touchend", pauseVideo, { passive: true });
-        });
 
         // =========================================================
         // CATEGORY FILTERING SYSTEM (MATCHING DEVNEW)
