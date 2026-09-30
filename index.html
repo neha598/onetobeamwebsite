@@ -1258,11 +1258,23 @@
           height: 110px;
         }
       }
+      @media (max-width: 768px) {
+        .solar-ecosystem {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+          box-sizing: border-box;
+          overflow: hidden;
+        }
+        .solar-stage-outer {
+          padding: 0 10px;
+          box-sizing: border-box;
+        }
+        .planet-popup-box {
+          max-width: calc(100vw - 40px);
+        }
+      }
 
       @media (max-width: 600px) {
-        .solar-ecosystem {
-          padding: 70px 0 80px;
-        }
         .solar-stage-outer {
           min-height: 500px;
         }
@@ -3977,44 +3989,6 @@
             <a href="#contact" class="btn btn-outline" onclick="if(window.openModal){openModal();return false;}">Book a Demo</a>
           </div>
         </div>
-        <div class="hero-journey-flow">
-          <span class="journey-item">
-            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg></span>
-            <span>Masterplan</span>
-          </span>
-          <span class="journey-item">
-            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v8h4"></path><path d="M18 9h2a2 2 0 0 1 2 2v11h-4"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path></svg></span>
-            <span>Buildings</span>
-          </span>
-          <span class="journey-item">
-            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></span>
-            <span>Floors</span>
-          </span>
-          <span class="journey-item">
-            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span>
-            <span>Units</span>
-          </span>
-          <span class="journey-item">
-            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h8v12"></path><path d="M11 15h10"></path><path d="M17 15v6"></path></svg></span>
-            <span>Floor Plans</span>
-          </span>
-          <span class="journey-item">
-            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><circle cx="12" cy="12" r="2.5"></circle></svg></span>
-            <span>Virtual Tours</span>
-          </span>
-          <span class="journey-item">
-            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"></path></svg></span>
-            <span>Amenities</span>
-          </span>
-          <span class="journey-item">
-            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
-            <span>Location</span>
-          </span>
-          <span class="journey-item">
-            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span>
-            <span>Enquiry</span>
-          </span>
-        </div>
       </div>
     </section>
 
@@ -4071,28 +4045,15 @@
 ========================================================= -->
     <section class="solar-ecosystem" id="solar-ecosystem">
       <div class="container">
-        <div class="solar-header reveal">
+                <div class="solar-header reveal">
           <div class="section-label">Launch Ecosystem</div>
           <h2 class="solar-title">
-            All attributes revolve around <span style="color: var(--accent)">i-PLEX.</span>
+            Supports various types of media to provide a <span style="color: var(--accent)">seamless experience.</span>
           </h2>
           <p class="solar-lead">
             Every perspective, sales module, and visualization tool connects into one unified, interactive property platform.
           </p>
-
-          <!-- Controls Bar (No Grid View) -->
-          <div class="solar-controls">
-            <div class="solar-badge">
-              <span class="pulse-dot"></span>
-              <span>9 Connected Capabilities</span>
-            </div>
-
-            <button type="button" class="solar-btn" id="btnPauseOrbit" aria-label="Toggle Orbit Rotation" title="Pause or Resume Orbit">
-              <svg class="icon-pause" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-              <svg class="icon-play" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <span class="pause-label">Pause Orbit</span>
-            </button>
-          </div>
+        </div>
         </div>
 
         <!-- TILTED ELLIPTICAL ORBIT STAGE -->
@@ -4122,15 +4083,13 @@
             <div class="solar-center-sun" id="solarCenterSun">
               <div class="sun-halo-glow"></div>
               <div class="sun-inner-sphere">
-                <div class="sun-core-tag">PLATFORM CORE</div>
                 <h3 class="sun-core-title">i-PLEX</h3>
-                <div class="sun-core-sub">INTERACTIVE PROJECT LAUNCH EXPERIENCE</div>
                 <div class="sun-divider">
                   <span class="sun-div-line"></span>
                   <span class="sun-div-diamond">â—ˆ</span>
                   <span class="sun-div-line"></span>
                 </div>
-                <p class="sun-core-tagline">One Platform. Every Perspective. Your Project, Reimagined.</p>
+                <p class="sun-core-tagline">Seamless Experience</p>
               </div>
             </div>
 
@@ -6014,6 +5973,13 @@
         // Active Popup State
         let activePlanet = null;
 
+                let activePlanet = null;
+        let isTouchDevice = false;
+
+        window.addEventListener('touchstart', function() {
+          isTouchDevice = true;
+        }, { passive: true, once: true });
+
         function openPlanet(planet) {
           if (activePlanet && activePlanet !== planet) {
             closePlanet(activePlanet);
@@ -6042,44 +6008,43 @@
         }
 
         planets.forEach((planet) => {
-          // Desktop Hover
           planet.addEventListener('mouseenter', () => {
-            openPlanet(planet);
+            if (!isTouchDevice) {
+              openPlanet(planet);
+            }
           });
 
           planet.addEventListener('mouseleave', () => {
-            closePlanet(planet);
+            if (!isTouchDevice) {
+              closePlanet(planet);
+            }
           });
 
-          // Click / Touch Toggle
           planet.addEventListener('click', (e) => {
+            e.stopPropagation();
             if (e.target.closest('.popup-close-btn')) {
-              e.stopPropagation();
               closePlanet(planet);
               return;
             }
-            if (planet.classList.contains('is-active')) {
+            if (activePlanet === planet) {
               closePlanet(planet);
             } else {
               openPlanet(planet);
             }
           });
-
-          const closeBtn = planet.querySelector('.popup-close-btn');
-          if (closeBtn) {
-            closeBtn.addEventListener('click', (e) => {
-              e.stopPropagation();
-              closePlanet(planet);
-            });
-          }
         });
 
-        // Close when tapping outside on mobile
         document.addEventListener('click', (e) => {
           if (activePlanet && !e.target.closest('.solar-planet-node')) {
             closePlanet(activePlanet);
           }
         });
+
+        document.addEventListener('touchstart', (e) => {
+          if (activePlanet && !e.target.closest('.solar-planet-node')) {
+            closePlanet(activePlanet);
+          }
+        }, { passive: true });
       })();
 
 
@@ -6100,4 +6065,7 @@
     </script>
   </body>
 </html>
+
+
+
 
