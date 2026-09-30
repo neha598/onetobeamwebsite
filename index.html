@@ -359,7 +359,7 @@
             rgba(0, 0, 0, 0.45) 60%,
             #0a0a0a 100%
           ),
-          url("images/hero image.png")
+          url("images/hero-image.png")
             center/cover no-repeat;
       }
 
@@ -378,6 +378,13 @@
       .hero-content {
         position: relative;
         z-index: 2;
+        transform: translateX(-40px);
+      }
+
+      @media (max-width: 1024px) {
+        .hero-content {
+          transform: none;
+        }
       }
 
       .hero-kicker {
@@ -388,7 +395,7 @@
         text-transform: uppercase;
         letter-spacing: 2px;
         color: #ddd;
-        margin-bottom: 28px;
+        margin-bottom: 24px;
       }
 
       .hero-kicker::before {
@@ -400,10 +407,10 @@
       }
 
       .hero h1 {
-        max-width: 1050px;
-        font-size: clamp(54px, 8vw, 120px);
-        line-height: 0.88;
-        letter-spacing: -7px;
+        max-width: 680px;
+        font-size: clamp(52px, 7vw, 110px);
+        line-height: 0.9;
+        letter-spacing: -6px;
         font-weight: 500;
       }
 
@@ -413,20 +420,24 @@
 
       .hero-bottom {
         display: flex;
-        align-items: flex-end;
-        justify-content: space-between;
-        margin-top: 55px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 26px;
+        margin-top: 36px;
+        max-width: 520px;
       }
 
       .hero-text {
-        max-width: 520px;
+        max-width: 480px;
         color: #c5c5c0;
         font-size: 16px;
+        line-height: 1.6;
       }
 
       .hero-actions {
         display: flex;
-        gap: 12px;
+        gap: 14px;
+        flex-wrap: wrap;
       }
 
       .btn {
@@ -458,6 +469,90 @@
       .btn-outline:hover {
         background: white;
         color: black;
+      }
+
+      /* =========================================================
+   CORE PROPOSITION
+========================================================= */
+      .proposition {
+        border-bottom: 1px solid var(--line);
+        padding: 90px 0;
+      }
+
+      .proposition-heading {
+        font-size: clamp(30px, 3.8vw, 52px);
+        line-height: 1.08;
+        letter-spacing: -2px;
+        font-weight: 500;
+        max-width: 920px;
+      }
+
+      .proposition-heading span {
+        color: var(--accent);
+      }
+
+      .proposition-copy {
+        color: var(--muted);
+        max-width: 720px;
+        margin-top: 22px;
+        font-size: 17px;
+        line-height: 1.6;
+      }
+
+      .journey-flow {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px 14px;
+        margin-top: 36px;
+      }
+
+      .journey-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: clamp(13.5px, 1.25vw, 15.5px);
+        font-weight: 500;
+        color: var(--text);
+        white-space: nowrap;
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 9px 18px;
+        transition: all 0.25s ease;
+      }
+
+      .journey-item:hover {
+        border-color: var(--accent);
+        background: rgba(255, 255, 255, 0.06);
+        transform: translateY(-2px);
+      }
+
+      .journey-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent);
+        flex-shrink: 0;
+      }
+
+      .journey-icon svg {
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .proposition {
+          padding: 70px 0;
+        }
+        .journey-flow {
+          gap: 10px 10px;
+          margin-top: 26px;
+        }
+        .journey-item {
+          padding: 8px 14px;
+          font-size: 13.5px;
+          gap: 8px;
+        }
       }
 
       /* =========================================================
@@ -511,6 +606,8 @@
         border-radius: var(--radius-md);
         padding: 40px;
         transition: 0.35s ease;
+        display: flex;
+        flex-direction: column;
       }
 
       .offering-card:hover {
@@ -519,8 +616,28 @@
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       }
 
+      .offering-header-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .offering-kicker {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+        color: var(--accent);
+      }
+
+      .offering-header-top .offering-badge {
+        margin-bottom: 0;
+      }
+
       .offering-badge {
         display: inline-block;
+        align-self: flex-start;
         padding: 6px 12px;
         background: rgba(198, 165, 92, 0.12);
         color: var(--accent);
@@ -535,7 +652,7 @@
       .offering-card h3 {
         font-size: 28px;
         font-weight: 500;
-        margin-bottom: 15px;
+        margin-bottom: 12px;
         letter-spacing: -1px;
       }
 
@@ -543,6 +660,170 @@
         color: var(--muted);
         font-size: 15px;
         line-height: 1.6;
+      }
+
+      .byoc-main,
+      .studio-main {
+        color: var(--text) !important;
+        font-size: 17px !important;
+        font-weight: 600 !important;
+        margin-bottom: 12px;
+        line-height: 1.4 !important;
+        letter-spacing: -0.2px;
+      }
+
+      .byoc-copy,
+      .studio-copy {
+        margin-bottom: 20px !important;
+      }
+
+      .byoc-types,
+      .studio-types {
+        font-size: 12.5px;
+        line-height: 1.65;
+        color: #b0b0ab;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 12px 16px;
+        margin-bottom: 22px;
+      }
+
+      .byoc-keyline,
+      .studio-keyline {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+        letter-spacing: -0.2px;
+        margin-top: auto;
+      }
+
+      .byoc-keyline span,
+      .studio-keyline span {
+        color: var(--accent);
+      }
+
+      /* =========================================================
+   CONTENT FLEXIBILITY & HOSTING
+========================================================= */
+      .content-flexibility {
+        border-bottom: 1px solid var(--line);
+        padding: 90px 0;
+        background: var(--bg);
+      }
+
+      .content-flexibility-box {
+        width: 100%;
+        background: radial-gradient(circle at 50% 0%, rgba(198, 165, 92, 0.08) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(21, 21, 21, 0.8) 100%), var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 56px 50px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 48px rgba(0, 0, 0, 0.35);
+      }
+
+      .content-flexibility-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 440px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(198, 165, 92, 0.6), transparent);
+      }
+
+      .content-flexibility-title {
+        font-size: clamp(28px, 3.2vw, 42px);
+        font-weight: 500;
+        letter-spacing: -0.8px;
+        color: var(--text);
+        margin: 12px auto 36px;
+        line-height: 1.25;
+      }
+
+      .content-flexibility-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        text-align: left;
+      }
+
+      .content-flexibility-item {
+        background: rgba(255, 255, 255, 0.025);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 30px 28px;
+        transition: 0.3s ease;
+      }
+
+      .content-flexibility-item:hover {
+        border-color: rgba(198, 165, 92, 0.4);
+        background: rgba(255, 255, 255, 0.04);
+        transform: translateY(-2px);
+      }
+
+      .content-flexibility-item-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .content-flexibility-item-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        background: rgba(198, 165, 92, 0.12);
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .content-flexibility-item-title {
+        font-size: 15.5px;
+        font-weight: 600;
+        color: var(--text);
+        letter-spacing: -0.2px;
+      }
+
+      .content-flexibility-item p {
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.65;
+        margin: 0;
+      }
+
+      @media (max-width: 1024px) {
+        .content-flexibility-box {
+          padding: 44px 32px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .content-flexibility {
+          padding: 60px 0;
+        }
+        .content-flexibility-box {
+          padding: 36px 20px;
+          border-radius: var(--radius-md);
+        }
+        .content-flexibility-title {
+          margin-bottom: 24px;
+        }
+        .content-flexibility-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        .content-flexibility-item {
+          padding: 22px 18px;
+        }
       }
 
       /* =========================================================
@@ -554,8 +835,8 @@
 
       .iplex-header {
         display: flex;
-        justify-content: space-between;
-        gap: 50px;
+        align-items: flex-end;
+        gap: 60px;
         margin-bottom: 55px;
       }
 
@@ -563,6 +844,7 @@
         font-size: clamp(48px, 7vw, 90px);
         line-height: 0.9;
         letter-spacing: -5px;
+        flex-shrink: 0;
       }
 
       .iplex-title span {
@@ -570,9 +852,18 @@
       }
 
       .iplex-copy {
-        max-width: 420px;
+        max-width: 650px;
         color: var(--muted);
-        align-self: flex-end;
+        font-size: 15.5px;
+        line-height: 1.65;
+      }
+
+      .iplex-lead {
+        font-size: 17.5px;
+        font-weight: 500;
+        color: var(--text);
+        line-height: 1.5;
+        margin-bottom: 10px;
       }
 
       .iplex-demo {
@@ -593,6 +884,117 @@
         height: 100%;
         border: none;
         display: block;
+      }
+
+      /* =========================================================
+   BUSINESS PROBLEM
+========================================================= */
+      .problem-section {
+        border-bottom: 1px solid var(--line);
+        padding: 100px 0;
+      }
+
+      .problem-heading {
+        font-size: clamp(32px, 4vw, 56px);
+        line-height: 1.08;
+        letter-spacing: -2px;
+        font-weight: 500;
+        max-width: 900px;
+        margin-bottom: 50px;
+      }
+
+      .problem-heading span {
+        color: var(--accent);
+      }
+
+      .problem-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+      }
+
+      .problem-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 36px 30px;
+        transition: 0.3s ease;
+      }
+
+      .problem-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .problem-number {
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+      }
+
+      .problem-card h3 {
+        font-size: 20px;
+        font-weight: 500;
+        letter-spacing: -0.5px;
+        line-height: 1.35;
+        margin-bottom: 12px;
+      }
+
+      .problem-card p {
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
+      .problem-closing {
+        margin-top: 50px;
+        padding-top: 36px;
+        border-top: 1px solid var(--line);
+        text-align: center;
+      }
+
+      .problem-closing p {
+        font-size: clamp(16px, 1.8vw, 21px);
+        color: var(--text);
+        font-weight: 400;
+        letter-spacing: -0.3px;
+        line-height: 1.5;
+        max-width: 780px;
+        margin: 0 auto;
+      }
+
+      .problem-closing span {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      @media (max-width: 960px) {
+        .problem-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .problem-section {
+          padding: 80px 0;
+        }
+        .problem-heading {
+          margin-bottom: 35px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .problem-section {
+          padding: 65px 0;
+        }
+        .problem-card {
+          padding: 28px 22px;
+        }
+        .problem-closing {
+          margin-top: 35px;
+          padding-top: 25px;
+        }
       }
 
       /* =========================================================
@@ -730,6 +1132,272 @@
         color: var(--muted);
         font-size: 14px;
         line-height: 1.6;
+      }
+
+      /* =========================================================
+   HOW IPLEX WORKS (WORKFLOW COMPARISON)
+========================================================= */
+      .how-works {
+        border-bottom: 1px solid var(--line);
+        padding: 100px 0;
+      }
+
+      .how-workflows-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        margin-top: 48px;
+      }
+
+      .workflow-box {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 36px 32px;
+        transition: 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .workflow-box:hover {
+        border-color: var(--accent);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      }
+
+      .workflow-box-header {
+        margin-bottom: 24px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .workflow-box-header h3 {
+        font-size: 24px;
+        font-weight: 500;
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
+        color: var(--text);
+      }
+
+      .workflow-box-sub {
+        font-size: 14.5px;
+        color: var(--muted);
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      .workflow-steps-list {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .workflow-step-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 16px 18px;
+        transition: all 0.25s ease;
+      }
+
+      .workflow-step-item:hover {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(198, 165, 92, 0.35);
+        transform: translateX(4px);
+      }
+
+      .workflow-step-num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: rgba(198, 165, 92, 0.12);
+        border: 1px solid rgba(198, 165, 92, 0.3);
+        color: var(--accent);
+        font-size: 12.5px;
+        font-weight: 700;
+        flex-shrink: 0;
+        letter-spacing: 0.5px;
+        margin-top: 1px;
+      }
+
+      .workflow-step-body {
+        flex: 1;
+      }
+
+      .workflow-step-body h4 {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 4px;
+        letter-spacing: -0.2px;
+      }
+
+      .workflow-step-body p {
+        font-size: 13.5px;
+        line-height: 1.55;
+        color: var(--muted);
+        margin: 0;
+      }
+
+      .how-works-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 50px;
+      }
+
+      .how-step-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 32px 24px;
+        transition: 0.3s ease;
+      }
+
+      .how-step-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      }
+
+      .how-step-title {
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: -0.4px;
+        line-height: 1.35;
+        margin-bottom: 12px;
+        color: var(--text);
+      }
+
+      .how-step-title span {
+        color: var(--accent);
+        font-weight: 600;
+        margin-right: 4px;
+      }
+
+      .how-step-desc {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 900px) {
+        .how-workflows-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          margin-top: 36px;
+        }
+        .workflow-box {
+          padding: 28px 20px;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .how-works-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+          margin-top: 40px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .how-works {
+          padding: 70px 0;
+        }
+        .workflow-step-item {
+          padding: 14px 14px;
+          gap: 12px;
+        }
+        .workflow-step-num {
+          width: 28px;
+          height: 28px;
+          font-size: 11.5px;
+        }
+        .workflow-step-body h4 {
+          font-size: 14px;
+        }
+        .workflow-step-body p {
+          font-size: 13px;
+        }
+        .how-works-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+          margin-top: 30px;
+        }
+        .how-step-card {
+          padding: 26px 20px;
+        }
+      }
+
+      /* =========================================================
+   WHERE IPLEX CAN BE USED (TOUCHPOINTS)
+========================================================= */
+      .touchpoints {
+        border-bottom: 1px solid var(--line);
+        padding: 100px 0;
+      }
+
+      .touchpoints-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 50px;
+      }
+
+      .touchpoint-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 32px 26px;
+        transition: 0.3s ease;
+      }
+
+      .touchpoint-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-3px);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .touchpoint-card h3 {
+        font-size: 19px;
+        font-weight: 500;
+        letter-spacing: -0.4px;
+        color: var(--text);
+        margin-bottom: 10px;
+        line-height: 1.35;
+      }
+
+      .touchpoint-card p {
+        color: var(--muted);
+        font-size: 14.5px;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 1024px) {
+        .touchpoints-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 18px;
+          margin-top: 40px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .touchpoints {
+          padding: 70px 0;
+        }
+        .touchpoints-grid {
+          grid-template-columns: 1fr;
+          gap: 14px;
+          margin-top: 30px;
+        }
+        .touchpoint-card {
+          padding: 24px 20px;
+        }
       }
 
       /* =========================================================
@@ -898,6 +1566,19 @@
         margin-top: 5px;
       }
 
+      .supported-types-line {
+        margin-top: 18px;
+        font-size: 14.5px;
+        color: #b0b0ab;
+        letter-spacing: 0.2px;
+      }
+
+      .supported-types-line span {
+        color: var(--accent);
+        font-weight: 600;
+        margin-right: 6px;
+      }
+
       .work-filter-bar {
         display: flex;
         gap: 10px;
@@ -932,6 +1613,275 @@
       .work-card.is-single-filtered {
         grid-column: span 12 !important;
         min-height: 520px;
+      }
+
+      /* =========================================================
+   ECOSYSTEM / WHO IS IPLEX FOR
+========================================================= */
+      .ecosystem {
+        border-top: 1px solid var(--line);
+        padding: 100px 0;
+      }
+
+      .ecosystem-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 50px;
+      }
+
+      .ecosystem-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 32px 24px;
+        transition: 0.3s ease;
+      }
+
+      .ecosystem-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-4px);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+      }
+
+      .ecosystem-card h3 {
+        font-size: 19px;
+        font-weight: 500;
+        letter-spacing: -0.4px;
+        color: var(--text);
+        margin-bottom: 12px;
+        line-height: 1.35;
+      }
+
+      .ecosystem-card p {
+        color: var(--muted);
+        font-size: 14.5px;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 1024px) {
+        .ecosystem-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+          margin-top: 40px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .ecosystem {
+          padding: 70px 0;
+        }
+        .ecosystem-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+          margin-top: 30px;
+        }
+        .ecosystem-card {
+          padding: 24px 20px;
+        }
+      }
+
+      /* =========================================================
+   AGENCY & WHITE-LABEL POSITIONING
+========================================================= */
+      .agency-partner {
+        padding: 20px 0 90px;
+        background: var(--bg);
+      }
+
+      .agency-box {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%), var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 56px 48px;
+        max-width: 980px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .agency-box::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 320px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(198, 165, 92, 0.4), transparent);
+      }
+
+      .agency-tag {
+        display: inline-block;
+        font-size: 11.5px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 500;
+        margin-bottom: 16px;
+      }
+
+      .agency-title {
+        font-size: clamp(26px, 3.2vw, 36px);
+        font-weight: 400;
+        letter-spacing: -0.8px;
+        color: var(--text);
+        margin-bottom: 18px;
+        line-height: 1.25;
+      }
+
+      .agency-lead {
+        color: var(--muted);
+        font-size: clamp(15px, 1.4vw, 17px);
+        line-height: 1.65;
+        max-width: 720px;
+        margin: 0 auto 32px;
+      }
+
+      .agency-pillars {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px 14px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 12px 28px;
+        margin-bottom: 28px;
+      }
+
+      .agency-pillar-item {
+        font-size: 14.5px;
+        font-weight: 500;
+        color: var(--text);
+        letter-spacing: -0.2px;
+      }
+
+      .agency-pillar-item.highlight {
+        color: var(--accent);
+      }
+
+      .agency-pillar-dot {
+        color: var(--muted);
+        opacity: 0.6;
+        user-select: none;
+      }
+
+      .agency-supporting {
+        color: var(--muted);
+        font-size: 14.5px;
+        line-height: 1.65;
+        max-width: 680px;
+        margin: 0 auto;
+        opacity: 0.9;
+      }
+
+      @media (max-width: 768px) {
+        .agency-partner {
+          padding: 10px 0 70px;
+        }
+
+        .agency-box {
+          padding: 40px 24px;
+          border-radius: var(--radius-md);
+        }
+
+        .agency-pillars {
+          border-radius: var(--radius-md);
+          padding: 14px 18px;
+          gap: 8px 10px;
+        }
+
+        .agency-pillar-item {
+          font-size: 13.5px;
+        }
+      }
+
+      /* =========================================================
+   WEB & DEPLOYMENT REASSURANCE
+========================================================= */
+      .deployment-reassurance {
+        border-top: 1px solid var(--line);
+        padding: 100px 0;
+        background: var(--bg);
+      }
+
+      .deployment-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 50px;
+      }
+
+      .deployment-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 26px 22px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        transition: 0.3s ease;
+      }
+
+      .deployment-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-3px);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .deployment-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(198, 165, 92, 0.12);
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .deployment-info h3 {
+        font-size: 16.5px;
+        font-weight: 500;
+        letter-spacing: -0.3px;
+        color: var(--text);
+        margin-bottom: 8px;
+        line-height: 1.35;
+      }
+
+      .deployment-info p {
+        color: var(--muted);
+        font-size: 13.5px;
+        line-height: 1.55;
+      }
+
+      @media (max-width: 1024px) {
+        .deployment-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 18px;
+          margin-top: 40px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .deployment-reassurance {
+          padding: 70px 0;
+        }
+        .deployment-grid {
+          grid-template-columns: 1fr;
+          gap: 14px;
+          margin-top: 30px;
+        }
+        .deployment-card {
+          padding: 22px 18px;
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 14px;
+        }
       }
 
       /* =========================================================
@@ -1012,15 +1962,153 @@
       }
 
       .quote {
-        font-size: clamp(35px, 5vw, 68px);
-        line-height: 1;
-        letter-spacing: -3px;
+        font-size: clamp(28px, 4.2vw, 56px);
+        line-height: 1.18;
+        letter-spacing: -1.2px;
+        font-weight: 400;
       }
 
       .quote-author {
-        margin-top: 40px;
-        font-size: 13px;
-        opacity: 0.65;
+        margin-top: 36px;
+        font-size: 13.5px;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        opacity: 0.75;
+      }
+
+      /* =========================================================
+   FAQ SECTION
+========================================================= */
+      .faq-section {
+        border-top: 1px solid var(--line);
+        padding: 100px 0;
+        background: var(--bg);
+      }
+
+      .faq-container {
+        max-width: 920px;
+        margin: 0 auto;
+      }
+
+      .faq-header {
+        margin-bottom: 50px;
+      }
+
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .faq-item {
+        border-bottom: 1px solid var(--line);
+        transition: border-color 0.25s ease;
+      }
+
+      .faq-item:first-child {
+        border-top: 1px solid var(--line);
+      }
+
+      .faq-item[open] {
+        border-color: rgba(198, 165, 92, 0.4);
+      }
+
+      .faq-question {
+        padding: 24px 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        list-style: none;
+        user-select: none;
+        transition: color 0.2s ease;
+      }
+
+      .faq-question::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-question h3 {
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: -0.3px;
+        color: var(--text);
+        margin: 0;
+        line-height: 1.4;
+        transition: color 0.2s ease;
+      }
+
+      .faq-question:hover h3,
+      .faq-item[open] .faq-question h3 {
+        color: var(--accent);
+      }
+
+      .faq-toggle-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        color: var(--muted);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .faq-toggle-icon svg {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .faq-question:hover .faq-toggle-icon {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .faq-item[open] .faq-toggle-icon {
+        background: rgba(198, 165, 92, 0.15);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .faq-item[open] .faq-toggle-icon svg {
+        transform: rotate(45deg);
+      }
+
+      .faq-answer {
+        padding: 0 0 24px 0;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.68;
+      }
+
+      .faq-answer p {
+        margin: 0;
+      }
+
+      @media (max-width: 768px) {
+        .faq-section {
+          padding: 70px 0;
+        }
+        .faq-header {
+          margin-bottom: 35px;
+        }
+        .faq-question {
+          padding: 20px 0;
+        }
+        .faq-question h3 {
+          font-size: 16.5px;
+        }
+        .faq-toggle-icon {
+          width: 28px;
+          height: 28px;
+        }
+        .faq-answer {
+          font-size: 14.5px;
+          padding-bottom: 20px;
+        }
       }
 
       /* =========================================================
@@ -1028,7 +2116,7 @@
 ========================================================= */
       .cta {
         text-align: center;
-        padding: 160px 0;
+        padding: 140px 0;
         background: radial-gradient(
           circle at center,
           rgba(198, 165, 92, 0.08),
@@ -1037,16 +2125,47 @@
       }
 
       .cta h2 {
-        font-size: clamp(50px, 8vw, 110px);
-        line-height: 0.88;
-        letter-spacing: -6px;
+        font-size: clamp(34px, 4.4vw, 62px);
+        line-height: 1.12;
+        letter-spacing: -1.5px;
         font-weight: 400;
+        max-width: 960px;
+        margin: 0 auto;
       }
 
       .cta p {
-        max-width: 520px;
+        max-width: 680px;
         color: var(--muted);
-        margin: 28px auto 35px;
+        font-size: 16.5px;
+        line-height: 1.65;
+        margin: 24px auto 38px;
+      }
+
+      .cta-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .cta-tertiary {
+        margin-top: 22px;
+      }
+
+      .cta-text-link {
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--muted);
+        letter-spacing: 0.2px;
+        transition: color 0.25s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .cta-text-link:hover {
+        color: var(--accent);
       }
 
       /* =========================================================
@@ -1423,9 +2542,9 @@
           letter-spacing: -5px;
         }
         .hero-bottom {
-          flex-direction: row;
-          align-items: flex-end;
-          justify-content: space-between;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 24px;
         }
         .hero-text {
           max-width: 420px;
@@ -2150,7 +3269,7 @@
           </div>
           <a href="#about">About</a>
         </nav>
-        <a href="#contact" class="nav-button"> Book a Demo </a>
+        <a href="#contact" class="nav-button" onclick="if(window.openModal){openModal();return false;}">Book a Demo</a>
         <button
           class="menu-button"
           id="menuButton"
@@ -2167,21 +3286,74 @@
     <section class="hero">
       <div class="container hero-content">
         <div class="hero-kicker">
-          Interactive Real Estate Visualization & Real Estate Marketing
-          Technology
+          i-PLEX — Interactive Virtual Sales Gallery for Property Developers
         </div>
         <h1>
-          Where Property Becomes<br />
+          Where Property<br />
+          Becomes<br />
           <span>Experience.</span>
         </h1>
         <div class="hero-bottom">
           <p class="hero-text">
-            We transform real estate projects into immersive digital experiences
-            that help people explore, understand and connect with properties.
+            Turn floor plans, CGI, 360° renders, videos and project content into one connected interactive property experience—built for selling properties before and during construction.
           </p>
           <div class="hero-actions">
-            <a href="#iplex" class="btn btn-primary"> Explore i-PLEX </a>
+            <a href="#iplex" class="btn btn-primary">Explore Live i-PLEX</a>
+            <a href="#contact" class="btn btn-outline" onclick="if(window.openModal){openModal();return false;}">Book a Demo</a>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     CORE PROPOSITION
+========================================================= -->
+    <section class="proposition">
+      <div class="container">
+        <h2 class="proposition-heading reveal">
+          Everything buyers need to explore your development.<br />
+          <span>One interactive experience.</span>
+        </h2>
+        <p class="proposition-copy reveal">
+          i-PLEX connects the different parts of a property development into one intuitive digital journey—from the overall development to individual units and interiors.
+        </p>
+        <div class="journey-flow reveal">
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></svg></span>
+            <span>Masterplan</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"></path><path d="M6 12H4a2 2 0 0 0-2 2v8h4"></path><path d="M18 9h2a2 2 0 0 1 2 2v11h-4"></path><path d="M10 6h4"></path><path d="M10 10h4"></path><path d="M10 14h4"></path></svg></span>
+            <span>Buildings</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></span>
+            <span>Floors</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span>
+            <span>Units</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h8v12"></path><path d="M11 15h10"></path><path d="M17 15v6"></path></svg></span>
+            <span>Floor Plans</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path><circle cx="12" cy="12" r="2.5"></circle></svg></span>
+            <span>Virtual Tours</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"></path></svg></span>
+            <span>Amenities</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+            <span>Location</span>
+          </span>
+          <span class="journey-item">
+            <span class="journey-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></span>
+            <span>Enquiry</span>
+          </span>
         </div>
       </div>
     </section>
@@ -2196,13 +3368,9 @@
           <span>just something people see.</span>
         </div>
         <div class="intro-copy reveal">
-          At OneToBeam, we create visual and Interactive Real Estate
-          Visualization for Property Developers that allow buyers to explore a
-          property before they step inside it.
+          At OneToBeam, we create interactive property experiences for property developers that allow buyers to explore a development before they step inside it.
           <br /><br />
-          From interactive project experiences to 3D virtual tours, Interactive
-          floor plans and off-Plan Property Visualization — everything is
-          designed to make property easier to understand and easier to sell.
+          From virtual sales galleries to 3D virtual tours, interactive floor plans and off-plan property visualization—everything is designed to make property easier to understand and easier to sell.
         </div>
       </div>
     </section>
@@ -2219,25 +3387,194 @@
 
         <div class="offerings-grid">
           <div class="offering-card reveal">
-            <div class="offering-badge">BYOC</div>
+            <div class="offering-header-top">
+              <span class="offering-kicker">Already have content?</span>
+              <span class="offering-badge">BYOC</span>
+            </div>
             <h3>i-PLEX BYOC</h3>
-            <p>
-              <strong>Bring Your Own Content.</strong> You provide the 3D
-              models, floor plans, and media. We place it all directly into the
-              powerful i-PLEX platform and your customers can experience all
-              your content interactively.
+            <p class="byoc-main">
+              Bring your content. We build the experience.
             </p>
+            <p class="byoc-copy">
+              i-PLEX is designed to work with content created by your existing architects, CGI studios, marketing agencies or internal teams. You do not need to recreate your assets or change your existing partners.
+            </p>
+            <div class="byoc-types">
+              CGI Renders · 360° Panoramas · Floor Plans · Masterplans · 3D Models · Videos · Drone Footage · Photography · Unit Information · Branding Assets
+            </div>
+            <div class="byoc-keyline">
+              Your content. Your partners. <span>Powered by i-PLEX.</span>
+            </div>
           </div>
 
           <div class="offering-card reveal">
-            <div class="offering-badge">STUDIO</div>
+            <div class="offering-header-top">
+              <span class="offering-kicker">Starting from scratch?</span>
+              <span class="offering-badge">STUDIO</span>
+            </div>
             <h3>i-PLEX Studio</h3>
-            <p>
-              <strong>End-to-end creation.</strong> Need content created? Our
-              specialized studio team will design and create all the 3D content,
-              visualizations, and virtual tours from scratch, fully integrated
-              into your i-PLEX experience.
+            <p class="studio-main">
+              We create the content and build the complete experience.
             </p>
+            <p class="studio-copy">
+              OneToBeam can create the visual content and build the complete i-PLEX experience for you.
+            </p>
+            <div class="studio-types">
+              3D Visualization · CGI · 360° Environments · Floor Plans · Animation · Interactive Experience
+            </div>
+            <div class="studio-keyline">
+              <span>One partner.</span> From visualization to the finished interactive sales experience.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     HOW IPLEX WORKS (WORKFLOW COMPARISON: BYOC & STUDIO)
+========================================================= -->
+    <section class="how-works" id="how-it-works">
+      <div class="container">
+        <div class="section-label reveal">Workflow Comparison</div>
+        <h2 class="section-title reveal">
+          Different starting points.<br />
+          <span style="color: var(--accent)">The same powerful result.</span>
+        </h2>
+
+        <div class="how-workflows-grid">
+          <!-- Box 1: BYOC Workflow -->
+          <div class="workflow-box reveal">
+            <div class="workflow-box-header">
+              <div class="offering-header-top">
+                <span class="offering-kicker">Already have content?</span>
+                <span class="offering-badge">BYOC</span>
+              </div>
+              <h3>How i-PLEX BYOC Works</h3>
+              <p class="workflow-box-sub">
+                Bring your existing assets—we build and structure your interactive property experience.
+              </p>
+            </div>
+
+            <div class="workflow-steps-list">
+              <div class="workflow-step-item">
+                <div class="workflow-step-num">01</div>
+                <div class="workflow-step-body">
+                  <h4>Bring your content</h4>
+                  <p>CGI, floor plans, 360° panoramas, videos, 3D models, site plans and project information.</p>
+                </div>
+              </div>
+
+              <div class="workflow-step-item">
+                <div class="workflow-step-num">02</div>
+                <div class="workflow-step-body">
+                  <h4>We build your i-PLEX</h4>
+                  <p>Your content is structured into one connected interactive property experience.</p>
+                </div>
+              </div>
+
+              <div class="workflow-step-item">
+                <div class="workflow-step-num">03</div>
+                <div class="workflow-step-body">
+                  <h4>Publish anywhere</h4>
+                  <p>Use i-PLEX on your project website, sales gallery, touchscreen, tablet, roadshow or through a direct link.</p>
+                </div>
+              </div>
+
+              <div class="workflow-step-item">
+                <div class="workflow-step-num">04</div>
+                <div class="workflow-step-body">
+                  <h4>Understand buyer engagement</h4>
+                  <p>Use interaction data and analytics to understand what buyers are exploring.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Box 2: Studio Workflow -->
+          <div class="workflow-box reveal">
+            <div class="workflow-box-header">
+              <div class="offering-header-top">
+                <span class="offering-kicker">Starting from scratch?</span>
+                <span class="offering-badge">STUDIO</span>
+              </div>
+              <h3>How i-PLEX Studio Works</h3>
+              <p class="workflow-box-sub">
+                We create all visual content and build the complete interactive property experience.
+              </p>
+            </div>
+
+            <div class="workflow-steps-list">
+              <div class="workflow-step-item">
+                <div class="workflow-step-num">01</div>
+                <div class="workflow-step-body">
+                  <h4>We create your visual content</h4>
+                  <p>3D visualization, CGI renders, 360° environments, architectural animation and floor plans crafted by our studio.</p>
+                </div>
+              </div>
+
+              <div class="workflow-step-item">
+                <div class="workflow-step-num">02</div>
+                <div class="workflow-step-body">
+                  <h4>We build your i-PLEX</h4>
+                  <p>Your new custom assets are structured into one connected interactive property experience.</p>
+                </div>
+              </div>
+
+              <div class="workflow-step-item">
+                <div class="workflow-step-num">03</div>
+                <div class="workflow-step-body">
+                  <h4>Publish anywhere</h4>
+                  <p>Use i-PLEX on your project website, sales gallery, touchscreen, tablet, roadshow or through a direct link.</p>
+                </div>
+              </div>
+
+              <div class="workflow-step-item">
+                <div class="workflow-step-num">04</div>
+                <div class="workflow-step-body">
+                  <h4>Understand buyer engagement</h4>
+                  <p>Use interaction data and analytics to understand what buyers are exploring.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     CONTENT FLEXIBILITY (HOSTING & PARTNERS)
+========================================================= -->
+    <section class="content-flexibility" id="content-flexibility">
+      <div class="container">
+        <div class="content-flexibility-box reveal">
+          <div class="section-label">Content Flexibility</div>
+          <h2 class="content-flexibility-title">
+            Your Content. Your Brand. <span style="color: var(--accent)">Your Project.</span>
+          </h2>
+
+          <div class="content-flexibility-grid">
+            <div class="content-flexibility-item">
+              <div class="content-flexibility-item-header">
+                <div class="content-flexibility-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                </div>
+                <div class="content-flexibility-item-title">Flexible Asset Hosting</div>
+              </div>
+              <p>
+                i-PLEX can host and deliver your project content as part of the interactive experience, whether the assets were created by OneToBeam, your architect, your marketing agency, your CGI studio or another partner.
+              </p>
+            </div>
+
+            <div class="content-flexibility-item">
+              <div class="content-flexibility-item-header">
+                <div class="content-flexibility-item-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+                <div class="content-flexibility-item-title">Creative Partner Continuity</div>
+              </div>
+              <p>
+                Using i-PLEX does not require you to replace your existing content partners. You can continue working with the creative teams and agencies you already trust—OneToBeam simply powers the interactive experience behind the scenes.
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -2256,15 +3593,14 @@
               <span>i-PLEX.</span>
             </h2>
           </div>
-          <p class="iplex-copy">
-            A complete interactive Property experience digitally for real estate
-            projects.
-            <br /><br />
-            Explore Interactive Property Walkthrough, Virtual Property Tour,
-            Interactive Masterplan, interactive floor plans, amenities,
-            configurations, Interactive Unit selector and locations — all within
-            one connected experience.
-          </p>
+          <div class="iplex-copy">
+            <p class="iplex-lead">
+              A complete interactive property experience built for real estate developments.
+            </p>
+            <p>
+              Explore virtual tours, interactive masterplans, floor plans, amenities, apartment configurations, and unit selectors—all within one connected platform.
+            </p>
+          </div>
         </div>
 
         <div class="iplex-demo reveal">
@@ -2274,6 +3610,45 @@
             allowfullscreen
             loading="lazy"
           ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     BUSINESS PROBLEM
+========================================================= -->
+    <section class="problem-section" id="problem">
+      <div class="container">
+        <h2 class="problem-heading reveal">
+          Selling property is harder when buyers <span style="color: var(--accent)">cannot experience it yet.</span>
+        </h2>
+        <div class="problem-grid">
+          <div class="problem-card reveal">
+            <div class="problem-number">01</div>
+            <h3>The development may not exist yet.</h3>
+            <p>
+              Buyers are often asked to make major decisions using floor plans, CGI and brochures alone.
+            </p>
+          </div>
+          <div class="problem-card reveal">
+            <div class="problem-number">02</div>
+            <h3>Project information is fragmented.</h3>
+            <p>
+              Masterplans, floor plans, renders, videos, amenities and location information often sit across different files and platforms.
+            </p>
+          </div>
+          <div class="problem-card reveal">
+            <div class="problem-number">03</div>
+            <h3>Remote buyers cannot always visit the sales gallery.</h3>
+            <p>
+              Their experience may be reduced to PDFs, images, videos and messaging apps.
+            </p>
+          </div>
+        </div>
+        <div class="problem-closing reveal">
+          <p>
+            <span>i-PLEX</span> brings these elements together into one connected interactive property experience.
+          </p>
         </div>
       </div>
     </section>
@@ -2297,8 +3672,8 @@
                 <div class="feature-media">
                   <img
                     class="feature-image"
-                    src="images/Iplex features/Bird eye view.png"
-                    alt="Bird Eye View"
+                    src="images/iplex-features/bird-eye-view.png"
+                    alt="Explore the Entire Development"
                     loading="lazy"
                   />
                   <video
@@ -2309,16 +3684,14 @@
                     playsinline
                     preload="metadata"
                     type="video/mp4"
-                    poster="images/Iplex features/Bird eye view.png"
+                    poster="images/iplex-features/bird-eye-view.png"
                   ></video>
                 </div>
                 <div class="feature-content">
                   <div class="feature-number">01</div>
-                  <h3>Bird Eye View</h3>
+                  <h3>Explore the Entire Development</h3>
                   <p>
-                    Experience your property from a bird's eye view before it's
-                    even built. Get a comprehensive aerial perspective of the
-                    entire development.
+                    Navigate the overall project from an interactive bird's-eye view, exploring buildings, landscape and surroundings.
                   </p>
                 </div>
               </div>
@@ -2328,8 +3701,8 @@
                 <div class="feature-media">
                   <img
                     class="feature-image"
-                    src="images/Iplex features/Master layout.png"
-                    alt="Master Layout"
+                    src="images/iplex-features/master-layout.png"
+                    alt="Understand the Masterplan"
                     loading="lazy"
                   />
                   <video
@@ -2340,17 +3713,14 @@
                     playsinline
                     preload="metadata"
                     type="video/mp4"
-                    poster="images/Iplex features/Master layout.png"
+                    poster="images/iplex-features/master-layout.png"
                   ></video>
                 </div>
                 <div class="feature-content">
                   <div class="feature-number">02</div>
-                  <h3>Master Layout</h3>
+                  <h3>Understand the Masterplan</h3>
                   <p>
-                    Get a complete view of the project, including the overall
-                    project area, built-up area, layouts, and key development
-                    details. Understand how the entire property is planned and
-                    positioned at a glance.
+                    Help buyers understand how buildings, amenities and open spaces connect.
                   </p>
                 </div>
               </div>
@@ -2360,8 +3730,8 @@
                 <div class="feature-media">
                   <img
                     class="feature-image"
-                    src="images/Iplex features/Maps.png"
-                    alt="Maps & Location"
+                    src="images/iplex-features/maps.png"
+                    alt="Understand the Location"
                     loading="lazy"
                   />
                   <video
@@ -2372,16 +3742,14 @@
                     playsinline
                     preload="metadata"
                     type="video/mp4"
-                    poster="images/Iplex features/Maps.png"
+                    poster="images/iplex-features/maps.png"
                   ></video>
                 </div>
                 <div class="feature-content">
                   <div class="feature-number">03</div>
-                  <h3>Maps & Location</h3>
+                  <h3>Understand the Location</h3>
                   <p>
-                    See your property's nearby landmarks, connectivity, and
-                    surroundings with integrated maps for better location
-                    context.
+                    Connect the development with surrounding landmarks, infrastructure and neighbourhood context.
                   </p>
                 </div>
               </div>
@@ -2391,8 +3759,8 @@
                 <div class="feature-media">
                   <img
                     class="feature-image"
-                    src="images/Iplex features/amenities.png"
-                    alt="Amenities Explorer"
+                    src="images/iplex-features/amenities.png"
+                    alt="Experience Amenities"
                     loading="lazy"
                   />
                   <video
@@ -2403,16 +3771,14 @@
                     playsinline
                     preload="metadata"
                     type="video/mp4"
-                    poster="images/Iplex features/amenities.png"
+                    poster="images/iplex-features/amenities.png"
                   ></video>
                 </div>
                 <div class="feature-content">
                   <div class="feature-number">04</div>
-                  <h3>Amenities Explorer</h3>
+                  <h3>Experience Amenities</h3>
                   <p>
-                    Showcase amenities with high-quality images and detailed
-                    views -- from pools and gyms to gardens and community
-                    spaces.
+                    Bring pools, clubhouses, landscapes and shared spaces into the same journey.
                   </p>
                 </div>
               </div>
@@ -2422,8 +3788,8 @@
                 <div class="feature-media">
                   <img
                     class="feature-image"
-                    src="images/Iplex features/simulation.png"
-                    alt="Simulations"
+                    src="images/iplex-features/simulation.png"
+                    alt="Explore Different Scenarios"
                     loading="lazy"
                   />
                   <video
@@ -2434,16 +3800,14 @@
                     playsinline
                     preload="metadata"
                     type="video/mp4"
-                    poster="images/Iplex features/simulation.png"
+                    poster="images/iplex-features/simulation.png"
                   ></video>
                 </div>
                 <div class="feature-content">
                   <div class="feature-number">05</div>
-                  <h3>Simulations</h3>
+                  <h3>Explore Different Scenarios</h3>
                   <p>
-                    Day-to-night lighting simulation, route map navigation,
-                    shadow studies, and more -- dynamic visualizations at your
-                    fingertips.
+                    Present applicable views, unit configurations or environmental simulations.
                   </p>
                 </div>
               </div>
@@ -2453,8 +3817,8 @@
                 <div class="feature-media">
                   <img
                     class="feature-image"
-                    src="images/Iplex features/filter.png"
-                    alt="Select with Filters"
+                    src="images/iplex-features/filter.png"
+                    alt="Find the Right Unit"
                     loading="lazy"
                   />
                   <video
@@ -2465,16 +3829,14 @@
                     playsinline
                     preload="metadata"
                     type="video/mp4"
-                    poster="images/Iplex features/filter.png"
+                    poster="images/iplex-features/filter.png"
                   ></video>
                 </div>
                 <div class="feature-content">
                   <div class="feature-number">06</div>
-                  <h3>Select with Filters</h3>
+                  <h3>Find the Right Unit</h3>
                   <p>
-                    Quickly find available units based on your preferred floor,
-                    size, and facing. Explore the right options instantly and
-                    make unit selection faster and easier.
+                    Help buyers explore or filter units by relevant criteria.
                   </p>
                 </div>
               </div>
@@ -2484,8 +3846,8 @@
                 <div class="feature-media">
                   <img
                     class="feature-image"
-                    src="images/Iplex features/Config Types.png"
-                    alt="Config Types"
+                    src="images/iplex-features/config-types.png"
+                    alt="Explore Apartment Configurations"
                     loading="lazy"
                   />
                   <video
@@ -2496,14 +3858,14 @@
                     playsinline
                     preload="metadata"
                     type="video/mp4"
-                    poster="images/Iplex features/Config Types.png"
+                    poster="images/iplex-features/config-types.png"
                   ></video>
                 </div>
                 <div class="feature-content">
                   <div class="feature-number">07</div>
-                  <h3>Config Types</h3>
+                  <h3>Explore Apartment Configurations</h3>
                   <p>
-                    Explore interactive 2D &amp; 3D apartment configurations, compare floor layouts, room dimensions, and interior variations in real time.
+                    Present different layouts and property types clearly.
                   </p>
                 </div>
               </div>
@@ -2513,8 +3875,8 @@
                 <div class="feature-media">
                   <img
                     class="feature-image"
-                    src="images/Iplex features/Analytics.png"
-                    alt="Analytics"
+                    src="images/iplex-features/analytics.png"
+                    alt="Understand Buyer Engagement"
                     loading="lazy"
                   />
                   <video
@@ -2525,18 +3887,62 @@
                     playsinline
                     preload="metadata"
                     type="video/mp4"
-                    poster="images/Iplex features/Analytics.png"
+                    poster="images/iplex-features/analytics.png"
                   ></video>
                 </div>
                 <div class="feature-content">
                   <div class="feature-number">08</div>
-                  <h3>Analytics</h3>
+                  <h3>Understand Buyer Engagement</h3>
                   <p>
-                    Track buyer interest, popular configurations, unit inquiries, and viewing duration with integrated real-time project analytics.
+                    Use analytics to learn what buyers interact with.
                   </p>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+     TOUCHPOINTS (ONE EXPERIENCE. EVERYWHERE YOU SELL.)
+========================================================= -->
+    <section class="touchpoints" id="touchpoints">
+      <div class="container">
+        <div class="section-label reveal">Sales Touchpoints</div>
+        <h2 class="section-title reveal">
+          One Experience.<br />
+          <span style="color: var(--accent)">Everywhere You Sell.</span>
+        </h2>
+        <p class="section-description reveal">
+          Use the same i-PLEX experience across the different places your buyers and sales teams interact with your development.
+        </p>
+
+        <div class="touchpoints-grid">
+          <div class="touchpoint-card reveal">
+            <h3>Project Website</h3>
+            <p>Embed i-PLEX into the development's existing website.</p>
+          </div>
+          <div class="touchpoint-card reveal">
+            <h3>Sales Gallery</h3>
+            <p>Use it on large displays or interactive touchscreens.</p>
+          </div>
+          <div class="touchpoint-card reveal">
+            <h3>Sales Tablets</h3>
+            <p>Give sales teams an interactive presentation during buyer conversations.</p>
+          </div>
+          <div class="touchpoint-card reveal">
+            <h3>Roadshows & Exhibitions</h3>
+            <p>Take the complete development experience wherever your sales team goes.</p>
+          </div>
+          <div class="touchpoint-card reveal">
+            <h3>Agents & Channel Partners</h3>
+            <p>Give partners a consistent way to present the development.</p>
+          </div>
+          <div class="touchpoint-card reveal">
+            <h3>Direct Sharing</h3>
+            <p>Share through a link, QR code or messaging platform.</p>
           </div>
         </div>
       </div>
@@ -2554,37 +3960,33 @@
           Sell.
         </h2>
         <p class="section-description reveal">
-          A complete set of visualization and digital experiences built
-          specifically for real estate.
-        </p>
-        <p class="section-description reveal" style="margin-top: 15px">
-          Comprehensive digital solutions tailored for modern real estate
-          marketing, enabling buyers to fully understand properties before they
-          are built.
+          Comprehensive visualization and interactive experiences built specifically for real estate, enabling buyers to fully understand and experience properties before they are built.
         </p>
       </div>
     </section>
 
     <!-- =========================================================
-     WORK
+     DEVELOPMENT TYPES
 ========================================================= -->
     <section id="work">
       <div class="container">
-        <div class="section-label reveal">Selected Work</div>
+        <div class="section-label reveal">Development Types</div>
         <h2 class="section-title reveal">
-          Different filters in i-PLEX.<br />
-          <span style="color: var(--accent)">Plotted, Apartment and Villa.</span>
+          Built for Different Types of<br />
+          <span style="color: var(--accent)">Property Developments</span>
         </h2>
         <p class="section-description reveal">
-          A selection of visual experiences created for real estate projects and
-          property brands across every development type.
+          Interactive sales experiences tailored for residential communities, vertical living, and land developments.
+        </p>
+        <p class="supported-types-line reveal">
+          <span>Also supports:</span> Townships · Mixed-Use Developments · Branded Residences
         </p>
 
         <div class="work-filter-bar reveal">
           <button class="work-filter-btn active" data-filter="all">All</button>
-          <button class="work-filter-btn" data-filter="plotted">Plotted</button>
-          <button class="work-filter-btn" data-filter="apartment">Apartment</button>
-          <button class="work-filter-btn" data-filter="villa">Villa</button>
+          <button class="work-filter-btn" data-filter="apartment">Apartments &amp; Condominiums</button>
+          <button class="work-filter-btn" data-filter="villa">Villa Communities</button>
+          <button class="work-filter-btn" data-filter="plotted">Plotted Developments</button>
         </div>
 
         <div class="work-grid">
@@ -2592,7 +3994,7 @@
             <img
               class="work-thumb"
               src="Video/Build for real places/Maharaja Ikon.png"
-              alt="Villa"
+              alt="Villa Communities"
               loading="lazy"
             />
             <video
@@ -2605,8 +4007,8 @@
               preload="metadata"
             ></video>
             <div class="work-overlay">
-              <small>Selected Work</small>
-              <h3>Villa</h3>
+              <small>Development Type</small>
+              <h3>Villa Communities</h3>
             </div>
           </div>
 
@@ -2614,7 +4016,7 @@
             <img
               class="work-thumb"
               src="Video/Build for real places/roach.png"
-              alt="Apartment"
+              alt="Apartments &amp; Condominiums"
               loading="lazy"
             />
             <video
@@ -2627,8 +4029,8 @@
               preload="metadata"
             ></video>
             <div class="work-overlay">
-              <small>Selected Work</small>
-              <h3>Apartment</h3>
+              <small>Development Type</small>
+              <h3>Apartments &amp; Condominiums</h3>
             </div>
           </div>
 
@@ -2636,7 +4038,7 @@
             <img
               class="work-thumb"
               src="Video/Build for real places/Sahassra.png"
-              alt="Plotted"
+              alt="Plotted Developments"
               loading="lazy"
             />
             <video
@@ -2649,8 +4051,176 @@
               preload="metadata"
             ></video>
             <div class="work-overlay">
-              <small>Selected Work</small>
-              <h3>Plotted</h3>
+              <small>Development Type</small>
+              <h3>Plotted Developments</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     ECOSYSTEM (WHO IS IPLEX FOR?)
+========================================================= -->
+    <section class="ecosystem" id="ecosystem">
+      <div class="container">
+        <div class="section-label reveal">Ecosystem</div>
+        <h2 class="section-title reveal">
+          Built for the<br />
+          <span style="color: var(--accent)">Property Sales Ecosystem</span>
+        </h2>
+
+        <div class="ecosystem-grid">
+          <div class="ecosystem-card reveal">
+            <h3>Property Developers</h3>
+            <p>
+              Help buyers experience and understand projects before and during construction.
+            </p>
+          </div>
+          <div class="ecosystem-card reveal">
+            <h3>Sales &amp; Marketing Teams</h3>
+            <p>
+              Give every salesperson one consistent interactive way to present the development.
+            </p>
+          </div>
+          <div class="ecosystem-card reveal">
+            <h3>Property Marketing Agencies</h3>
+            <p>
+              Add interactive property experiences to your client offering without developing the technology internally.
+            </p>
+          </div>
+          <div class="ecosystem-card reveal">
+            <h3>CGI &amp; Visualization Studios</h3>
+            <p>
+              Turn existing visual content into a richer interactive client deliverable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     AGENCY & WHITE-LABEL POSITIONING
+========================================================= -->
+    <section class="agency-partner" id="agencies">
+      <div class="container">
+        <div class="agency-box reveal">
+          <div class="agency-tag">Partnership Models</div>
+          <h2 class="agency-title">Built for Agencies Too.</h2>
+          <p class="agency-lead">
+            Already create branding, CGI, websites or marketing campaigns for property developers?<br />
+            Add i-PLEX to your offering without building the technology yourself.
+          </p>
+
+          <div class="agency-pillars">
+            <span class="agency-pillar-item">Your Client</span>
+            <span class="agency-pillar-dot">·</span>
+            <span class="agency-pillar-item">Your Brand</span>
+            <span class="agency-pillar-dot">·</span>
+            <span class="agency-pillar-item">Your Content</span>
+            <span class="agency-pillar-dot">·</span>
+            <span class="agency-pillar-item highlight">i-PLEX Technology</span>
+          </div>
+
+          <p class="agency-supporting">
+            White-label and production-partner models allow agencies to retain their client relationship while OneToBeam powers the interactive experience behind the scenes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     WEB & DEPLOYMENT REASSURANCE
+========================================================= -->
+    <section class="deployment-reassurance" id="deployment">
+      <div class="container">
+        <div class="section-label reveal">Deployment Reassurance</div>
+        <h2 class="section-title reveal">
+          Built for the Web.<br />
+          <span style="color: var(--accent)">Built for Property Sales.</span>
+        </h2>
+        <p class="section-description reveal">
+          Engineered for instant access, effortless sharing, and reliable presentation across every sales channel.
+        </p>
+
+        <div class="deployment-grid">
+          <div class="deployment-card reveal">
+            <div class="deployment-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="deployment-info">
+              <h3>Runs in the browser</h3>
+              <p>Instant access via standard web browsers with no plugins needed.</p>
+            </div>
+          </div>
+
+          <div class="deployment-card reveal">
+            <div class="deployment-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="deployment-info">
+              <h3>No app required</h3>
+              <p>Zero downloads or app store installations for buyers or sales teams.</p>
+            </div>
+          </div>
+
+          <div class="deployment-card reveal">
+            <div class="deployment-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="deployment-info">
+              <h3>Desktop, tablet and mobile</h3>
+              <p>Seamlessly responsive across all devices, screen sizes and orientations.</p>
+            </div>
+          </div>
+
+          <div class="deployment-card reveal">
+            <div class="deployment-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="deployment-info">
+              <h3>Can be embedded into existing project websites</h3>
+              <p>Drop directly into existing project websites or developer portals.</p>
+            </div>
+          </div>
+
+          <div class="deployment-card reveal">
+            <div class="deployment-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="deployment-info">
+              <h3>Suitable for sales-gallery screens</h3>
+              <p>Optimized for interactive touchscreens, kiosks and display walls.</p>
+            </div>
+          </div>
+
+          <div class="deployment-card reveal">
+            <div class="deployment-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="deployment-info">
+              <h3>Cloud hosted</h3>
+              <p>Fast, secure, high-performance cloud hosting with nothing to maintain locally.</p>
+            </div>
+          </div>
+
+          <div class="deployment-card reveal">
+            <div class="deployment-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="deployment-info">
+              <h3>Custom project branding</h3>
+              <p>Tailored with your development's branding, colours, fonts and logos.</p>
+            </div>
+          </div>
+
+          <div class="deployment-card reveal">
+            <div class="deployment-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div class="deployment-info">
+              <h3>Analytics enabled</h3>
+              <p>Track buyer interactions, unit views, and feature engagement in real time.</p>
             </div>
           </div>
         </div>
@@ -2660,39 +4230,42 @@
     <!-- =========================================================
      CLIENTS
 ========================================================= -->
-    <section class="clients">
+    <section class="clients" id="clients">
       <div class="container">
-        <div class="section-label reveal">Trusted by teams</div>
+        <div class="section-label reveal">Client Partners</div>
         <h2 class="section-title reveal">
-          Built with<br />
-          industry leaders.
+          Trusted by Developers,<br />
+          <span style="color: var(--accent)">Agencies and Brands.</span>
         </h2>
+        <p class="section-description reveal" style="margin-top: 14px; max-width: 680px;">
+          Powering interactive sales galleries and virtual property experiences for forward-thinking real estate teams.
+        </p>
 
         <div class="client-grid reveal">
           <div class="client">
             <img
-              src="images/Client/Client 1.webp"
+              src="images/Client/client-1.webp"
               alt="Client 1"
               loading="lazy"
             />
           </div>
           <div class="client">
             <img
-              src="images/Client/Client 2.webp"
+              src="images/Client/client-2.webp"
               alt="Client 2"
               loading="lazy"
             />
           </div>
           <div class="client">
             <img
-              src="images/Client/Client 3.webp"
+              src="images/Client/client-3.webp"
               alt="Client 3"
               loading="lazy"
             />
           </div>
           <div class="client">
             <img
-              src="images/Client/Client 4.webp"
+              src="images/Client/client-4.webp"
               alt="Client 4"
               loading="lazy"
             />
@@ -2717,7 +4290,7 @@
                   "The right visual experience can completely change how
                   customers understand a property."
                 </div>
-                <div class="quote-author">— OneToBeam Client</div>
+                <div class="quote-author">— Real Estate Developer</div>
               </div>
               <!-- Slide 2 -->
               <div class="testimonial-slide">
@@ -2725,7 +4298,7 @@
                   "Working with them transformed our pre-sales entirely. Buyers
                   can now feel the space before a single brick is laid."
                 </div>
-                <div class="quote-author">— Real Estate Developer</div>
+                <div class="quote-author">— Residential Developer</div>
               </div>
               <!-- Slide 3 -->
               <div class="testimonial-slide">
@@ -2752,9 +4325,172 @@
                   presence. Our client engagement has doubled since launching
                   the interactive maps."
                 </div>
-                <div class="quote-author">— Property Manager</div>
+                <div class="quote-author">— Property Sales Team</div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     FAQ SECTION
+========================================================= -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="faq-container">
+          <div class="faq-header reveal">
+            <div class="section-label">Frequently Asked Questions</div>
+            <h2 class="section-title">
+              Common Questions About<br />
+              <span style="color: var(--accent)">i-PLEX.</span>
+            </h2>
+          </div>
+
+          <div class="faq-list reveal">
+            <details class="faq-item" name="iplex-faq" open>
+              <summary class="faq-question">
+                <h3>What is i-PLEX?</h3>
+                <span class="faq-toggle-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>i-PLEX is an interactive virtual sales gallery for property developments. It connects masterplans, buildings, floor plans, 3D/360° renders, amenities, and project details into a single seamless digital experience for buyers and sales teams.</p>
+              </div>
+            </details>
+
+            <details class="faq-item" name="iplex-faq">
+              <summary class="faq-question">
+                <h3>What is a virtual sales gallery?</h3>
+                <span class="faq-toggle-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>A virtual sales gallery is a digital platform that brings the complete sales gallery experience online. It allows buyers and sales representatives to explore an entire development—including site layouts, unit configurations, and views—from anywhere in the world.</p>
+              </div>
+            </details>
+
+            <details class="faq-item" name="iplex-faq">
+              <summary class="faq-question">
+                <h3>Can I use my existing CGI and 360° renders?</h3>
+                <span class="faq-toggle-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>Yes. Through our BYOC (Bring Your Own Content) model, i-PLEX can integrate your existing CGI renders, 360° panoramas, floor plans, drone footage, site plans, and videos created by your current architects or visualization studios.</p>
+              </div>
+            </details>
+
+            <details class="faq-item" name="iplex-faq">
+              <summary class="faq-question">
+                <h3>What does BYOC mean?</h3>
+                <span class="faq-toggle-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>BYOC stands for "Bring Your Own Content." If you already have marketing assets from your existing creative partners or agencies, you can provide them directly. We structure and power your content within the interactive i-PLEX platform without requiring you to recreate anything.</p>
+              </div>
+            </details>
+
+            <details class="faq-item" name="iplex-faq">
+              <summary class="faq-question">
+                <h3>Do I need a 3D model to use i-PLEX?</h3>
+                <span class="faq-toggle-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>No, a 3D model is not strictly required. i-PLEX can be built using 2D floor plans, standard CGI renders, 360° panoramas, masterplan drawings, and photography. If you have 3D models, they can also be incorporated.</p>
+              </div>
+            </details>
+
+            <details class="faq-item" name="iplex-faq">
+              <summary class="faq-question">
+                <h3>Can OneToBeam create the content for us?</h3>
+                <span class="faq-toggle-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>Yes. Through i-PLEX Studio, OneToBeam provides end-to-end visualization services. We can create 3D renders, CGI, 360° virtual tours, floor plans, and animations from scratch, and deliver the completed interactive sales experience.</p>
+              </div>
+            </details>
+
+            <details class="faq-item" name="iplex-faq">
+              <summary class="faq-question">
+                <h3>Can i-PLEX be embedded into our existing website?</h3>
+                <span class="faq-toggle-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>Yes. i-PLEX is web-native and can be embedded directly into your existing property development or corporate website using standard embed code or an iframe.</p>
+              </div>
+            </details>
+
+            <details class="faq-item" name="iplex-faq">
+              <summary class="faq-question">
+                <h3>Does i-PLEX work on mobile and tablet devices?</h3>
+                <span class="faq-toggle-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>Yes. i-PLEX runs entirely in modern web browsers and is fully responsive across desktop computers, tablets, and smartphones without requiring any app download or installation.</p>
+              </div>
+            </details>
+
+            <details class="faq-item" name="iplex-faq">
+              <summary class="faq-question">
+                <h3>Can i-PLEX be used in a physical sales gallery?</h3>
+                <span class="faq-toggle-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>Yes. The exact same i-PLEX experience can power large-format touchscreens, interactive kiosks, digital video walls, and sales tablets inside your on-site sales gallery or roadshow presentation.</p>
+              </div>
+            </details>
+
+            <details class="faq-item" name="iplex-faq">
+              <summary class="faq-question">
+                <h3>Can property marketing agencies use or white-label i-PLEX?</h3>
+                <span class="faq-toggle-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>Yes. We partner with property marketing agencies, branding agencies, and visualization studios through white-label and production-partner models, allowing you to offer interactive sales technology directly to your developer clients under your brand.</p>
+              </div>
+            </details>
+
+            <details class="faq-item" name="iplex-faq">
+              <summary class="faq-question">
+                <h3>Where is project content hosted?</h3>
+                <span class="faq-toggle-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>i-PLEX is a cloud-hosted platform. All project assets, interactive tours, and media are hosted on secure, high-performance cloud infrastructure for fast global loading, with nothing required to be installed or maintained locally.</p>
+              </div>
+            </details>
+
+            <details class="faq-item" name="iplex-faq">
+              <summary class="faq-question">
+                <h3>Can i-PLEX be used for projects that are not yet constructed?</h3>
+                <span class="faq-toggle-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>Yes, this is one of its primary use cases. i-PLEX is built specifically for off-plan property sales, helping buyers visualize and understand masterplans, towers, floor layouts, and unit finishes long before construction is completed.</p>
+              </div>
+            </details>
           </div>
         </div>
       </div>
@@ -2765,24 +4501,38 @@
 ========================================================= -->
     <section class="cta" id="contact">
       <div class="container reveal">
-        <div class="section-label">Start a project</div>
+        <div class="section-label">Start Your Experience</div>
         <h2>
-          Let's build<br />
-          the next<br />
-          experience.
+          Turn Your Property Content Into an<br />
+          <span style="color: var(--accent)">Interactive Sales Experience.</span>
         </h2>
         <p>
-          Have a real estate project that needs better visualization,
-          interaction or digital presentation?
+          Already have CGI, floor plans or 360° content? Bring it to i-PLEX. Starting from scratch? Our studio can build the complete experience with you.
         </p>
-        <a
-          href="https://wa.me/919663732362?text=Hi%20OneToBeam%2C%20I%27d%20like%20to%20know%20more%20about%20your%20services."
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn btn-primary"
-        >
-          Talk to OneToBeam →
-        </a>
+
+        <div class="cta-actions">
+          <a
+            href="#contact"
+            class="btn btn-primary"
+            onclick="if(window.openModal){openModal();return false;}"
+          >
+            Book a Demo
+          </a>
+          <a href="#iplex" class="btn btn-outline">
+            Explore Live i-PLEX
+          </a>
+        </div>
+
+        <div class="cta-tertiary">
+          <a
+            href="https://wa.me/919663732362?text=Hi%20OneToBeam%2C%20I%27d%20like%20to%20discuss%20a%20BYOC%20project%20for%20our%20development."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cta-text-link"
+          >
+            Discuss a BYOC Project →
+          </a>
+        </div>
       </div>
     </section>
 
@@ -2839,6 +4589,7 @@
             <a href="#iplex">i-PLEX</a>
             <a href="#work">Our Work</a>
             <a href="#solutions">Solutions</a>
+            <a href="#faq">FAQ</a>
           </div>
 
           <div class="footer-column">
@@ -3078,6 +4829,19 @@
             track.style.transform = `translateX(-${currentSlide * 100}%)`;
           }, 5000); // Transitions every 5 seconds
         }
+      });
+
+      /* =========================================================
+   FAQ ACCORDION TOGGLE
+========================================================= */
+      document.querySelectorAll(".faq-item").forEach((item) => {
+        item.addEventListener("toggle", () => {
+          if (item.open) {
+            document.querySelectorAll(".faq-item").forEach((other) => {
+              if (other !== item) other.open = false;
+            });
+          }
+        });
       });
 
       /* =========================================================
