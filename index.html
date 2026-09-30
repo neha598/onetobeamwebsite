@@ -1891,6 +1891,88 @@
       }
 
       /* =========================================================
+   BUYER INTENT & HEATMAP ANALYTICS
+========================================================= */
+      .analytics-section {
+        border-bottom: 1px solid var(--line);
+        padding: 100px 0;
+        background: var(--bg);
+      }
+
+      .analytics-display {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .analytics-media-frame {
+        width: 100%;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: var(--surface);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+      }
+
+      .analytics-image {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+
+      .analytics-metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .analytics-metric-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 28px 24px;
+        transition: var(--transition);
+      }
+
+      .analytics-metric-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-4px);
+        background: var(--surface-2);
+      }
+
+      .analytics-metric-num {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+      }
+
+      .analytics-metric-card h3 {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 8px;
+      }
+
+      .analytics-metric-card p {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      @media (max-width: 900px) {
+        .analytics-metrics-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+        .analytics-section {
+          padding: 70px 0;
+        }
+      }
+      /* =========================================================
    CLIENTS
 ========================================================= */
       .clients {
@@ -3378,9 +3460,6 @@
             <p class="byoc-copy">
               i-PLEX is designed to work with content created by your existing architects, CGI studios, marketing agencies or internal teams. You do not need to recreate your assets or change your existing partners.
             </p>
-            <div class="byoc-types">
-              CGI Renders · 360° Panoramas · Floor Plans · Masterplans · 3D Models · Videos · Drone Footage · Photography · Unit Information · Branding Assets
-            </div>
             <div class="byoc-keyline">
               Your content. Your partners. <span>Powered by i-PLEX.</span>
             </div>
@@ -3398,162 +3477,8 @@
             <p class="studio-copy">
               OneToBeam can create the visual content and build the complete i-PLEX experience for you.
             </p>
-            <div class="studio-types">
-              3D Visualization · CGI · 360° Environments · Floor Plans · Animation · Interactive Experience
-            </div>
             <div class="studio-keyline">
               <span>One partner.</span> From visualization to the finished interactive sales experience.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================
-     HOW IPLEX WORKS (WORKFLOW COMPARISON: BYOC & STUDIO)
-========================================================= -->
-    <section class="how-works" id="how-it-works">
-      <div class="container">
-        <div class="section-label reveal">Workflow Comparison</div>
-        <h2 class="section-title reveal">
-          Different starting points.<br />
-          <span style="color: var(--accent)">The same powerful result.</span>
-        </h2>
-
-        <div class="how-workflows-grid">
-          <!-- Box 1: BYOC Workflow -->
-          <div class="workflow-box reveal">
-            <div class="workflow-box-header">
-              <div class="offering-header-top">
-                <span class="offering-kicker">Already have content?</span>
-                <span class="offering-badge">BYOC</span>
-              </div>
-              <h3>How i-PLEX BYOC Works</h3>
-              <p class="workflow-box-sub">
-                Bring your existing assets—we build and structure your interactive property experience.
-              </p>
-            </div>
-
-            <div class="workflow-steps-list">
-              <div class="workflow-step-item">
-                <div class="workflow-step-num">01</div>
-                <div class="workflow-step-body">
-                  <h4>Bring your content</h4>
-                  <p>CGI, floor plans, 360° panoramas, videos, 3D models, site plans and project information.</p>
-                </div>
-              </div>
-
-              <div class="workflow-step-item">
-                <div class="workflow-step-num">02</div>
-                <div class="workflow-step-body">
-                  <h4>We build your i-PLEX</h4>
-                  <p>Your content is structured into one connected interactive property experience.</p>
-                </div>
-              </div>
-
-              <div class="workflow-step-item">
-                <div class="workflow-step-num">03</div>
-                <div class="workflow-step-body">
-                  <h4>Publish anywhere</h4>
-                  <p>Use i-PLEX on your project website, sales gallery, touchscreen, tablet, roadshow or through a direct link.</p>
-                </div>
-              </div>
-
-              <div class="workflow-step-item">
-                <div class="workflow-step-num">04</div>
-                <div class="workflow-step-body">
-                  <h4>Understand buyer engagement</h4>
-                  <p>Use interaction data and analytics to understand what buyers are exploring.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Box 2: Studio Workflow -->
-          <div class="workflow-box reveal">
-            <div class="workflow-box-header">
-              <div class="offering-header-top">
-                <span class="offering-kicker">Starting from scratch?</span>
-                <span class="offering-badge">STUDIO</span>
-              </div>
-              <h3>How i-PLEX Studio Works</h3>
-              <p class="workflow-box-sub">
-                We create all visual content and build the complete interactive property experience.
-              </p>
-            </div>
-
-            <div class="workflow-steps-list">
-              <div class="workflow-step-item">
-                <div class="workflow-step-num">01</div>
-                <div class="workflow-step-body">
-                  <h4>We create your visual content</h4>
-                  <p>3D visualization, CGI renders, 360° environments, architectural animation and floor plans crafted by our studio.</p>
-                </div>
-              </div>
-
-              <div class="workflow-step-item">
-                <div class="workflow-step-num">02</div>
-                <div class="workflow-step-body">
-                  <h4>We build your i-PLEX</h4>
-                  <p>Your new custom assets are structured into one connected interactive property experience.</p>
-                </div>
-              </div>
-
-              <div class="workflow-step-item">
-                <div class="workflow-step-num">03</div>
-                <div class="workflow-step-body">
-                  <h4>Publish anywhere</h4>
-                  <p>Use i-PLEX on your project website, sales gallery, touchscreen, tablet, roadshow or through a direct link.</p>
-                </div>
-              </div>
-
-              <div class="workflow-step-item">
-                <div class="workflow-step-num">04</div>
-                <div class="workflow-step-body">
-                  <h4>Understand buyer engagement</h4>
-                  <p>Use interaction data and analytics to understand what buyers are exploring.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================
-     CONTENT FLEXIBILITY (HOSTING & PARTNERS)
-========================================================= -->
-    <section class="content-flexibility" id="content-flexibility">
-      <div class="container">
-        <div class="content-flexibility-box reveal">
-          <div class="section-label">Content Flexibility</div>
-          <h2 class="content-flexibility-title">
-            Your Content. Your Brand. <span style="color: var(--accent)">Your Project.</span>
-          </h2>
-
-          <div class="content-flexibility-grid">
-            <div class="content-flexibility-item">
-              <div class="content-flexibility-item-header">
-                <div class="content-flexibility-item-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-                </div>
-                <div class="content-flexibility-item-title">Flexible Asset Hosting</div>
-              </div>
-              <p>
-                i-PLEX can host and deliver your project content as part of the interactive experience, whether the assets were created by OneToBeam, your architect, your marketing agency, your CGI studio or another partner.
-              </p>
-            </div>
-
-            <div class="content-flexibility-item">
-              <div class="content-flexibility-item-header">
-                <div class="content-flexibility-item-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                </div>
-                <div class="content-flexibility-item-title">Creative Partner Continuity</div>
-              </div>
-              <p>
-                Using i-PLEX does not require you to replace your existing content partners. You can continue working with the creative teams and agencies you already trust—OneToBeam simply powers the interactive experience behind the scenes.
-              </p>
             </div>
           </div>
         </div>
@@ -4205,7 +4130,51 @@
           </div>
         </div>
       </div>
+    </section>    <!-- =========================================================
+     BUYER INTENT & HEATMAP ANALYTICS
+========================================================= -->
+    <section class="analytics-section" id="analytics">
+      <div class="container">
+        <div class="section-label reveal">Buyer Intelligence &amp; Analytics</div>
+        <h2 class="section-title reveal">
+          Understand Buyer Intent.<br />
+          <span style="color: var(--accent)">Down to the Single Click.</span>
+        </h2>
+        <p class="section-description reveal" style="max-width: 720px; margin-top: 14px;">
+          i-PLEX captures buyer interactions across towers, floors, and individual apartment typologies in real time. Visual click heatmaps reveal which units generate the highest customer demand, helping sales teams prioritize high-intent leads and close faster.
+        </p>
+
+        <div class="analytics-display reveal">
+          <div class="analytics-media-frame">
+            <img
+              src="images/Analytics.png"
+              alt="i-PLEX Building Click Heatmap &amp; Customer Engagement Analytics"
+              class="analytics-image"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="analytics-metrics-grid">
+            <div class="analytics-metric-card">
+              <div class="analytics-metric-num">01</div>
+              <h3>Building &amp; Unit Heatmaps</h3>
+              <p>Track real-time click volume across 3D building exteriors, towers, and unit layouts to identify the most popular spaces.</p>
+            </div>
+            <div class="analytics-metric-card">
+              <div class="analytics-metric-num">02</div>
+              <h3>Visitor Dwell Time</h3>
+              <p>See exactly how much time prospective buyers spend exploring virtual showflats, panoramic views, and amenities.</p>
+            </div>
+            <div class="analytics-metric-card">
+              <div class="analytics-metric-num">03</div>
+              <h3>High-Intent Insights</h3>
+              <p>Equip your sales team with actionable engagement data before every follow-up call, knowing precisely what each customer wants.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
+
 
     <!-- =========================================================
      CLIENTS
