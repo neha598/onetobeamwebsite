@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -711,12 +711,12 @@
         color: var(--accent);
       }
 
-      /* =========================================================
-   IPLEX SOLAR SYSTEM ECOSYSTEM
+            /* =========================================================
+   IPLEX TILTED ELLIPTICAL ORBIT ECOSYSTEM
 ========================================================= */
       .solar-ecosystem {
-        padding: 100px 0 110px;
-        background: radial-gradient(circle at 50% 30%, #0d1a30 0%, #08101e 40%, #060910 70%, #0a0a0a 100%);
+        padding: 90px 0 100px;
+        background: radial-gradient(circle at 50% 50%, rgba(198, 165, 92, 0.05) 0%, rgba(10, 10, 10, 0.95) 50%, #0a0a0a 100%), #0a0a0a;
         border-bottom: 1px solid var(--line);
         position: relative;
         overflow: hidden;
@@ -727,50 +727,48 @@
         position: absolute;
         inset: 0;
         background-image: 
-          radial-gradient(1.5px 1.5px at 12% 18%, rgba(212, 175, 55, 0.45) 50%, transparent),
-          radial-gradient(1px 1px at 85% 12%, rgba(255, 255, 255, 0.35) 50%, transparent),
-          radial-gradient(1.5px 1.5px at 78% 75%, rgba(198, 165, 92, 0.4) 50%, transparent),
-          radial-gradient(1px 1px at 20% 82%, rgba(255, 255, 255, 0.3) 50%, transparent),
-          radial-gradient(2px 2px at 45% 92%, rgba(212, 175, 55, 0.5) 50%, transparent),
-          radial-gradient(1px 1px at 62% 28%, rgba(255, 255, 255, 0.25) 50%, transparent);
-        opacity: 0.8;
+          radial-gradient(1.5px 1.5px at 15% 20%, rgba(212, 175, 55, 0.35) 50%, transparent),
+          radial-gradient(1px 1px at 85% 15%, rgba(255, 255, 255, 0.25) 50%, transparent),
+          radial-gradient(1.5px 1.5px at 75% 80%, rgba(198, 165, 92, 0.3) 50%, transparent),
+          radial-gradient(1px 1px at 20% 75%, rgba(255, 255, 255, 0.2) 50%, transparent),
+          radial-gradient(2px 2px at 50% 90%, rgba(212, 175, 55, 0.35) 50%, transparent);
+        opacity: 0.7;
         pointer-events: none;
       }
 
       .solar-header {
         text-align: center;
         max-width: 820px;
-        margin: 0 auto 50px;
+        margin: 0 auto 36px;
         position: relative;
         z-index: 5;
       }
 
       .solar-title {
-        font-size: clamp(32px, 4.2vw, 52px);
+        font-size: clamp(30px, 4vw, 50px);
         font-weight: 500;
         letter-spacing: -1.2px;
         line-height: 1.15;
-        margin-bottom: 18px;
+        margin-bottom: 16px;
       }
 
       .solar-lead {
         color: var(--muted);
-        font-size: clamp(15px, 1.4vw, 17px);
+        font-size: clamp(14.5px, 1.35vw, 16.5px);
         line-height: 1.6;
-        max-width: 700px;
-        margin: 0 auto 30px;
+        max-width: 680px;
+        margin: 0 auto 24px;
       }
 
       .solar-controls {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
-        gap: 12px;
+        gap: 14px;
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid var(--line);
         border-radius: 50px;
-        padding: 6px 12px;
+        padding: 6px 18px;
         backdrop-filter: blur(12px);
       }
 
@@ -781,7 +779,6 @@
         font-size: 12px;
         font-weight: 500;
         color: var(--accent);
-        padding: 6px 12px;
       }
 
       .solar-badge .pulse-dot {
@@ -797,97 +794,61 @@
         display: inline-flex;
         align-items: center;
         gap: 7px;
-        background: transparent;
-        border: 1px solid transparent;
-        color: var(--muted);
-        padding: 7px 15px;
+        background: rgba(198, 165, 92, 0.12);
+        border: 1px solid rgba(198, 165, 92, 0.3);
+        color: var(--accent);
+        padding: 5px 14px;
         border-radius: 30px;
-        font-size: 12.5px;
+        font-size: 12px;
         font-weight: 500;
         cursor: pointer;
         transition: all 0.25s ease;
       }
 
       .solar-btn:hover {
-        color: var(--text);
-        background: rgba(255, 255, 255, 0.06);
+        background: rgba(198, 165, 92, 0.22);
+        border-color: var(--accent);
+        color: #fff;
       }
 
-      .solar-btn.active {
-        background: rgba(198, 165, 92, 0.16);
-        color: var(--accent);
-        border-color: rgba(198, 165, 92, 0.35);
-      }
-
-      .solar-btn svg {
-        flex-shrink: 0;
-      }
-
+      /* Stage outer container */
       .solar-stage-outer {
         position: relative;
         width: 100%;
-        max-width: 1060px;
+        max-width: 1100px;
         margin: 0 auto;
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 980px;
+        min-height: 680px;
       }
 
       .solar-stage {
         position: relative;
-        width: 960px;
-        height: 960px;
+        width: 100%;
+        max-width: 1000px;
+        height: 640px;
         display: flex;
         justify-content: center;
         align-items: center;
         user-select: none;
-        transition: transform 0.3s ease;
       }
 
       .solar-stage-glow {
         position: absolute;
-        width: 620px;
-        height: 620px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(198, 165, 92, 0.14) 0%, rgba(16, 35, 68, 0.2) 40%, transparent 70%);
-        pointer-events: none;
-        z-index: 1;
-        filter: blur(20px);
-      }
-
-      .solar-orbit-line {
-        position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        width: 520px;
+        height: 380px;
         border-radius: 50%;
+        background: radial-gradient(ellipse, rgba(198, 165, 92, 0.12) 0%, rgba(13, 26, 48, 0.15) 45%, transparent 70%);
         pointer-events: none;
+        z-index: 1;
+        filter: blur(25px);
       }
 
-      .solar-orbit-line.main-orbit {
-        width: 740px;
-        height: 740px;
-        border: 1px dashed rgba(198, 165, 92, 0.28);
-        box-shadow: 0 0 30px rgba(198, 165, 92, 0.06);
-        z-index: 2;
-      }
-
-      .solar-orbit-line.inner-orbit {
-        width: 470px;
-        height: 470px;
-        border: 1px solid rgba(198, 165, 92, 0.12);
-        z-index: 2;
-      }
-
-      .solar-orbit-line.outer-orbit {
-        width: 890px;
-        height: 890px;
-        border: 1px solid rgba(255, 255, 255, 0.04);
-        z-index: 2;
-      }
-
-      .solar-rays-svg {
+      .solar-ellipse-svg {
         position: absolute;
         inset: 0;
         width: 100%;
@@ -896,111 +857,180 @@
         z-index: 2;
       }
 
-      .solar-orbit-rotator {
+      /* Central Sun Hub (i-PLEX) */
+      .solar-center-sun {
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 740px;
-        height: 740px;
-        margin-top: -370px;
-        margin-left: -370px;
+        transform: translate(-50%, -50%);
+        width: 250px;
+        height: 250px;
         border-radius: 50%;
-        z-index: 10;
-        transform-origin: center center;
-        animation: solarOrbit 120s linear infinite;
+        z-index: 25;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        cursor: default;
       }
 
-      @keyframes solarOrbit {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
+      .sun-halo-glow {
+        position: absolute;
+        inset: -15px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(198, 165, 92, 0.28) 0%, rgba(16, 28, 48, 0.35) 50%, transparent 75%);
+        filter: blur(14px);
+        animation: sunPulse 6s ease-in-out infinite alternate;
+        pointer-events: none;
       }
 
-      .solar-stage:hover .solar-orbit-rotator,
-      .solar-stage:hover .solar-planet-card,
-      .solar-stage.is-paused .solar-orbit-rotator,
-      .solar-stage.is-paused .solar-planet-card {
-        animation-play-state: paused !important;
+      .sun-inner-sphere {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: radial-gradient(circle at 45% 35%, #162c4d 0%, #0d1a2d 55%, #060b13 100%);
+        border: 2px solid rgba(212, 175, 55, 0.85);
+        box-shadow: 
+          0 0 35px rgba(198, 165, 92, 0.28),
+          0 15px 35px rgba(0, 0, 0, 0.75),
+          inset 0 0 30px rgba(198, 165, 92, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 22px 18px;
       }
 
+      .sun-inner-sphere::before {
+        content: '';
+        position: absolute;
+        inset: 7px;
+        border-radius: 50%;
+        border: 1px dashed rgba(212, 175, 55, 0.4);
+        pointer-events: none;
+      }
+
+      .sun-core-tag {
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: rgba(198, 165, 92, 0.15);
+        border: 1px solid rgba(198, 165, 92, 0.3);
+        padding: 2px 9px;
+        border-radius: 50px;
+        margin-bottom: 6px;
+      }
+
+      .sun-core-title {
+        font-size: 34px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        line-height: 1;
+        margin-bottom: 4px;
+        background: linear-gradient(135deg, #fff2c6 0%, #dfb76c 50%, #99732b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 2px 8px rgba(198, 165, 92, 0.3));
+      }
+
+      .sun-core-sub {
+        font-size: 8.5px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #dfcaa2;
+        line-height: 1.25;
+        margin-bottom: 8px;
+        max-width: 190px;
+      }
+
+      .sun-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        width: 120px;
+        margin-bottom: 8px;
+      }
+
+      .sun-div-line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.6), transparent);
+      }
+
+      .sun-div-diamond {
+        font-size: 8px;
+        color: var(--accent);
+        line-height: 1;
+      }
+
+      .sun-core-tagline {
+        font-size: 10px;
+        line-height: 1.4;
+        color: #eaeae5;
+        font-style: italic;
+        max-width: 180px;
+      }
+
+      /* 9 Orbiting Satellite Nodes */
       .solar-planet-node {
         position: absolute;
         top: 50%;
         left: 50%;
         width: 0;
         height: 0;
-        transform-origin: 0 0;
-        transform: rotate(var(--angle)) translate(370px) rotate(calc(-1 * var(--angle)));
-        z-index: 15;
-      }
-
-      .solar-planet-card {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 146px;
-        margin-left: -73px;
-        margin-top: -46px;
         cursor: pointer;
-        transform-origin: center center;
-        animation: solarCounterOrbit 120s linear infinite;
-      }
-
-      @keyframes solarCounterOrbit {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(-360deg); }
+        transition: z-index 0.2s ease;
       }
 
       .planet-card-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: translate(-50%, -50%);
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
+        width: 130px;
+        transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
       }
 
-      .solar-planet-card:hover .planet-card-inner {
-        transform: scale(1.16);
+      .solar-planet-node:hover .planet-card-inner,
+      .solar-planet-node.is-active .planet-card-inner {
+        transform: translate(-50%, -50%) scale(1.14);
       }
 
       .planet-icon-badge {
-        width: 52px;
-        height: 52px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
         background: radial-gradient(circle at 35% 30%, #152642 0%, #0c172a 60%, #060b14 100%);
         border: 1.5px solid rgba(198, 165, 92, 0.7);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), 0 0 14px rgba(198, 165, 92, 0.2);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 14px rgba(198, 165, 92, 0.2);
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--accent);
-        margin-bottom: 8px;
+        margin-bottom: 7px;
         transition: all 0.3s ease;
         position: relative;
       }
 
-      .solar-planet-card:hover .planet-icon-badge {
+      .solar-planet-node:hover .planet-icon-badge,
+      .solar-planet-node.is-active .planet-icon-badge {
         border-color: #ffd875;
-        box-shadow: 0 0 25px rgba(212, 175, 55, 0.75), 0 0 45px rgba(198, 165, 92, 0.4);
+        box-shadow: 0 0 25px rgba(212, 175, 55, 0.85), 0 0 45px rgba(198, 165, 92, 0.45);
         color: #fff;
         transform: translateY(-2px);
-      }
-
-      .planet-icon-badge::after {
-        content: '';
-        position: absolute;
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background: var(--accent);
-        top: -3px;
-        right: 7px;
-        box-shadow: 0 0 6px var(--accent);
       }
 
       .planet-icon-badge svg {
         width: 22px;
         height: 22px;
-        transition: transform 0.3s ease;
       }
 
       .planet-title {
@@ -1011,324 +1041,242 @@
         text-transform: uppercase;
         color: #f7f7f5;
         line-height: 1.25;
-        margin-bottom: 3px;
+        margin-bottom: 2px;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
         transition: color 0.3s ease;
       }
 
-      .solar-planet-card:hover .planet-title {
+      .solar-planet-node:hover .planet-title,
+      .solar-planet-node.is-active .planet-title {
         color: var(--accent);
       }
 
       .planet-desc {
         display: block;
-        font-size: 10px;
-        line-height: 1.35;
+        font-size: 9.5px;
+        line-height: 1.3;
         color: #a5a59f;
-        max-width: 140px;
+        max-width: 125px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
         transition: color 0.3s ease;
       }
 
-      .solar-planet-card:hover .planet-desc {
-        color: #e2e2dc;
+      .solar-planet-node:hover .planet-desc,
+      .solar-planet-node.is-active .planet-desc {
+        color: #eaeae5;
       }
 
-      .solar-center-sun {
+      /* Video Popup Box */
+      .planet-popup-box {
         position: absolute;
-        top: 50%;
+        bottom: 64px;
         left: 50%;
-        transform: translate(-50%, -50%);
-        width: 300px;
-        height: 300px;
-        border-radius: 50%;
-        z-index: 30;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        pointer-events: auto;
-      }
-
-      .sun-halo-glow {
-        position: absolute;
-        inset: -20px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(198, 165, 92, 0.28) 0%, rgba(13, 26, 48, 0.4) 50%, transparent 75%);
-        filter: blur(16px);
-        animation: sunPulse 6s ease-in-out infinite alternate;
-        pointer-events: none;
-      }
-
-      @keyframes sunPulse {
-        0% { transform: scale(0.96); opacity: 0.7; }
-        100% { transform: scale(1.05); opacity: 1; }
-      }
-
-      .sun-inner-sphere {
-        position: absolute;
-        inset: 0;
-        border-radius: 50%;
-        background: radial-gradient(circle at 45% 35%, #18335c 0%, #0d1e37 55%, #050c18 100%);
-        border: 2.5px solid rgba(212, 175, 55, 0.85);
+        transform: translateX(-50%) translateY(10px) scale(0.92);
+        width: 240px;
+        background: rgba(14, 14, 14, 0.96);
+        border: 1.5px solid rgba(198, 165, 92, 0.55);
+        border-radius: var(--radius-md);
         box-shadow: 
-          0 0 40px rgba(198, 165, 92, 0.3),
-          0 15px 35px rgba(0, 0, 0, 0.7),
-          inset 0 0 35px rgba(198, 165, 92, 0.25);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 26px 22px;
-        cursor: default;
+          0 20px 45px rgba(0, 0, 0, 0.85),
+          0 0 25px rgba(198, 165, 92, 0.25);
+        backdrop-filter: blur(16px);
+        padding: 10px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+        z-index: 100;
+        text-align: left;
       }
 
-      .sun-inner-sphere::before {
+      .planet-popup-box::after {
         content: '';
         position: absolute;
-        inset: 8px;
-        border-radius: 50%;
-        border: 1px dashed rgba(212, 175, 55, 0.4);
-        pointer-events: none;
+        bottom: -7px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 7px solid rgba(198, 165, 92, 0.7);
       }
 
-      .sun-core-tag {
-        font-size: 8.5px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--accent);
-        background: rgba(198, 165, 92, 0.15);
-        border: 1px solid rgba(198, 165, 92, 0.3);
-        padding: 3px 10px;
-        border-radius: 50px;
-        margin-bottom: 8px;
+      .solar-planet-node:hover .planet-popup-box,
+      .solar-planet-node.is-active .planet-popup-box {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0) scale(1);
       }
 
-      .sun-core-title {
-        font-size: 40px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        line-height: 1;
-        margin-bottom: 6px;
-        background: linear-gradient(135deg, #fff2c6 0%, #dfb76c 50%, #99732b 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        filter: drop-shadow(0 2px 8px rgba(198, 165, 92, 0.3));
-      }
-
-      .sun-core-sub {
-        font-size: 9.5px;
-        font-weight: 600;
-        letter-spacing: 1.8px;
-        text-transform: uppercase;
-        color: #dfcaa2;
-        line-height: 1.3;
-        margin-bottom: 12px;
-        max-width: 220px;
-      }
-
-      .sun-divider {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        width: 140px;
-        margin-bottom: 10px;
-      }
-
-      .sun-div-line {
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.6), transparent);
-      }
-
-      .sun-div-diamond {
-        font-size: 9px;
-        color: var(--accent);
-        line-height: 1;
-      }
-
-      .sun-core-tagline {
-        font-size: 11px;
-        line-height: 1.45;
-        color: #eaeae5;
-        font-style: italic;
-        max-width: 210px;
-        margin-bottom: 10px;
-      }
-
-      .sun-live-inspect {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        background: rgba(0, 0, 0, 0.4);
-        border: 1px solid rgba(198, 165, 92, 0.3);
-        border-radius: 30px;
-        padding: 4px 12px;
-        font-size: 9.5px;
-        color: var(--accent);
-        max-width: 230px;
-        white-space: nowrap;
+      .popup-video-wrap {
+        width: 100%;
+        height: 125px;
+        border-radius: 8px;
         overflow: hidden;
-        text-overflow: ellipsis;
-        transition: all 0.3s ease;
+        background: #000;
+        position: relative;
+        margin-bottom: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
       }
 
-      .sun-live-inspect.active-highlight {
-        background: rgba(198, 165, 92, 0.2);
-        border-color: #ffd875;
-        color: #fff;
-        box-shadow: 0 0 12px rgba(198, 165, 92, 0.4);
-      }
-
-      .solar-grid-wrapper {
-        display: none;
-        margin-top: 40px;
-      }
-
-      .solar-grid-wrapper.is-active {
+      .popup-video-wrap video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         display: block;
       }
 
-      .solar-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 20px;
+      .popup-meta {
+        padding: 2px 4px 4px;
       }
 
-      .solar-grid-card {
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: var(--radius-md);
-        padding: 26px 24px;
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .solar-grid-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, rgba(198, 165, 92, 0.4), transparent);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .solar-grid-card:hover {
-        border-color: rgba(198, 165, 92, 0.5);
-        transform: translateY(-3px);
-        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
-      }
-
-      .solar-grid-card:hover::before {
-        opacity: 1;
-      }
-
-      .grid-card-top {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        margin-bottom: 16px;
-      }
-
-      .grid-icon-box {
-        width: 46px;
-        height: 46px;
-        border-radius: 50%;
-        background: radial-gradient(circle at 35% 30%, #152642 0%, #0c172a 60%, #060b14 100%);
-        border: 1.5px solid rgba(198, 165, 92, 0.5);
-        color: var(--accent);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-
-      .grid-icon-box svg {
-        width: 20px;
-        height: 20px;
-      }
-
-      .grid-meta {
-        flex: 1;
-      }
-
-      .grid-kicker {
-        font-size: 10.5px;
-        font-weight: 600;
-        color: var(--accent);
+      .popup-kicker {
+        font-size: 9.5px;
+        font-weight: 700;
         letter-spacing: 1px;
         text-transform: uppercase;
+        color: var(--accent);
         display: block;
         margin-bottom: 2px;
       }
 
-      .grid-title {
-        font-size: 16px;
+      .popup-title {
+        font-size: 13.5px;
         font-weight: 600;
-        color: var(--text);
-        letter-spacing: -0.2px;
+        color: #fff;
+        margin-bottom: 4px;
         line-height: 1.25;
       }
 
-      .grid-desc {
+      .popup-desc {
+        font-size: 11px;
+        line-height: 1.4;
         color: var(--muted);
-        font-size: 13.5px;
-        line-height: 1.55;
         margin: 0;
       }
 
-      @media (max-width: 1080px) {
-        .solar-stage {
-          transform: scale(0.85);
-        }
-        .solar-stage-outer {
-          min-height: 840px;
-        }
+      .popup-close-btn {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        font-size: 12px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 5;
       }
 
-      @media (max-width: 920px) {
-        .solar-stage {
-          transform: scale(0.72);
-        }
-        .solar-stage-outer {
-          min-height: 720px;
-        }
+      .popup-close-btn:hover {
+        background: rgba(198, 165, 92, 0.8);
+        color: #000;
       }
 
-      @media (max-width: 768px) {
+      /* Responsive Media Queries */
+      @media (max-width: 900px) {
         .solar-stage-outer {
+          min-height: 600px;
+        }
+        .solar-stage {
+          height: 560px;
+        }
+        .solar-center-sun {
+          width: 210px;
+          height: 210px;
+        }
+        .sun-core-title {
+          font-size: 28px;
+        }
+        .sun-core-sub {
+          font-size: 7.5px;
+        }
+        .planet-card-inner {
+          width: 110px;
+        }
+        .planet-icon-badge {
+          width: 44px;
+          height: 44px;
+        }
+        .planet-icon-badge svg {
+          width: 19px;
+          height: 19px;
+        }
+        .planet-title {
+          font-size: 10px;
+        }
+        .planet-desc {
           display: none;
         }
-        .solar-stage-outer.mobile-force-show {
-          display: flex;
-          transform: scale(0.5);
-          margin: -160px 0;
+        .planet-popup-box {
+          width: 210px;
         }
-        .solar-grid-wrapper {
-          display: block !important;
-        }
-
-        .mobile-sun-hero {
-          display: block;
-          margin-bottom: 24px;
-          background: radial-gradient(circle at 50% 30%, #15294a 0%, #0d1c33 60%, #070d18 100%);
-          border: 2px solid rgba(212, 175, 55, 0.7);
-          border-radius: var(--radius-md);
-          padding: 32px 24px;
-          text-align: center;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 25px rgba(198, 165, 92, 0.15);
+        .popup-video-wrap {
+          height: 110px;
         }
       }
 
-      @media (min-width: 769px) {
-        .mobile-sun-hero {
+      @media (max-width: 600px) {
+        .solar-ecosystem {
+          padding: 70px 0 80px;
+        }
+        .solar-stage-outer {
+          min-height: 500px;
+        }
+        .solar-stage {
+          height: 480px;
+        }
+        .solar-center-sun {
+          width: 170px;
+          height: 170px;
+          padding: 10px;
+        }
+        .sun-core-title {
+          font-size: 24px;
+        }
+        .sun-core-sub {
           display: none;
+        }
+        .sun-core-tagline {
+          font-size: 8.5px;
+          max-width: 130px;
+        }
+        .sun-divider {
+          width: 80px;
+          margin-bottom: 4px;
+        }
+        .planet-card-inner {
+          width: 90px;
+        }
+        .planet-icon-badge {
+          width: 38px;
+          height: 38px;
+        }
+        .planet-icon-badge svg {
+          width: 17px;
+          height: 17px;
+        }
+        .planet-title {
+          font-size: 8.5px;
+        }
+        .planet-popup-box {
+          width: 190px;
+          bottom: 50px;
+        }
+        .popup-video-wrap {
+          height: 95px;
+        }
+        .popup-title {
+          font-size: 12px;
+        }
+        .popup-desc {
+          font-size: 10px;
         }
       }
 
@@ -4027,7 +3975,7 @@
       </div>
     </section>
 
-    <!-- =========================================================
+        <!-- =========================================================
      IPLEX SOLAR SYSTEM ECOSYSTEM
 ========================================================= -->
     <section class="solar-ecosystem" id="solar-ecosystem">
@@ -4041,265 +3989,43 @@
             Every perspective, sales module, and visualization tool connects into one unified, interactive property platform.
           </p>
 
-          <!-- Controls Bar -->
+          <!-- Controls Bar (No Grid View) -->
           <div class="solar-controls">
             <div class="solar-badge">
               <span class="pulse-dot"></span>
-              <span>14 Connected Capabilities</span>
+              <span>9 Connected Capabilities</span>
             </div>
 
-            <button type="button" class="solar-btn active" id="btnOrbitView" aria-label="Switch to Orbit View">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(-30 12 12)"/></svg>
-              <span>Orbit View</span>
-            </button>
-
-            <button type="button" class="solar-btn" id="btnGridView" aria-label="Switch to Grid View">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-              <span>Grid View</span>
-            </button>
-
-            <button type="button" class="solar-btn" id="btnPauseOrbit" aria-label="Pause or Resume Orbit Animation" title="Pause or Resume Orbit">
-              <svg class="icon-pause" width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-              <svg class="icon-play" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              <span class="pause-label">Pause</span>
+            <button type="button" class="solar-btn" id="btnPauseOrbit" aria-label="Toggle Orbit Rotation" title="Pause or Resume Orbit">
+              <svg class="icon-pause" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+              <svg class="icon-play" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="display:none;"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              <span class="pause-label">Pause Orbit</span>
             </button>
           </div>
         </div>
 
-        <!-- MOBILE SUN FEATURE CARD (Visible on Phone Screens) -->
-        <div class="mobile-sun-hero reveal">
-          <div class="sun-core-tag">PLATFORM CORE</div>
-          <h3 class="sun-core-title" style="font-size: 34px;">i-PLEX</h3>
-          <div class="sun-core-sub">INTERACTIVE PROJECT LAUNCH EXPERIENCE</div>
-          <div class="sun-divider" style="margin: 0 auto 10px;">
-            <span class="sun-div-line"></span>
-            <span class="sun-div-diamond">◈</span>
-            <span class="sun-div-line"></span>
-          </div>
-          <p class="sun-core-tagline" style="margin: 0 auto;">One Platform. Every Perspective. Your Project, Reimagined.</p>
-        </div>
-
-        <!-- 1. SOLAR ORBIT STAGE (Desktop & Tablet) -->
+        <!-- TILTED ELLIPTICAL ORBIT STAGE -->
         <div class="solar-stage-outer reveal" id="solarStageOuter">
           <div class="solar-stage" id="solarStage">
             <!-- Background Glow -->
             <div class="solar-stage-glow"></div>
 
-            <!-- Orbit Track Lines -->
-            <div class="solar-orbit-line outer-orbit"></div>
-            <div class="solar-orbit-line main-orbit"></div>
-            <div class="solar-orbit-line inner-orbit"></div>
-
-            <!-- Connecting Rays Background SVG -->
-            <svg class="solar-rays-svg" viewBox="0 0 960 960" aria-hidden="true">
+            <!-- SVG Tilted Elliptical Orbit Track -->
+            <svg class="solar-ellipse-svg" id="solarEllipseSvg" viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
               <defs>
-                <linearGradient id="rayGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#c6a55c" stop-opacity="0.25"/>
-                  <stop offset="100%" stop-color="#c6a55c" stop-opacity="0.02"/>
+                <linearGradient id="orbitGlowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#c6a55c" stop-opacity="0.6"/>
+                  <stop offset="50%" stop-color="#c6a55c" stop-opacity="0.15"/>
+                  <stop offset="100%" stop-color="#c6a55c" stop-opacity="0.6"/>
                 </linearGradient>
               </defs>
-              <line x1="480" y1="480" x2="480" y2="110" stroke="url(#rayGrad)" stroke-width="1" stroke-dasharray="2 4"/>
-              <line x1="480" y1="480" x2="640" y2="147" stroke="url(#rayGrad)" stroke-width="1" stroke-dasharray="2 4"/>
-              <line x1="480" y1="480" x2="769" y2="249" stroke="url(#rayGrad)" stroke-width="1" stroke-dasharray="2 4"/>
-              <line x1="480" y1="480" x2="841" y2="398" stroke="url(#rayGrad)" stroke-width="1" stroke-dasharray="2 4"/>
-              <line x1="480" y1="480" x2="841" y2="562" stroke="url(#rayGrad)" stroke-width="1" stroke-dasharray="2 4"/>
-              <line x1="480" y1="480" x2="769" y2="711" stroke="url(#rayGrad)" stroke-width="1" stroke-dasharray="2 4"/>
-              <line x1="480" y1="480" x2="640" y2="813" stroke="url(#rayGrad)" stroke-width="1" stroke-dasharray="2 4"/>
-              <line x1="480" y1="480" x2="480" y2="850" stroke="url(#rayGrad)" stroke-width="1" stroke-dasharray="2 4"/>
-              <line x1="480" y1="480" x2="320" y2="813" stroke="url(#rayGrad)" stroke-width="1" stroke-dasharray="2 4"/>
-              <line x1="480" y1="480" x2="191" y2="711" stroke="url(#rayGrad)" stroke-width="1" stroke-dasharray="2 4"/>
-              <line x1="480" y1="480" x2="119" y2="562" stroke="url(#rayGrad)" stroke-width="1" stroke-dasharray="2 4"/>
-              <line x1="480" y1="480" x2="119" y2="398" stroke="url(#rayGrad)" stroke-width="1" stroke-dasharray="2 4"/>
-              <line x1="480" y1="480" x2="191" y2="249" stroke="url(#rayGrad)" stroke-width="1" stroke-dasharray="2 4"/>
-              <line x1="480" y1="480" x2="320" y2="147" stroke="url(#rayGrad)" stroke-width="1" stroke-dasharray="2 4"/>
+              <!-- Faint Outer Orbit Line -->
+              <ellipse cx="500" cy="320" rx="440" ry="235" transform="rotate(-28 500 320)" fill="none" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1"/>
+              <!-- Main Dashed Elliptical Track -->
+              <ellipse cx="500" cy="320" rx="420" ry="220" transform="rotate(-28 500 320)" fill="none" stroke="url(#orbitGlowGrad)" stroke-width="1.5" stroke-dasharray="6 8"/>
+              <!-- Inner Subtle Orbit -->
+              <ellipse cx="500" cy="320" rx="260" ry="135" transform="rotate(-28 500 320)" fill="none" stroke="rgba(198, 165, 92, 0.12)" stroke-width="1"/>
             </svg>
-
-            <!-- Revolving Orbit Ring with 14 Nodes -->
-            <div class="solar-orbit-rotator" id="solarOrbitRotator">
-
-              <!-- 0: BIRD'S-EYE VIEW (-90deg) -->
-              <div class="solar-planet-node" style="--angle: -90deg;" data-name="Bird's-Eye View" data-desc="Aerial view from all 4 directions, nearby highlights & compass.">
-                <div class="solar-planet-card">
-                  <div class="planet-card-inner">
-                    <div class="planet-icon-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="12" r="5"/><circle cx="17" cy="12" r="5"/><path d="M10 12h4"/><path d="M12 7v2"/></svg>
-                    </div>
-                    <span class="planet-title">BIRD'S-EYE VIEW</span>
-                    <span class="planet-desc">Aerial view from all 4 directions, nearby highlights & compass.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 1: 360° EXTERIOR (-64.29deg) -->
-              <div class="solar-planet-node" style="--angle: -64.29deg;" data-name="360° Exterior" data-desc="Explore the project from every angle.">
-                <div class="solar-planet-card">
-                  <div class="planet-card-inner">
-                    <div class="planet-icon-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 12A9.5 9.5 0 1 1 12 2.5"/><polyline points="21.5 2.5 21.5 12 12 12"/><text x="7" y="15" font-size="6.5" font-weight="bold" fill="currentColor">360</text></svg>
-                    </div>
-                    <span class="planet-title">360° EXTERIOR</span>
-                    <span class="planet-desc">Explore the project from every angle.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 2: MASTER LAYOUT (-38.57deg) -->
-              <div class="solar-planet-node" style="--angle: -38.57deg;" data-name="Master Layout" data-desc="View the entire project size, build area and more.">
-                <div class="solar-planet-card">
-                  <div class="planet-card-inner">
-                    <div class="planet-icon-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/><path d="M15 9v12"/></svg>
-                    </div>
-                    <span class="planet-title">MASTER LAYOUT</span>
-                    <span class="planet-desc">View the entire project size, build area and more.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 3: CONFIGURATIONS (-12.86deg) -->
-              <div class="solar-planet-node" style="--angle: -12.86deg;" data-name="Configurations" data-desc="2D & isometric/3D floor plans with unit 360 walkthroughs.">
-                <div class="solar-planet-card">
-                  <div class="planet-card-inner">
-                    <div class="planet-icon-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21 16-9 5-9-5V8l9-5 9 5v8z"/><path d="m3 8 9 5 9-5"/><path d="M12 13v8"/></svg>
-                    </div>
-                    <span class="planet-title">CONFIGURATIONS</span>
-                    <span class="planet-desc">2D & isometric/3D floor plans with unit 360 walkthroughs.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 4: BALCONY VIEWS (12.86deg) -->
-              <div class="solar-planet-node" style="--angle: 12.86deg;" data-name="Balcony Views" data-desc="Experience the view from your future home.">
-                <div class="solar-planet-card">
-                  <div class="planet-card-inner">
-                    <div class="planet-icon-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18"/><path d="M4 10v10"/><path d="M8 10v10"/><path d="M12 10v10"/><path d="M16 10v10"/><path d="M20 10v10"/><path d="M2 20h20"/><circle cx="12" cy="5" r="2.5"/></svg>
-                    </div>
-                    <span class="planet-title">BALCONY VIEWS</span>
-                    <span class="planet-desc">Experience the view from your future home.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 5: AMENITIES 360 (38.57deg) -->
-              <div class="solar-planet-node" style="--angle: 38.57deg;" data-name="Amenities 360" data-desc="Explore lifestyle and recreational spaces in 360°.">
-                <div class="solar-planet-card">
-                  <div class="planet-card-inner">
-                    <div class="planet-icon-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18c1.5-1 3.5-1 5 0s3.5 1 5 0 3.5-1 5 0 3.5 1 5 0"/><path d="M2 22c1.5-1 3.5-1 5 0s3.5 1 5 0 3.5-1 5 0 3.5 1 5 0"/><path d="M17 14V4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v10"/><line x1="11" y1="6" x2="17" y2="6"/><line x1="11" y1="10" x2="17" y2="10"/></svg>
-                    </div>
-                    <span class="planet-title">AMENITIES 360</span>
-                    <span class="planet-desc">Explore lifestyle and recreational spaces in 360°.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 6: SIMULATIONS (64.29deg) -->
-              <div class="solar-planet-node" style="--angle: 64.29deg;" data-name="Simulations" data-desc="Day, night, seasons & drive-to-location.">
-                <div class="solar-planet-card">
-                  <div class="planet-card-inner">
-                    <div class="planet-icon-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-                    </div>
-                    <span class="planet-title">SIMULATIONS</span>
-                    <span class="planet-desc">Day, night, seasons & drive-to-location.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 7: FILTERS & INVENTORY (90deg) -->
-              <div class="solar-planet-node" style="--angle: 90deg;" data-name="Filters & Inventory" data-desc="Availability, floor, unit size, facing & Vastu.">
-                <div class="solar-planet-card">
-                  <div class="planet-card-inner">
-                    <div class="planet-icon-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
-                    </div>
-                    <span class="planet-title">FILTERS & INVENTORY</span>
-                    <span class="planet-desc">Availability, floor, unit size, facing & Vastu.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 8: DISTANCES & SEARCH (115.71deg) -->
-              <div class="solar-planet-node" style="--angle: 115.71deg;" data-name="Distances & Search" data-desc="Nearby places, market data and more.">
-                <div class="solar-planet-card">
-                  <div class="planet-card-inner">
-                    <div class="planet-icon-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/></svg>
-                    </div>
-                    <span class="planet-title">DISTANCES & SEARCH</span>
-                    <span class="planet-desc">Nearby places, market data and more.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 9: LOAN CALCULATOR (141.43deg) -->
-              <div class="solar-planet-node" style="--angle: 141.43deg;" data-name="Loan Calculator" data-desc="Plan your investment with ease.">
-                <div class="solar-planet-card">
-                  <div class="planet-card-inner">
-                    <div class="planet-icon-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="9" y2="10"/><line x1="12" y1="10" x2="13" y2="10"/><line x1="16" y1="10" x2="16.01" y2="10"/><line x1="8" y1="14" x2="9" y2="14"/><line x1="12" y1="14" x2="13" y2="14"/><line x1="16" y1="14" x2="16.01" y2="14"/><line x1="8" y1="18" x2="9" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg>
-                    </div>
-                    <span class="planet-title">LOAN CALCULATOR</span>
-                    <span class="planet-desc">Plan your investment with ease.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 10: SOLD / AVAILABLE (167.14deg) -->
-              <div class="solar-planet-node" style="--angle: 167.14deg;" data-name="Sold / Available" data-desc="Check real-time inventory and unit details.">
-                <div class="solar-planet-card">
-                  <div class="planet-card-inner">
-                    <div class="planet-icon-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 13 11 15 15 11"/></svg>
-                    </div>
-                    <span class="planet-title">SOLD / AVAILABLE</span>
-                    <span class="planet-desc">Check real-time inventory and unit details.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 11: QR ACCESS (192.86deg) -->
-              <div class="solar-planet-node" style="--angle: 192.86deg;" data-name="QR Access" data-desc="Instant access via QR for on-the-go viewing.">
-                <div class="solar-planet-card">
-                  <div class="planet-card-inner">
-                    <div class="planet-icon-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg>
-                    </div>
-                    <span class="planet-title">QR ACCESS</span>
-                    <span class="planet-desc">Instant access via QR for on-the-go viewing.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 12: MULTI-DEVICE SUPPORT (218.57deg) -->
-              <div class="solar-planet-node" style="--angle: 218.57deg;" data-name="Multi-Device Support" data-desc="Phone, tablet, TV & kiosk ready.">
-                <div class="solar-planet-card">
-                  <div class="planet-card-inner">
-                    <div class="planet-icon-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="14" height="12" rx="2"/><line x1="6" y1="15" x2="6" y2="18"/><line x1="12" y1="15" x2="12" y2="18"/><line x1="4" y1="18" x2="14" y2="18"/><rect x="14" y="8" width="8" height="13" rx="2"/><circle cx="18" cy="18" r="1"/></svg>
-                    </div>
-                    <span class="planet-title">MULTI-DEVICE SUPPORT</span>
-                    <span class="planet-desc">Phone, tablet, TV & kiosk ready.</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 13: LIVE 360° SHOOT (244.29deg) -->
-              <div class="solar-planet-node" style="--angle: 244.29deg;" data-name="Live 360° Shoot" data-desc="Model flat / clubhouse (add-on).">
-                <div class="solar-planet-card">
-                  <div class="planet-card-inner">
-                    <div class="planet-icon-badge">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/><path d="M12 9a4 4 0 0 1 4 4"/></svg>
-                    </div>
-                    <span class="planet-title">LIVE 360° SHOOT</span>
-                    <span class="planet-desc">Model flat / clubhouse (add-on).</span>
-                  </div>
-                </div>
-              </div>
-
-            </div>
 
             <!-- CENTRAL SUN HUB (i-PLEX) -->
             <div class="solar-center-sun" id="solarCenterSun">
@@ -4314,203 +4040,211 @@
                   <span class="sun-div-line"></span>
                 </div>
                 <p class="sun-core-tagline">One Platform. Every Perspective. Your Project, Reimagined.</p>
-                
-                <div class="sun-live-inspect" id="sunLiveInspect">
-                  <span>✦</span>
-                  <span class="inspect-text">Hover any satellite to inspect</span>
-                </div>
               </div>
             </div>
 
-          </div>
-        </div>
-
-        <!-- 2. GRID VIEW (FALLBACK & MOBILE) -->
-        <div class="solar-grid-wrapper" id="solarGridWrapper">
-          <div class="solar-grid">
-            
-            <div class="solar-grid-card">
-              <div class="grid-card-top">
-                <div class="grid-icon-box">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="12" r="5"/><circle cx="17" cy="12" r="5"/><path d="M10 12h4"/><path d="M12 7v2"/></svg>
+            <!-- 9 ORBITING SATELLITE NODES CONTAINER -->
+            <div class="solar-planets-group" id="solarPlanetsGroup">
+              
+              <!-- 0: BIRD'S-EYE VIEW -->
+              <div class="solar-planet-node" data-idx="0" data-name="Bird's-Eye View">
+                <div class="planet-card-inner">
+                  <div class="planet-icon-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="12" r="5"/><circle cx="17" cy="12" r="5"/><path d="M10 12h4"/><path d="M12 7v2"/></svg>
+                  </div>
+                  <span class="planet-title">Bird's-Eye View</span>
+                  <span class="planet-desc">Aerial view from all 4 directions</span>
                 </div>
-                <div class="grid-meta">
-                  <span class="grid-kicker">Navigation</span>
-                  <h4 class="grid-title">Bird's-Eye View</h4>
-                </div>
-              </div>
-              <p class="grid-desc">Aerial view from all 4 directions, nearby highlights & compass.</p>
-            </div>
-
-            <div class="solar-grid-card">
-              <div class="grid-card-top">
-                <div class="grid-icon-box">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 12A9.5 9.5 0 1 1 12 2.5"/><polyline points="21.5 2.5 21.5 12 12 12"/><text x="7" y="15" font-size="6.5" font-weight="bold" fill="currentColor">360</text></svg>
-                </div>
-                <div class="grid-meta">
-                  <span class="grid-kicker">Immersion</span>
-                  <h4 class="grid-title">360° Exterior</h4>
+                <div class="planet-popup-box">
+                  <button type="button" class="popup-close-btn" aria-label="Close">×</button>
+                  <div class="popup-video-wrap">
+                    <video src="Video/Bird eye view.mp4" poster="images/iplex-features/bird-eye-view.png" loop muted playsinline preload="metadata"></video>
+                  </div>
+                  <div class="popup-meta">
+                    <span class="popup-kicker">Visual Navigation</span>
+                    <div class="popup-title">Bird's-Eye View</div>
+                    <p class="popup-desc">Aerial view from all 4 directions, nearby highlights & compass.</p>
+                  </div>
                 </div>
               </div>
-              <p class="grid-desc">Explore the project from every angle.</p>
-            </div>
 
-            <div class="solar-grid-card">
-              <div class="grid-card-top">
-                <div class="grid-icon-box">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/><path d="M15 9v12"/></svg>
+              <!-- 1: 360° EXTERIOR -->
+              <div class="solar-planet-node" data-idx="1" data-name="360° Exterior">
+                <div class="planet-card-inner">
+                  <div class="planet-icon-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 12A9.5 9.5 0 1 1 12 2.5"/><polyline points="21.5 2.5 21.5 12 12 12"/><text x="7" y="15" font-size="6.5" font-weight="bold" fill="currentColor">360</text></svg>
+                  </div>
+                  <span class="planet-title">360° Exterior</span>
+                  <span class="planet-desc">Explore project from every angle</span>
                 </div>
-                <div class="grid-meta">
-                  <span class="grid-kicker">Masterplan</span>
-                  <h4 class="grid-title">Master Layout</h4>
+                <div class="planet-popup-box">
+                  <button type="button" class="popup-close-btn" aria-label="Close">×</button>
+                  <div class="popup-video-wrap">
+                    <video src="Video/Bird eye view.mp4" poster="images/iplex-features/bird-eye-view.png" loop muted playsinline preload="metadata"></video>
+                  </div>
+                  <div class="popup-meta">
+                    <span class="popup-kicker">360° Immersion</span>
+                    <div class="popup-title">360° Exterior</div>
+                    <p class="popup-desc">Explore the project from every angle in high-resolution 360°.</p>
+                  </div>
                 </div>
               </div>
-              <p class="grid-desc">View the entire project size, build area and more.</p>
-            </div>
 
-            <div class="solar-grid-card">
-              <div class="grid-card-top">
-                <div class="grid-icon-box">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21 16-9 5-9-5V8l9-5 9 5v8z"/><path d="m3 8 9 5 9-5"/><path d="M12 13v8"/></svg>
+              <!-- 2: MASTER LAYOUT -->
+              <div class="solar-planet-node" data-idx="2" data-name="Master Layout">
+                <div class="planet-card-inner">
+                  <div class="planet-icon-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/><path d="M15 9v12"/></svg>
+                  </div>
+                  <span class="planet-title">Master Layout</span>
+                  <span class="planet-desc">View entire project size & build area</span>
                 </div>
-                <div class="grid-meta">
-                  <span class="grid-kicker">Architecture</span>
-                  <h4 class="grid-title">Configurations</h4>
+                <div class="planet-popup-box">
+                  <button type="button" class="popup-close-btn" aria-label="Close">×</button>
+                  <div class="popup-video-wrap">
+                    <video src="Video/Master layout.mp4" poster="images/iplex-features/master-layout.png" loop muted playsinline preload="metadata"></video>
+                  </div>
+                  <div class="popup-meta">
+                    <span class="popup-kicker">Masterplan</span>
+                    <div class="popup-title">Master Layout</div>
+                    <p class="popup-desc">View the entire project size, build area and spatial connectivity.</p>
+                  </div>
                 </div>
               </div>
-              <p class="grid-desc">2D & isometric/3D floor plans with unit 360 walkthroughs.</p>
-            </div>
 
-            <div class="solar-grid-card">
-              <div class="grid-card-top">
-                <div class="grid-icon-box">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18"/><path d="M4 10v10"/><path d="M8 10v10"/><path d="M12 10v10"/><path d="M16 10v10"/><path d="M20 10v10"/><path d="M2 20h20"/><circle cx="12" cy="5" r="2.5"/></svg>
+              <!-- 3: CONFIGURATIONS -->
+              <div class="solar-planet-node" data-idx="3" data-name="Configurations">
+                <div class="planet-card-inner">
+                  <div class="planet-icon-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21 16-9 5-9-5V8l9-5 9 5v8z"/><path d="m3 8 9 5 9-5"/><path d="M12 13v8"/></svg>
+                  </div>
+                  <span class="planet-title">Configurations</span>
+                  <span class="planet-desc">2D & isometric floor plans</span>
                 </div>
-                <div class="grid-meta">
-                  <span class="grid-kicker">Simulation</span>
-                  <h4 class="grid-title">Balcony Views</h4>
+                <div class="planet-popup-box">
+                  <button type="button" class="popup-close-btn" aria-label="Close">×</button>
+                  <div class="popup-video-wrap">
+                    <video src="Video/Config Types.mp4" poster="images/iplex-features/config-types.png" loop muted playsinline preload="metadata"></video>
+                  </div>
+                  <div class="popup-meta">
+                    <span class="popup-kicker">Architecture & Units</span>
+                    <div class="popup-title">Configurations</div>
+                    <p class="popup-desc">2D & isometric/3D floor plans with unit 360 walkthroughs.</p>
+                  </div>
                 </div>
               </div>
-              <p class="grid-desc">Experience the view from your future home.</p>
-            </div>
 
-            <div class="solar-grid-card">
-              <div class="grid-card-top">
-                <div class="grid-icon-box">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18c1.5-1 3.5-1 5 0s3.5 1 5 0 3.5-1 5 0 3.5 1 5 0"/><path d="M2 22c1.5-1 3.5-1 5 0s3.5 1 5 0 3.5-1 5 0 3.5 1 5 0"/><path d="M17 14V4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v10"/><line x1="11" y1="6" x2="17" y2="6"/><line x1="11" y1="10" x2="17" y2="10"/></svg>
+              <!-- 4: BALCONY VIEWS -->
+              <div class="solar-planet-node" data-idx="4" data-name="Balcony Views">
+                <div class="planet-card-inner">
+                  <div class="planet-icon-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18"/><path d="M4 10v10"/><path d="M8 10v10"/><path d="M12 10v10"/><path d="M16 10v10"/><path d="M20 10v10"/><path d="M2 20h20"/><circle cx="12" cy="5" r="2.5"/></svg>
+                  </div>
+                  <span class="planet-title">Balcony Views</span>
+                  <span class="planet-desc">View from your future home</span>
                 </div>
-                <div class="grid-meta">
-                  <span class="grid-kicker">Lifestyle</span>
-                  <h4 class="grid-title">Amenities 360</h4>
+                <div class="planet-popup-box">
+                  <button type="button" class="popup-close-btn" aria-label="Close">×</button>
+                  <div class="popup-video-wrap">
+                    <video src="Video/Simulation.mp4" poster="images/iplex-features/simulation.png" loop muted playsinline preload="metadata"></video>
+                  </div>
+                  <div class="popup-meta">
+                    <span class="popup-kicker">View Simulation</span>
+                    <div class="popup-title">Balcony Views</div>
+                    <p class="popup-desc">Experience actual elevation views from your future balcony.</p>
+                  </div>
                 </div>
               </div>
-              <p class="grid-desc">Explore lifestyle and recreational spaces in 360°.</p>
-            </div>
 
-            <div class="solar-grid-card">
-              <div class="grid-card-top">
-                <div class="grid-icon-box">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+              <!-- 5: AMENITIES 360 -->
+              <div class="solar-planet-node" data-idx="5" data-name="Amenities 360">
+                <div class="planet-card-inner">
+                  <div class="planet-icon-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18c1.5-1 3.5-1 5 0s3.5 1 5 0 3.5-1 5 0 3.5-1 5 0"/><path d="M2 22c1.5-1 3.5-1 5 0s3.5 1 5 0 3.5-1 5 0 3.5-1 5 0 3.5-1 5 0"/><path d="M17 14V4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v10"/><line x1="11" y1="6" x2="17" y2="6"/><line x1="11" y1="10" x2="17" y2="10"/></svg>
+                  </div>
+                  <span class="planet-title">Amenities 360</span>
+                  <span class="planet-desc">Explore club & recreational spaces</span>
                 </div>
-                <div class="grid-meta">
-                  <span class="grid-kicker">Environment</span>
-                  <h4 class="grid-title">Simulations</h4>
+                <div class="planet-popup-box">
+                  <button type="button" class="popup-close-btn" aria-label="Close">×</button>
+                  <div class="popup-video-wrap">
+                    <video src="Video/Amenities.mp4" poster="images/iplex-features/amenities.png" loop muted playsinline preload="metadata"></video>
+                  </div>
+                  <div class="popup-meta">
+                    <span class="popup-kicker">Lifestyle Experience</span>
+                    <div class="popup-title">Amenities 360</div>
+                    <p class="popup-desc">Explore lifestyle, pools, and recreational spaces in 360°.</p>
+                  </div>
                 </div>
               </div>
-              <p class="grid-desc">Day, night, seasons & drive-to-location.</p>
-            </div>
 
-            <div class="solar-grid-card">
-              <div class="grid-card-top">
-                <div class="grid-icon-box">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+              <!-- 6: SIMULATIONS -->
+              <div class="solar-planet-node" data-idx="6" data-name="Simulations">
+                <div class="planet-card-inner">
+                  <div class="planet-icon-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                  </div>
+                  <span class="planet-title">Simulations</span>
+                  <span class="planet-desc">Day, night & seasons</span>
                 </div>
-                <div class="grid-meta">
-                  <span class="grid-kicker">Unit Selector</span>
-                  <h4 class="grid-title">Filters & Inventory</h4>
+                <div class="planet-popup-box">
+                  <button type="button" class="popup-close-btn" aria-label="Close">×</button>
+                  <div class="popup-video-wrap">
+                    <video src="Video/Simulation.mp4" poster="images/iplex-features/simulation.png" loop muted playsinline preload="metadata"></video>
+                  </div>
+                  <div class="popup-meta">
+                    <span class="popup-kicker">Environmental CGI</span>
+                    <div class="popup-title">Simulations</div>
+                    <p class="popup-desc">Day, night, seasonal lighting & drive-to-location journeys.</p>
+                  </div>
                 </div>
               </div>
-              <p class="grid-desc">Availability, floor, unit size, facing & Vastu.</p>
-            </div>
 
-            <div class="solar-grid-card">
-              <div class="grid-card-top">
-                <div class="grid-icon-box">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/></svg>
+              <!-- 7: FILTERS & INVENTORY -->
+              <div class="solar-planet-node" data-idx="7" data-name="Filters & Inventory">
+                <div class="planet-card-inner">
+                  <div class="planet-icon-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+                  </div>
+                  <span class="planet-title">Filters & Inventory</span>
+                  <span class="planet-desc">Floor, unit size & facing</span>
                 </div>
-                <div class="grid-meta">
-                  <span class="grid-kicker">Location</span>
-                  <h4 class="grid-title">Distances & Search</h4>
+                <div class="planet-popup-box">
+                  <button type="button" class="popup-close-btn" aria-label="Close">×</button>
+                  <div class="popup-video-wrap">
+                    <video src="Video/filter.mp4" poster="images/iplex-features/filter.png" loop muted playsinline preload="metadata"></video>
+                  </div>
+                  <div class="popup-meta">
+                    <span class="popup-kicker">Unit Selector</span>
+                    <div class="popup-title">Filters & Inventory</div>
+                    <p class="popup-desc">Availability, floor, unit size, facing & Vastu filters.</p>
+                  </div>
                 </div>
               </div>
-              <p class="grid-desc">Nearby places, market data and more.</p>
-            </div>
 
-            <div class="solar-grid-card">
-              <div class="grid-card-top">
-                <div class="grid-icon-box">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="9" y2="10"/><line x1="12" y1="10" x2="13" y2="10"/><line x1="16" y1="10" x2="16.01" y2="10"/><line x1="8" y1="14" x2="9" y2="14"/><line x1="12" y1="14" x2="13" y2="14"/><line x1="16" y1="14" x2="16.01" y2="14"/><line x1="8" y1="18" x2="9" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg>
+              <!-- 8: DISTANCES & SEARCH -->
+              <div class="solar-planet-node" data-idx="8" data-name="Distances & Search">
+                <div class="planet-card-inner">
+                  <div class="planet-icon-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/></svg>
+                  </div>
+                  <span class="planet-title">Distances & Search</span>
+                  <span class="planet-desc">Nearby places & landmark data</span>
                 </div>
-                <div class="grid-meta">
-                  <span class="grid-kicker">Finance</span>
-                  <h4 class="grid-title">Loan Calculator</h4>
+                <div class="planet-popup-box">
+                  <button type="button" class="popup-close-btn" aria-label="Close">×</button>
+                  <div class="popup-video-wrap">
+                    <video src="Video/Maps.mp4" poster="images/iplex-features/maps.png" loop muted playsinline preload="metadata"></video>
+                  </div>
+                  <div class="popup-meta">
+                    <span class="popup-kicker">Location & Connectivity</span>
+                    <div class="popup-title">Distances & Search</div>
+                    <p class="popup-desc">Nearby places, road connections, and neighbourhood data.</p>
+                  </div>
                 </div>
               </div>
-              <p class="grid-desc">Plan your investment with ease.</p>
-            </div>
 
-            <div class="solar-grid-card">
-              <div class="grid-card-top">
-                <div class="grid-icon-box">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 13 11 15 15 11"/></svg>
-                </div>
-                <div class="grid-meta">
-                  <span class="grid-kicker">Sales CRM</span>
-                  <h4 class="grid-title">Sold / Available</h4>
-                </div>
-              </div>
-              <p class="grid-desc">Check real-time inventory and unit details.</p>
             </div>
-
-            <div class="solar-grid-card">
-              <div class="grid-card-top">
-                <div class="grid-icon-box">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="3" height="3"/><rect x="18" y="18" width="3" height="3"/></svg>
-                </div>
-                <div class="grid-meta">
-                  <span class="grid-kicker">Instant Access</span>
-                  <h4 class="grid-title">QR Access</h4>
-                </div>
-              </div>
-              <p class="grid-desc">Instant access via QR for on-the-go viewing.</p>
-            </div>
-
-            <div class="solar-grid-card">
-              <div class="grid-card-top">
-                <div class="grid-icon-box">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="14" height="12" rx="2"/><line x1="6" y1="15" x2="6" y2="18"/><line x1="12" y1="15" x2="12" y2="18"/><line x1="4" y1="18" x2="14" y2="18"/><rect x="14" y="8" width="8" height="13" rx="2"/><circle cx="18" cy="18" r="1"/></svg>
-                </div>
-                <div class="grid-meta">
-                  <span class="grid-kicker">Omnichannel</span>
-                  <h4 class="grid-title">Multi-Device Support</h4>
-                </div>
-              </div>
-              <p class="grid-desc">Phone, tablet, TV & kiosk ready.</p>
-            </div>
-
-            <div class="solar-grid-card">
-              <div class="grid-card-top">
-                <div class="grid-icon-box">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/><path d="M12 9a4 4 0 0 1 4 4"/></svg>
-                </div>
-                <div class="grid-meta">
-                  <span class="grid-kicker">CGI & Virtual Shoot</span>
-                  <h4 class="grid-title">Live 360° Shoot</h4>
-                </div>
-              </div>
-              <p class="grid-desc">Model flat / clubhouse (add-on).</p>
-            </div>
-
           </div>
         </div>
 
@@ -4518,7 +4252,7 @@
     </section>
 
 
-    <!-- =========================================================
+<!-- =========================================================
      IPLEX
 ========================================================= -->
     <section class="iplex" id="iplex">
@@ -6106,82 +5840,159 @@
         });
       });
 
-      /* =========================================================
-   IPLEX SOLAR SYSTEM ECOSYSTEM INTERACTION
+            /* =========================================================
+   IPLEX TILTED ELLIPTICAL ORBIT ECOSYSTEM INTERACTION
 ========================================================= */
       (function initSolarEcosystem() {
         const stage = document.getElementById('solarStage');
-        const stageOuter = document.getElementById('solarStageOuter');
-        const gridWrapper = document.getElementById('solarGridWrapper');
-        const btnOrbit = document.getElementById('btnOrbitView');
-        const btnGrid = document.getElementById('btnGridView');
+        const planets = document.querySelectorAll('.solar-planet-node');
         const btnPause = document.getElementById('btnPauseOrbit');
-        const sunInspect = document.getElementById('sunLiveInspect');
+        if (!stage || !planets.length) return;
 
-        if (!stage || !stageOuter || !gridWrapper) return;
+        const iconPause = btnPause ? btnPause.querySelector('.icon-pause') : null;
+        const iconPlay = btnPause ? btnPause.querySelector('.icon-play') : null;
+        const pauseLabel = btnPause ? btnPause.querySelector('.pause-label') : null;
 
-        const inspectText = sunInspect ? sunInspect.querySelector('.inspect-text') : null;
-        let isOrbitPaused = false;
+        let isPaused = false;
+        let isUserHovered = false;
+        let angle = 0;
+        const totalPlanets = planets.length; // 9
 
-        // View toggle: Orbit vs Grid
-        if (btnOrbit && btnGrid) {
-          btnOrbit.addEventListener('click', () => {
-            btnOrbit.classList.add('active');
-            btnGrid.classList.remove('active');
-            stageOuter.style.display = 'flex';
-            gridWrapper.classList.remove('is-active');
+        // -28 degree tilt (matches user red ellipse drawing)
+        const tiltAngle = -28 * (Math.PI / 180);
+        const cosTilt = Math.cos(tiltAngle);
+        const sinTilt = Math.sin(tiltAngle);
+
+        function updateOrbit() {
+          const rect = stage.getBoundingClientRect();
+          const stageW = rect.width || 1000;
+          const stageH = rect.height || 640;
+
+          // Compute scale matching SVG viewBox (1000 x 640)
+          const scale = Math.min(stageW / 1000, stageH / 640);
+          const rx = 420 * scale;
+          const ry = 220 * scale;
+
+          if (!isPaused && !isUserHovered) {
+            angle += 0.003;
+            if (angle > Math.PI * 2) angle -= Math.PI * 2;
+          }
+
+          planets.forEach((planet, idx) => {
+            const t = angle + (idx * 2 * Math.PI / totalPlanets);
+
+            // Ellipse parametric equation
+            const xe = rx * Math.cos(t);
+            const ye = ry * Math.sin(t);
+
+            // 2D Rotation by tilt angle (-28deg)
+            const worldX = xe * cosTilt - ye * sinTilt;
+            const worldY = xe * sinTilt + ye * cosTilt;
+
+            planet.style.transform = 'translate(' + worldX + 'px, ' + worldY + 'px)';
+
+            // 3D Depth layering: foreground (ye > 0) in front of sun (z-index 25), background (ye < 0) behind
+            if (planet.classList.contains('is-active')) {
+              planet.style.zIndex = '120';
+            } else {
+              planet.style.zIndex = ye > 0 ? '30' : '15';
+            }
           });
 
-          btnGrid.addEventListener('click', () => {
-            btnGrid.classList.add('active');
-            btnOrbit.classList.remove('active');
-            stageOuter.style.display = 'none';
-            gridWrapper.classList.add('is-active');
-          });
+          requestAnimationFrame(updateOrbit);
         }
 
-        // Orbit Pause/Play Toggle
-        if (btnPause) {
-          const iconPause = btnPause.querySelector('.icon-pause');
-          const iconPlay = btnPause.querySelector('.icon-play');
-          const pauseLabel = btnPause.querySelector('.pause-label');
+        requestAnimationFrame(updateOrbit);
 
+        // Pause/Resume Button
+        if (btnPause) {
           btnPause.addEventListener('click', () => {
-            isOrbitPaused = !isOrbitPaused;
-            if (isOrbitPaused) {
-              stage.classList.add('is-paused');
+            isPaused = !isPaused;
+            if (isPaused) {
               if (iconPause) iconPause.style.display = 'none';
               if (iconPlay) iconPlay.style.display = 'inline';
-              if (pauseLabel) pauseLabel.textContent = 'Play';
+              if (pauseLabel) pauseLabel.textContent = 'Play Orbit';
             } else {
-              stage.classList.remove('is-paused');
               if (iconPause) iconPause.style.display = 'inline';
               if (iconPlay) iconPlay.style.display = 'none';
-              if (pauseLabel) pauseLabel.textContent = 'Pause';
+              if (pauseLabel) pauseLabel.textContent = 'Pause Orbit';
             }
           });
         }
 
-        // Planet Hover Inspection in Center Hub
-        const planetNodes = document.querySelectorAll('.solar-planet-node');
-        planetNodes.forEach((node) => {
-          const name = node.dataset.name;
-          const desc = node.dataset.desc;
+        // Active Popup State
+        let activePlanet = null;
 
-          node.addEventListener('mouseenter', () => {
-            if (inspectText) inspectText.textContent = `${name}: ${desc}`;
-            if (sunInspect) sunInspect.classList.add('active-highlight');
+        function openPlanet(planet) {
+          if (activePlanet && activePlanet !== planet) {
+            closePlanet(activePlanet);
+          }
+          activePlanet = planet;
+          planet.classList.add('is-active');
+          isUserHovered = true;
+          const video = planet.querySelector('.popup-video-wrap video');
+          if (video) {
+            video.play().catch(() => {});
+          }
+        }
+
+        function closePlanet(planet) {
+          if (!planet) return;
+          planet.classList.remove('is-active');
+          const video = planet.querySelector('.popup-video-wrap video');
+          if (video) {
+            video.pause();
+            video.currentTime = 0;
+          }
+          if (activePlanet === planet) {
+            activePlanet = null;
+            isUserHovered = false;
+          }
+        }
+
+        planets.forEach((planet) => {
+          // Desktop Hover
+          planet.addEventListener('mouseenter', () => {
+            openPlanet(planet);
           });
 
-          node.addEventListener('mouseleave', () => {
-            if (inspectText) inspectText.textContent = 'Hover any satellite to inspect';
-            if (sunInspect) sunInspect.classList.remove('active-highlight');
+          planet.addEventListener('mouseleave', () => {
+            closePlanet(planet);
           });
+
+          // Click / Touch Toggle
+          planet.addEventListener('click', (e) => {
+            if (e.target.closest('.popup-close-btn')) {
+              e.stopPropagation();
+              closePlanet(planet);
+              return;
+            }
+            if (planet.classList.contains('is-active')) {
+              closePlanet(planet);
+            } else {
+              openPlanet(planet);
+            }
+          });
+
+          const closeBtn = planet.querySelector('.popup-close-btn');
+          if (closeBtn) {
+            closeBtn.addEventListener('click', (e) => {
+              e.stopPropagation();
+              closePlanet(planet);
+            });
+          }
+        });
+
+        // Close when tapping outside on mobile
+        document.addEventListener('click', (e) => {
+          if (activePlanet && !e.target.closest('.solar-planet-node')) {
+            closePlanet(activePlanet);
+          }
         });
       })();
 
 
-      /* =========================================================
+/* =========================================================
    WHATSAPP WIDGET CLICK TRACKING (OPTIONAL)
 ========================================================= */
       document
