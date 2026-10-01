@@ -872,15 +872,26 @@
         z-index: 2;
       }
 
-      /* Central Sun Hub (i-PLEX) */
+      /* Central Hub (i-PLEX 3D Tablet Device) */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
       .solar-center-sun {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 250px;
-        height: 250px;
-        border-radius: 50%;
+        width: 320px;
+        height: auto;
         z-index: 25;
         display: flex;
         align-items: center;
@@ -891,121 +902,57 @@
 
       .sun-halo-glow {
         position: absolute;
-        inset: -15px;
+        inset: -25px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(198, 165, 92, 0.22) 0%, rgba(18, 18, 18, 0.4) 50%, transparent 75%);
-        filter: blur(14px);
+        background: radial-gradient(ellipse at 50% 50%, rgba(212, 175, 55, 0.28) 0%, rgba(198, 165, 92, 0.12) 40%, rgba(18, 18, 18, 0.4) 60%, transparent 80%);
+        filter: blur(18px);
         animation: sunPulse 6s ease-in-out infinite alternate;
         pointer-events: none;
       }
 
-      .sun-inner-sphere {
-        position: absolute;
-        inset: 0;
-        border-radius: 50%;
-        background: radial-gradient(circle at 35% 26%, #2d2d2d 0%, #171717 32%, #0a0a0a 65%, #000000 100%);
-        border: 2px solid rgba(212, 175, 55, 0.85);
-        box-shadow: 
-          0 22px 50px rgba(0, 0, 0, 0.95),
-          0 0 35px rgba(198, 165, 92, 0.25),
-          inset 5px 7px 18px rgba(255, 255, 255, 0.12),
-          inset -8px -12px 28px rgba(0, 0, 0, 0.98),
-          inset 0 0 30px rgba(198, 165, 92, 0.16);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 22px 18px;
-        overflow: hidden;
-      }
-
-      .sun-inner-sphere::before {
-        content: '';
-        position: absolute;
-        inset: 7px;
-        border-radius: 50%;
-        border: 1px dashed rgba(212, 175, 55, 0.38);
-        pointer-events: none;
-        z-index: 2;
-      }
-
-      /* Semi-sphere convex gloss sheen */
-      .sun-inner-sphere::after {
-        content: '';
-        position: absolute;
-        top: 2px;
-        left: 12%;
-        width: 76%;
-        height: 48%;
-        border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 60%, transparent 100%);
-        pointer-events: none;
-        z-index: 2;
-      }
-
-      .sun-core-tag {
-        font-size: 8px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        color: var(--accent);
-        background: rgba(198, 165, 92, 0.15);
-        border: 1px solid rgba(198, 165, 92, 0.3);
-        padding: 2px 9px;
-        border-radius: 50px;
-        margin-bottom: 6px;
-      }
-
-      .sun-core-title {
-        font-size: 34px;
-        font-weight: 700;
-        letter-spacing: 2px;
-        line-height: 1;
-        margin-bottom: 4px;
-        background: linear-gradient(135deg, #fff2c6 0%, #dfb76c 50%, #99732b 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        filter: drop-shadow(0 2px 8px rgba(198, 165, 92, 0.3));
-      }
-
-      .sun-core-sub {
-        font-size: 8.5px;
-        font-weight: 600;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: #dfcaa2;
-        line-height: 1.25;
-        margin-bottom: 8px;
-        max-width: 190px;
-      }
-
-      .sun-divider {
+      .sun-tablet-frame {
+        position: relative;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 6px;
-        width: 120px;
-        margin-bottom: 8px;
+        filter: drop-shadow(0 20px 42px rgba(0, 0, 0, 0.96))
+                drop-shadow(0 0 25px rgba(212, 175, 55, 0.35));
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
       }
 
-      .sun-div-line {
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.6), transparent);
+      .solar-center-sun:hover .sun-tablet-frame {
+        transform: translateY(-4px) scale(1.02);
+        filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.98))
+                drop-shadow(0 0 35px rgba(212, 175, 55, 0.5));
       }
 
-      .sun-div-diamond {
-        font-size: 8px;
-        color: var(--accent);
-        line-height: 1;
+      .sun-tablet-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: contain;
+        user-select: none;
+        pointer-events: none;
       }
 
-      .sun-core-tagline {
-        font-size: 10px;
-        line-height: 1.4;
-        color: #eaeae5;
-        font-style: italic;
-        max-width: 180px;
+      .sun-tablet-flare {
+        position: absolute;
+        top: 1%;
+        right: 32%;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #ffffff 0%, #ffdf88 35%, rgba(212, 175, 55, 0.6) 70%, transparent 100%);
+        box-shadow: 0 0 16px 6px rgba(212, 175, 55, 0.75), 0 0 32px 14px rgba(255, 215, 0, 0.4);
+        pointer-events: none;
+        z-index: 3;
+        animation: flarePulse 4s ease-in-out infinite alternate;
+      }
+
+      @keyframes flarePulse {
+        0% { transform: scale(0.9); opacity: 0.8; }
+        100% { transform: scale(1.15); opacity: 1; }
       }
 
       /* 9 Orbiting Satellite Nodes */
@@ -4107,7 +4054,7 @@
         <div class="solar-header reveal">
           <div class="section-label">Launch Ecosystem</div>
           <h2 class="solar-title">
-            All attributes revolve around <span style="color: var(--accent)">i-PLEX.</span>
+            One Ecosystem. <span style="color: var(--accent)">Endless Possibilities</span>
           </h2>
           <p class="solar-lead">
             Every perspective, sales module, and visualization tool connects into one unified, interactive property platform.
@@ -4151,18 +4098,23 @@
               <ellipse cx="500" cy="320" rx="260" ry="135" transform="rotate(-28 500 320)" fill="none" stroke="rgba(198, 165, 92, 0.12)" stroke-width="1"/>
             </svg>
 
-            <!-- CENTRAL SUN HUB (i-PLEX) -->
+            <!-- CENTRAL SUN HUB (i-PLEX 3D Tablet) -->
             <div class="solar-center-sun" id="solarCenterSun">
               <div class="sun-halo-glow"></div>
-              <div class="sun-inner-sphere">
-                <h3 class="sun-core-title">i-PLEX</h3>
-                <div class="sun-divider">
-                  <span class="sun-div-line"></span>
-                  <span class="sun-div-diamond">&#9670;</span>
-                  <span class="sun-div-line"></span>
-                </div>
-                <p class="sun-core-tagline">Seamless Experience</p>
+              <div class="sun-tablet-frame">
+                <img
+                  src="https://www.onetobeam.com/website/images/iplex-tablet-center.webp"
+                  onerror="this.onerror=null;this.src='images/iplex-tablet-center.webp';"
+                  alt="i-PLEX - Seamless Experience"
+                  class="sun-tablet-img"
+                  width="302"
+                  height="213"
+                  loading="eager"
+                  decoding="async"
+                />
+                <div class="sun-tablet-flare" aria-hidden="true"></div>
               </div>
+              <span class="sr-only">i-PLEX Seamless Experience</span>
             </div>
 
             <!-- 9 ORBITING SATELLITE NODES CONTAINER -->
