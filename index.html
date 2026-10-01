@@ -1458,6 +1458,45 @@
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
       }
 
+      .problem-card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+
+      .problem-card-top .problem-number {
+        margin-bottom: 0;
+      }
+
+      .problem-icon {
+        color: var(--accent);
+        opacity: 0.85;
+      }
+
+      .problem-media-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+        margin-bottom: 20px;
+        border: 1px solid var(--line);
+        background: var(--surface-2);
+      }
+
+      .problem-card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+
+      .problem-card:hover .problem-card-img {
+        transform: scale(1.04);
+      }
+
       .problem-number {
         color: var(--accent);
         font-size: 11px;
@@ -4374,35 +4413,60 @@
 ========================================================= -->
     <section class="problem-section" id="problem">
       <div class="container">
+        <div class="section-label reveal">Deployment Everywhere</div>
         <h2 class="problem-heading reveal">
-          Selling property is harder when buyers <span style="color: var(--accent)">cannot experience it yet.</span>
+          Seamless <span style="color: var(--accent)">Experience.</span>
         </h2>
         <div class="problem-grid">
           <div class="problem-card reveal">
-            <div class="problem-number">01</div>
-            <h3>The development may not exist yet.</h3>
+            <div class="problem-card-top">
+              <div class="problem-number">01 &bull; SALES EXPERIENCE CENTRE</div>
+              <div class="problem-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+            </div>
+            <div class="problem-media-wrap">
+              <img src="https://www.onetobeam.com/website/images/touchpoint-kiosk-crowd.webp" alt="Crowd Exploring Kiosk in Sales Experience Centre" class="problem-card-img" width="800" height="450" loading="lazy">
+            </div>
+            <h3>Interactive Kiosks</h3>
             <p>
-              Buyers are often asked to make major decisions using floor plans, CGI and brochures alone.
+              Turn your experience centre into a flagship destination. Prospective buyers gather around large touchscreen kiosks while sales representatives present 3D masterplans, towers, and available units with smooth touch interaction.
             </p>
           </div>
           <div class="problem-card reveal">
-            <div class="problem-number">02</div>
-            <h3>Project information is fragmented.</h3>
+            <div class="problem-card-top">
+              <div class="problem-number">02 &bull; EXHIBITION EXPO</div>
+              <div class="problem-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M8 6h8M8 10h8M8 14h8"/></svg>
+              </div>
+            </div>
+            <div class="problem-media-wrap">
+              <img src="https://www.onetobeam.com/website/images/touchpoint-expo-booth.webp" alt="Exhibition Expo Phonebooths and Demo Pods" class="problem-card-img" width="800" height="450" loading="lazy">
+            </div>
+            <h3>Expo Booths &amp; Pods</h3>
             <p>
-              Masterplans, floor plans, renders, videos, amenities and location information often sit across different files and platforms.
+              Stand out amid bustling exhibition floors. Equip dedicated phonebooths and demo pods with interactive screens, giving buyers and sales agents a focused, soundproof space for private virtual tours and deal discussions.
             </p>
           </div>
           <div class="problem-card reveal">
-            <div class="problem-number">03</div>
-            <h3>Remote buyers cannot always visit the sales gallery.</h3>
+            <div class="problem-card-top">
+              <div class="problem-number">03 &bull; AT CLIENT'S PLACE</div>
+              <div class="problem-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+              </div>
+            </div>
+            <div class="problem-media-wrap">
+              <img src="https://www.onetobeam.com/website/images/touchpoint-laptop-family.webp" alt="Sales Representative Showing i-PLEX on Laptop to Family at Client's Home" class="problem-card-img" width="800" height="450" loading="lazy">
+            </div>
+            <h3>Laptop Home Visits</h3>
             <p>
-              Their experience may be reduced to PDFs, images, videos and messaging apps.
+              Present comfortably in the client's home or office. Sales consultants demonstrate the complete i-PLEX virtual experience on a laptop, letting families explore floor plans, sunlight facings, and views together in a relaxed setting.
             </p>
           </div>
         </div>
         <div class="problem-closing reveal">
           <p>
-            <span>i-PLEX</span> brings these elements together into one connected interactive property experience.
+            <span>One connected platform.</span> Runs flawlessly on kiosks, tabs, laptops, and web browsers with zero installation needed.
           </p>
         </div>
       </div>
