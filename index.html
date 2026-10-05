@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -3908,6 +3908,8 @@
           animation: none;
         }
       }
+    
+      
     </style>
   </head>
 
@@ -3928,6 +3930,7 @@
           <a href="#iplex" class="active">i-PLEX</a>
           <a href="blog.html">Blog</a>
           <a href="gallery.html">Gallery</a>
+          <a href="tools.html">Free Tools</a>
           <a href="#about">About</a>
         </nav>
         <a href="#contact" class="nav-button" onclick="if(window.openModal){openModal();return false;}">Book a Demo</a>
@@ -5609,6 +5612,18 @@
         navLinks.classList.toggle("active");
       });
 
+            const toolsDropdown = document.getElementById("toolsDropdown");
+      if (toolsDropdown) {
+        const trigger = toolsDropdown.querySelector(".dropdown-trigger");
+        if (trigger) {
+          trigger.addEventListener("click", (e) => {
+            if (window.innerWidth <= 768) {
+              e.preventDefault();
+              toolsDropdown.classList.toggle("open");
+            }
+          });
+        }
+      }
       if (iplexDropdown) {
         const trigger = iplexDropdown.querySelector(".dropdown-trigger");
         if (trigger) {

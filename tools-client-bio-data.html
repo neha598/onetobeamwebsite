@@ -1,0 +1,450 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Estate Client Bio-Data & Profiling Tool | OneToBeam</title>
+    <meta
+      name="description"
+      content="Create professional client bio-data profiles for real estate preferences. Document budget, location needs, and family details in a clean PDF format."
+    />
+    <meta name="keywords" content="real estate client bio-data, client profiling tool, buyer requirement profile, property agent kyc" />
+    <meta name="author" content="OneToBeam" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://onetobeam.com/tools-client-bio-data.html" />
+    <link rel="icon" type="image/x-icon" href="Fevicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="50x50" href="Fevicon/Favicon_onetobeam_Black_50.png" />
+    <link rel="apple-touch-icon" href="Fevicon/Favicon_onetobeam_Black_50.png" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --bg-soft: #101010;
+        --surface: #151515;
+        --surface-2: #1b1b1b;
+        --text: #f5f5f2;
+        --muted: #9b9b97;
+        --line: rgba(255, 255, 255, 0.1);
+        --accent: #c6a55c;
+        --accent-light: #e5cb87;
+        --accent-dark: #a88b48;
+        --max-width: 800px;
+        --radius-lg: 20px;
+        --radius-md: 14px;
+        --radius-sm: 10px;
+        --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { background: var(--bg); color: var(--text); font-family: var(--font-sans); line-height: 1.5; overflow-x: hidden; }
+      a { color: inherit; text-decoration: none; }
+      .container { width: min(var(--max-width), calc(100% - 40px)); margin: auto; }
+
+            /* =========================================================
+   NAVBAR (Exact Parity with Index)
+========================================================= */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 78px;
+        display: flex;
+        align-items: center;
+        z-index: 1000;
+        background: rgba(10, 10, 10, 0.7);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-bottom: 1px solid transparent;
+        transition: 0.3s ease;
+      }
+
+      .navbar.scrolled {
+        border-bottom-color: var(--line);
+      }
+
+      .nav-inner {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        height: 100%;
+      }
+
+      .logo {
+        position: absolute;
+        left: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 21px;
+        font-weight: 700;
+        letter-spacing: -0.8px;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo span {
+        color: var(--accent);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-right: 170px;
+      }
+
+      .nav-links a {
+        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 13.5px;
+        font-weight: 500;
+        color: #cfcfcb;
+        padding: 8px 18px;
+        min-width: 78px;
+        text-align: center;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: 0.2s ease;
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .nav-links a:hover {
+        color: #ffffff;
+        font-size: 13.5px;
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-links a.active {
+        color: #ffffff;
+        font-size: 13.5px;
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .nav-button {
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 11px 20px;
+        background: var(--accent);
+        color: #111;
+        border-radius: 50px;
+        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: 0;
+        transition: 0.2s ease;
+      }
+
+      .nav-button:hover {
+        background: var(--accent-light);
+        transform: translateY(-50%) scale(1.02);
+      }
+
+      .breadcrumb { padding-top: 115px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+      .breadcrumb a:hover { color: var(--accent); }
+
+      .tool-wrapper { padding: 30px 0 60px; }
+      .page-title { font-size: clamp(28px, 4vw, 36px); font-weight: 800; color: #ffffff; margin-bottom: 24px; text-align: center; }
+
+      .card-box {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 30px;
+      }
+
+      .section-heading {
+        font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 18px;
+        display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
+      }
+      .section-heading span { color: var(--accent); }
+
+      .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+      .input-group label { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+      .custom-input, .custom-select, .custom-textarea {
+        width: 100%; padding: 12px 14px; background: var(--surface-2); border: 1px solid var(--line);
+        border-radius: var(--radius-sm); color: #ffffff; font-family: var(--font-sans); font-size: 14px; outline: none; transition: border-color 0.2s ease;
+      }
+      .custom-input:focus, .custom-select:focus, .custom-textarea:focus { border-color: var(--accent); }
+      .custom-select option { background: #181818; }
+      .custom-textarea { resize: vertical; min-height: 70px; }
+
+      .privacy-notice {
+        font-size: 12.5px; color: var(--muted); text-align: center; margin: 18px 0 24px; display: flex; align-items: center; justify-content: center; gap: 6px;
+      }
+
+      .btn-action-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 40px; }
+      .btn-action {
+        padding: 14px; border-radius: 10px; font-size: 14px; font-weight: 700;
+        cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s ease;
+      }
+      .btn-wa { background: #25D366; color: #0a0a0a; border: none; }
+      .btn-pdf { background: var(--accent); color: #0a0a0a; border: none; }
+      .btn-pdf:hover { background: var(--accent-light); }
+
+      /* Explainer */
+      .explainer-box {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+        padding: 32px; margin-bottom: 40px;
+      }
+      .explainer-box h2 { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 16px; }
+      .explainer-box p { color: var(--muted); font-size: 14.5px; line-height: 1.7; margin-bottom: 14px; }
+      .explainer-box ul { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 10px; }
+      .explainer-box li { font-size: 14px; color: #cfcfcb; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+      .explainer-box li::before { content: "•"; color: var(--accent); font-weight: 800; }
+
+      .cta-promo {
+        background: linear-gradient(135deg, rgba(198, 165, 92, 0.15) 0%, rgba(198, 165, 92, 0.04) 100%);
+        border: 1px solid rgba(198, 165, 92, 0.35); border-radius: var(--radius-md); padding: 24px; text-align: center;
+      }
+      .cta-promo p { font-size: 15px; font-weight: 600; color: #ffffff; margin-bottom: 14px; }
+      .cta-promo a {
+        display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px;
+        background: var(--accent); color: #0a0a0a; border-radius: 50px; font-size: 13.5px; font-weight: 700;
+      }
+
+      footer { border-top: 1px solid var(--line); padding: 60px 0 30px; background: #080808; }
+      .footer-bottom { display: flex; align-items: center; justify-content: space-between; color: #666; font-size: 13px; }
+
+      @media (max-width: 640px) {
+        .form-grid-2 { grid-template-columns: 1fr; }
+        .btn-action-row { grid-template-columns: 1fr; }
+        .nav-links { display: none; }
+        .nav-button { display: none; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="container nav-inner">
+        <a href="index.html" class="logo">
+          <img
+            src="https://www.onetobeam.com/website/images/OneToBeam%20Logo.webp"
+            alt="OneToBeam"
+            style="height: 32px; width: auto"
+          />
+        </a>
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html#iplex">i-PLEX</a>
+          <a href="blog.html">Blog</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="tools.html">Free Tools</a>
+          <a href="index.html#about">About</a>
+        </nav>
+        <a href="index.html#contact" class="nav-button">Book a Demo</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="tools.html">Free Tools</a>
+        <span>/</span>
+        <span style="color: #ffffff;">Smart KYC</span>
+      </div>
+
+      <div class="tool-wrapper">
+        <h1 class="page-title">Client Bio-Data Builder</h1>
+
+        <!-- Form Box -->
+        <div class="card-box">
+          <!-- 1. The Person -->
+          <h2 class="section-heading"><span>01</span> The Person</h2>
+          <div class="form-grid-2">
+            <div class="input-group">
+              <label>Full Name</label>
+              <input type="text" id="pName" class="custom-input" placeholder="e.g. Rahul Sharma" />
+            </div>
+            <div class="input-group">
+              <label>Contact Number / WhatsApp</label>
+              <input type="text" id="pPhone" class="custom-input" placeholder="+91 98765 43210" />
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="input-group">
+              <label>Email Address</label>
+              <input type="email" id="pEmail" class="custom-input" placeholder="rahul@example.com" />
+            </div>
+            <div class="input-group">
+              <label>Family Composition / Occupants</label>
+              <input type="text" id="pFamily" class="custom-input" placeholder="e.g. Couple + 2 Children" />
+            </div>
+          </div>
+
+          <!-- 2. The Power -->
+          <h2 class="section-heading" style="margin-top: 24px;"><span>02</span> The Power</h2>
+          <div class="form-grid-2">
+            <div class="input-group">
+              <label>Budget Range</label>
+              <select id="pBudget" class="custom-select">
+                <option value="₹50L – ₹90L">₹50L – ₹90L</option>
+                <option value="₹90L – ₹1.5 Cr" selected>₹90L – ₹1.5 Cr</option>
+                <option value="₹1.5 Cr – ₹2.5 Cr">₹1.5 Cr – ₹2.5 Cr</option>
+                <option value="₹2.5 Cr – ₹5 Cr">₹2.5 Cr – ₹5 Cr</option>
+                <option value="₹5 Cr+ Luxury">₹5 Cr+ Luxury</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Funding Readiness</label>
+              <select id="pFunding" class="custom-select">
+                <option value="Pre-Approved Home Loan" selected>Pre-Approved Home Loan</option>
+                <option value="Self-Funded (Ready Cash)">Self-Funded (Ready Cash)</option>
+                <option value="Loan Required">Loan Required</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-group">
+            <label>Occupation & Employer / Business</label>
+            <input type="text" id="pOccupation" class="custom-input" placeholder="e.g. Senior Tech Lead at Google / Business Owner" />
+          </div>
+
+          <!-- 3. The Motivation -->
+          <h2 class="section-heading" style="margin-top: 24px;"><span>03</span> The Motivation</h2>
+          <div class="form-grid-2">
+            <div class="input-group">
+              <label>Purchase Purpose</label>
+              <select id="pPurpose" class="custom-select">
+                <option value="Self-Use (Primary Home)" selected>Self-Use (Primary Home)</option>
+                <option value="Investment / High Capital Growth">Investment / High Capital Growth</option>
+                <option value="Rental Yield">Rental Yield</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Target Move-In / Possession</label>
+              <select id="pTimeline" class="custom-select">
+                <option value="Ready to Move in Immediately" selected>Ready to Move in Immediately</option>
+                <option value="Within 6 to 12 Months">Within 6 to 12 Months</option>
+                <option value="Under Construction (2-3 Years)">Under Construction (2-3 Years)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- 4. The Wishlist -->
+          <h2 class="section-heading" style="margin-top: 24px;"><span>04</span> The Wishlist</h2>
+          <div class="form-grid-2">
+            <div class="input-group">
+              <label>Configuration Type</label>
+              <select id="pConfig" class="custom-select">
+                <option value="2 BHK Apartment">2 BHK Apartment</option>
+                <option value="3 BHK Luxury Apartment" selected>3 BHK Luxury Apartment</option>
+                <option value="4 BHK / Penthouse">4 BHK / Penthouse</option>
+                <option value="Independent Villa">Independent Villa</option>
+                <option value="Plotted Development">Plotted Development</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Target Location / Micro-Market</label>
+              <input type="text" id="pLocation" class="custom-input" placeholder="e.g. Whitefield, Outer Ring Road, Hitec City" />
+            </div>
+          </div>
+          <div class="input-group">
+            <label>Specific Preferences (Facing, Floor, Parking)</label>
+            <textarea id="pNotes" class="custom-textarea" placeholder="e.g. East facing, Higher floor above 10th, 2 covered car parks."></textarea>
+          </div>
+        </div>
+
+        <div class="privacy-notice">
+          🔒 All data is processed locally in your browser. No data is stored on our servers.
+        </div>
+
+        <div class="btn-action-row">
+          <button class="btn-action btn-wa" id="btnCopyWa">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"></path></svg>
+            <span>Copy WhatsApp Bio-Data</span>
+          </button>
+          <button class="btn-action btn-pdf" onclick="window.print()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect width="12" height="8" x="6" y="14"></rect></svg>
+            <span>Print / Export PDF</span>
+          </button>
+        </div>
+
+        <!-- Explainer Box -->
+        <div class="explainer-box">
+          <h2>Why use Client Bio-Data Snap?</h2>
+          <p>Client Bio-Data Snap is a free tool for real estate agents and property consultants to create professional client profiles and structured requirement sheets.</p>
+          <p>In a competitive rental or buyer market, making a strong first impression is key. A scattered collection of documents and texts can look unprofessional.</p>
+          <p>Client Bio-Data Snap allows you to generate a clean, professional PDF profile for your clients in seconds. Present their financial strength and family details in a format landlords and sellers respect.</p>
+          <ul>
+            <li><strong>Professional Formatting:</strong> Instantly turn raw details into a branded PDF.</li>
+            <li><strong>Privacy First:</strong> All data processing happens on your device.</li>
+            <li><strong>Speed Up Approvals:</strong> Give owners everything they need to say "yes" immediately.</li>
+            <li><strong>Easy Sharing:</strong> Share a single lightweight PDF file via WhatsApp or email.</li>
+          </ul>
+
+          <div class="cta-promo">
+            <p>Showcase your listings like a market leader.</p>
+            <a href="index.html#iplex">OneToBeam i-PLEX →</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-bottom">
+          <p>© 2025 OneToBeam. All rights reserved.</p>
+          <p><a href="tools.html" style="color: var(--accent);">← Back to Free Tools</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("btnCopyWa").addEventListener("click", () => {
+        const name = document.getElementById("pName").value || "Client";
+        const phone = document.getElementById("pPhone").value || "N/A";
+        const email = document.getElementById("pEmail").value || "N/A";
+        const family = document.getElementById("pFamily").value || "N/A";
+        const budget = document.getElementById("pBudget").value;
+        const funding = document.getElementById("pFunding").value;
+        const occ = document.getElementById("pOccupation").value || "N/A";
+        const purpose = document.getElementById("pPurpose").value;
+        const timeline = document.getElementById("pTimeline").value;
+        const config = document.getElementById("pConfig").value;
+        const loc = document.getElementById("pLocation").value || "N/A";
+        const notes = document.getElementById("pNotes").value || "N/A";
+
+        const text = `📋 *CLIENT REQUIREMENT BIO-DATA*%0A` +
+          `━━━━━━━━━━━━━━━━━━%0A` +
+          `👤 *The Person:* ${name} (${phone})%0A` +
+          `📧 *Email:* ${email} | *Family:* ${family}%0A` +
+          `💼 *Occupation:* ${occ}%0A%0A` +
+          `💰 *The Power:* Budget: *${budget}* (${funding})%0A%0A` +
+          `🎯 *The Motivation:* ${purpose} | Timeline: ${timeline}%0A%0A` +
+          `🏡 *The Wishlist:* ${config}%0A` +
+          `📍 *Target Location:* ${loc}%0A` +
+          `📝 *Specific Preferences:* ${notes}%0A` +
+          `━━━━━━━━━━━━━━━━━━%0A` +
+          `Generated via OneToBeam Free Tools`;
+
+        const plainText = decodeURIComponent(text).replace(/%0A/g, '\n');
+        navigator.clipboard.writeText(plainText).then(() => {
+          const btn = document.getElementById("btnCopyWa");
+          btn.querySelector("span").textContent = "Copied to Clipboard! ✓";
+          setTimeout(() => {
+            btn.querySelector("span").textContent = "Copy WhatsApp Bio-Data";
+          }, 2000);
+        });
+      });
+    </script>
+  </body>
+</html>

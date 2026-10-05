@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1370,6 +1370,8 @@
           height: 40px;
         }
       }
+    
+      
     </style>
   </head>
   <body>
@@ -1390,6 +1392,7 @@
           <a href="index.html#iplex">i-PLEX</a>
           <a href="blog.html">Blog</a>
           <a href="gallery.html" class="active">Gallery</a>
+          <a href="tools.html">Free Tools</a>
           <a href="index.html#about">About</a>
         </nav>
 
@@ -2171,7 +2174,19 @@
           });
         }
 
-        if (iplexDropdown) {
+              const toolsDropdown = document.getElementById("toolsDropdown");
+      if (toolsDropdown) {
+        const trigger = toolsDropdown.querySelector(".dropdown-trigger");
+        if (trigger) {
+          trigger.addEventListener("click", (e) => {
+            if (window.innerWidth <= 768) {
+              e.preventDefault();
+              toolsDropdown.classList.toggle("open");
+            }
+          });
+        }
+      }
+      if (iplexDropdown) {
           const trigger = iplexDropdown.querySelector(".dropdown-trigger");
           if (trigger) {
             trigger.addEventListener("click", (e) => {

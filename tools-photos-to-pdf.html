@@ -1,0 +1,496 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photos to PDF - Real Estate Presentation Builder | OneToBeam</title>
+    <meta
+      name="description"
+      content="Convert loose property photos into a professional branded PDF presentation. Add your logo, contact details, and organize room photos instantly."
+    />
+    <meta name="keywords" content="photos to pdf real estate, property presentation builder, site inspection pdf, real estate photo report" />
+    <meta name="author" content="OneToBeam" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://onetobeam.com/tools-photos-to-pdf.html" />
+    <link rel="icon" type="image/x-icon" href="Fevicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="50x50" href="Fevicon/Favicon_onetobeam_Black_50.png" />
+    <link rel="apple-touch-icon" href="Fevicon/Favicon_onetobeam_Black_50.png" />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --bg-soft: #101010;
+        --surface: #151515;
+        --surface-2: #1b1b1b;
+        --text: #f5f5f2;
+        --muted: #9b9b97;
+        --line: rgba(255, 255, 255, 0.1);
+        --accent: #c6a55c;
+        --accent-light: #e5cb87;
+        --accent-dark: #a88b48;
+        --max-width: 800px;
+        --radius-lg: 20px;
+        --radius-md: 14px;
+        --radius-sm: 10px;
+        --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { background: var(--bg); color: var(--text); font-family: var(--font-sans); line-height: 1.5; overflow-x: hidden; }
+      a { color: inherit; text-decoration: none; }
+      .container { width: min(var(--max-width), calc(100% - 40px)); margin: auto; }
+
+            /* =========================================================
+   NAVBAR (Exact Parity with Index)
+========================================================= */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 78px;
+        display: flex;
+        align-items: center;
+        z-index: 1000;
+        background: rgba(10, 10, 10, 0.7);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-bottom: 1px solid transparent;
+        transition: 0.3s ease;
+      }
+
+      .navbar.scrolled {
+        border-bottom-color: var(--line);
+      }
+
+      .nav-inner {
+        width: 100%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        height: 100%;
+      }
+
+      .logo {
+        position: absolute;
+        left: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 21px;
+        font-weight: 700;
+        letter-spacing: -0.8px;
+        display: flex;
+        align-items: center;
+      }
+
+      .logo span {
+        color: var(--accent);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-right: 170px;
+      }
+
+      .nav-links a {
+        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 13.5px;
+        font-weight: 500;
+        color: #cfcfcb;
+        padding: 8px 18px;
+        min-width: 78px;
+        text-align: center;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: 0.2s ease;
+        line-height: 1;
+        letter-spacing: 0;
+      }
+
+      .nav-links a:hover {
+        color: #ffffff;
+        font-size: 13.5px;
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .nav-links a.active {
+        color: #ffffff;
+        font-size: 13.5px;
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.12);
+      }
+
+      .nav-button {
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 11px 20px;
+        background: var(--accent);
+        color: #111;
+        border-radius: 50px;
+        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: 0;
+        transition: 0.2s ease;
+      }
+
+      .nav-button:hover {
+        background: var(--accent-light);
+        transform: translateY(-50%) scale(1.02);
+      }
+
+      .breadcrumb { padding-top: 115px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+      .breadcrumb a:hover { color: var(--accent); }
+
+      .tool-wrapper { padding: 30px 0 60px; }
+      .page-title { font-size: clamp(28px, 4vw, 36px); font-weight: 800; color: #ffffff; margin-bottom: 28px; text-align: center; }
+
+      .card-box {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+        padding: 32px; margin-bottom: 30px;
+      }
+
+      .section-heading {
+        font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 18px;
+        display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
+      }
+      .section-heading span { color: var(--accent); }
+
+      .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+      .input-group label { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+      .custom-input {
+        width: 100%; padding: 12px 14px; background: var(--surface-2); border: 1px solid var(--line);
+        border-radius: var(--radius-sm); color: #ffffff; font-family: var(--font-sans); font-size: 14px; outline: none; transition: border-color 0.2s ease;
+      }
+      .custom-input:focus { border-color: var(--accent); }
+
+      /* Upload Box */
+      .drop-zone {
+        border: 2px dashed rgba(198, 165, 92, 0.4); border-radius: var(--radius-md);
+        padding: 36px 20px; text-align: center; background: rgba(198, 165, 92, 0.03);
+        cursor: pointer; transition: all 0.2s ease; margin-bottom: 20px;
+      }
+      .drop-zone:hover, .drop-zone.dragover {
+        border-color: var(--accent); background: rgba(198, 165, 92, 0.08);
+      }
+      .drop-title { font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
+      .drop-sub { font-size: 13px; color: var(--muted); }
+
+      .photo-item {
+        background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px;
+        padding: 10px 14px; display: flex; align-items: center; gap: 14px; margin-bottom: 10px;
+      }
+      .photo-thumb { width: 64px; height: 46px; border-radius: 6px; object-fit: cover; }
+      .photo-caption {
+        flex: 1; padding: 8px 12px; background: #111111; border: 1px solid var(--line);
+        border-radius: 6px; color: #ffffff; font-size: 13px; outline: none;
+      }
+      .btn-del { background: none; border: none; color: #ef4444; font-size: 14px; cursor: pointer; padding: 6px; }
+
+      .btn-create-pdf {
+        width: 100%; padding: 14px; background: var(--accent); color: #0a0a0a;
+        border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer;
+        margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;
+      }
+      .btn-create-pdf:hover { background: var(--accent-light); }
+
+      /* Explainer */
+      .explainer-box {
+        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
+        padding: 32px; margin-bottom: 40px;
+      }
+      .explainer-box h2 { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 16px; }
+      .explainer-box p { color: var(--muted); font-size: 14.5px; line-height: 1.7; margin-bottom: 14px; }
+      .explainer-box ul { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 10px; }
+      .explainer-box li { font-size: 14px; color: #cfcfcb; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+      .explainer-box li::before { content: "•"; color: var(--accent); font-weight: 800; }
+
+      .cta-promo {
+        background: linear-gradient(135deg, rgba(198, 165, 92, 0.15) 0%, rgba(198, 165, 92, 0.04) 100%);
+        border: 1px solid rgba(198, 165, 92, 0.35); border-radius: var(--radius-md); padding: 24px; text-align: center;
+      }
+      .cta-promo p { font-size: 15px; font-weight: 600; color: #ffffff; margin-bottom: 14px; }
+      .cta-promo a {
+        display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px;
+        background: var(--accent); color: #0a0a0a; border-radius: 50px; font-size: 13.5px; font-weight: 700;
+      }
+
+      /* Print preview */
+      .print-doc {
+        display: none; background: #ffffff; color: #111111; padding: 30px; border-radius: 12px; margin-top: 30px;
+      }
+
+      @media print {
+        body { background: #ffffff; color: #111111; }
+        .navbar, .breadcrumb, .tool-wrapper > h1, .card-box, .explainer-box, footer { display: none !important; }
+        .print-doc { display: block !important; }
+      }
+
+      footer { border-top: 1px solid var(--line); padding: 60px 0 30px; background: #080808; }
+      .footer-bottom { display: flex; align-items: center; justify-content: space-between; color: #666; font-size: 13px; }
+
+      @media (max-width: 640px) {
+        .form-grid-2 { grid-template-columns: 1fr; }
+        .nav-links { display: none; }
+        .nav-button { display: none; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="container nav-inner">
+        <a href="index.html" class="logo">
+          <img
+            src="https://www.onetobeam.com/website/images/OneToBeam%20Logo.webp"
+            alt="OneToBeam"
+            style="height: 32px; width: auto"
+          />
+        </a>
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html#iplex">i-PLEX</a>
+          <a href="blog.html">Blog</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="tools.html">Free Tools</a>
+          <a href="index.html#about">About</a>
+        </nav>
+        <a href="index.html#contact" class="nav-button">Book a Demo</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="tools.html">Free Tools</a>
+        <span>/</span>
+        <span style="color: #ffffff;">Photos to PDF</span>
+      </div>
+
+      <div class="tool-wrapper">
+        <h1 class="page-title">Property Presentation Builder</h1>
+
+        <div class="card-box">
+          <!-- 1. Cover Page -->
+          <h2 class="section-heading"><span>01</span> Cover Page</h2>
+          <div class="form-grid-2">
+            <div class="input-group">
+              <label>Property Title</label>
+              <input type="text" id="pTitle" class="custom-input" placeholder="e.g. 3 BHK Luxury Penthouse" value="3 BHK Luxury Penthouse" />
+            </div>
+            <div class="input-group">
+              <label>Address / Society</label>
+              <input type="text" id="pAddress" class="custom-input" placeholder="e.g. Grand Horizon, Whitefield" value="Grand Horizon, Whitefield" />
+            </div>
+          </div>
+          <div class="input-group">
+            <label>Subtitle / Price Tagline</label>
+            <input type="text" id="pSubtitle" class="custom-input" placeholder="e.g. Asking Price: ₹1.85 Cr • 1,850 Sq Ft" value="Asking Price: ₹1.85 Cr • 1,850 Sq Ft" />
+          </div>
+
+          <!-- 2. Contact Details -->
+          <h2 class="section-heading" style="margin-top: 24px;"><span>02</span> Contact Details</h2>
+          <div class="form-grid-2">
+            <div class="input-group">
+              <label>Agent / Consultant Name</label>
+              <input type="text" id="agName" class="custom-input" placeholder="Your Name" value="Rahul Verma" />
+            </div>
+            <div class="input-group">
+              <label>Agency / Brokerage</label>
+              <input type="text" id="agFirm" class="custom-input" placeholder="Agency Name" value="Prime Realty" />
+            </div>
+          </div>
+          <div class="form-grid-2">
+            <div class="input-group">
+              <label>Phone Number</label>
+              <input type="text" id="agPhone" class="custom-input" placeholder="+91 98765 43210" value="+91 98765 43210" />
+            </div>
+            <div class="input-group">
+              <label>Email / RERA ID</label>
+              <input type="text" id="agEmail" class="custom-input" placeholder="agent@agency.com" value="contact@primerealty.com" />
+            </div>
+          </div>
+
+          <!-- 3. Add Photos -->
+          <h2 class="section-heading" style="margin-top: 24px;"><span>03</span> Start by adding photos</h2>
+          <div class="drop-zone" id="dropArea">
+            <div class="drop-title">Add up to 25 high-quality images.</div>
+            <div class="drop-sub">You can reorder and name them in the next step. Click or drag photos here.</div>
+            <input type="file" id="photoFiles" multiple accept="image/*" style="display: none;" />
+          </div>
+
+          <div id="photosContainer"></div>
+
+          <button class="btn-create-pdf" onclick="window.print()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <span>Download Presentation PDF</span>
+          </button>
+        </div>
+
+        <!-- Printable Document Output -->
+        <div class="print-doc" id="printDoc">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #000; padding-bottom: 16px; margin-bottom: 24px;">
+            <div>
+              <h1 id="outTitle" style="font-size: 24px; font-weight: 800; margin-bottom: 4px;">3 BHK Luxury Penthouse</h1>
+              <div id="outAddress" style="font-size: 14px; color: #555;">Grand Horizon, Whitefield</div>
+              <div id="outSubtitle" style="font-size: 14px; font-weight: 700; color: #c6a55c; margin-top: 4px;">Asking Price: ₹1.85 Cr</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 18px; font-weight: 800;">OneToBeam</div>
+              <div id="outAgent" style="font-size: 13px; color: #555;">Rahul Verma • +91 98765 43210</div>
+            </div>
+          </div>
+          <div id="outPhotosGrid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;"></div>
+        </div>
+
+        <!-- Explainer Box -->
+        <div class="explainer-box">
+          <h2>Why use Photos to PDF?</h2>
+          <p>Photos to PDF is a free tool for real estate agents and property consultants to compile loose property photos into professional, branded PDF presentations.</p>
+          <p>High-quality photos are essential, but sending 20 separate image files to a client or partner is messy.</p>
+          <p>Photos to PDF lets you combine your property images into a single, polished presentation. Add your branding, organize the flow, and deliver a professional document that looks great on any device.</p>
+          <ul>
+            <li><strong>Organized Presentation:</strong> Control the viewing order of your property images.</li>
+            <li><strong>Brand It:</strong> Add your agency logo and property details.</li>
+            <li><strong>Easy to Share:</strong> One file is easier to email or WhatsApp than a zip folder.</li>
+            <li><strong>Client Ready:</strong> Create a sleek handover document or teaser.</li>
+          </ul>
+
+          <div class="cta-promo">
+            <p>Premium, production-quality walkthrough 3D virtual showflats—now within easy reach.</p>
+            <a href="index.html#iplex">OneToBeam i-PLEX →</a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-bottom">
+          <p>© 2025 OneToBeam. All rights reserved.</p>
+          <p><a href="tools.html" style="color: var(--accent);">← Back to Free Tools</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      let photos = [];
+
+      const dropArea = document.getElementById("dropArea");
+      const photoFiles = document.getElementById("photoFiles");
+
+      dropArea.addEventListener("click", () => photoFiles.click());
+
+      dropArea.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropArea.classList.add("dragover");
+      });
+
+      dropArea.addEventListener("dragleave", () => {
+        dropArea.classList.remove("dragover");
+      });
+
+      dropArea.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropArea.classList.remove("dragover");
+        loadImages(e.dataTransfer.files);
+      });
+
+      photoFiles.addEventListener("change", (e) => {
+        loadImages(e.target.files);
+      });
+
+      function loadImages(files) {
+        Array.from(files).forEach((file) => {
+          if (!file.type.startsWith("image/")) return;
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            photos.push({
+              src: e.target.result,
+              caption: file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ")
+            });
+            renderList();
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      function renderList() {
+        const container = document.getElementById("photosContainer");
+        const outGrid = document.getElementById("outPhotosGrid");
+        container.innerHTML = "";
+        outGrid.innerHTML = "";
+
+        photos.forEach((p, idx) => {
+          const div = document.createElement("div");
+          div.className = "photo-item";
+          div.innerHTML = `
+            <img src="${p.src}" class="photo-thumb" />
+            <input type="text" class="photo-caption" value="${p.caption}" data-idx="${idx}" placeholder="Room description" />
+            <button class="btn-del" data-idx="${idx}">✕</button>
+          `;
+          container.appendChild(div);
+
+          const outCard = document.createElement("div");
+          outCard.style.border = "1px solid #ddd";
+          outCard.style.borderRadius = "6px";
+          outCard.style.overflow = "hidden";
+          outCard.innerHTML = `
+            <img src="${p.src}" style="width: 100%; height: 180px; object-fit: cover; display: block;" />
+            <div style="padding: 8px; font-size: 13px; font-weight: 600; background: #fafafa;">${p.caption}</div>
+          `;
+          outGrid.appendChild(outCard);
+        });
+
+        document.querySelectorAll(".photo-caption").forEach(inp => {
+          inp.addEventListener("input", (e) => {
+            const idx = e.target.getAttribute("data-idx");
+            photos[idx].caption = e.target.value;
+            renderPrintDoc();
+          });
+        });
+
+        document.querySelectorAll(".btn-del").forEach(btn => {
+          btn.addEventListener("click", (e) => {
+            const idx = e.target.getAttribute("data-idx");
+            photos.splice(idx, 1);
+            renderList();
+          });
+        });
+      }
+
+      function renderPrintDoc() {
+        document.getElementById("outTitle").textContent = document.getElementById("pTitle").value;
+        document.getElementById("outAddress").textContent = document.getElementById("pAddress").value;
+        document.getElementById("outSubtitle").textContent = document.getElementById("pSubtitle").value;
+        document.getElementById("outAgent").textContent = `${document.getElementById("agName").value} • ${document.getElementById("agPhone").value}`;
+      }
+
+      ["pTitle", "pAddress", "pSubtitle", "agName", "agPhone"].forEach(id => {
+        document.getElementById(id).addEventListener("input", renderPrintDoc);
+      });
+    </script>
+  </body>
+</html>

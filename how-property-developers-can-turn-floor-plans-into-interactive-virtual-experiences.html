@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
       <head>
     <meta charset="UTF-8" />
@@ -310,6 +310,8 @@
         .footer-brand { grid-column: auto; text-align: center; }
         .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
       }
+    
+      
     </style>
   </head>
 
@@ -322,8 +324,9 @@
         </a>
                 <nav class="nav-links" id="navLinks">
           <a href="index.html#iplex">i-PLEX</a>
-          <a href="blog.html" class="active">Blog</a>
+          <a href="blog.html">Blog</a>
           <a href="gallery.html">Gallery</a>
+          <a href="tools.html">Free Tools</a>
           <a href="index.html#about">About</a>
         </nav>
         <a href="index.html#contact" class="nav-button"> Book a Demo </a>
@@ -490,6 +493,18 @@
 
       menuButton.addEventListener("click", () => navLinks.classList.toggle("active"));
 
+            const toolsDropdown = document.getElementById("toolsDropdown");
+      if (toolsDropdown) {
+        const trigger = toolsDropdown.querySelector(".dropdown-trigger");
+        if (trigger) {
+          trigger.addEventListener("click", (e) => {
+            if (window.innerWidth <= 768) {
+              e.preventDefault();
+              toolsDropdown.classList.toggle("open");
+            }
+          });
+        }
+      }
       if (iplexDropdown) {
         const trigger = iplexDropdown.querySelector(".dropdown-trigger");
         if (trigger) {
