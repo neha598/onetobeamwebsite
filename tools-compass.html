@@ -248,14 +248,140 @@
 
       /* Main Compass Layout */
       .tool-content {
-        padding: 40px 0 100px;
+        padding: 30px 0 80px;
       }
 
-      .compass-card {
+      /* Responsive Visibility Containers */
+      .desktop-only-container {
+        display: block;
+      }
+
+      .mobile-only-container {
+        display: none;
+      }
+
+      @media (max-width: 859px) {
+        .desktop-only-container {
+          display: none !important;
+        }
+        .mobile-only-container {
+          display: block !important;
+        }
+      }
+
+      /* Preview Compass Override on Desktop */
+      body.preview-compass .desktop-only-container {
+        display: none !important;
+      }
+      body.preview-compass .mobile-only-container {
+        display: block !important;
+      }
+
+      /* =========================================================
+         DESKTOP EXPERIENCE CARD (Matches Laptop Screenshot)
+         ========================================================= */
+      .desktop-experience-card {
+        max-width: 440px;
+        margin: 20px auto 40px;
+        background: #141414;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        padding: 44px 36px 36px;
+        text-align: center;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+      }
+
+      .desktop-icon-badge {
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: #1c1c1c;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent);
+        margin-bottom: 20px;
+      }
+
+      .desktop-experience-card h2 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 12px;
+        letter-spacing: -0.3px;
+      }
+
+      .desktop-experience-card p {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.55;
+        max-width: 320px;
+        margin: 0 auto 24px;
+      }
+
+      .desktop-qr-wrap {
+        display: inline-block;
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        margin-bottom: 16px;
+      }
+
+      .desktop-qr-wrap img {
+        display: block;
+        border-radius: 6px;
+      }
+
+      .desktop-qr-subtext {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 22px;
+      }
+
+      .btn-desktop-preview {
+        background: none;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 999px;
+        padding: 9px 20px;
+        color: #d1d1cd;
+        font-size: 12.5px;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s ease;
+      }
+
+      .btn-desktop-preview:hover {
+        color: #ffffff;
+        border-color: var(--accent);
+        background: rgba(198, 165, 92, 0.08);
+      }
+
+      .btn-back-to-qr {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 18px;
+        color: var(--accent);
+        background: none;
+        border: none;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      /* =========================================================
+         MOBILE COMPASS VIEW (Matches Mobile Screenshot)
+         ========================================================= */
+      .compass-mobile-card {
         background: var(--surface);
         border: 1px solid var(--line);
         border-radius: var(--radius-lg);
-        padding: 36px 24px;
+        padding: 32px 20px 24px;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
         display: flex;
         flex-direction: column;
@@ -267,11 +393,11 @@
 
       /* Degree & Facing Readout */
       .readout-block {
-        margin-bottom: 24px;
+        margin-bottom: 16px;
       }
 
       .degree-num {
-        font-size: clamp(56px, 8vw, 76px);
+        font-size: clamp(64px, 14vw, 84px);
         font-weight: 300;
         letter-spacing: -2px;
         color: #ffffff;
@@ -280,16 +406,16 @@
       }
 
       .degree-num span {
-        font-size: 32px;
+        font-size: 34px;
         color: var(--muted);
         vertical-align: super;
-        margin-left: 4px;
+        margin-left: 2px;
       }
 
       .cardinal-facing {
-        font-size: clamp(20px, 3vw, 24px);
+        font-size: clamp(22px, 5vw, 26px);
         font-weight: 800;
-        color: var(--accent);
+        color: #3b82f6; /* Blue accent matching reference */
         letter-spacing: 3px;
         text-transform: uppercase;
         margin-top: 6px;
@@ -298,23 +424,23 @@
       .facing-tip {
         font-size: 13px;
         color: var(--muted);
-        max-width: 360px;
-        margin: 8px auto 0;
+        max-width: 340px;
+        margin: 10px auto 0;
         line-height: 1.5;
       }
 
       /* Interactive Compass Dial */
       .dial-wrapper {
         position: relative;
-        width: 300px;
-        height: 300px;
-        margin: 20px auto 30px;
+        width: 310px;
+        height: 310px;
+        margin: 20px auto 24px;
       }
 
       @media (min-width: 640px) {
         .dial-wrapper {
-          width: 360px;
-          height: 360px;
+          width: 340px;
+          height: 340px;
         }
       }
 
@@ -322,120 +448,121 @@
         width: 100%;
         height: 100%;
         border-radius: 50%;
-        border: 2px solid rgba(255, 255, 255, 0.12);
-        background: radial-gradient(circle at center, #1b1b1b 0%, #101010 70%, #0a0a0a 100%);
-        box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.5);
+        border: 1.5px solid rgba(255, 255, 255, 0.15);
+        background: radial-gradient(circle at center, #141c2c 0%, #0d121c 70%, #080a10 100%);
+        box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.9), 0 0 30px rgba(0, 0, 0, 0.6);
         position: relative;
-        transition: transform 0.1s linear;
+        transition: transform 0.12s linear;
       }
 
-      /* Cardinal Needle Point at top (Static) */
-      .needle-pointer {
+      /* Vertical Axis Line passing through center */
+      .dial-center-axis {
         position: absolute;
-        top: -12px;
+        top: 0;
+        bottom: 0;
         left: 50%;
+        width: 1px;
+        background: rgba(198, 165, 92, 0.4);
+        pointer-events: none;
+        z-index: 5;
         transform: translateX(-50%);
+      }
+
+      /* Center Blue Arrow pointing UP */
+      .dial-center-arrow {
+        position: absolute;
+        bottom: 50%;
+        left: 50%;
+        transform: translate(-50%, -6px);
         width: 0;
         height: 0;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-bottom: 20px solid var(--accent);
-        z-index: 10;
-        filter: drop-shadow(0 2px 8px rgba(198, 165, 92, 0.6));
-      }
-
-      /* Inner Crosshair */
-      .dial-crosshair-h {
-        position: absolute;
-        top: 50%;
-        left: 15%;
-        right: 15%;
-        height: 1px;
-        background: rgba(198, 165, 92, 0.2);
+        border-left: 9px solid transparent;
+        border-right: 9px solid transparent;
+        border-bottom: 20px solid #2563eb;
+        z-index: 8;
         pointer-events: none;
+        filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.7));
       }
 
-      .dial-crosshair-v {
+      /* Center White Circular Dot */
+      .dial-center-dot {
         position: absolute;
-        left: 50%;
-        top: 15%;
-        bottom: 15%;
-        width: 1px;
-        background: rgba(198, 165, 92, 0.2);
-        pointer-events: none;
-      }
-
-      .dial-center-cap {
-        position: absolute;
-        width: 14px;
-        height: 14px;
-        background: var(--accent);
-        border: 2px solid #0a0a0a;
-        border-radius: 50%;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        z-index: 5;
-        box-shadow: 0 0 10px var(--accent);
+        width: 9px;
+        height: 9px;
+        background: #ffffff;
+        border-radius: 50%;
+        z-index: 9;
+        pointer-events: none;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
       }
 
       /* Cardinal Letter Positions on Dial */
       .cardinal-label {
         position: absolute;
-        width: 28px;
-        height: 28px;
-        margin: -14px 0 0 -14px;
+        width: 30px;
+        height: 30px;
+        margin: -15px 0 0 -15px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 13px;
+        font-weight: 700;
+        color: #b5b5b0;
+        user-select: none;
+      }
+
+      .cardinal-label.cardinal-major {
+        font-size: 15px;
+        color: #ffffff;
         font-weight: 800;
-        color: var(--muted);
       }
 
       .cardinal-label.north {
-        color: #ef4444;
-        font-size: 17px;
+        color: #ef4444 !important;
+        font-size: 18px !important;
+        font-weight: 900 !important;
       }
 
       /* Controls & Sliders */
       .controls-bar {
         width: 100%;
-        max-width: 480px;
+        max-width: 440px;
         display: flex;
         flex-direction: column;
-        gap: 16px;
-        margin-top: 12px;
+        gap: 14px;
+        margin-top: 8px;
       }
 
       .btn-calibrate {
         width: 100%;
-        padding: 14px;
+        padding: 13px;
         border-radius: 999px;
-        font-size: 14.5px;
+        font-size: 14px;
         font-weight: 700;
-        background: var(--accent);
-        color: #0a0a0a;
+        background: #2563eb;
+        color: #ffffff;
         border: none;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 8px;
         transition: all 0.25s ease;
-        box-shadow: 0 6px 20px rgba(198, 165, 92, 0.3);
+        box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
       }
 
       .btn-calibrate:hover {
-        background: var(--accent-light);
-        transform: translateY(-2px);
+        background: #1d4ed8;
       }
 
       .manual-slider-box {
         background: var(--surface-2);
         border: 1px solid var(--line);
         border-radius: var(--radius-md);
-        padding: 16px 20px;
+        padding: 14px 18px;
         text-align: left;
       }
 
@@ -455,19 +582,19 @@
         background: var(--surface-3);
         outline: none;
         -webkit-appearance: none;
-        accent-color: var(--accent);
+        accent-color: #2563eb;
         cursor: pointer;
       }
 
       /* Vastu Compliance Box */
       .vastu-card {
         width: 100%;
-        max-width: 600px;
+        max-width: 440px;
         background: var(--surface-2);
         border: 1px solid rgba(198, 165, 92, 0.3);
         border-radius: var(--radius-md);
-        padding: 22px 24px;
-        margin-top: 24px;
+        padding: 18px 20px;
+        margin-top: 18px;
         text-align: left;
       }
 
@@ -475,16 +602,77 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        font-size: 15px;
+        font-size: 14.5px;
         font-weight: 700;
         color: var(--accent);
-        margin-bottom: 8px;
+        margin-bottom: 6px;
       }
 
       .vastu-desc {
-        font-size: 13.5px;
+        font-size: 13px;
         color: #e2e2dd;
-        line-height: 1.6;
+        line-height: 1.55;
+      }
+
+      /* =========================================================
+         BOTTOM FLOATING / PROMO CARD (Matches Mobile Screenshot)
+         ========================================================= */
+      .compass-bottom-card {
+        width: 100%;
+        max-width: 440px;
+        margin: 22px auto 0;
+        background: rgba(14, 20, 32, 0.95);
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        border-radius: 18px;
+        padding: 16px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+      }
+
+      .bottom-card-info {
+        text-align: left;
+      }
+
+      .bottom-card-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 3px;
+      }
+
+      .bottom-card-link {
+        font-size: 13px;
+        color: #3b82f6;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+
+      .bottom-card-link:hover {
+        text-decoration: underline;
+        color: #60a5fa;
+      }
+
+      .bottom-card-fab {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        background: #2563eb;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45);
+        transition: transform 0.2s, background 0.2s;
+      }
+
+      .bottom-card-fab:hover {
+        background: #1d4ed8;
+        transform: scale(1.06);
       }
 
       /* Explainer Box */
@@ -598,51 +786,103 @@
         font-size: 13px;
       }
 
+      .nav-mobile-btn {
+        display: none;
+      }
+
       /* Mobile Navbar & Responsiveness */
-      @media (max-width: 768px) {
+      @media (max-width: 860px) {
         .logo {
           position: static;
           transform: none;
         }
-        .menu-button {
-          position: static;
-          transform: none;
-          display: block;
-          margin-left: auto;
-        }
+
         .nav-inner {
           justify-content: space-between;
           padding: 0 16px;
         }
+
+        .menu-button {
+          position: static;
+          transform: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 44px;
+          height: 44px;
+          border-radius: 10px;
+          margin-left: auto;
+        }
+
         .nav-links {
           position: fixed;
-          top: 78px;
-          left: 15px;
-          right: 15px;
-          padding: 25px;
+          top: 76px;
+          left: 14px;
+          right: 14px;
+          padding: 20px 16px;
           margin-right: 0;
-          background: rgba(15, 15, 15, 0.96);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
+          background: rgba(14, 14, 14, 0.98);
+          backdrop-filter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
           border: 1px solid var(--line);
           border-radius: 18px;
+          box-shadow: 0 20px 48px rgba(0, 0, 0, 0.8);
           flex-direction: column;
-          align-items: flex-start;
-          display: none;
+          align-items: stretch;
+          gap: 6px;
+          visibility: hidden;
+          opacity: 0;
+          transform: translateY(-8px);
+          transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+          pointer-events: none;
+          z-index: 1001;
         }
+
         .nav-links.active {
-          display: flex;
+          visibility: visible;
+          opacity: 1;
+          transform: translateY(0);
+          pointer-events: auto;
         }
+
         .nav-links a {
           width: 100%;
           text-align: left;
-          padding: 10px 14px;
+          padding: 12px 16px;
+          font-size: 14px;
+          border-radius: 10px;
         }
+
+        .nav-mobile-btn {
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          margin-top: 10px;
+          padding: 13px 18px;
+          background: var(--accent) !important;
+          color: #0a0a0a !important;
+          font-weight: 700 !important;
+          font-size: 14px;
+          border-radius: 50px;
+          text-align: center;
+        }
+
         .nav-button {
           display: none;
         }
-        .compass-card {
-          padding: 24px 16px;
+
+        .compass-mobile-card {
+          padding: 24px 16px 20px;
+        }
+
+        .tool-hero {
+          padding-top: 100px;
+          padding-bottom: 20px;
+        }
+
+        .tool-hero h1 {
+          font-size: 26px;
         }
       }
     </style>
@@ -667,7 +907,7 @@
           <a href="index.html#about">About</a>
         </nav>
         <a href="index.html#contact" class="nav-button">Book a Demo</a>
-        <button class="menu-button" id="menuButton" aria-label="Open Navigation">
+        <button class="menu-button" id="menuButton" aria-label="Open Navigation" aria-expanded="false">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -682,9 +922,9 @@
       <div class="container">
         <div class="breadcrumb">
           <a href="index.html">Home</a>
-          <span>/</span>
+          <span>&gt;</span>
           <a href="tools.html">Free Tools</a>
-          <span>/</span>
+          <span>&gt;</span>
           <span style="color: #ffffff;">Compass</span>
         </div>
         <div class="tool-hero-inner">
@@ -710,82 +950,134 @@
     <main class="tool-content">
       <div class="container">
 
-        <!-- Compass Card -->
-        <div class="compass-card">
-          <!-- Top Readout -->
-          <div class="readout-block">
-            <div class="degree-num"><span id="degreeNum">0</span><span>°</span></div>
-            <div class="cardinal-facing" id="cardinalFacing">NORTH</div>
-            <p class="facing-tip">Tip: Stand inside the main door, facing outward. The direction you face is the house facing.</p>
-          </div>
-
-          <!-- Compass Dial -->
-          <div class="dial-wrapper">
-            <div class="needle-pointer"></div>
-            <div class="compass-rose" id="compassRose">
-              <div class="dial-crosshair-h"></div>
-              <div class="dial-crosshair-v"></div>
-              <div class="dial-center-cap"></div>
-              <!-- Direction labels dynamically positioned -->
-              <div id="dialMarksWrap"></div>
+        <!-- 1. DESKTOP ONLY VIEW (Matches Laptop Reference Screenshot) -->
+        <div class="desktop-only-container">
+          <div class="desktop-experience-card">
+            <div class="desktop-icon-badge">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+              </svg>
+            </div>
+            <h2>Mobile Experience Only</h2>
+            <p>The PropCompass requires device sensors (compass/gyroscope) to function accurately.</p>
+            <div class="desktop-qr-wrap">
+              <img
+                id="desktopQrCode"
+                src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fwww.onetobeam.com%2Ftools-compass&bgcolor=ffffff&color=000000&margin=4"
+                alt="Scan QR code to open Digital Compass on mobile or tablet"
+                width="200"
+                height="200"
+              />
+            </div>
+            <div class="desktop-qr-subtext">Scan to open on your smartphone.</div>
+            <div>
+              <button type="button" class="btn-desktop-preview" id="btnPreviewCompass">
+                <span>Preview Compass Dial on Desktop</span> →
+              </button>
             </div>
           </div>
 
-          <!-- Controls: Sensor Calibration & Desktop Manual Slider -->
-          <div class="controls-bar">
-            <button class="btn-calibrate" id="btnCalibrate">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="12 2 15 8 21 9 17 14 18 20 12 17 6 20 7 14 3 9 9 8 12 2"></polygon>
-              </svg>
-              <span id="btnCalibrateText">Start Compass / Allow Sensors</span>
-            </button>
-
-            <!-- Manual Slider for Desktop or Testing -->
-            <div class="manual-slider-box">
-              <div class="slider-header">
-                <span>Manual Heading Adjuster</span>
-                <span id="sliderValLabel">0°</span>
+          <!-- Explainer Box on Desktop -->
+          <div class="explainer-box">
+            <h2>Why use this Compass?</h2>
+            <div class="explainer-grid">
+              <div>
+                <p><strong>PropCompass</strong> is a <strong>free tool for real estate agents and property consultants</strong> to check property orientation on-site with 100% accuracy.</p>
+                <p>As a real estate professional, knowing the exact direction (North, South, East, West) is crucial for checking property orientation and answering buyer questions on the spot.</p>
+                <p>This digital compass compensates for <strong>True North</strong> vs Magnetic North using device sensors, ensuring reliable readings directly inside your smartphone browser.</p>
               </div>
-              <input type="range" id="headingSlider" min="0" max="359" value="0" class="custom-range" />
+              <div>
+                <ul class="feature-list">
+                  <li><span><strong>Identify Main Door Facing:</strong> Check orientation in seconds during client walkthroughs.</span></li>
+                  <li><span><strong>Vastu Shastra Insights:</strong> Live recommendations for entrances, kitchens, and master bedrooms.</span></li>
+                  <li><span><strong>Zero App Downloads:</strong> Instant access on any iOS Safari or Android Chrome browser.</span></li>
+                  <li><span><strong>Calibrated Precision:</strong> Smooth degree dampening with True North declination support.</span></li>
+                </ul>
+              </div>
             </div>
-          </div>
 
-          <!-- Vastu Insights Box -->
-          <div class="vastu-card" id="vastuCard">
-            <div class="vastu-header">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-              </svg>
-              <span id="vastuTitle">North Facing (Uttara) — Zone of Kuber</span>
+            <div class="cta-promo">
+              <p>Elevate your listing presentations with interactive 3D virtual sales galleries.</p>
+              <a href="index.html#iplex" class="cta-btn">OneToBeam i-PLEX →</a>
             </div>
-            <p class="vastu-desc" id="vastuDesc">
-              Highly auspicious for financial growth, wealth attraction, and career prosperity. Recommended for main entrances, balconies, and living areas.
-            </p>
           </div>
         </div>
 
-        <!-- Explainer Box -->
-        <div class="explainer-box">
-          <h2>Why use this Compass?</h2>
-          <div class="explainer-grid">
-            <div>
-              <p><strong>PropCompass</strong> is a <strong>free tool for real estate agents and property consultants</strong> to check property orientation on-site with 100% accuracy.</p>
-              <p>As a real estate professional, knowing the exact direction (North, South, East, West) is crucial for checking property orientation and answering buyer questions on the spot.</p>
-              <p>This digital compass compensates for <strong>True North</strong> vs Magnetic North using device sensors, ensuring reliable readings directly inside your smartphone browser.</p>
+        <!-- 2. MOBILE ONLY VIEW (Matches Mobile Reference Screenshot) -->
+        <div class="mobile-only-container">
+          <button type="button" class="btn-back-to-qr" id="btnBackToQr" style="display: none;">
+            ← Back to QR Code View
+          </button>
+
+          <!-- Main Compass Interactive Card -->
+          <div class="compass-mobile-card">
+            <!-- Digital Readout -->
+            <div class="readout-block">
+              <div class="degree-num"><span id="degreeNum">267</span><span>°</span></div>
+              <div class="cardinal-facing" id="cardinalFacing">WEST</div>
+              <p class="facing-tip">Tip: Stand inside the main door, facing outward. The direction you face is the house facing.</p>
             </div>
-            <div>
-              <ul class="feature-list">
-                <li><span><strong>Identify Main Door Facing:</strong> Check orientation in seconds during client walkthroughs.</span></li>
-                <li><span><strong>Vastu Shastra Insights:</strong> Live recommendations for entrances, kitchens, and master bedrooms.</span></li>
-                <li><span><strong>Zero App Downloads:</strong> Instant access on any iOS Safari or Android Chrome browser.</span></li>
-                <li><span><strong>Calibrated Precision:</strong> Smooth degree dampening with True North declination support.</span></li>
-              </ul>
+
+            <!-- Compass Dial with Fixed Blue Arrow & Center Dot, Rotating Rose -->
+            <div class="dial-wrapper">
+              <!-- Center Guide Axis Line -->
+              <div class="dial-center-axis"></div>
+              <!-- Center Pointer Arrow (pointing UP) -->
+              <div class="dial-center-arrow"></div>
+              <!-- Center White Dot -->
+              <div class="dial-center-dot"></div>
+
+              <!-- Rotating Compass Rose -->
+              <div class="compass-rose" id="compassRose">
+                <!-- Direction ticks & labels dynamically generated -->
+                <div id="dialMarksWrap"></div>
+              </div>
+            </div>
+
+            <!-- Controls (Sensors & Manual Slider for Calibration/Testing) -->
+            <div class="controls-bar">
+              <button class="btn-calibrate" id="btnCalibrate">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15 8 21 9 17 14 18 20 12 17 6 20 7 14 3 9 9 8 12 2"></polygon>
+                </svg>
+                <span id="btnCalibrateText">Calibrate Sensors</span>
+              </button>
+
+              <div class="manual-slider-box" id="manualSliderBox">
+                <div class="slider-header">
+                  <span>Manual Heading Adjuster</span>
+                  <span id="sliderValLabel">267°</span>
+                </div>
+                <input type="range" id="headingSlider" min="0" max="359" value="267" class="custom-range" />
+              </div>
+            </div>
+
+            <!-- Vastu Insights Box -->
+            <div class="vastu-card" id="vastuCard">
+              <div class="vastu-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                </svg>
+                <span id="vastuTitle">West Facing (Paschima) — Zone of Lord Varuna</span>
+              </div>
+              <p class="vastu-desc" id="vastuDesc">
+                Governs business profits, prosperity, and networking. Favorable for dining spaces, children's study bedrooms, and overhead tanks.
+              </p>
             </div>
           </div>
 
-          <div class="cta-promo">
-            <p>Elevate your listing presentations with interactive 3D virtual sales galleries.</p>
-            <a href="index.html#iplex" class="cta-btn">OneToBeam i-PLEX →</a>
+          <!-- Bottom Card (Matches Mobile Screenshot) -->
+          <div class="compass-bottom-card">
+            <div class="bottom-card-info">
+              <div class="bottom-card-title">Perfect orientation?</div>
+              <a href="index.html#contact" class="bottom-card-link">Time to showcase the property.</a>
+            </div>
+            <a href="index.html#contact" class="bottom-card-fab" aria-label="Book a Demo">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -859,13 +1151,37 @@
       const btnCalibrateText = document.getElementById("btnCalibrateText");
       const vastuTitle = document.getElementById("vastuTitle");
       const vastuDesc = document.getElementById("vastuDesc");
+      const btnPreviewCompass = document.getElementById("btnPreviewCompass");
+      const btnBackToQr = document.getElementById("btnBackToQr");
+      const desktopQrCode = document.getElementById("desktopQrCode");
 
-      // Build Dial Markers (72 ticks & 8 cardinal labels)
+      // Set QR code to encode https://www.onetobeam.com/tools-compass
+      if (desktopQrCode) {
+        const targetCompassUrl = "https://www.onetobeam.com/tools-compass";
+        desktopQrCode.src = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(targetCompassUrl)}&bgcolor=ffffff&color=000000&margin=4`;
+      }
+
+      // Desktop Preview Toggle
+      if (btnPreviewCompass && btnBackToQr) {
+        btnPreviewCompass.addEventListener("click", () => {
+          document.body.classList.add("preview-compass");
+          btnBackToQr.style.display = "inline-flex";
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        btnBackToQr.addEventListener("click", () => {
+          document.body.classList.remove("preview-compass");
+          btnBackToQr.style.display = "none";
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+
+      // Build Dial Markers (ticks & 8 cardinal labels)
       function setupDial() {
         dialMarksWrap.innerHTML = "";
-        const radius = 135; // approximate px from center
+        const center = 155; // center of 310px rose
 
-        // 72 Ticks
+        // 72 Ticks (every 5 degrees)
         for (let i = 0; i < 72; i++) {
           const angle = i * 5;
           const isMajor = i % 18 === 0;
@@ -878,7 +1194,7 @@
           tick.style.width = isMajor ? "2px" : "1px";
           tick.style.height = isMajor ? "16px" : isMid ? "10px" : "6px";
           tick.style.background = isMajor ? "#ffffff" : isMid ? "rgba(255,255,255,0.4)" : "rgba(255,255,255,0.18)";
-          tick.style.transformOrigin = "50% 150px";
+          tick.style.transformOrigin = `50% ${center}px`;
           tick.style.transform = `translateX(-50%) rotate(${angle}deg)`;
           dialMarksWrap.appendChild(tick);
         }
@@ -887,13 +1203,15 @@
         cardinalCodes.forEach((code, idx) => {
           const angle = idx * 45;
           const label = document.createElement("div");
-          label.className = `cardinal-label ${code === "N" ? "north" : ""}`;
+          const isMajor = code === "N" || code === "E" || code === "S" || code === "W";
+          label.className = `cardinal-label ${isMajor ? "cardinal-major" : ""} ${code === "N" ? "north" : ""}`;
           label.textContent = code;
 
-          // Trigonometry placement from center (150, 150)
+          // Position around perimeter
           const rad = (angle - 90) * (Math.PI / 180);
-          const x = 150 + Math.cos(rad) * 115;
-          const y = 150 + Math.sin(rad) * 115;
+          const radius = 115;
+          const x = center + Math.cos(rad) * radius;
+          const y = center + Math.sin(rad) * radius;
 
           label.style.left = `${x}px`;
           label.style.top = `${y}px`;
@@ -901,35 +1219,36 @@
         });
       }
 
-      // Smooth heading filter (smoothing window)
-      let currentDisplayHeading = 0;
-
       function updateHeading(targetHeading) {
         const normalized = ((targetHeading % 360) + 360) % 360;
         const rounded = Math.round(normalized);
 
-        degreeNum.textContent = rounded;
-        sliderValLabel.textContent = `${rounded}°`;
-        headingSlider.value = rounded;
+        if (degreeNum) degreeNum.textContent = rounded;
+        if (sliderValLabel) sliderValLabel.textContent = `${rounded}°`;
+        if (headingSlider) headingSlider.value = rounded;
 
         const dirName = getDirectionName(normalized);
-        cardinalFacing.textContent = dirName.toUpperCase();
+        if (cardinalFacing) cardinalFacing.textContent = dirName.toUpperCase();
 
-        // Rotate rose in opposite direction so top pointer aligns with facing
-        compassRose.style.transform = `rotate(${-normalized}deg)`;
+        // Rotate rose in opposite direction so top indicator aligns with facing
+        if (compassRose) {
+          compassRose.style.transform = `rotate(${-normalized}deg)`;
+        }
 
         // Update Vastu
         const data = vastuData[dirName];
-        if (data) {
+        if (data && vastuTitle && vastuDesc) {
           vastuTitle.textContent = data.title;
           vastuDesc.textContent = data.desc;
         }
       }
 
       // Slider listener
-      headingSlider.addEventListener("input", (e) => {
-        updateHeading(parseFloat(e.target.value));
-      });
+      if (headingSlider) {
+        headingSlider.addEventListener("input", (e) => {
+          updateHeading(parseFloat(e.target.value));
+        });
+      }
 
       // Sensor handling
       let sensorsRunning = false;
@@ -939,12 +1258,12 @@
         if (e.webkitCompassHeading !== undefined && e.webkitCompassHeading !== null) {
           // iOS Safari provides direct compass heading
           heading = e.webkitCompassHeading;
-        } else if (e.alpha !== null) {
+        } else if (e.alpha !== null && e.alpha !== undefined) {
           // Android Chrome / Standard orientation
           heading = 360 - e.alpha;
         }
 
-        if (heading !== null) {
+        if (heading !== null && !isNaN(heading)) {
           updateHeading(heading);
         }
       }
@@ -957,30 +1276,32 @@
             if (permission === "granted") {
               window.addEventListener("deviceorientation", handleOrientation, true);
               sensorsRunning = true;
-              btnCalibrateText.textContent = "Sensors Active 🟢 (Calibrated)";
+              if (btnCalibrateText) btnCalibrateText.textContent = "Sensors Active 🟢 (Calibrated)";
             } else {
-              alert("Permission to access compass sensors was denied. You can still use the manual slider below.");
+              alert("Permission to access compass sensors was denied. You can still adjust the heading manually.");
             }
           } catch (err) {
             console.warn("Sensor permission error", err);
           }
         } else {
-          // Non-iOS or older devices
+          // Non-iOS or Android devices
           if ("ondeviceorientationabsolute" in window) {
             window.addEventListener("deviceorientationabsolute", handleOrientation, true);
             sensorsRunning = true;
-            btnCalibrateText.textContent = "Sensors Active 🟢 (Calibrated)";
+            if (btnCalibrateText) btnCalibrateText.textContent = "Sensors Active 🟢 (Calibrated)";
           } else if ("ondeviceorientation" in window) {
             window.addEventListener("deviceorientation", handleOrientation, true);
             sensorsRunning = true;
-            btnCalibrateText.textContent = "Sensors Active 🟢 (Calibrated)";
+            if (btnCalibrateText) btnCalibrateText.textContent = "Sensors Active 🟢 (Calibrated)";
           } else {
-            alert("Device orientation sensors are not supported on this browser. You can use the manual slider below.");
+            alert("Compass sensors are not supported on this browser. You can use the manual slider below.");
           }
         }
       }
 
-      btnCalibrate.addEventListener("click", activateSensors);
+      if (btnCalibrate) {
+        btnCalibrate.addEventListener("click", activateSensors);
+      }
 
       // Auto-attempt activation on mobile if permission not required
       if (typeof DeviceOrientationEvent !== "undefined" && typeof DeviceOrientationEvent.requestPermission !== "function") {
@@ -991,18 +1312,50 @@
         }
       }
 
-      // Mobile Navbar toggle
+      // Mobile Navbar toggle & outside click handling
       const menuButton = document.getElementById("menuButton");
       const navLinks = document.getElementById("navLinks");
+      const navbar = document.querySelector(".navbar");
+
       if (menuButton && navLinks) {
-        menuButton.addEventListener("click", () => {
-          navLinks.classList.toggle("active");
+        menuButton.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const isActive = navLinks.classList.toggle("active");
+          menuButton.setAttribute("aria-expanded", isActive ? "true" : "false");
+        });
+
+        // Close on nav link click
+        navLinks.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            menuButton.setAttribute("aria-expanded", "false");
+          });
+        });
+
+        // Close on outside tap
+        document.addEventListener("click", (e) => {
+          if (!navLinks.contains(e.target) && !menuButton.contains(e.target)) {
+            navLinks.classList.remove("active");
+            menuButton.setAttribute("aria-expanded", "false");
+          }
         });
       }
 
+      // Navbar scroll effect
+      window.addEventListener("scroll", () => {
+        if (navbar) {
+          if (window.scrollY > 20) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        }
+      });
+
       // Initialize
       setupDial();
-      updateHeading(0);
+      // Start with 267° WEST matching user's mobile reference image
+      updateHeading(267);
     </script>
   </body>
 </html>
