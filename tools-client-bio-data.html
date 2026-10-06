@@ -1,12 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Real Estate Client Bio-Data & Profiling Tool | OneToBeam</title>
+    <title>Client Bio-Data Builder | OneToBeam</title>
     <meta
       name="description"
-      content="Create professional client bio-data profiles for real estate preferences. Document budget, location needs, and family details in a clean PDF format."
+      content="Create professional client bio-data profiles for real estate preferences. Document budget, location needs, and family details in a clean format."
     />
     <meta name="keywords" content="real estate client bio-data, client profiling tool, buyer requirement profile, property agent kyc" />
     <meta name="author" content="OneToBeam" />
@@ -28,30 +28,50 @@
     <style>
       :root {
         --bg: #0a0a0a;
-        --bg-soft: #101010;
-        --surface: #151515;
-        --surface-2: #1b1b1b;
+        --bg-soft: #121212;
+        --surface: #161616;
+        --surface-2: #1e1e1e;
+        --surface-3: #262626;
         --text: #f5f5f2;
         --muted: #9b9b97;
         --line: rgba(255, 255, 255, 0.1);
         --accent: #c6a55c;
         --accent-light: #e5cb87;
         --accent-dark: #a88b48;
-        --max-width: 800px;
-        --radius-lg: 20px;
-        --radius-md: 14px;
+        --accent-glow: rgba(198, 165, 92, 0.15);
+        --max-width: 820px;
+        --radius-lg: 24px;
+        --radius-md: 16px;
         --radius-sm: 10px;
         --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { background: var(--bg); color: var(--text); font-family: var(--font-sans); line-height: 1.5; overflow-x: hidden; }
-      a { color: inherit; text-decoration: none; }
-      .container { width: min(var(--max-width), calc(100% - 40px)); margin: auto; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-            /* =========================================================
-   NAVBAR (Exact Parity with Index)
-========================================================= */
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-sans);
+        line-height: 1.5;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(var(--max-width), calc(100% - 40px));
+        margin: auto;
+      }
+
+      /* Navbar */
       .navbar {
         position: fixed;
         top: 0;
@@ -61,15 +81,11 @@
         display: flex;
         align-items: center;
         z-index: 1000;
-        background: rgba(10, 10, 10, 0.7);
+        background: rgba(10, 10, 10, 0.75);
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
-        border-bottom: 1px solid transparent;
+        border-bottom: 1px solid var(--line);
         transition: 0.3s ease;
-      }
-
-      .navbar.scrolled {
-        border-bottom-color: var(--line);
       }
 
       .nav-inner {
@@ -87,15 +103,8 @@
         left: 30px;
         top: 50%;
         transform: translateY(-50%);
-        font-size: 21px;
-        font-weight: 700;
-        letter-spacing: -0.8px;
         display: flex;
         align-items: center;
-      }
-
-      .logo span {
-        color: var(--accent);
       }
 
       .nav-links {
@@ -106,35 +115,21 @@
       }
 
       .nav-links a {
-        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         font-size: 13.5px;
         font-weight: 500;
         color: #cfcfcb;
         padding: 8px 18px;
-        min-width: 78px;
-        text-align: center;
         border-radius: 999px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        text-decoration: none;
         transition: 0.2s ease;
-        line-height: 1;
-        letter-spacing: 0;
       }
 
-      .nav-links a:hover {
-        color: #ffffff;
-        font-size: 13.5px;
-        font-weight: 500;
-        background: rgba(255, 255, 255, 0.08);
-      }
-
+      .nav-links a:hover,
       .nav-links a.active {
         color: #ffffff;
-        font-size: 13.5px;
-        font-weight: 500;
-        background: rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.08);
       }
 
       .nav-button {
@@ -142,15 +137,12 @@
         right: 30px;
         top: 50%;
         transform: translateY(-50%);
-        padding: 11px 20px;
+        padding: 10px 22px;
         background: var(--accent);
         color: #111;
         border-radius: 50px;
-        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         font-size: 13px;
         font-weight: 600;
-        line-height: 1;
-        letter-spacing: 0;
         transition: 0.2s ease;
       }
 
@@ -159,74 +151,1677 @@
         transform: translateY(-50%) scale(1.02);
       }
 
-      .breadcrumb { padding-top: 115px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
-      .breadcrumb a:hover { color: var(--accent); }
-
-      .tool-wrapper { padding: 30px 0 60px; }
-      .page-title { font-size: clamp(28px, 4vw, 36px); font-weight: 800; color: #ffffff; margin-bottom: 24px; text-align: center; }
-
-      .card-box {
-        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 30px;
+      .menu-button {
+        display: none;
+        background: none;
+        border: 0;
+        color: white;
+        cursor: pointer;
       }
 
-      .section-heading {
-        font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 18px;
-        display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
-      }
-      .section-heading span { color: var(--accent); }
-
-      .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
-      .input-group label { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
-      .custom-input, .custom-select, .custom-textarea {
-        width: 100%; padding: 12px 14px; background: var(--surface-2); border: 1px solid var(--line);
-        border-radius: var(--radius-sm); color: #ffffff; font-family: var(--font-sans); font-size: 14px; outline: none; transition: border-color 0.2s ease;
-      }
-      .custom-input:focus, .custom-select:focus, .custom-textarea:focus { border-color: var(--accent); }
-      .custom-select option { background: #181818; }
-      .custom-textarea { resize: vertical; min-height: 70px; }
-
-      .privacy-notice {
-        font-size: 12.5px; color: var(--muted); text-align: center; margin: 18px 0 24px; display: flex; align-items: center; justify-content: center; gap: 6px;
+      /* Hero Subheader */
+      .tool-hero {
+        padding-top: 120px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(20, 20, 20, 0.6) 0%, transparent 100%);
       }
 
-      .btn-action-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 40px; }
-      .btn-action {
-        padding: 14px; border-radius: 10px; font-size: 14px; font-weight: 700;
-        cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s ease;
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 16px;
       }
-      .btn-wa { background: #25D366; color: #0a0a0a; border: none; }
-      .btn-pdf { background: var(--accent); color: #0a0a0a; border: none; }
-      .btn-pdf:hover { background: var(--accent-light); }
 
-      /* Explainer */
+      .breadcrumb a:hover {
+        color: var(--accent);
+      }
+
+      .tool-hero-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      @media (min-width: 768px) {
+        .tool-hero-inner {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      .tool-hero h1 {
+        font-size: clamp(26px, 3.5vw, 36px);
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: -0.5px;
+      }
+
+      .tool-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        background: rgba(198, 165, 92, 0.12);
+        border: 1px solid rgba(198, 165, 92, 0.25);
+        color: var(--accent);
+        border-radius: 999px;
+        font-size: 12.5px;
+        font-weight: 600;
+        width: fit-content;
+      }
+
+      /* Main Form Styling */
+      .tool-content {
+        padding: 40px 0 100px;
+      }
+
+      .form-section-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 28px 24px;
+        margin-bottom: 24px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 22px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-icon-box {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        background: rgba(198, 165, 92, 0.12);
+        border: 1px solid rgba(198, 165, 92, 0.25);
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .section-title {
+        font-size: 19px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+
+      .field-group {
+        margin-bottom: 20px;
+      }
+
+      .field-group:last-child {
+        margin-bottom: 0;
+      }
+
+      .field-label {
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      .clean-input {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid rgba(198, 165, 92, 0.25);
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 600;
+        padding: 8px 2px;
+        font-family: var(--font-sans);
+        outline: none;
+        transition: border-color 0.2s ease;
+      }
+
+      .clean-input:focus {
+        border-bottom-color: var(--accent);
+      }
+
+      /* Custom Select */
+      .select-wrap {
+        position: relative;
+      }
+
+      .custom-select {
+        width: 100%;
+        appearance: none;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 12px 40px 12px 14px;
+        color: #ffffff;
+        font-size: 14.5px;
+        font-weight: 600;
+        font-family: var(--font-sans);
+        cursor: pointer;
+        outline: none;
+        transition: all 0.2s ease;
+      }
+
+      .custom-select:hover,
+      .custom-select:focus {
+        border-color: var(--accent);
+        background: var(--surface-3);
+      }
+
+      .custom-select option {
+        background: #1a1a1a;
+        color: #ffffff;
+      }
+
+      .select-arrow {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: var(--accent);
+      }
+
+      /* Subgroup title */
+      .subgroup-title {
+        font-size: 10.5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--accent);
+        margin: 14px 0 8px;
+      }
+
+      /* Toggle chip button */
+      .toggle-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .toggle-chip {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        color: var(--muted);
+        font-size: 13.5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .toggle-chip:hover {
+        border-color: rgba(198, 165, 92, 0.35);
+        color: #ffffff;
+      }
+
+      .toggle-chip.active {
+        background: rgba(198, 165, 92, 0.16);
+        border-color: var(--accent);
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      /* Counter item */
+      .counter-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 10px 14px;
+        transition: all 0.2s ease;
+      }
+
+      .counter-card:hover {
+        border-color: rgba(198, 165, 92, 0.35);
+      }
+
+      .counter-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12.5px;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .counter-controls {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .counter-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 6px;
+        background: var(--surface-3);
+        border: 1px solid var(--line);
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+
+      .counter-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .counter-num {
+        width: 24px;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+
+      /* Segmented buttons */
+      .seg-group {
+        display: flex;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 4px;
+        gap: 4px;
+      }
+
+      .seg-btn {
+        flex: 1;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 12.5px;
+        font-weight: 600;
+        background: transparent;
+        border: none;
+        color: var(--muted);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .seg-btn:hover {
+        color: #ffffff;
+      }
+
+      .seg-btn.active {
+        background: var(--accent);
+        color: #0a0a0a;
+        font-weight: 700;
+      }
+
+      /* Range sliders */
+      .range-row-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+
+      .range-val-badge {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .custom-range {
+        width: 100%;
+        height: 6px;
+        border-radius: 3px;
+        background: var(--surface-3);
+        outline: none;
+        -webkit-appearance: none;
+        accent-color: var(--accent);
+        cursor: pointer;
+      }
+
+      .range-bounds {
+        display: flex;
+        justify-content: space-between;
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      /* Cards Grid (4 cols or 3 cols) */
+      .grid-purpose {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      @media (min-width: 640px) {
+        .grid-purpose {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .card-chip {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 10px;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: center;
+        gap: 8px;
+        color: var(--muted);
+      }
+
+      .card-chip svg {
+        transition: transform 0.2s ease;
+      }
+
+      .card-chip:hover {
+        border-color: rgba(198, 165, 92, 0.4);
+        color: #ffffff;
+      }
+
+      .card-chip:hover svg {
+        transform: scale(1.1);
+      }
+
+      .card-chip.active {
+        background: rgba(198, 165, 92, 0.16);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .card-chip span {
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      /* Trigger event grid */
+      .grid-trigger {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      @media (min-width: 640px) {
+        .grid-trigger {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .trigger-chip {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        color: var(--muted);
+      }
+
+      .trigger-chip:hover {
+        border-color: rgba(198, 165, 92, 0.4);
+        color: #ffffff;
+      }
+
+      .trigger-chip.active {
+        background: rgba(198, 165, 92, 0.16);
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .trigger-chip span {
+        font-size: 12.5px;
+        font-weight: 700;
+      }
+
+      /* Pills row (3 or 6) */
+      .pills-grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .pill-btn {
+        padding: 10px 8px;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--muted);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        text-align: center;
+      }
+
+      .pill-btn:hover {
+        border-color: rgba(198, 165, 92, 0.4);
+        color: #ffffff;
+      }
+
+      .pill-btn.active {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #0a0a0a;
+      }
+
+      /* Tag Input & Chips */
+      .tags-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 8px;
+      }
+
+      .tag-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 10px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .tag-chip.must {
+        background: rgba(59, 130, 246, 0.16);
+        border: 1px solid rgba(59, 130, 246, 0.35);
+        color: #60a5fa;
+      }
+
+      .tag-chip.good {
+        background: rgba(16, 185, 129, 0.16);
+        border: 1px solid rgba(16, 185, 129, 0.35);
+        color: #34d399;
+      }
+
+      .tag-chip .remove-tag {
+        cursor: pointer;
+        opacity: 0.7;
+        font-size: 14px;
+        line-height: 1;
+      }
+
+      .tag-chip .remove-tag:hover {
+        opacity: 1;
+      }
+
+      .tag-input-box {
+        width: 100%;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 10px 14px;
+        color: #ffffff;
+        font-size: 13.5px;
+        font-family: var(--font-sans);
+        outline: none;
+        transition: border-color 0.2s ease;
+      }
+
+      .tag-input-box:focus {
+        border-color: var(--accent);
+      }
+
+      .quick-tags-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+      }
+
+      .quick-tag-add {
+        font-size: 11px;
+        padding: 4px 10px;
+        background: var(--surface-3);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: var(--muted);
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+
+      .quick-tag-add:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      /* Action Buttons */
+      .action-buttons-wrap {
+        margin-top: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .btn-main-action {
+        width: 100%;
+        padding: 16px;
+        border-radius: var(--radius-md);
+        font-size: 16px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        border: none;
+      }
+
+      .btn-pdf-export {
+        background: var(--accent);
+        color: #0a0a0a;
+        box-shadow: 0 8px 24px rgba(198, 165, 92, 0.35);
+      }
+
+      .btn-pdf-export:hover {
+        background: var(--accent-light);
+        transform: translateY(-2px);
+      }
+
+      .btn-wa-export {
+        background: #25d366;
+        color: #ffffff;
+        box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+      }
+
+      .btn-wa-export:hover {
+        background: #1ebe5d;
+        transform: translateY(-2px);
+      }
+
+      .privacy-note {
+        text-align: center;
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 10px;
+      }
+
+      /* Explainer Box */
       .explainer-box {
-        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
-        padding: 32px; margin-bottom: 40px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 36px 32px;
+        margin-top: 48px;
       }
-      .explainer-box h2 { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 16px; }
-      .explainer-box p { color: var(--muted); font-size: 14.5px; line-height: 1.7; margin-bottom: 14px; }
-      .explainer-box ul { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 10px; }
-      .explainer-box li { font-size: 14px; color: #cfcfcb; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
-      .explainer-box li::before { content: "•"; color: var(--accent); font-weight: 800; }
+
+      .explainer-box h2 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 20px;
+      }
+
+      .explainer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      @media (min-width: 768px) {
+        .explainer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .explainer-grid strong {
+        color: #ffffff;
+      }
+
+      .feature-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .feature-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .feature-list li::before {
+        content: "•";
+        color: var(--accent);
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 1;
+      }
 
       .cta-promo {
-        background: linear-gradient(135deg, rgba(198, 165, 92, 0.15) 0%, rgba(198, 165, 92, 0.04) 100%);
-        border: 1px solid rgba(198, 165, 92, 0.35); border-radius: var(--radius-md); padding: 24px; text-align: center;
-      }
-      .cta-promo p { font-size: 15px; font-weight: 600; color: #ffffff; margin-bottom: 14px; }
-      .cta-promo a {
-        display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px;
-        background: var(--accent); color: #0a0a0a; border-radius: 50px; font-size: 13.5px; font-weight: 700;
+        margin-top: 40px;
+        padding-top: 28px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
       }
 
-      footer { border-top: 1px solid var(--line); padding: 60px 0 30px; background: #080808; }
-      .footer-bottom { display: flex; align-items: center; justify-content: space-between; color: #666; font-size: 13px; }
+      .cta-promo p {
+        color: var(--muted);
+        font-size: 14px;
+      }
 
-      @media (max-width: 640px) {
-        .form-grid-2 { grid-template-columns: 1fr; }
-        .btn-action-row { grid-template-columns: 1fr; }
-        .nav-links { display: none; }
-        .nav-button { display: none; }
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 24px;
+        background: rgba(198, 165, 92, 0.12);
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        border-radius: 999px;
+        font-size: 13.5px;
+        font-weight: 700;
+        transition: all 0.25s ease;
+      }
+
+      .cta-btn:hover {
+        background: var(--accent);
+        color: #0a0a0a;
+        transform: translateY(-2px);
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 50px 0 30px;
+        background: #080808;
+      }
+
+      .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #666;
+        font-size: 13px;
+      }
+
+      #pdfPrintTemplate {
+        display: none;
+      }
+
+      /* Exact Print Stylesheet for PDF Output (Matches Client Requirement Profile) */
+      @media print {
+        @page {
+          size: A4 portrait;
+          margin: 10mm 14mm 10mm 14mm;
+        }
+
+        html, body {
+          background: #ffffff !important;
+          color: #0f172a !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          width: 100% !important;
+          height: auto !important;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+        }
+
+        /* Hide all web app UI elements */
+        .navbar,
+        .tool-hero,
+        .tools-header,
+        .action-buttons-wrap,
+        .privacy-note,
+        .explainer-box,
+        footer,
+        .quick-tags-row,
+        .tag-input-box,
+        .amenities-modal-overlay,
+        .amenities-modal,
+        .form-section-card,
+        .container,
+        header {
+          display: none !important;
+        }
+
+        /* Show ONLY the exact PDF profile template */
+        #pdfPrintTemplate {
+          display: block !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          background: #ffffff !important;
+          color: #0f172a !important;
+          box-shadow: none !important;
+          border: none !important;
+          page-break-after: avoid !important;
+          page-break-inside: avoid !important;
+        }
+
+        .pdf-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 8px;
+        }
+
+        .pdf-main-title {
+          font-size: 26px;
+          font-weight: 900;
+          line-height: 1.1;
+          color: #0f172a;
+          letter-spacing: -0.5px;
+          margin: 0 0 6px 0;
+          text-transform: uppercase;
+        }
+
+        .pdf-doc-sub {
+          font-size: 9px;
+          font-weight: 700;
+          letter-spacing: 1.5px;
+          color: #64748b;
+          text-transform: uppercase;
+        }
+
+        .pdf-header-right {
+          text-align: right;
+        }
+
+        .pdf-verified-badge {
+          display: inline-block;
+          border: 1.5px solid #c6a55c;
+          color: #a88b48;
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: 0.8px;
+          padding: 4px 14px;
+          border-radius: 4px;
+          text-transform: uppercase;
+          margin-bottom: 6px;
+        }
+
+        .pdf-generated-date {
+          font-size: 8.5px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          color: #64748b;
+          text-transform: uppercase;
+        }
+
+        .pdf-header-divider {
+          height: 3px;
+          background: #c6a55c;
+          width: 100%;
+          margin: 12px 0 22px 0;
+        }
+
+        .pdf-columns-wrap {
+          display: flex;
+          justify-content: space-between;
+          gap: 32px;
+        }
+
+        .pdf-col-left {
+          flex: 0 0 44%;
+          max-width: 44%;
+        }
+
+        .pdf-col-right {
+          flex: 0 0 52%;
+          max-width: 52%;
+        }
+
+        .pdf-section {
+          margin-bottom: 16px;
+        }
+
+        .pdf-section-label-blue {
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: 1px;
+          color: #a88b48;
+          text-transform: uppercase;
+          margin-bottom: 8px;
+          display: inline-block;
+          border-bottom: 2px solid #c6a55c;
+          padding-bottom: 2px;
+        }
+
+        .pdf-field-label {
+          font-size: 8.5px;
+          font-weight: 700;
+          letter-spacing: 0.8px;
+          color: #94a3b8;
+          text-transform: uppercase;
+          margin-bottom: 2px;
+        }
+
+        .pdf-client-name {
+          font-size: 20px;
+          font-weight: 800;
+          color: #0f172a;
+          line-height: 1.2;
+          word-break: break-word;
+          margin-bottom: 8px;
+        }
+
+        .pdf-demographics-row {
+          display: flex;
+          gap: 8px;
+          margin-top: 4px;
+        }
+
+        .pdf-demo-pill {
+          background: #f1f5f9;
+          border: 1px solid #e2e8f0;
+          border-radius: 4px;
+          padding: 4px 12px;
+          font-size: 11px;
+          font-weight: 700;
+          color: #334155;
+        }
+
+        .pdf-family-table {
+          display: flex;
+          flex-direction: column;
+          gap: 7px;
+          margin-top: 6px;
+        }
+
+        .pdf-family-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          padding-bottom: 3px;
+        }
+
+        .pdf-fam-label {
+          font-size: 9.5px;
+          font-weight: 700;
+          letter-spacing: 0.6px;
+          color: #a88b48;
+          text-transform: uppercase;
+          width: 85px;
+          flex-shrink: 0;
+        }
+
+        .pdf-fam-val {
+          font-size: 11.5px;
+          font-weight: 700;
+          color: #1e293b;
+          text-align: right;
+        }
+
+        .pdf-financial-card {
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+          border-radius: 8px;
+          padding: 14px 16px;
+          margin-top: 6px;
+        }
+
+        .pdf-fin-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .pdf-fin-label {
+          font-size: 9px;
+          font-weight: 700;
+          letter-spacing: 0.8px;
+          color: #64748b;
+          text-transform: uppercase;
+          width: 70px;
+        }
+
+        .pdf-fin-val-budget {
+          font-size: 22px;
+          font-weight: 900;
+          color: #a88b48;
+          letter-spacing: -0.5px;
+        }
+
+        .pdf-fin-val-income {
+          font-size: 15px;
+          font-weight: 800;
+          color: #0f172a;
+        }
+
+        .pdf-fin-card-divider {
+          height: 1px;
+          background: #e2e8f0;
+          margin: 10px 0;
+        }
+
+        .pdf-fin-val-funding {
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 0.5px;
+          color: #a88b48;
+          text-transform: uppercase;
+        }
+
+        .pdf-looking-title {
+          font-size: 22px;
+          font-weight: 800;
+          color: #0f172a;
+          line-height: 1.2;
+          margin-bottom: 2px;
+        }
+
+        .pdf-looking-subtitle {
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          color: #64748b;
+          text-transform: uppercase;
+          margin-bottom: 10px;
+        }
+
+        .pdf-timeline-pill-wrap {
+          margin-bottom: 6px;
+        }
+
+        .pdf-timeline-pill {
+          display: inline-block;
+          background: #c6a55c;
+          color: #111111;
+          font-size: 11.5px;
+          font-weight: 800;
+          padding: 6px 18px;
+          border-radius: 4px;
+        }
+
+        .pdf-right-accent-line {
+          height: 3px;
+          background: #c6a55c;
+          width: 100%;
+          margin: 14px 0 16px 0;
+        }
+
+        .pdf-req-analysis-header {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 1px;
+          color: #0f172a;
+          text-transform: uppercase;
+          margin-bottom: 12px;
+        }
+
+        .pdf-blue-square {
+          width: 10px;
+          height: 10px;
+          background: #c6a55c;
+          border-radius: 2px;
+          display: inline-block;
+        }
+
+        .pdf-must-card {
+          border: 2px solid #c6a55c;
+          border-radius: 10px;
+          padding: 14px;
+          background: #ffffff;
+          margin-bottom: 14px;
+        }
+
+        .pdf-card-title-row {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .pdf-exclamation-badge {
+          width: 18px;
+          height: 18px;
+          background: #c6a55c;
+          color: #111111;
+          font-size: 12px;
+          font-weight: 900;
+          border-radius: 3px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          line-height: 1;
+        }
+
+        .pdf-card-title-text {
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 0.8px;
+          color: #0f172a;
+          text-transform: uppercase;
+        }
+
+        .pdf-card-line {
+          height: 1px;
+          background: #e2e8f0;
+          margin: 10px 0 12px 0;
+        }
+
+        .pdf-chips-grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+
+        .pdf-chip {
+          background: #ffffff;
+          border: 1px solid #cbd5e1;
+          border-radius: 4px;
+          padding: 5px 12px;
+          font-size: 11px;
+          font-weight: 600;
+          color: #1e293b;
+        }
+
+        .pdf-good-card {
+          border: 1.5px dashed #94a3b8;
+          border-radius: 10px;
+          padding: 14px;
+          background: #f8fafc;
+        }
+
+        .pdf-good-title-row {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          margin-bottom: 10px;
+        }
+
+        .pdf-good-icon {
+          color: #64748b;
+          font-size: 11px;
+        }
+
+        .pdf-good-title-text {
+          font-size: 10.5px;
+          font-weight: 800;
+          letter-spacing: 0.8px;
+          color: #64748b;
+          text-transform: uppercase;
+        }
+
+        .pdf-good-items-wrap {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px 16px;
+        }
+
+        .pdf-good-item {
+          font-size: 11px;
+          font-weight: 600;
+          color: #334155;
+        }
+
+        .pdf-footer {
+          margin-top: 24px;
+          padding-top: 10px;
+          border-top: 1px solid #e2e8f0;
+          display: flex;
+          justify-content: space-between;
+          font-size: 8px;
+          font-weight: 700;
+          color: #94a3b8;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
+      }
+
+      /* Mobile Navbar & Responsiveness */
+      @media (max-width: 768px) {
+        .logo {
+          position: static;
+          transform: none;
+        }
+        .menu-button {
+          position: static;
+          transform: none;
+          display: block;
+          margin-left: auto;
+        }
+        .nav-inner {
+          justify-content: space-between;
+          padding: 0 16px;
+        }
+        .nav-links {
+          position: fixed;
+          top: 78px;
+          left: 15px;
+          right: 15px;
+          padding: 25px;
+          margin-right: 0;
+          background: rgba(15, 15, 15, 0.96);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid var(--line);
+          border-radius: 18px;
+          flex-direction: column;
+          align-items: flex-start;
+          display: none;
+        }
+        .nav-links.active {
+          display: flex;
+        }
+        .nav-links a {
+          width: 100%;
+          text-align: left;
+          padding: 10px 14px;
+        }
+        .nav-button {
+          display: none;
+        }
+        .form-section-card {
+          padding: 20px 16px;
+        }
+      }
+
+      /* Select from List Header & Buttons */
+      .field-header-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        gap: 12px;
+      }
+
+      .field-header-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .field-header-left svg {
+        flex-shrink: 0;
+      }
+
+      .field-label-inline {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-bottom: 0;
+      }
+
+      .btn-select-list {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        color: #ffffff;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+      }
+
+      .btn-must-list {
+        background: #2563eb;
+      }
+      .btn-must-list:hover {
+        background: #1d4ed8;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+      }
+
+      .btn-good-list {
+        background: #16a34a;
+      }
+      .btn-good-list:hover {
+        background: #15803d;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);
+      }
+
+      /* Amenities Selection Modal */
+      .amenities-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.78);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        z-index: 2000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+
+      .amenities-modal-overlay.open {
+        display: flex;
+        opacity: 1;
+      }
+
+      .amenities-modal {
+        background: #141414;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        width: min(840px, 100%);
+        max-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+        transform: scale(0.96);
+        transition: transform 0.25s ease;
+      }
+
+      .amenities-modal-overlay.open .amenities-modal {
+        transform: scale(1);
+      }
+
+      .modal-header {
+        padding: 22px 26px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .modal-title-wrap {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .modal-icon-badge {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-title {
+        font-size: 19px;
+        font-weight: 700;
+        color: #ffffff;
+        line-height: 1.2;
+      }
+
+      .modal-subtitle {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 3px;
+      }
+
+      .modal-close-btn {
+        background: none;
+        border: none;
+        color: #888;
+        cursor: pointer;
+        padding: 6px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.2s;
+      }
+
+      .modal-close-btn:hover {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .modal-tabs-bar {
+        display: flex;
+        background: #101010;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        width: 100%;
+      }
+
+      .modal-tabs-bar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .modal-tab-btn {
+        flex: 1;
+        padding: 12px 10px;
+        background: none;
+        border: none;
+        border-bottom: 2px solid transparent;
+        font-family: inherit;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        color: #888885;
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.2s;
+        white-space: normal;
+        line-height: 1.25;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-tab-btn:hover {
+        color: #d1d1cd;
+      }
+
+      .modal-tab-btn.active {
+        color: #ffffff;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      /* Tab & Modal Colors */
+      .amenities-modal.theme-must .modal-icon-badge {
+        background: rgba(37, 99, 235, 0.15);
+        color: #60a5fa;
+      }
+      .amenities-modal.theme-must .modal-tab-btn.active {
+        border-bottom-color: #2563eb;
+        color: #60a5fa;
+      }
+      .amenities-modal.theme-must .modal-done-btn {
+        background: #2563eb;
+      }
+      .amenities-modal.theme-must .modal-done-btn:hover {
+        background: #1d4ed8;
+      }
+
+      .amenities-modal.theme-good .modal-icon-badge {
+        background: rgba(16, 185, 129, 0.15);
+        color: #34d399;
+      }
+      .amenities-modal.theme-good .modal-tab-btn.active {
+        border-bottom-color: #10b981;
+        color: #34d399;
+      }
+      .amenities-modal.theme-good .modal-done-btn {
+        background: #16a34a;
+      }
+      .amenities-modal.theme-good .modal-done-btn:hover {
+        background: #15803d;
+      }
+
+      .modal-body-scroll {
+        padding: 20px 22px;
+        overflow-y: auto;
+        max-height: calc(88vh - 200px);
+      }
+
+      .modal-tab-pane {
+        display: none;
+      }
+      .modal-tab-pane.active {
+        display: block;
+      }
+
+      .amenities-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .amenity-chip-btn {
+        background: #1b1b1b;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        padding: 9px 6px;
+        font-family: inherit;
+        font-size: 11.5px;
+        color: #cfcfcb;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.18s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        line-height: 1.25;
+        user-select: none;
+      }
+
+      .amenity-chip-btn span {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+
+      .amenity-chip-btn:hover {
+        background: #232323;
+        border-color: rgba(255, 255, 255, 0.18);
+        color: #ffffff;
+      }
+
+      .amenities-modal.theme-must .amenity-chip-btn.selected {
+        background: rgba(37, 99, 235, 0.22);
+        border-color: #3b82f6;
+        color: #ffffff;
+        font-weight: 600;
+      }
+
+      .amenities-modal.theme-good .amenity-chip-btn.selected {
+        background: rgba(16, 185, 129, 0.22);
+        border-color: #10b981;
+        color: #ffffff;
+        font-weight: 600;
+      }
+
+      .amenity-check-icon {
+        display: none !important;
+      }
+
+      .amenities-subgroup-divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 20px 0 12px;
+      }
+
+      .amenities-subgroup-divider::before,
+      .amenities-subgroup-divider::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .amenities-subgroup-divider span {
+        padding: 0 12px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        color: #888885;
+        text-transform: uppercase;
+      }
+
+      .modal-footer {
+        padding: 14px 20px;
+        background: #111111;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      /* Exact Mobile Match for Modal UI */
+      @media (max-width: 680px) {
+        .amenities-modal-overlay {
+          padding: 8px;
+        }
+
+        .amenities-modal {
+          border-radius: 16px;
+          max-height: 94vh;
+          width: 100%;
+        }
+
+        .modal-header {
+          padding: 14px 16px 12px;
+        }
+
+        .modal-title {
+          font-size: 16.5px;
+        }
+
+        .modal-subtitle {
+          font-size: 11.5px;
+          margin-top: 2px;
+        }
+
+        .modal-icon-badge {
+          width: 36px;
+          height: 36px;
+          border-radius: 10px;
+        }
+
+        .modal-tabs-bar {
+          display: flex;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+          justify-content: flex-start;
+          width: 100%;
+        }
+
+        .modal-tab-btn {
+          flex: 0 0 33.333% !important;
+          width: 33.333% !important;
+          min-width: 0 !important;
+          padding: 10px 4px !important;
+          font-size: 10px !important;
+          line-height: 1.25 !important;
+          white-space: normal !important;
+          text-align: center !important;
+          word-break: normal !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+
+        .modal-body-scroll {
+          padding: 14px 10px;
+          max-height: calc(94vh - 165px);
+        }
+
+        .amenities-grid {
+          display: grid !important;
+          grid-template-columns: repeat(3, 1fr) !important;
+          gap: 6px !important;
+        }
+
+        .amenity-chip-btn {
+          padding: 8px 3px !important;
+          font-size: 10.5px !important;
+          min-height: 52px !important;
+          border-radius: 8px !important;
+          text-align: center !important;
+          justify-content: center !important;
+          align-items: center !important;
+          display: flex !important;
+          line-height: 1.22 !important;
+        }
+
+        .amenity-chip-btn span {
+          width: 100%;
+          text-align: center;
+        }
+
+        .amenities-subgroup-divider {
+          margin: 16px 0 10px;
+        }
+
+        .amenities-subgroup-divider span {
+          font-size: 9.5px;
+          padding: 0 6px;
+        }
+
+        .modal-footer {
+          padding: 12px 14px;
+          gap: 10px;
+        }
+
+        .modal-cancel-btn {
+          width: 36%;
+          padding: 11px 8px;
+          font-size: 13.5px;
+          text-align: center;
+        }
+
+        .modal-done-btn {
+          flex: 1;
+          padding: 11px 12px;
+          font-size: 13.5px;
+          text-align: center;
+        }
+      }
+
+      .modal-cancel-btn {
+        background: none;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 10px;
+        padding: 11px 24px;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 600;
+        color: #d1d1cf;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .modal-cancel-btn:hover {
+        background: rgba(255, 255, 255, 0.06);
+        color: #fff;
+      }
+
+      .modal-done-btn {
+        background: #2563eb;
+        border: none;
+        border-radius: 10px;
+        padding: 11px 32px;
+        font-family: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        color: #ffffff;
+        cursor: pointer;
+        transition: all 0.2s;
+        flex: 1;
+        max-width: 260px;
+        text-align: center;
       }
     </style>
   </head>
@@ -246,155 +1841,468 @@
           <a href="index.html#iplex">i-PLEX</a>
           <a href="blog.html">Blog</a>
           <a href="gallery.html">Gallery</a>
-          <a href="tools.html">Free Tools</a>
+          <a href="tools.html" class="active">Free Tools</a>
           <a href="index.html#about">About</a>
         </nav>
         <a href="index.html#contact" class="nav-button">Book a Demo</a>
+        <button class="menu-button" id="menuButton" aria-label="Open Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </header>
 
-    <main class="container">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <span>/</span>
-        <a href="tools.html">Free Tools</a>
-        <span>/</span>
-        <span style="color: #ffffff;">Smart KYC</span>
+    <!-- Subheader Banner -->
+    <section class="tool-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <a href="tools.html">Free Tools</a>
+          <span>/</span>
+          <span style="color: #ffffff;">Smart KYC</span>
+        </div>
+        <div class="tool-hero-inner">
+          <h1>Client Bio-Data Builder</h1>
+          <div class="tool-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              <rect width="20" height="14" x="2" y="6" rx="2"></rect>
+            </svg>
+            <span>Free Tool for Profiling</span>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="tool-wrapper">
-        <h1 class="page-title">Client Bio-Data Builder</h1>
+    <!-- Main Tool Body -->
+    <main class="tool-content">
+      <div class="container">
 
-        <!-- Form Box -->
-        <div class="card-box">
-          <!-- 1. The Person -->
-          <h2 class="section-heading"><span>01</span> The Person</h2>
-          <div class="form-grid-2">
-            <div class="input-group">
-              <label>Full Name</label>
-              <input type="text" id="pName" class="custom-input" placeholder="e.g. Rahul Sharma" />
+        <!-- 1. The Person -->
+        <div class="form-section-card">
+          <div class="section-header">
+            <div class="section-icon-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
             </div>
-            <div class="input-group">
-              <label>Contact Number / WhatsApp</label>
-              <input type="text" id="pPhone" class="custom-input" placeholder="+91 98765 43210" />
-            </div>
-          </div>
-          <div class="form-grid-2">
-            <div class="input-group">
-              <label>Email Address</label>
-              <input type="email" id="pEmail" class="custom-input" placeholder="rahul@example.com" />
-            </div>
-            <div class="input-group">
-              <label>Family Composition / Occupants</label>
-              <input type="text" id="pFamily" class="custom-input" placeholder="e.g. Couple + 2 Children" />
-            </div>
+            <h2 class="section-title">The Person</h2>
           </div>
 
-          <!-- 2. The Power -->
-          <h2 class="section-heading" style="margin-top: 24px;"><span>02</span> The Power</h2>
-          <div class="form-grid-2">
-            <div class="input-group">
-              <label>Budget Range</label>
-              <select id="pBudget" class="custom-select">
-                <option value="₹50L – ₹90L">₹50L – ₹90L</option>
-                <option value="₹90L – ₹1.5 Cr" selected>₹90L – ₹1.5 Cr</option>
-                <option value="₹1.5 Cr – ₹2.5 Cr">₹1.5 Cr – ₹2.5 Cr</option>
-                <option value="₹2.5 Cr – ₹5 Cr">₹2.5 Cr – ₹5 Cr</option>
-                <option value="₹5 Cr+ Luxury">₹5 Cr+ Luxury</option>
-              </select>
-            </div>
-            <div class="input-group">
-              <label>Funding Readiness</label>
-              <select id="pFunding" class="custom-select">
-                <option value="Pre-Approved Home Loan" selected>Pre-Approved Home Loan</option>
-                <option value="Self-Funded (Ready Cash)">Self-Funded (Ready Cash)</option>
-                <option value="Loan Required">Loan Required</option>
-              </select>
-            </div>
-          </div>
-          <div class="input-group">
-            <label>Occupation & Employer / Business</label>
-            <input type="text" id="pOccupation" class="custom-input" placeholder="e.g. Senior Tech Lead at Google / Business Owner" />
+          <div class="field-group">
+            <label class="field-label">Full Name</label>
+            <input type="text" id="clientFullName" class="clean-input" placeholder="e.g. Rahul Sharma" />
           </div>
 
-          <!-- 3. The Motivation -->
-          <h2 class="section-heading" style="margin-top: 24px;"><span>03</span> The Motivation</h2>
-          <div class="form-grid-2">
-            <div class="input-group">
-              <label>Purchase Purpose</label>
-              <select id="pPurpose" class="custom-select">
-                <option value="Self-Use (Primary Home)" selected>Self-Use (Primary Home)</option>
-                <option value="Investment / High Capital Growth">Investment / High Capital Growth</option>
-                <option value="Rental Yield">Rental Yield</option>
+          <div class="field-group">
+            <label class="field-label">Occupation</label>
+            <div class="select-wrap">
+              <select id="clientOccupation" class="custom-select">
+                <option value="IT/Tech">IT / Tech</option>
+                <option value="Finance">Finance</option>
+                <option value="Business">Business</option>
+                <option value="Medical">Medical</option>
+                <option value="Govt">Govt</option>
+                <option value="NRI">NRI</option>
               </select>
-            </div>
-            <div class="input-group">
-              <label>Target Move-In / Possession</label>
-              <select id="pTimeline" class="custom-select">
-                <option value="Ready to Move in Immediately" selected>Ready to Move in Immediately</option>
-                <option value="Within 6 to 12 Months">Within 6 to 12 Months</option>
-                <option value="Under Construction (2-3 Years)">Under Construction (2-3 Years)</option>
-              </select>
+              <div class="select-arrow">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
+                </svg>
+              </div>
             </div>
           </div>
 
-          <!-- 4. The Wishlist -->
-          <h2 class="section-heading" style="margin-top: 24px;"><span>04</span> The Wishlist</h2>
-          <div class="form-grid-2">
-            <div class="input-group">
-              <label>Configuration Type</label>
-              <select id="pConfig" class="custom-select">
-                <option value="2 BHK Apartment">2 BHK Apartment</option>
-                <option value="3 BHK Luxury Apartment" selected>3 BHK Luxury Apartment</option>
-                <option value="4 BHK / Penthouse">4 BHK / Penthouse</option>
-                <option value="Independent Villa">Independent Villa</option>
-                <option value="Plotted Development">Plotted Development</option>
-              </select>
+          <!-- Family Details Sub-section -->
+          <div class="field-group">
+            <label class="field-label">Family Details</label>
+
+            <!-- Parents -->
+            <div class="subgroup-title">Parents</div>
+            <div class="toggle-grid-2">
+              <button class="toggle-chip" id="chipFather">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span>Father</span>
+              </button>
+              <button class="toggle-chip" id="chipMother">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                <span>Mother</span>
+              </button>
             </div>
-            <div class="input-group">
-              <label>Target Location / Micro-Market</label>
-              <input type="text" id="pLocation" class="custom-input" placeholder="e.g. Whitefield, Outer Ring Road, Hitec City" />
+
+            <!-- Spouse -->
+            <div class="subgroup-title">Spouse</div>
+            <div class="toggle-grid-2">
+              <button class="toggle-chip" id="chipHusband">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                <span>Husband</span>
+              </button>
+              <button class="toggle-chip" id="chipWife">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                <span>Wife</span>
+              </button>
+            </div>
+
+            <!-- Children -->
+            <div class="subgroup-title">Children</div>
+            <div class="toggle-grid-2">
+              <div class="counter-card">
+                <div class="counter-label">Son</div>
+                <div class="counter-controls">
+                  <button class="counter-btn" onclick="stepCount('countSon', -1)">-</button>
+                  <span class="counter-num" id="countSon">0</span>
+                  <button class="counter-btn" onclick="stepCount('countSon', 1)">+</button>
+                </div>
+              </div>
+              <div class="counter-card">
+                <div class="counter-label">Daughter</div>
+                <div class="counter-controls">
+                  <button class="counter-btn" onclick="stepCount('countDaughter', -1)">-</button>
+                  <span class="counter-num" id="countDaughter">0</span>
+                  <button class="counter-btn" onclick="stepCount('countDaughter', 1)">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Siblings -->
+            <div class="subgroup-title">Siblings</div>
+            <div class="toggle-grid-2">
+              <div class="counter-card">
+                <div class="counter-label">Brother</div>
+                <div class="counter-controls">
+                  <button class="counter-btn" onclick="stepCount('countBrother', -1)">-</button>
+                  <span class="counter-num" id="countBrother">0</span>
+                  <button class="counter-btn" onclick="stepCount('countBrother', 1)">+</button>
+                </div>
+              </div>
+              <div class="counter-card">
+                <div class="counter-label">Sister</div>
+                <div class="counter-controls">
+                  <button class="counter-btn" onclick="stepCount('countSister', -1)">-</button>
+                  <span class="counter-num" id="countSister">0</span>
+                  <button class="counter-btn" onclick="stepCount('countSister', 1)">+</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pets -->
+            <div class="subgroup-title">Pets</div>
+            <div class="toggle-grid-2">
+              <div class="counter-card">
+                <div class="counter-label">Dog</div>
+                <div class="counter-controls">
+                  <button class="counter-btn" onclick="stepCount('countDog', -1)">-</button>
+                  <span class="counter-num" id="countDog">0</span>
+                  <button class="counter-btn" onclick="stepCount('countDog', 1)">+</button>
+                </div>
+              </div>
+              <div class="counter-card">
+                <div class="counter-label">Cat</div>
+                <div class="counter-controls">
+                  <button class="counter-btn" onclick="stepCount('countCat', -1)">-</button>
+                  <span class="counter-num" id="countCat">0</span>
+                  <button class="counter-btn" onclick="stepCount('countCat', 1)">+</button>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="input-group">
-            <label>Specific Preferences (Facing, Floor, Parking)</label>
-            <textarea id="pNotes" class="custom-textarea" placeholder="e.g. East facing, Higher floor above 10th, 2 covered car parks."></textarea>
+
+          <!-- Age Group -->
+          <div class="field-group">
+            <label class="field-label">Age Group</label>
+            <div class="seg-group" id="ageGroupSeg">
+              <button class="seg-btn" data-age="20s">20s</button>
+              <button class="seg-btn active" data-age="30s">30s</button>
+              <button class="seg-btn" data-age="40s">40s</button>
+              <button class="seg-btn" data-age="50s">50s</button>
+              <button class="seg-btn" data-age="60+">60+</button>
+            </div>
           </div>
         </div>
 
-        <div class="privacy-notice">
-          🔒 All data is processed locally in your browser. No data is stored on our servers.
+        <!-- 2. The Power -->
+        <div class="form-section-card">
+          <div class="section-header">
+            <div class="section-icon-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"></path>
+                <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path>
+              </svg>
+            </div>
+            <h2 class="section-title">The Power</h2>
+          </div>
+
+          <!-- Income -->
+          <div class="field-group">
+            <div class="range-row-header">
+              <div class="seg-group" style="width: 170px;">
+                <button class="seg-btn active" id="btnIncAnnual">Annual</button>
+                <button class="seg-btn" id="btnIncMonthly">Monthly</button>
+              </div>
+              <span class="range-val-badge" id="incomeValText">₹ 25 Lakh</span>
+            </div>
+            <input type="range" id="incomeSlider" min="5" max="500" step="5" value="25" class="custom-range" />
+            <div class="range-bounds">
+              <span id="incomeMinBound">₹ 5 Lakh</span>
+              <span id="incomeMaxBound">₹ 5 Cr+</span>
+            </div>
+          </div>
+
+          <!-- Target Budget -->
+          <div class="field-group">
+            <div class="range-row-header">
+              <label class="field-label" style="margin-bottom: 0;">Target Budget</label>
+              <span class="range-val-badge" id="budgetValText">₹ 1.50 Cr</span>
+            </div>
+            <input type="range" id="budgetSlider" min="20" max="1000" step="5" value="150" class="custom-range" />
+            <div class="range-bounds">
+              <span>₹ 20 Lakh</span>
+              <span>₹ 10 Cr+</span>
+            </div>
+          </div>
+
+          <!-- Funding Source -->
+          <div class="field-group">
+            <label class="field-label">Funding Source</label>
+            <div class="pills-grid-3" id="fundingPills">
+              <button class="pill-btn" data-fund="Cash">Cash</button>
+              <button class="pill-btn active" data-fund="Loan/Mortgage">Loan / Mortgage</button>
+              <button class="pill-btn" data-fund="Pre-Approved">Pre-Approved</button>
+            </div>
+          </div>
         </div>
 
-        <div class="btn-action-row">
-          <button class="btn-action btn-wa" id="btnCopyWa">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"></path></svg>
+        <!-- 3. The Motivation -->
+        <div class="form-section-card">
+          <div class="section-header">
+            <div class="section-icon-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="6"></circle>
+                <circle cx="12" cy="12" r="2"></circle>
+              </svg>
+            </div>
+            <h2 class="section-title">The Motivation</h2>
+          </div>
+
+          <!-- Purchase Purpose -->
+          <div class="field-group">
+            <label class="field-label">Purchase Purpose</label>
+            <div class="grid-purpose" id="purposeGrid">
+              <div class="card-chip" data-val="Invest">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 7h6v6"></path><path d="m22 7-8.5 8.5-5-5L2 17"></path></svg>
+                <span>Invest</span>
+              </div>
+              <div class="card-chip active" data-val="Self-Use">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                <span>Self-Use</span>
+              </div>
+              <div class="card-chip" data-val="Vacation">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 8c0-2.76-2.46-5-5.5-5S2 5.24 2 8h2l1-1 1 1h4"></path><path d="M13 7.14A5.82 5.82 0 0 1 16.5 6c3.04 0 5.5 2.24 5.5 5h-3l-1-1-1 1h-3"></path><path d="M5.89 9.71c-2.15 2.15-2.3 5.47-.35 7.43l4.24-4.25.7-.7.71-.71 2.12-2.12c-1.95-1.96-5.27-1.8-7.42.35"></path><path d="M11 15.5c.5 2.5-.17 4.5-1 6.5h4c2-5.5-.5-12-1-14"></path></svg>
+                <span>Vacation</span>
+              </div>
+              <div class="card-chip" data-val="Flip/Resale">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path><path d="M21 3v5h-5"></path><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path><path d="M8 16H3v5"></path></svg>
+                <span>Flip / Resale</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trigger Event -->
+          <div class="field-group">
+            <label class="field-label">Trigger Event</label>
+            <div class="grid-trigger" id="triggerGrid">
+              <div class="trigger-chip active" data-val="First Home">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"></path><path d="m21 2-9.6 9.6"></path><circle cx="7.5" cy="15.5" r="5.5"></circle></svg>
+                <span>First Home</span>
+              </div>
+              <div class="trigger-chip" data-val="Upgrade">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m16 12-4-4-4 4"></path><path d="M12 16V8"></path></svg>
+                <span>Upgrade</span>
+              </div>
+              <div class="trigger-chip" data-val="Downsize">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8"></path><path d="m8 12 4 4 4-4"></path></svg>
+                <span>Downsize</span>
+              </div>
+              <div class="trigger-chip" data-val="Relocate">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>
+                <span>Relocate</span>
+              </div>
+              <div class="trigger-chip" data-val="Family">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                <span>Family</span>
+              </div>
+              <div class="trigger-chip" data-val="Retire">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>
+                <span>Retire</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="field-group">
+            <label class="field-label">Timeline</label>
+            <div class="pills-grid-3" id="timelineGrid">
+              <button class="pill-btn active" data-val="Immediate (0-1 Month)">Immediate (0-1 Month)</button>
+              <button class="pill-btn" data-val="1-3 Months">1-3 Months</button>
+              <button class="pill-btn" data-val="3-6 Months">3-6 Months</button>
+              <button class="pill-btn" data-val="6-9 Months">6-9 Months</button>
+              <button class="pill-btn" data-val="9-12 Months">9-12 Months</button>
+              <button class="pill-btn" data-val="12+ Months">12+ Months</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. The Wishlist -->
+        <div class="form-section-card">
+          <div class="section-header">
+            <div class="section-icon-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                <path d="M3 9h18"></path>
+                <path d="M9 21V9"></path>
+              </svg>
+            </div>
+            <h2 class="section-title">The Wishlist</h2>
+          </div>
+
+          <!-- Configuration -->
+          <div class="field-group">
+            <label class="field-label">Configuration</label>
+            <div class="pills-grid-3" id="configGrid">
+              <button class="pill-btn" data-val="1 BHK">1 BHK</button>
+              <button class="pill-btn" data-val="2 BHK">2 BHK</button>
+              <button class="pill-btn active" data-val="3 BHK">3 BHK</button>
+              <button class="pill-btn" data-val="4 BHK+">4 BHK+</button>
+              <button class="pill-btn" data-val="Villa">Villa</button>
+              <button class="pill-btn" data-val="Plot">Plot</button>
+            </div>
+          </div>
+
+          <!-- Preferred Location -->
+          <div class="field-group">
+            <label class="field-label">Preferred Location / Area</label>
+            <div style="position: relative;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--accent);">
+                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <input type="text" id="prefLocation" class="tag-input-box" style="padding-left: 42px;" placeholder="e.g. Whitefield, Indiranagar, Hitec City" />
+            </div>
+          </div>
+
+          <!-- Must Haves -->
+          <div class="field-group">
+            <div class="field-header-row">
+              <div class="field-header-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <label class="field-label-inline" style="color: #60a5fa;">MUST HAVES (NON-NEGOTIABLE)</label>
+              </div>
+              <button type="button" class="btn-select-list btn-must-list" id="btnOpenMustModal">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                  <path d="M3 9h18"></path>
+                  <path d="M9 21V9"></path>
+                </svg>
+                <span>Select from List</span>
+              </button>
+            </div>
+            <input type="text" id="mustInput" class="tag-input-box" placeholder="Type must-haves & press Enter..." />
+            <div class="quick-tags-row">
+              <span class="quick-tag-add" onclick="addMustTag('Gated Security')">+ Gated Security</span>
+              <span class="quick-tag-add" onclick="addMustTag('Covered Parking')">+ Covered Parking</span>
+              <span class="quick-tag-add" onclick="addMustTag('Lift')">+ Lift</span>
+              <span class="quick-tag-add" onclick="addMustTag('Balcony')">+ Balcony</span>
+              <span class="quick-tag-add" onclick="addMustTag('Power Backup')">+ Power Backup</span>
+            </div>
+            <div class="tags-wrap" id="mustTagsWrap"></div>
+          </div>
+
+          <!-- Good To Haves -->
+          <div class="field-group">
+            <div class="field-header-row">
+              <div class="field-header-left">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                  <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                </svg>
+                <label class="field-label-inline" style="color: #34d399;">GOOD TO HAVES (NICE EXTRA)</label>
+              </div>
+              <button type="button" class="btn-select-list btn-good-list" id="btnOpenGoodModal">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                  <path d="M3 9h18"></path>
+                  <path d="M9 21V9"></path>
+                </svg>
+                <span>Select from List</span>
+              </button>
+            </div>
+            <input type="text" id="goodInput" class="tag-input-box" placeholder="Type good-to-haves & press Enter..." />
+            <div class="quick-tags-row">
+              <span class="quick-tag-add" onclick="addGoodTag('Gym & Pool')">+ Gym & Pool</span>
+              <span class="quick-tag-add" onclick="addGoodTag('Clubhouse')">+ Clubhouse</span>
+              <span class="quick-tag-add" onclick="addGoodTag('Park View')">+ Park View</span>
+              <span class="quick-tag-add" onclick="addGoodTag('Corner Unit')">+ Corner Unit</span>
+              <span class="quick-tag-add" onclick="addGoodTag('EV Charger')">+ EV Charger</span>
+            </div>
+            <div class="tags-wrap" id="goodTagsWrap"></div>
+          </div>
+        </div>
+
+        <!-- Action Export Buttons -->
+        <div class="action-buttons-wrap">
+          <button class="btn-main-action btn-pdf-export" id="btnDownloadPdf" onclick="downloadClientPdf()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 15V3"></path>
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <path d="m7 10 5 5 5-5"></path>
+            </svg>
+            <span>Download Professional PDF</span>
+          </button>
+
+          <button class="btn-main-action btn-wa-export" id="btnCopyWa">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.586-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z" />
+            </svg>
             <span>Copy WhatsApp Bio-Data</span>
           </button>
-          <button class="btn-action btn-pdf" onclick="window.print()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect width="12" height="8" x="6" y="14"></rect></svg>
-            <span>Print / Export PDF</span>
-          </button>
+
+          <p class="privacy-note">🔒 All data is processed locally in your browser. No data is stored on our servers.</p>
         </div>
 
         <!-- Explainer Box -->
         <div class="explainer-box">
           <h2>Why use Client Bio-Data Snap?</h2>
-          <p>Client Bio-Data Snap is a free tool for real estate agents and property consultants to create professional client profiles and structured requirement sheets.</p>
-          <p>In a competitive rental or buyer market, making a strong first impression is key. A scattered collection of documents and texts can look unprofessional.</p>
-          <p>Client Bio-Data Snap allows you to generate a clean, professional PDF profile for your clients in seconds. Present their financial strength and family details in a format landlords and sellers respect.</p>
-          <ul>
-            <li><strong>Professional Formatting:</strong> Instantly turn raw details into a branded PDF.</li>
-            <li><strong>Privacy First:</strong> All data processing happens on your device.</li>
-            <li><strong>Speed Up Approvals:</strong> Give owners everything they need to say "yes" immediately.</li>
-            <li><strong>Easy Sharing:</strong> Share a single lightweight PDF file via WhatsApp or email.</li>
-          </ul>
+          <div class="explainer-grid">
+            <div>
+              <p><strong>Client Bio-Data Snap</strong> is a <strong>free tool for real estate agents and property consultants</strong> to create professional client profiles and structured requirement sheets.</p>
+              <p>In a competitive rental or buyer market, making a strong first impression is key. A scattered collection of documents and texts can look unprofessional.</p>
+              <p><strong>Client Bio-Data Snap</strong> allows you to generate a clean, professional PDF profile for your clients in seconds. Present their financial strength and family details in a format landlords and sellers respect.</p>
+            </div>
+            <div>
+              <ul class="feature-list">
+                <li><span><strong>Professional Formatting:</strong> Instantly turn raw details into a branded profile.</span></li>
+                <li><span><strong>Privacy First:</strong> All data processing happens on your local device.</span></li>
+                <li><span><strong>Speed Up Approvals:</strong> Give owners everything they need to say "yes" immediately.</span></li>
+                <li><span><strong>Easy Sharing:</strong> Share lightweight PDF or formatted summary via WhatsApp.</span></li>
+              </ul>
+            </div>
+          </div>
 
           <div class="cta-promo">
-            <p>Showcase your listings like a market leader.</p>
-            <a href="index.html#iplex">OneToBeam i-PLEX →</a>
+            <p>Showcase your listings like a market leader with interactive 3D virtual showflats.</p>
+            <a href="index.html#iplex" class="cta-btn">OneToBeam i-PLEX →</a>
           </div>
         </div>
+
       </div>
     </main>
 
@@ -408,36 +2316,701 @@
       </div>
     </footer>
 
+    <!-- Amenities Selection Modal (Must Haves & Good to Haves) -->
+    <div class="amenities-modal-overlay" id="amenitiesModalOverlay">
+      <div class="amenities-modal theme-must" id="amenitiesModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <!-- Header -->
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <div class="modal-icon-badge" id="modalIconBadge"></div>
+            <div>
+              <h3 class="modal-title" id="modalTitle">Select Must Haves</h3>
+              <p class="modal-subtitle" id="modalSubtitle">Choose non-negotiable amenities for your property</p>
+            </div>
+          </div>
+          <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close Modal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- 4 Tabs Bar -->
+        <div class="modal-tabs-bar">
+          <button type="button" class="modal-tab-btn active" data-tab="tabUnit">
+            UNIT-LEVEL (INSIDE THE APARTMENT)
+          </button>
+          <button type="button" class="modal-tab-btn" data-tab="tabBuilding">
+            BUILDING / COMMUNITY AMENITIES
+          </button>
+          <button type="button" class="modal-tab-btn" data-tab="tabSafety">
+            SAFETY &amp; SECURITY
+          </button>
+          <button type="button" class="modal-tab-btn" data-tab="tabUtilities">
+            UTILITIES &amp; CONNECTIVITY
+          </button>
+        </div>
+
+        <!-- Scrollable Body with 4 Panes -->
+        <div class="modal-body-scroll">
+          <!-- Pane 1: Unit Level -->
+          <div class="modal-tab-pane active" id="tabUnit">
+            <div class="amenities-grid" id="gridUnitAmenities"></div>
+            <div class="amenities-subgroup-divider">
+              <span>UNIT POSITION &amp; FEATURES</span>
+            </div>
+            <div class="amenities-grid" id="gridUnitPosition"></div>
+          </div>
+
+          <!-- Pane 2: Building Amenities -->
+          <div class="modal-tab-pane" id="tabBuilding">
+            <div class="amenities-grid" id="gridBuildingAmenities"></div>
+          </div>
+
+          <!-- Pane 3: Safety & Security -->
+          <div class="modal-tab-pane" id="tabSafety">
+            <div class="amenities-grid" id="gridSafetyAmenities"></div>
+          </div>
+
+          <!-- Pane 4: Utilities & Connectivity -->
+          <div class="modal-tab-pane" id="tabUtilities">
+            <div class="amenities-grid" id="gridUtilitiesAmenities"></div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="modal-footer">
+          <button type="button" class="modal-cancel-btn" id="modalCancelBtn">Cancel</button>
+          <button type="button" class="modal-done-btn" id="modalDoneBtn">Done (0 selected)</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXACT PDF PRINT TEMPLATE (Matches Client Requirement Profile Design) -->
+    <div id="pdfPrintTemplate">
+      <!-- PDF Header -->
+      <div class="pdf-header">
+        <div class="pdf-header-left">
+          <h1 class="pdf-main-title">CLIENT<br>REQUIREMENT PROFILE</h1>
+          <div class="pdf-doc-sub">CONFIDENTIAL CLIENT ASSESSMENT DOCUMENT</div>
+        </div>
+        <div class="pdf-header-right">
+          <div class="pdf-verified-badge">VERIFIED PROFILE</div>
+          <div class="pdf-generated-date" id="pdfGeneratedDate">GENERATED: 6 OCTOBER 2026</div>
+        </div>
+      </div>
+      <div class="pdf-header-divider"></div>
+
+      <!-- Two Columns Wrap -->
+      <div class="pdf-columns-wrap">
+        <!-- Left Column -->
+        <div class="pdf-col-left">
+          <!-- Client Identity -->
+          <div class="pdf-section">
+            <div class="pdf-section-label-blue">CLIENT IDENTITY</div>
+            <div class="pdf-field-label">NAME</div>
+            <div class="pdf-client-name" id="pdfClientName">ashish</div>
+            <div class="pdf-field-label" style="margin-top: 10px;">DEMOGRAPHICS</div>
+            <div class="pdf-demographics-row">
+              <span class="pdf-demo-pill" id="pdfOccupationPill">N/A</span>
+              <span class="pdf-demo-pill" id="pdfAgePill">30-45</span>
+            </div>
+          </div>
+
+          <!-- Family Unit -->
+          <div class="pdf-section" style="margin-top: 20px;">
+            <div class="pdf-section-label-blue">FAMILY UNIT</div>
+            <div class="pdf-family-table">
+              <div class="pdf-family-row">
+                <span class="pdf-fam-label">PARENTS</span>
+                <span class="pdf-fam-val" id="pdfFamParents">Father &amp; Mother</span>
+              </div>
+              <div class="pdf-family-row">
+                <span class="pdf-fam-label">SPOUSE</span>
+                <span class="pdf-fam-val" id="pdfFamSpouse">Husband</span>
+              </div>
+              <div class="pdf-family-row">
+                <span class="pdf-fam-label">CHILDREN</span>
+                <span class="pdf-fam-val" id="pdfFamChildren">1 Son, 1 Daughter</span>
+              </div>
+              <div class="pdf-family-row">
+                <span class="pdf-fam-label">SIBLINGS</span>
+                <span class="pdf-fam-val" id="pdfFamSiblings">1 Brother, 1 Sister</span>
+              </div>
+              <div class="pdf-family-row">
+                <span class="pdf-fam-label">PETS</span>
+                <span class="pdf-fam-val" id="pdfFamPets">1 Cat</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Financial Power -->
+          <div class="pdf-section" style="margin-top: 20px;">
+            <div class="pdf-section-label-blue" style="border-bottom: 2px solid #0f172a; color: #0f172a;">FINANCIAL POWER</div>
+            <div class="pdf-financial-card">
+              <div class="pdf-fin-row">
+                <span class="pdf-fin-label">BUDGET</span>
+                <span class="pdf-fin-val-budget" id="pdfFinBudget">₹ 1.50Cr</span>
+              </div>
+              <div class="pdf-fin-row" style="margin-top: 8px;">
+                <span class="pdf-fin-label">INCOME</span>
+                <span class="pdf-fin-val-income" id="pdfFinIncome">₹ 25L/yr</span>
+              </div>
+              <div class="pdf-fin-card-divider"></div>
+              <div class="pdf-fin-row">
+                <span class="pdf-fin-label">FUNDING</span>
+                <span class="pdf-fin-val-funding" id="pdfFinFunding">LOAN/MORTGAGE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="pdf-col-right">
+          <!-- Looking for... -->
+          <div class="pdf-section">
+            <div class="pdf-looking-title">Looking for...</div>
+            <div class="pdf-looking-subtitle" id="pdfLookingSubtitle">SELF-USE | UPGRADE</div>
+            <div class="pdf-timeline-pill-wrap">
+              <span class="pdf-timeline-pill" id="pdfTimelinePill">Immediate (0-1 Month)</span>
+            </div>
+            <div class="pdf-right-accent-line"></div>
+          </div>
+
+          <!-- Requirement Analysis -->
+          <div class="pdf-section">
+            <div class="pdf-req-analysis-header">
+              <span class="pdf-blue-square"></span>
+              <span>REQUIREMENT ANALYSIS</span>
+            </div>
+
+            <!-- Non-Negotiable Needs -->
+            <div class="pdf-must-card">
+              <div class="pdf-card-title-row">
+                <div class="pdf-exclamation-badge">!</div>
+                <div class="pdf-card-title-text">NON-NEGOTIABLE NEEDS</div>
+              </div>
+              <div class="pdf-card-line"></div>
+              <div class="pdf-chips-grid" id="pdfMustChipsGrid">
+                <span class="pdf-chip">Wet Kitchen</span>
+                <span class="pdf-chip">Kitchen Island</span>
+                <span class="pdf-chip">Attached Bathrooms</span>
+                <span class="pdf-chip">Powder Room</span>
+              </div>
+            </div>
+
+            <!-- Preferred Extras -->
+            <div class="pdf-good-card">
+              <div class="pdf-good-title-row">
+                <span class="pdf-good-icon">✦</span>
+                <span class="pdf-good-title-text">PREFERRED EXTRAS</span>
+              </div>
+              <div class="pdf-good-items-wrap" id="pdfGoodItemsWrap">
+                <span class="pdf-good-item">• Open Kitchen</span>
+                <span class="pdf-good-item">• Bathtub</span>
+                <span class="pdf-good-item">• Private Terrace / Deck</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PDF Footer -->
+      <div class="pdf-footer">
+        <span>PRIVATE &amp; CONFIDENTIAL | FOR INTERNAL CIRCULATION ONLY</span>
+        <span>PAGE 1 OF 1</span>
+      </div>
+    </div>
+
     <script>
+      // Family Counters
+      const counts = {
+        countSon: 0,
+        countDaughter: 0,
+        countBrother: 0,
+        countSister: 0,
+        countDog: 0,
+        countCat: 0
+      };
+
+      function stepCount(id, delta) {
+        counts[id] = Math.max(0, counts[id] + delta);
+        document.getElementById(id).textContent = counts[id];
+      }
+
+      // Toggle Chips (Father, Mother, Husband, Wife)
+      ["chipFather", "chipMother", "chipHusband", "chipWife"].forEach(id => {
+        const btn = document.getElementById(id);
+        btn.addEventListener("click", () => btn.classList.toggle("active"));
+      });
+
+      // Age Group Seg
+      let selectedAge = "30s";
+      document.querySelectorAll("#ageGroupSeg .seg-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("#ageGroupSeg .seg-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          selectedAge = btn.getAttribute("data-age");
+        });
+      });
+
+      // Income Slider & Switch
+      let incomeMode = "Annual";
+      const btnIncAnnual = document.getElementById("btnIncAnnual");
+      const btnIncMonthly = document.getElementById("btnIncMonthly");
+      const incomeSlider = document.getElementById("incomeSlider");
+      const incomeMinBound = document.getElementById("incomeMinBound");
+      const incomeMaxBound = document.getElementById("incomeMaxBound");
+
+      function updateIncomeDisplay() {
+        const val = parseInt(incomeSlider.value);
+        if (incomeMode === "Annual") {
+          if (incomeMinBound) incomeMinBound.textContent = "₹ 5 Lakh";
+          if (incomeMaxBound) incomeMaxBound.textContent = "₹ 5 Cr+";
+          if (val >= 500) {
+            incomeValText.textContent = "₹ 5 Cr+";
+          } else if (val >= 100) {
+            incomeValText.textContent = `₹ ${(val / 100).toFixed(2)} Cr`;
+          } else {
+            incomeValText.textContent = `₹ ${val} Lakh`;
+          }
+        } else {
+          if (incomeMinBound) incomeMinBound.textContent = "₹ 50k/mo";
+          if (incomeMaxBound) incomeMaxBound.textContent = "₹ 50 Lakh+/mo";
+          if (val >= 500) {
+            incomeValText.textContent = "₹ 50 Lakh+/mo";
+          } else if (val < 10) {
+            incomeValText.textContent = `₹ ${val * 10}k / mo`;
+          } else {
+            const lakhMonthly = (val / 10).toFixed(1).replace(/\.0$/, "");
+            incomeValText.textContent = `₹ ${lakhMonthly} Lakh / mo`;
+          }
+        }
+      }
+
+      btnIncAnnual.addEventListener("click", () => {
+        incomeMode = "Annual";
+        btnIncAnnual.classList.add("active");
+        btnIncMonthly.classList.remove("active");
+        updateIncomeDisplay();
+      });
+
+      btnIncMonthly.addEventListener("click", () => {
+        incomeMode = "Monthly";
+        btnIncMonthly.classList.add("active");
+        btnIncAnnual.classList.remove("active");
+        updateIncomeDisplay();
+      });
+
+      incomeSlider.addEventListener("input", updateIncomeDisplay);
+
+      // Budget Slider
+      const budgetSlider = document.getElementById("budgetSlider");
+      const budgetValText = document.getElementById("budgetValText");
+
+      function formatBudget(val) {
+        if (val >= 1000) return "₹ 10 Cr+";
+        if (val < 100) return `₹ ${val} Lakh`;
+        const cr = (val / 100).toFixed(2);
+        return `₹ ${cr} Cr`;
+      }
+
+      function updateBudgetDisplay() {
+        const val = parseInt(budgetSlider.value);
+        budgetValText.textContent = formatBudget(val);
+      }
+
+      budgetSlider.addEventListener("input", updateBudgetDisplay);
+
+      // Funding Source Pills
+      let selectedFunding = "Loan/Mortgage";
+      document.querySelectorAll("#fundingPills .pill-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("#fundingPills .pill-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          selectedFunding = btn.getAttribute("data-fund");
+        });
+      });
+
+      // Purchase Purpose Grid
+      let selectedPurpose = "Self-Use";
+      document.querySelectorAll("#purposeGrid .card-chip").forEach(card => {
+        card.addEventListener("click", () => {
+          document.querySelectorAll("#purposeGrid .card-chip").forEach(c => c.classList.remove("active"));
+          card.classList.add("active");
+          selectedPurpose = card.getAttribute("data-val");
+        });
+      });
+
+      // Trigger Event Grid
+      let selectedTrigger = "First Home";
+      document.querySelectorAll("#triggerGrid .trigger-chip").forEach(card => {
+        card.addEventListener("click", () => {
+          document.querySelectorAll("#triggerGrid .trigger-chip").forEach(c => c.classList.remove("active"));
+          card.classList.add("active");
+          selectedTrigger = card.getAttribute("data-val");
+        });
+      });
+
+      // Timeline Grid
+      let selectedTimeline = "Immediate (0-1 Month)";
+      document.querySelectorAll("#timelineGrid .pill-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("#timelineGrid .pill-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          selectedTimeline = btn.getAttribute("data-val");
+        });
+      });
+
+      // Config Grid
+      let selectedConfig = "3 BHK";
+      document.querySelectorAll("#configGrid .pill-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll("#configGrid .pill-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          selectedConfig = btn.getAttribute("data-val");
+        });
+      });
+
+      // Tags Management: Must-haves and Good-to-haves
+      const mustTags = [];
+      const goodTags = [];
+
+      const mustInput = document.getElementById("mustInput");
+      const goodInput = document.getElementById("goodInput");
+      const mustTagsWrap = document.getElementById("mustTagsWrap");
+      const goodTagsWrap = document.getElementById("goodTagsWrap");
+
+      function renderTags() {
+        mustTagsWrap.innerHTML = "";
+        mustTags.forEach((t, i) => {
+          const chip = document.createElement("span");
+          chip.className = "tag-chip must";
+          chip.innerHTML = `${t} <span class="remove-tag" onclick="removeMustTag(${i})">×</span>`;
+          mustTagsWrap.appendChild(chip);
+        });
+
+        goodTagsWrap.innerHTML = "";
+        goodTags.forEach((t, i) => {
+          const chip = document.createElement("span");
+          chip.className = "tag-chip good";
+          chip.innerHTML = `${t} <span class="remove-tag" onclick="removeGoodTag(${i})">×</span>`;
+          goodTagsWrap.appendChild(chip);
+        });
+      }
+
+      function addMustTag(val) {
+        if (!val || mustTags.includes(val)) return;
+        mustTags.push(val);
+        renderTags();
+      }
+
+      function removeMustTag(idx) {
+        mustTags.splice(idx, 1);
+        renderTags();
+      }
+
+      function addGoodTag(val) {
+        if (!val || goodTags.includes(val)) return;
+        goodTags.push(val);
+        renderTags();
+      }
+
+      function removeGoodTag(idx) {
+        goodTags.splice(idx, 1);
+        renderTags();
+      }
+
+      mustInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && mustInput.value.trim()) {
+          e.preventDefault();
+          addMustTag(mustInput.value.trim());
+          mustInput.value = "";
+        }
+      });
+
+      goodInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" && goodInput.value.trim()) {
+          e.preventDefault();
+          addGoodTag(goodInput.value.trim());
+          goodInput.value = "";
+        }
+      });
+
+      // =========================================================
+      // AMENITIES MODAL CONTROLLER (Must Haves & Good to Haves)
+      // =========================================================
+      const AMENITIES_DATA = {
+        unit: [
+          "Maid Room / Helper's Room",
+          "Study Room / Home Office",
+          "Walk-in Wardrobe",
+          "Store Room",
+          "Powder Room",
+          "Pooja Room",
+          "Utility / Laundry Area",
+          "Balcony / Sit-out",
+          "Private Terrace / Deck",
+          "Bay Window",
+          "Attached Bathrooms",
+          "Bathtub",
+          "Dry Kitchen",
+          "Wet Kitchen",
+          "Open Kitchen",
+          "Modular Kitchen",
+          "Kitchen Island",
+          "Breakfast Counter"
+        ],
+        unitPosition: [
+          "Vaastu Compliant",
+          "North Facing",
+          "East Facing",
+          "Corner Unit",
+          "High Floor",
+          "Pool View",
+          "Garden View",
+          "Lake View"
+        ],
+        building: [
+          "Gym / Fitness Center",
+          "Swimming Pool",
+          "Kids Pool",
+          "Clubhouse",
+          "Banquet Hall / Party Area",
+          "Indoor Games Room",
+          "Children's Play Area",
+          "Jogging / Walking Track",
+          "Yoga / Meditation Deck",
+          "Senior Citizen's Corner",
+          "Sports Courts (Badminton/Tennis/Basketball)",
+          "Cricket Pitch",
+          "Amphitheater",
+          "Library / Reading Lounge",
+          "Co-working Space / Business Center",
+          "Mini Theater",
+          "Pet Park",
+          "Spa / Sauna / Steam Room",
+          "Guest Rooms",
+          "Cafeteria / Restaurant",
+          "Creche / Daycare"
+        ],
+        safety: [
+          "24x7 Security",
+          "CCTV Surveillance",
+          "Gated Community",
+          "Intercom Facility",
+          "Video Door Phone",
+          "Fire Safety System",
+          "Earthquake Resistant"
+        ],
+        utilities: [
+          "Power Backup (Full/Partial)",
+          "Water Supply (24x7)",
+          "Rainwater Harvesting",
+          "Sewage Treatment Plant",
+          "Piped Gas Connection",
+          "High-Speed Internet / Fiber Optic",
+          "EV Charging Station",
+          "Metro Station Nearby",
+          "Public Transport Access",
+          "School / Hospital Nearby",
+          "Shopping / Market Nearby"
+        ]
+      };
+
+      let currentModalTarget = null; // 'must' | 'good'
+      let tempSelectedAmenities = new Set();
+
+      function openAmenitiesModal(target) {
+        currentModalTarget = target;
+        const isMust = target === "must";
+        const currentList = isMust ? mustTags : goodTags;
+        tempSelectedAmenities = new Set(currentList);
+
+        const modal = document.getElementById("amenitiesModal");
+        const overlay = document.getElementById("amenitiesModalOverlay");
+        const badge = document.getElementById("modalIconBadge");
+        const title = document.getElementById("modalTitle");
+        const subtitle = document.getElementById("modalSubtitle");
+
+        if (isMust) {
+          modal.className = "amenities-modal theme-must";
+          badge.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>`;
+          title.textContent = "Select Must Haves";
+          subtitle.textContent = "Choose non-negotiable amenities for your property";
+        } else {
+          modal.className = "amenities-modal theme-good";
+          badge.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path></svg>`;
+          title.textContent = "Select Good to Haves";
+          subtitle.textContent = "Choose nice-to-have amenities for your property";
+        }
+
+        renderModalChips();
+        updateModalDoneCount();
+        switchModalTab("tabUnit");
+
+        overlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeAmenitiesModal() {
+        const overlay = document.getElementById("amenitiesModalOverlay");
+        overlay.classList.remove("open");
+        document.body.style.overflow = "";
+        currentModalTarget = null;
+      }
+
+      function updateModalDoneCount() {
+        const doneBtn = document.getElementById("modalDoneBtn");
+        doneBtn.textContent = `Done (${tempSelectedAmenities.size} selected)`;
+      }
+
+      function renderModalChips() {
+        renderChipContainer("gridUnitAmenities", AMENITIES_DATA.unit);
+        renderChipContainer("gridUnitPosition", AMENITIES_DATA.unitPosition);
+        renderChipContainer("gridBuildingAmenities", AMENITIES_DATA.building);
+        renderChipContainer("gridSafetyAmenities", AMENITIES_DATA.safety);
+        renderChipContainer("gridUtilitiesAmenities", AMENITIES_DATA.utilities);
+      }
+
+      function renderChipContainer(containerId, items) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = "";
+        items.forEach(item => {
+          const btn = document.createElement("button");
+          btn.type = "button";
+          const isSelected = tempSelectedAmenities.has(item);
+          btn.className = `amenity-chip-btn ${isSelected ? "selected" : ""}`;
+          btn.innerHTML = `
+            <span>${item}</span>
+            <span class="amenity-check-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </span>
+          `;
+          btn.addEventListener("click", () => {
+            if (tempSelectedAmenities.has(item)) {
+              tempSelectedAmenities.delete(item);
+              btn.classList.remove("selected");
+            } else {
+              tempSelectedAmenities.add(item);
+              btn.classList.add("selected");
+            }
+            updateModalDoneCount();
+          });
+          container.appendChild(btn);
+        });
+      }
+
+      function switchModalTab(tabId) {
+        document.querySelectorAll(".modal-tab-btn").forEach(b => {
+          const isActive = b.getAttribute("data-tab") === tabId;
+          b.classList.toggle("active", isActive);
+          if (isActive) {
+            b.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+          }
+        });
+        document.querySelectorAll(".modal-tab-pane").forEach(p => {
+          p.classList.toggle("active", p.id === tabId);
+        });
+      }
+
+      document.querySelectorAll(".modal-tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          switchModalTab(btn.getAttribute("data-tab"));
+        });
+      });
+
+      document.getElementById("modalCloseBtn").addEventListener("click", closeAmenitiesModal);
+      document.getElementById("modalCancelBtn").addEventListener("click", closeAmenitiesModal);
+
+      document.getElementById("amenitiesModalOverlay").addEventListener("click", (e) => {
+        if (e.target === document.getElementById("amenitiesModalOverlay")) {
+          closeAmenitiesModal();
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && document.getElementById("amenitiesModalOverlay").classList.contains("open")) {
+          closeAmenitiesModal();
+        }
+      });
+
+      document.getElementById("modalDoneBtn").addEventListener("click", () => {
+        if (!currentModalTarget) return;
+        const allPredefined = [
+          ...AMENITIES_DATA.unit,
+          ...AMENITIES_DATA.unitPosition,
+          ...AMENITIES_DATA.building,
+          ...AMENITIES_DATA.safety,
+          ...AMENITIES_DATA.utilities
+        ];
+
+        if (currentModalTarget === "must") {
+          const customTags = mustTags.filter(t => !allPredefined.includes(t));
+          mustTags.length = 0;
+          mustTags.push(...customTags, ...Array.from(tempSelectedAmenities));
+        } else {
+          const customTags = goodTags.filter(t => !allPredefined.includes(t));
+          goodTags.length = 0;
+          goodTags.push(...customTags, ...Array.from(tempSelectedAmenities));
+        }
+
+        renderTags();
+        closeAmenitiesModal();
+      });
+
+      document.getElementById("btnOpenMustModal").addEventListener("click", () => openAmenitiesModal("must"));
+      document.getElementById("btnOpenGoodModal").addEventListener("click", () => openAmenitiesModal("good"));
+
+      // WhatsApp Export Handler
       document.getElementById("btnCopyWa").addEventListener("click", () => {
-        const name = document.getElementById("pName").value || "Client";
-        const phone = document.getElementById("pPhone").value || "N/A";
-        const email = document.getElementById("pEmail").value || "N/A";
-        const family = document.getElementById("pFamily").value || "N/A";
-        const budget = document.getElementById("pBudget").value;
-        const funding = document.getElementById("pFunding").value;
-        const occ = document.getElementById("pOccupation").value || "N/A";
-        const purpose = document.getElementById("pPurpose").value;
-        const timeline = document.getElementById("pTimeline").value;
-        const config = document.getElementById("pConfig").value;
-        const loc = document.getElementById("pLocation").value || "N/A";
-        const notes = document.getElementById("pNotes").value || "N/A";
+        const name = document.getElementById("clientFullName").value.trim() || "Prospective Buyer";
+        const occ = document.getElementById("clientOccupation").value;
+        const loc = document.getElementById("prefLocation").value.trim() || "Not specified";
 
-        const text = `📋 *CLIENT REQUIREMENT BIO-DATA*%0A` +
-          `━━━━━━━━━━━━━━━━━━%0A` +
-          `👤 *The Person:* ${name} (${phone})%0A` +
-          `📧 *Email:* ${email} | *Family:* ${family}%0A` +
-          `💼 *Occupation:* ${occ}%0A%0A` +
-          `💰 *The Power:* Budget: *${budget}* (${funding})%0A%0A` +
-          `🎯 *The Motivation:* ${purpose} | Timeline: ${timeline}%0A%0A` +
-          `🏡 *The Wishlist:* ${config}%0A` +
-          `📍 *Target Location:* ${loc}%0A` +
-          `📝 *Specific Preferences:* ${notes}%0A` +
-          `━━━━━━━━━━━━━━━━━━%0A` +
-          `Generated via OneToBeam Free Tools`;
+        const familyItems = [];
+        if (document.getElementById("chipFather").classList.contains("active")) familyItems.push("Father");
+        if (document.getElementById("chipMother").classList.contains("active")) familyItems.push("Mother");
+        if (document.getElementById("chipHusband").classList.contains("active")) familyItems.push("Husband");
+        if (document.getElementById("chipWife").classList.contains("active")) familyItems.push("Wife");
+        if (counts.countSon > 0) familyItems.push(`${counts.countSon} Son(s)`);
+        if (counts.countDaughter > 0) familyItems.push(`${counts.countDaughter} Daughter(s)`);
+        if (counts.countBrother > 0) familyItems.push(`${counts.countBrother} Brother(s)`);
+        if (counts.countSister > 0) familyItems.push(`${counts.countSister} Sister(s)`);
+        if (counts.countDog > 0) familyItems.push(`${counts.countDog} Dog(s)`);
+        if (counts.countCat > 0) familyItems.push(`${counts.countCat} Cat(s)`);
 
-        const plainText = decodeURIComponent(text).replace(/%0A/g, '\n');
-        navigator.clipboard.writeText(plainText).then(() => {
+        const familyStr = familyItems.length > 0 ? familyItems.join(", ") : "Individual";
+
+        const lines = [
+          `📋 *CLIENT PROFILE & BIO-DATA*`,
+          `━━━━━━━━━━━━━━━━━━`,
+          `👤 *The Person:* ${name}`,
+          `💼 *Occupation:* ${occ} | Age: ${selectedAge}`,
+          `👨‍👩‍👧 *Family:* ${familyStr}`,
+          ``,
+          `💰 *The Power:*`,
+          `• Target Budget: ${budgetValText.textContent}`,
+          `• Income: ${incomeValText.textContent}`,
+          `• Funding: ${selectedFunding}`,
+          ``,
+          `🎯 *The Motivation:*`,
+          `• Purpose: ${selectedPurpose}`,
+          `• Trigger: ${selectedTrigger}`,
+          `• Timeline: ${selectedTimeline}`,
+          ``,
+          `🏡 *The Wishlist:*`,
+          `• Configuration: ${selectedConfig}`,
+          `• Preferred Area: ${loc}`,
+          `• Must-Haves: ${mustTags.length > 0 ? mustTags.join(", ") : "Standard"}`,
+          `• Good-to-Haves: ${goodTags.length > 0 ? goodTags.join(", ") : "None"}`,
+          `━━━━━━━━━━━━━━━━━━`,
+          `Generated via OneToBeam Free Tools`
+        ];
+
+        const text = lines.join("\n");
+        navigator.clipboard.writeText(text).then(() => {
           const btn = document.getElementById("btnCopyWa");
           btn.querySelector("span").textContent = "Copied to Clipboard! ✓";
           setTimeout(() => {
@@ -445,6 +3018,144 @@
           }, 2000);
         });
       });
+
+      // =========================================================
+      // CLIENT REQUIREMENT PROFILE PDF EXPORT
+      // =========================================================
+      function preparePdfData() {
+        // Name
+        const nameVal = document.getElementById("clientFullName").value.trim() || "ashish";
+        document.getElementById("pdfClientName").textContent = nameVal;
+
+        // Current Date
+        const now = new Date();
+        const months = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+        const dateStr = `GENERATED: ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+        document.getElementById("pdfGeneratedDate").textContent = dateStr;
+
+        // Demographics
+        const occVal = document.getElementById("clientOccupation").value || "N/A";
+        document.getElementById("pdfOccupationPill").textContent = occVal;
+
+        let ageText = "30-45";
+        if (selectedAge === "20s") ageText = "20-30";
+        else if (selectedAge === "30s") ageText = "30-45";
+        else if (selectedAge === "40s") ageText = "40-50";
+        else if (selectedAge === "50s") ageText = "50-60";
+        else if (selectedAge === "60+") ageText = "60+";
+        document.getElementById("pdfAgePill").textContent = ageText;
+
+        // Family Unit
+        const hasFather = document.getElementById("chipFather").classList.contains("active");
+        const hasMother = document.getElementById("chipMother").classList.contains("active");
+        let parentsStr = "None";
+        if (hasFather && hasMother) parentsStr = "Father & Mother";
+        else if (hasFather) parentsStr = "Father";
+        else if (hasMother) parentsStr = "Mother";
+        document.getElementById("pdfFamParents").textContent = parentsStr;
+
+        const hasHusband = document.getElementById("chipHusband").classList.contains("active");
+        const hasWife = document.getElementById("chipWife").classList.contains("active");
+        let spouseStr = "None";
+        if (hasHusband) spouseStr = "Husband";
+        else if (hasWife) spouseStr = "Wife";
+        document.getElementById("pdfFamSpouse").textContent = spouseStr;
+
+        const kids = [];
+        if (counts.countSon > 0) kids.push(`${counts.countSon} Son${counts.countSon > 1 ? 's' : ''}`);
+        if (counts.countDaughter > 0) kids.push(`${counts.countDaughter} Daughter${counts.countDaughter > 1 ? 's' : ''}`);
+        document.getElementById("pdfFamChildren").textContent = kids.length > 0 ? kids.join(", ") : "None";
+
+        const sibs = [];
+        if (counts.countBrother > 0) sibs.push(`${counts.countBrother} Brother${counts.countBrother > 1 ? 's' : ''}`);
+        if (counts.countSister > 0) sibs.push(`${counts.countSister} Sister${counts.countSister > 1 ? 's' : ''}`);
+        document.getElementById("pdfFamSiblings").textContent = sibs.length > 0 ? sibs.join(", ") : "None";
+
+        const pets = [];
+        if (counts.countDog > 0) pets.push(`${counts.countDog} Dog${counts.countDog > 1 ? 's' : ''}`);
+        if (counts.countCat > 0) pets.push(`${counts.countCat} Cat${counts.countCat > 1 ? 's' : ''}`);
+        document.getElementById("pdfFamPets").textContent = pets.length > 0 ? pets.join(", ") : "None";
+
+        // Financial Power
+        const bVal = parseInt(document.getElementById("budgetSlider").value);
+        let budgetStr = "₹ 1.50Cr";
+        if (bVal >= 1000) budgetStr = "₹ 10Cr+";
+        else if (bVal >= 100) budgetStr = `₹ ${(bVal / 100).toFixed(2)}Cr`;
+        else budgetStr = `₹ ${bVal}L`;
+        document.getElementById("pdfFinBudget").textContent = budgetStr;
+
+        const incVal = parseInt(document.getElementById("incomeSlider").value);
+        let incStr = "₹ 25L/yr";
+        if (incomeMode === "Annual") {
+          if (incVal >= 500) incStr = "₹ 5Cr+/yr";
+          else if (incVal >= 100) incStr = `₹ ${(incVal / 100).toFixed(2)}Cr/yr`;
+          else incStr = `₹ ${incVal}L/yr`;
+        } else {
+          if (incVal >= 500) incStr = "₹ 50L+/mo";
+          else if (incVal < 10) incStr = `₹ ${incVal * 10}k/mo`;
+          else incStr = `₹ ${(incVal / 10).toFixed(1).replace(/\.0$/, '')}L/mo`;
+        }
+        document.getElementById("pdfFinIncome").textContent = incStr;
+
+        document.getElementById("pdfFinFunding").textContent = selectedFunding.toUpperCase();
+
+        // Looking for...
+        document.getElementById("pdfLookingSubtitle").textContent = `${selectedPurpose.toUpperCase()} | ${selectedTrigger.toUpperCase()}`;
+        document.getElementById("pdfTimelinePill").textContent = selectedTimeline;
+
+        // Requirement Analysis: Non-Negotiable Needs
+        const mustGrid = document.getElementById("pdfMustChipsGrid");
+        mustGrid.innerHTML = "";
+        if (mustTags.length > 0) {
+          mustTags.forEach(t => {
+            const chip = document.createElement("span");
+            chip.className = "pdf-chip";
+            chip.textContent = t;
+            mustGrid.appendChild(chip);
+          });
+        } else {
+          const chip = document.createElement("span");
+          chip.className = "pdf-chip";
+          chip.textContent = "Standard Requirements";
+          mustGrid.appendChild(chip);
+        }
+
+        // Preferred Extras
+        const goodWrap = document.getElementById("pdfGoodItemsWrap");
+        goodWrap.innerHTML = "";
+        if (goodTags.length > 0) {
+          goodTags.forEach(t => {
+            const item = document.createElement("span");
+            item.className = "pdf-good-item";
+            item.textContent = `• ${t}`;
+            goodWrap.appendChild(item);
+          });
+        } else {
+          const item = document.createElement("span");
+          item.className = "pdf-good-item";
+          item.textContent = "• None";
+          goodWrap.appendChild(item);
+        }
+      }
+
+      function downloadClientPdf() {
+        preparePdfData();
+        window.print();
+      }
+
+      // Mobile Navbar toggle
+      const menuButton = document.getElementById("menuButton");
+      const navLinks = document.getElementById("navLinks");
+      if (menuButton && navLinks) {
+        menuButton.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      }
+
+      // Initialize
+      renderTags();
+      updateIncomeDisplay();
+      updateBudgetDisplay();
     </script>
   </body>
 </html>

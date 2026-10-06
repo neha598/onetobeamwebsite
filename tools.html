@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -329,24 +329,216 @@
         font-size: 13px;
       }
 
-      @media (max-width: 960px) {
+      .nav-mobile-btn {
+        display: none;
+      }
+
+      /* Tablet Breakpoint (769px - 1024px) */
+      @media (max-width: 1024px) {
+        .container {
+          width: min(var(--max-width), calc(100% - 40px));
+        }
+
+        .tools-header {
+          padding-top: 130px;
+          padding-bottom: 40px;
+        }
+
         .tools-grid {
           grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
+        }
+
+        .tool-card {
+          padding: 24px 20px;
+        }
+
+        .nav-links {
+          margin-right: 140px;
+          gap: 4px;
+        }
+
+        .nav-links a {
+          padding: 8px 12px;
+          font-size: 13px;
+          min-width: auto;
         }
       }
 
-      @media (max-width: 640px) {
-        .tools-grid {
-          grid-template-columns: 1fr;
+      /* Medium Tablet / Hamburger Breakpoint */
+      @media (max-width: 860px) {
+        .logo {
+          position: static;
+          transform: none;
         }
-        .nav-links {
-          display: none;
+
+        .nav-inner {
+          justify-content: space-between;
+          padding: 0 16px;
         }
+
         .nav-button {
           display: none;
         }
+
         .menu-button {
-          display: block;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: static;
+          transform: none;
+          background: none;
+          border: 0;
+          color: white;
+          cursor: pointer;
+          width: 44px;
+          height: 44px;
+          border-radius: 10px;
+          margin-left: auto;
+          transition: background 0.2s ease;
+        }
+
+        .menu-button:hover,
+        .menu-button:active {
+          background: rgba(255, 255, 255, 0.08);
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 76px;
+          left: 14px;
+          right: 14px;
+          padding: 20px 16px;
+          margin-right: 0;
+          background: rgba(14, 14, 14, 0.98);
+          backdrop-filter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
+          border: 1px solid var(--line);
+          border-radius: 18px;
+          box-shadow: 0 20px 48px rgba(0, 0, 0, 0.8);
+          flex-direction: column;
+          align-items: stretch;
+          gap: 6px;
+          visibility: hidden;
+          opacity: 0;
+          transform: translateY(-8px);
+          transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+          pointer-events: none;
+          z-index: 1001;
+        }
+
+        .nav-links.active {
+          visibility: visible;
+          opacity: 1;
+          transform: translateY(0);
+          pointer-events: auto;
+        }
+
+        .nav-links a {
+          width: 100%;
+          text-align: left;
+          padding: 12px 16px;
+          font-size: 14px;
+          border-radius: 10px;
+        }
+
+        .nav-mobile-btn {
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          margin-top: 10px;
+          padding: 13px 18px;
+          background: var(--accent) !important;
+          color: #0a0a0a !important;
+          font-weight: 700 !important;
+          font-size: 14px;
+          border-radius: 50px;
+          text-align: center;
+          box-shadow: 0 4px 14px rgba(198, 165, 92, 0.3);
+        }
+      }
+
+      /* Mobile Phone Breakpoint */
+      @media (max-width: 640px) {
+        .navbar {
+          height: 68px;
+        }
+
+        .logo img {
+          height: 28px !important;
+        }
+
+        .container {
+          width: calc(100% - 32px);
+        }
+
+        .tools-header {
+          padding-top: 105px;
+          padding-bottom: 28px;
+        }
+
+        .tools-header h1 {
+          font-size: clamp(25px, 6.5vw, 32px);
+          letter-spacing: -0.6px;
+          margin-bottom: 12px;
+        }
+
+        .tools-header p {
+          font-size: 14px;
+          line-height: 1.55;
+          padding: 0 4px;
+        }
+
+        .tools-grid-section {
+          padding-bottom: 60px;
+        }
+
+        .tools-grid {
+          grid-template-columns: 1fr;
+          gap: 16px;
+        }
+
+        .tool-card {
+          padding: 22px 18px;
+          border-radius: var(--radius-md);
+        }
+
+        .tool-card:active {
+          transform: scale(0.985);
+          border-color: rgba(198, 165, 92, 0.5);
+        }
+
+        .tool-icon-box {
+          width: 44px;
+          height: 44px;
+          border-radius: 10px;
+          margin-bottom: 14px;
+        }
+
+        .tool-card h3 {
+          font-size: 18px;
+          margin-bottom: 6px;
+        }
+
+        .tool-card p {
+          font-size: 13.5px;
+          line-height: 1.5;
+          margin-bottom: 16px;
+        }
+
+        .tool-cta {
+          font-size: 13.5px;
+        }
+
+        footer {
+          padding: 40px 0 25px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          text-align: center;
+          gap: 10px;
         }
       }
     </style>
@@ -369,8 +561,16 @@
           <a href="gallery.html">Gallery</a>
           <a href="tools.html" class="active">Free Tools</a>
           <a href="index.html#about">About</a>
+          <a href="index.html#contact" class="nav-mobile-btn">Book a Demo</a>
         </nav>
         <a href="index.html#contact" class="nav-button">Book a Demo</a>
+        <button class="menu-button" id="menuButton" aria-label="Open Navigation" aria-expanded="false">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </header>
 
@@ -486,5 +686,45 @@
         </div>
       </div>
     </footer>
+    <script>
+      const menuButton = document.getElementById("menuButton");
+      const navLinks = document.getElementById("navLinks");
+      const navbar = document.querySelector(".navbar");
+
+      if (menuButton && navLinks) {
+        menuButton.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const isActive = navLinks.classList.toggle("active");
+          menuButton.setAttribute("aria-expanded", isActive ? "true" : "false");
+        });
+
+        // Close on nav link click
+        navLinks.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            menuButton.setAttribute("aria-expanded", "false");
+          });
+        });
+
+        // Close on outside tap
+        document.addEventListener("click", (e) => {
+          if (!navLinks.contains(e.target) && !menuButton.contains(e.target)) {
+            navLinks.classList.remove("active");
+            menuButton.setAttribute("aria-expanded", "false");
+          }
+        });
+      }
+
+      // Dynamic scrolled navbar background
+      window.addEventListener("scroll", () => {
+        if (navbar) {
+          if (window.scrollY > 20) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        }
+      });
+    </script>
   </body>
 </html>

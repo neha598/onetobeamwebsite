@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
       name="description"
       content="Convert loose property photos into a professional branded PDF presentation. Add your logo, contact details, and organize room photos instantly."
     />
-    <meta name="keywords" content="photos to pdf real estate, property presentation builder, site inspection pdf, real estate photo report" />
+    <meta name="keywords" content="photos to pdf real estate, property presentation builder, site inspection pdf, real estate photo report, brochure maker" />
     <meta name="author" content="OneToBeam" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://onetobeam.com/tools-photos-to-pdf.html" />
@@ -25,33 +25,56 @@
       rel="stylesheet"
     />
 
+    <!-- jsPDF Library for In-Browser PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <style>
       :root {
         --bg: #0a0a0a;
-        --bg-soft: #101010;
-        --surface: #151515;
-        --surface-2: #1b1b1b;
+        --bg-soft: #121212;
+        --surface: #161616;
+        --surface-2: #1e1e1e;
+        --surface-3: #242424;
         --text: #f5f5f2;
         --muted: #9b9b97;
         --line: rgba(255, 255, 255, 0.1);
         --accent: #c6a55c;
         --accent-light: #e5cb87;
         --accent-dark: #a88b48;
-        --max-width: 800px;
-        --radius-lg: 20px;
-        --radius-md: 14px;
+        --accent-glow: rgba(198, 165, 92, 0.15);
+        --max-width: 1040px;
+        --radius-lg: 24px;
+        --radius-md: 16px;
         --radius-sm: 10px;
         --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { background: var(--bg); color: var(--text); font-family: var(--font-sans); line-height: 1.5; overflow-x: hidden; }
-      a { color: inherit; text-decoration: none; }
-      .container { width: min(var(--max-width), calc(100% - 40px)); margin: auto; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-            /* =========================================================
-   NAVBAR (Exact Parity with Index)
-========================================================= */
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-sans);
+        line-height: 1.5;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(var(--max-width), calc(100% - 40px));
+        margin: auto;
+      }
+
+      /* Navbar */
       .navbar {
         position: fixed;
         top: 0;
@@ -61,15 +84,11 @@
         display: flex;
         align-items: center;
         z-index: 1000;
-        background: rgba(10, 10, 10, 0.7);
+        background: rgba(10, 10, 10, 0.75);
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
-        border-bottom: 1px solid transparent;
+        border-bottom: 1px solid var(--line);
         transition: 0.3s ease;
-      }
-
-      .navbar.scrolled {
-        border-bottom-color: var(--line);
       }
 
       .nav-inner {
@@ -87,15 +106,8 @@
         left: 30px;
         top: 50%;
         transform: translateY(-50%);
-        font-size: 21px;
-        font-weight: 700;
-        letter-spacing: -0.8px;
         display: flex;
         align-items: center;
-      }
-
-      .logo span {
-        color: var(--accent);
       }
 
       .nav-links {
@@ -106,35 +118,21 @@
       }
 
       .nav-links a {
-        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         font-size: 13.5px;
         font-weight: 500;
         color: #cfcfcb;
         padding: 8px 18px;
-        min-width: 78px;
-        text-align: center;
         border-radius: 999px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        text-decoration: none;
         transition: 0.2s ease;
-        line-height: 1;
-        letter-spacing: 0;
       }
 
-      .nav-links a:hover {
-        color: #ffffff;
-        font-size: 13.5px;
-        font-weight: 500;
-        background: rgba(255, 255, 255, 0.08);
-      }
-
+      .nav-links a:hover,
       .nav-links a.active {
         color: #ffffff;
-        font-size: 13.5px;
-        font-weight: 500;
-        background: rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.08);
       }
 
       .nav-button {
@@ -142,15 +140,12 @@
         right: 30px;
         top: 50%;
         transform: translateY(-50%);
-        padding: 11px 20px;
+        padding: 10px 22px;
         background: var(--accent);
         color: #111;
         border-radius: 50px;
-        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         font-size: 13px;
         font-weight: 600;
-        line-height: 1;
-        letter-spacing: 0;
         transition: 0.2s ease;
       }
 
@@ -159,100 +154,591 @@
         transform: translateY(-50%) scale(1.02);
       }
 
-      .breadcrumb { padding-top: 115px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
-      .breadcrumb a:hover { color: var(--accent); }
-
-      .tool-wrapper { padding: 30px 0 60px; }
-      .page-title { font-size: clamp(28px, 4vw, 36px); font-weight: 800; color: #ffffff; margin-bottom: 28px; text-align: center; }
-
-      .card-box {
-        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
-        padding: 32px; margin-bottom: 30px;
+      .menu-button {
+        display: none;
+        background: none;
+        border: 0;
+        color: white;
+        cursor: pointer;
       }
 
-      .section-heading {
-        font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 18px;
-        display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--line); padding-bottom: 12px;
+      /* Hero Subheader */
+      .tool-hero {
+        padding-top: 120px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(20, 20, 20, 0.6) 0%, transparent 100%);
       }
-      .section-heading span { color: var(--accent); }
 
-      .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
-      .input-group label { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
-      .custom-input {
-        width: 100%; padding: 12px 14px; background: var(--surface-2); border: 1px solid var(--line);
-        border-radius: var(--radius-sm); color: #ffffff; font-family: var(--font-sans); font-size: 14px; outline: none; transition: border-color 0.2s ease;
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 16px;
       }
-      .custom-input:focus { border-color: var(--accent); }
 
-      /* Upload Box */
-      .drop-zone {
-        border: 2px dashed rgba(198, 165, 92, 0.4); border-radius: var(--radius-md);
-        padding: 36px 20px; text-align: center; background: rgba(198, 165, 92, 0.03);
-        cursor: pointer; transition: all 0.2s ease; margin-bottom: 20px;
+      .breadcrumb a:hover {
+        color: var(--accent);
       }
-      .drop-zone:hover, .drop-zone.dragover {
-        border-color: var(--accent); background: rgba(198, 165, 92, 0.08);
-      }
-      .drop-title { font-size: 16px; font-weight: 700; color: #ffffff; margin-bottom: 6px; }
-      .drop-sub { font-size: 13px; color: var(--muted); }
 
-      .photo-item {
-        background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px;
-        padding: 10px 14px; display: flex; align-items: center; gap: 14px; margin-bottom: 10px;
+      .tool-hero-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
       }
-      .photo-thumb { width: 64px; height: 46px; border-radius: 6px; object-fit: cover; }
-      .photo-caption {
-        flex: 1; padding: 8px 12px; background: #111111; border: 1px solid var(--line);
-        border-radius: 6px; color: #ffffff; font-size: 13px; outline: none;
-      }
-      .btn-del { background: none; border: none; color: #ef4444; font-size: 14px; cursor: pointer; padding: 6px; }
 
-      .btn-create-pdf {
-        width: 100%; padding: 14px; background: var(--accent); color: #0a0a0a;
-        border: none; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer;
-        margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 8px;
+      @media (min-width: 768px) {
+        .tool-hero-inner {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
       }
-      .btn-create-pdf:hover { background: var(--accent-light); }
 
-      /* Explainer */
+      .tool-hero h1 {
+        font-size: clamp(26px, 3.5vw, 36px);
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: -0.5px;
+      }
+
+      .tool-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        background: rgba(198, 165, 92, 0.12);
+        border: 1px solid rgba(198, 165, 92, 0.25);
+        color: var(--accent);
+        border-radius: 999px;
+        font-size: 12.5px;
+        font-weight: 600;
+        width: fit-content;
+      }
+
+      /* Main Tool Layout */
+      .tool-content {
+        padding: 40px 0 100px;
+      }
+
+      .presentation-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        align-items: start;
+      }
+
+      @media (min-width: 960px) {
+        .presentation-grid {
+          grid-template-columns: 320px 1fr;
+        }
+      }
+
+      /* Sidebar Cards */
+      .side-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        margin-bottom: 24px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      }
+
+      .card-section-title {
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--muted);
+        margin-bottom: 16px;
+      }
+
+      .field-box {
+        margin-bottom: 14px;
+      }
+
+      .field-box:last-child {
+        margin-bottom: 0;
+      }
+
+      .field-label {
+        display: block;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+
+      .side-input {
+        width: 100%;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 10px 14px;
+        color: #ffffff;
+        font-size: 13.5px;
+        font-family: var(--font-sans);
+        outline: none;
+        transition: all 0.2s ease;
+      }
+
+      .side-input:focus {
+        border-color: var(--accent);
+        background: var(--surface-3);
+      }
+
+      /* Logo Upload Box */
+      .logo-drop-box {
+        border: 2px dashed rgba(198, 165, 92, 0.3);
+        border-radius: var(--radius-sm);
+        padding: 20px 14px;
+        text-align: center;
+        background: rgba(198, 165, 92, 0.04);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .logo-drop-box:hover {
+        border-color: var(--accent);
+        background: rgba(198, 165, 92, 0.08);
+      }
+
+      .logo-preview-img {
+        max-height: 54px;
+        max-width: 100%;
+        object-fit: contain;
+        margin: auto;
+        display: block;
+      }
+
+      .logo-prompt-text {
+        font-size: 12.5px;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .logo-sub-text {
+        font-size: 10.5px;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      /* Photos Main Area */
+      .photos-main-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 28px;
+        min-height: 480px;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      }
+
+      /* Photo Grid */
+      .photos-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      @media (min-width: 540px) {
+        .photos-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 800px) {
+        .photos-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Add Photo Slot */
+      .add-photo-card {
+        aspect-ratio: 4 / 3;
+        border: 2px dashed rgba(198, 165, 92, 0.3);
+        border-radius: var(--radius-md);
+        background: rgba(198, 165, 92, 0.04);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        text-align: center;
+        padding: 16px;
+      }
+
+      .add-photo-card:hover {
+        border-color: var(--accent);
+        background: rgba(198, 165, 92, 0.09);
+        transform: translateY(-2px);
+      }
+
+      .add-icon-circle {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(198, 165, 92, 0.15);
+        color: var(--accent);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        transition: transform 0.2s ease;
+      }
+
+      .add-photo-card:hover .add-icon-circle {
+        transform: scale(1.1);
+      }
+
+      .add-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .add-rem-count {
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      /* Single Photo Card */
+      .photo-card {
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        position: relative;
+        transition: all 0.25s ease;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .photo-card:hover {
+        border-color: rgba(198, 165, 92, 0.4);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+      }
+
+      .photo-thumb-wrap {
+        aspect-ratio: 4 / 3;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        background: #000;
+      }
+
+      .photo-thumb-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .photo-index-badge {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+        color: #ffffff;
+        font-size: 11px;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .photo-del-btn {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(239, 68, 68, 0.85);
+        color: #ffffff;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0.8;
+        transition: all 0.2s ease;
+      }
+
+      .photo-del-btn:hover {
+        opacity: 1;
+        transform: scale(1.1);
+        background: #ef4444;
+      }
+
+      .photo-caption-wrap {
+        padding: 10px 12px;
+        background: var(--surface-2);
+      }
+
+      .photo-caption-input {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid var(--line);
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 4px 0;
+        outline: none;
+        text-align: center;
+        font-family: var(--font-sans);
+        transition: border-color 0.2s ease;
+      }
+
+      .photo-caption-input:focus {
+        border-bottom-color: var(--accent);
+      }
+
+      /* Empty State */
+      .empty-photos-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 40px 20px;
+        margin: auto;
+      }
+
+      .empty-icon {
+        width: 54px;
+        height: 54px;
+        color: rgba(198, 165, 92, 0.35);
+        margin-bottom: 16px;
+      }
+
+      .empty-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 6px;
+      }
+
+      .empty-desc {
+        font-size: 13.5px;
+        color: var(--muted);
+        max-width: 320px;
+      }
+
+      /* Generate Button Bar */
+      .generate-bar {
+        margin-top: auto;
+        padding-top: 24px;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .btn-generate {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 14px 32px;
+        border-radius: 999px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        border: none;
+        background: var(--accent);
+        color: #0a0a0a;
+        box-shadow: 0 8px 24px rgba(198, 165, 92, 0.35);
+      }
+
+      .btn-generate:hover:not(:disabled) {
+        background: var(--accent-light);
+        transform: translateY(-2px);
+      }
+
+      .btn-generate:disabled {
+        background: #333333;
+        color: #777777;
+        cursor: not-allowed;
+        box-shadow: none;
+        transform: none;
+      }
+
+      /* Spinner Animation */
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      .animate-spin {
+        animation: spin 1s linear infinite;
+      }
+
+      /* Explainer Box */
       .explainer-box {
-        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
-        padding: 32px; margin-bottom: 40px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 36px 32px;
+        margin-top: 48px;
       }
-      .explainer-box h2 { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 16px; }
-      .explainer-box p { color: var(--muted); font-size: 14.5px; line-height: 1.7; margin-bottom: 14px; }
-      .explainer-box ul { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 10px; }
-      .explainer-box li { font-size: 14px; color: #cfcfcb; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
-      .explainer-box li::before { content: "•"; color: var(--accent); font-weight: 800; }
+
+      .explainer-box h2 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 20px;
+      }
+
+      .explainer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      @media (min-width: 768px) {
+        .explainer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .explainer-grid p {
+        margin-bottom: 14px;
+      }
+
+      .explainer-grid strong {
+        color: #ffffff;
+      }
+
+      .feature-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .feature-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .feature-list li::before {
+        content: "•";
+        color: var(--accent);
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 1;
+      }
 
       .cta-promo {
-        background: linear-gradient(135deg, rgba(198, 165, 92, 0.15) 0%, rgba(198, 165, 92, 0.04) 100%);
-        border: 1px solid rgba(198, 165, 92, 0.35); border-radius: var(--radius-md); padding: 24px; text-align: center;
-      }
-      .cta-promo p { font-size: 15px; font-weight: 600; color: #ffffff; margin-bottom: 14px; }
-      .cta-promo a {
-        display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px;
-        background: var(--accent); color: #0a0a0a; border-radius: 50px; font-size: 13.5px; font-weight: 700;
-      }
-
-      /* Print preview */
-      .print-doc {
-        display: none; background: #ffffff; color: #111111; padding: 30px; border-radius: 12px; margin-top: 30px;
+        margin-top: 40px;
+        padding-top: 28px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
       }
 
-      @media print {
-        body { background: #ffffff; color: #111111; }
-        .navbar, .breadcrumb, .tool-wrapper > h1, .card-box, .explainer-box, footer { display: none !important; }
-        .print-doc { display: block !important; }
+      .cta-promo p {
+        color: var(--muted);
+        font-size: 14px;
       }
 
-      footer { border-top: 1px solid var(--line); padding: 60px 0 30px; background: #080808; }
-      .footer-bottom { display: flex; align-items: center; justify-content: space-between; color: #666; font-size: 13px; }
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 24px;
+        background: rgba(198, 165, 92, 0.12);
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        border-radius: 999px;
+        font-size: 13.5px;
+        font-weight: 700;
+        transition: all 0.25s ease;
+      }
 
-      @media (max-width: 640px) {
-        .form-grid-2 { grid-template-columns: 1fr; }
-        .nav-links { display: none; }
-        .nav-button { display: none; }
+      .cta-btn:hover {
+        background: var(--accent);
+        color: #0a0a0a;
+        transform: translateY(-2px);
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 50px 0 30px;
+        background: #080808;
+      }
+
+      .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #666;
+        font-size: 13px;
+      }
+
+      /* Mobile Navbar & Responsiveness */
+      @media (max-width: 768px) {
+        .logo {
+          position: static;
+          transform: none;
+        }
+        .menu-button {
+          position: static;
+          transform: none;
+          display: block;
+          margin-left: auto;
+        }
+        .nav-inner {
+          justify-content: space-between;
+          padding: 0 16px;
+        }
+        .nav-links {
+          position: fixed;
+          top: 78px;
+          left: 15px;
+          right: 15px;
+          padding: 25px;
+          margin-right: 0;
+          background: rgba(15, 15, 15, 0.96);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid var(--line);
+          border-radius: 18px;
+          flex-direction: column;
+          align-items: flex-start;
+          display: none;
+        }
+        .nav-links.active {
+          display: flex;
+        }
+        .nav-links a {
+          width: 100%;
+          text-align: left;
+          padding: 10px 14px;
+        }
+        .nav-button {
+          display: none;
+        }
+        .photos-main-card {
+          padding: 20px 16px;
+        }
       }
     </style>
   </head>
@@ -272,116 +758,171 @@
           <a href="index.html#iplex">i-PLEX</a>
           <a href="blog.html">Blog</a>
           <a href="gallery.html">Gallery</a>
-          <a href="tools.html">Free Tools</a>
+          <a href="tools.html" class="active">Free Tools</a>
           <a href="index.html#about">About</a>
         </nav>
         <a href="index.html#contact" class="nav-button">Book a Demo</a>
+        <button class="menu-button" id="menuButton" aria-label="Open Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </header>
 
-    <main class="container">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <span>/</span>
-        <a href="tools.html">Free Tools</a>
-        <span>/</span>
-        <span style="color: #ffffff;">Photos to PDF</span>
-      </div>
-
-      <div class="tool-wrapper">
-        <h1 class="page-title">Property Presentation Builder</h1>
-
-        <div class="card-box">
-          <!-- 1. Cover Page -->
-          <h2 class="section-heading"><span>01</span> Cover Page</h2>
-          <div class="form-grid-2">
-            <div class="input-group">
-              <label>Property Title</label>
-              <input type="text" id="pTitle" class="custom-input" placeholder="e.g. 3 BHK Luxury Penthouse" value="3 BHK Luxury Penthouse" />
-            </div>
-            <div class="input-group">
-              <label>Address / Society</label>
-              <input type="text" id="pAddress" class="custom-input" placeholder="e.g. Grand Horizon, Whitefield" value="Grand Horizon, Whitefield" />
-            </div>
-          </div>
-          <div class="input-group">
-            <label>Subtitle / Price Tagline</label>
-            <input type="text" id="pSubtitle" class="custom-input" placeholder="e.g. Asking Price: ₹1.85 Cr • 1,850 Sq Ft" value="Asking Price: ₹1.85 Cr • 1,850 Sq Ft" />
-          </div>
-
-          <!-- 2. Contact Details -->
-          <h2 class="section-heading" style="margin-top: 24px;"><span>02</span> Contact Details</h2>
-          <div class="form-grid-2">
-            <div class="input-group">
-              <label>Agent / Consultant Name</label>
-              <input type="text" id="agName" class="custom-input" placeholder="Your Name" value="Rahul Verma" />
-            </div>
-            <div class="input-group">
-              <label>Agency / Brokerage</label>
-              <input type="text" id="agFirm" class="custom-input" placeholder="Agency Name" value="Prime Realty" />
-            </div>
-          </div>
-          <div class="form-grid-2">
-            <div class="input-group">
-              <label>Phone Number</label>
-              <input type="text" id="agPhone" class="custom-input" placeholder="+91 98765 43210" value="+91 98765 43210" />
-            </div>
-            <div class="input-group">
-              <label>Email / RERA ID</label>
-              <input type="text" id="agEmail" class="custom-input" placeholder="agent@agency.com" value="contact@primerealty.com" />
-            </div>
-          </div>
-
-          <!-- 3. Add Photos -->
-          <h2 class="section-heading" style="margin-top: 24px;"><span>03</span> Start by adding photos</h2>
-          <div class="drop-zone" id="dropArea">
-            <div class="drop-title">Add up to 25 high-quality images.</div>
-            <div class="drop-sub">You can reorder and name them in the next step. Click or drag photos here.</div>
-            <input type="file" id="photoFiles" multiple accept="image/*" style="display: none;" />
-          </div>
-
-          <div id="photosContainer"></div>
-
-          <button class="btn-create-pdf" onclick="window.print()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            <span>Download Presentation PDF</span>
-          </button>
+    <!-- Subheader Banner -->
+    <section class="tool-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <a href="tools.html">Free Tools</a>
+          <span>/</span>
+          <span style="color: #ffffff;">Photos to PDF</span>
         </div>
-
-        <!-- Printable Document Output -->
-        <div class="print-doc" id="printDoc">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #000; padding-bottom: 16px; margin-bottom: 24px;">
-            <div>
-              <h1 id="outTitle" style="font-size: 24px; font-weight: 800; margin-bottom: 4px;">3 BHK Luxury Penthouse</h1>
-              <div id="outAddress" style="font-size: 14px; color: #555;">Grand Horizon, Whitefield</div>
-              <div id="outSubtitle" style="font-size: 14px; font-weight: 700; color: #c6a55c; margin-top: 4px;">Asking Price: ₹1.85 Cr</div>
-            </div>
-            <div style="text-align: right;">
-              <div style="font-size: 18px; font-weight: 800;">OneToBeam</div>
-              <div id="outAgent" style="font-size: 13px; color: #555;">Rahul Verma • +91 98765 43210</div>
-            </div>
+        <div class="tool-hero-inner">
+          <h1>Property Presentation Builder</h1>
+          <div class="tool-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"></path>
+              <path d="M14 2v5a1 1 0 0 0 1 1h5"></path>
+              <circle cx="10" cy="12" r="2"></circle>
+              <path d="m20 17-1.296-1.296a2.41 2.41 0 0 0-3.408 0L9 22"></path>
+            </svg>
+            <span>Free Tool for Listings</span>
           </div>
-          <div id="outPhotosGrid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Tool Body -->
+    <main class="tool-content">
+      <div class="container">
+
+        <div class="presentation-grid">
+
+          <!-- Left Column: Cover Page & Contact Details -->
+          <div class="side-column">
+
+            <!-- Cover Page Details -->
+            <div class="side-card">
+              <h2 class="card-section-title">Cover Page</h2>
+
+              <div class="field-box">
+                <label class="field-label">Agency / Broker Logo</label>
+                <div class="logo-drop-box" id="logoBox">
+                  <div id="logoDefaultView">
+                    <span class="logo-prompt-text">+ Upload Logo</span>
+                    <p class="logo-sub-text">PNG, JPG or WebP (max 5MB)</p>
+                  </div>
+                  <div id="logoPreviewView" style="display: none;">
+                    <img id="logoImg" class="logo-preview-img" alt="Logo preview" />
+                    <p class="logo-sub-text" style="color: #ef4444; margin-top: 6px;">Click to change</p>
+                  </div>
+                  <input type="file" id="logoFileInput" accept="image/*" style="display: none;" />
+                </div>
+              </div>
+
+              <div class="field-box">
+                <label class="field-label">Property Title</label>
+                <input type="text" id="propTitle" class="side-input" value="Property Presentation" placeholder="e.g. 3 BHK Luxury Penthouse" />
+              </div>
+            </div>
+
+            <!-- Contact Details -->
+            <div class="side-card">
+              <h2 class="card-section-title">Contact Details</h2>
+
+              <div class="field-box">
+                <input type="text" id="agentName" class="side-input" placeholder="Agent Name" />
+              </div>
+
+              <div class="field-box">
+                <input type="text" id="agentTitle" class="side-input" placeholder="Position / Title" />
+              </div>
+
+              <div class="field-box">
+                <input type="text" id="agentPhone" class="side-input" placeholder="Phone Number" />
+              </div>
+
+              <div class="field-box">
+                <input type="email" id="agentEmail" class="side-input" placeholder="Email Address" />
+              </div>
+
+              <div class="field-box">
+                <input type="text" id="agentWebsite" class="side-input" placeholder="Website" />
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Photos Manager -->
+          <div class="main-column">
+
+            <div class="photos-main-card">
+              <!-- Upload Area and Photos Grid -->
+              <div class="photos-grid" id="photosGrid">
+                <!-- Add Photo Tile -->
+                <div class="add-photo-card" id="addPhotoBtn">
+                  <div class="add-icon-circle">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
+                    </svg>
+                  </div>
+                  <span class="add-title">Add Photo</span>
+                  <span class="add-rem-count" id="remainingCount">25 remaining</span>
+                  <input type="file" id="photosFileInput" multiple accept="image/*" style="display: none;" />
+                </div>
+              </div>
+
+              <!-- Empty State Message when no photos yet -->
+              <div class="empty-photos-placeholder" id="emptyPlaceholder">
+                <svg class="empty-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                <h3 class="empty-title">Start by adding photos</h3>
+                <p class="empty-desc">Add up to 25 high-quality images. You can reorder and name them before generating.</p>
+              </div>
+
+              <!-- Generate Button Row -->
+              <div class="generate-bar">
+                <button class="btn-generate" id="btnCreatePdf" disabled>
+                  <span>Create PDF Presentation</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
         <!-- Explainer Box -->
         <div class="explainer-box">
           <h2>Why use Photos to PDF?</h2>
-          <p>Photos to PDF is a free tool for real estate agents and property consultants to compile loose property photos into professional, branded PDF presentations.</p>
-          <p>High-quality photos are essential, but sending 20 separate image files to a client or partner is messy.</p>
-          <p>Photos to PDF lets you combine your property images into a single, polished presentation. Add your branding, organize the flow, and deliver a professional document that looks great on any device.</p>
-          <ul>
-            <li><strong>Organized Presentation:</strong> Control the viewing order of your property images.</li>
-            <li><strong>Brand It:</strong> Add your agency logo and property details.</li>
-            <li><strong>Easy to Share:</strong> One file is easier to email or WhatsApp than a zip folder.</li>
-            <li><strong>Client Ready:</strong> Create a sleek handover document or teaser.</li>
-          </ul>
+          <div class="explainer-grid">
+            <div>
+              <p><strong>Photos to PDF</strong> is a <strong>free tool for real estate agents and property consultants</strong> to compile loose property photos into professional, branded PDF presentations.</p>
+              <p>High-quality photos are essential, but sending 20 separate image files to a client or partner is messy.</p>
+              <p><strong>Photos to PDF</strong> lets you combine your property images into a single, polished presentation. Add your branding, organize the flow, and deliver a professional document that looks great on any device.</p>
+            </div>
+            <div>
+              <ul class="feature-list">
+                <li><span><strong>Organized Presentation:</strong> Control the viewing order of your property images.</span></li>
+                <li><span><strong>Brand It:</strong> Add your agency logo and property details.</span></li>
+                <li><span><strong>Easy to Share:</strong> One file is easier to email or WhatsApp than a zip folder.</span></li>
+                <li><span><strong>Client Ready:</strong> Create a sleek handover document or teaser.</span></li>
+              </ul>
+            </div>
+          </div>
 
           <div class="cta-promo">
             <p>Premium, production-quality walkthrough 3D virtual showflats—now within easy reach.</p>
-            <a href="index.html#iplex">OneToBeam i-PLEX →</a>
+            <a href="index.html#iplex" class="cta-btn">OneToBeam i-PLEX →</a>
           </div>
         </div>
+
       </div>
     </main>
 
@@ -396,101 +937,281 @@
     </footer>
 
     <script>
-      let photos = [];
+      let uploadedLogo = null;
+      let photoItems = [];
+      const MAX_PHOTOS = 25;
 
-      const dropArea = document.getElementById("dropArea");
-      const photoFiles = document.getElementById("photoFiles");
+      // DOM Elements
+      const logoBox = document.getElementById("logoBox");
+      const logoFileInput = document.getElementById("logoFileInput");
+      const logoDefaultView = document.getElementById("logoDefaultView");
+      const logoPreviewView = document.getElementById("logoPreviewView");
+      const logoImg = document.getElementById("logoImg");
 
-      dropArea.addEventListener("click", () => photoFiles.click());
+      const addPhotoBtn = document.getElementById("addPhotoBtn");
+      const photosFileInput = document.getElementById("photosFileInput");
+      const photosGrid = document.getElementById("photosGrid");
+      const emptyPlaceholder = document.getElementById("emptyPlaceholder");
+      const remainingCount = document.getElementById("remainingCount");
+      const btnCreatePdf = document.getElementById("btnCreatePdf");
 
-      dropArea.addEventListener("dragover", (e) => {
-        e.preventDefault();
-        dropArea.classList.add("dragover");
+      const propTitle = document.getElementById("propTitle");
+      const agentName = document.getElementById("agentName");
+      const agentTitle = document.getElementById("agentTitle");
+      const agentPhone = document.getElementById("agentPhone");
+      const agentEmail = document.getElementById("agentEmail");
+      const agentWebsite = document.getElementById("agentWebsite");
+
+      // Logo handling
+      logoBox.addEventListener("click", () => logoFileInput.click());
+
+      logoFileInput.addEventListener("change", (e) => {
+        if (e.target.files && e.target.files[0]) {
+          const file = e.target.files[0];
+          const reader = new FileReader();
+          reader.onload = (ev) => {
+            uploadedLogo = ev.target.result;
+            logoImg.src = uploadedLogo;
+            logoDefaultView.style.display = "none";
+            logoPreviewView.style.display = "block";
+          };
+          reader.readAsDataURL(file);
+        }
       });
 
-      dropArea.addEventListener("dragleave", () => {
-        dropArea.classList.remove("dragover");
-      });
+      // Photos handling
+      addPhotoBtn.addEventListener("click", () => photosFileInput.click());
 
-      dropArea.addEventListener("drop", (e) => {
-        e.preventDefault();
-        dropArea.classList.remove("dragover");
-        loadImages(e.dataTransfer.files);
-      });
-
-      photoFiles.addEventListener("change", (e) => {
-        loadImages(e.target.files);
-      });
-
-      function loadImages(files) {
-        Array.from(files).forEach((file) => {
+      photosFileInput.addEventListener("change", (e) => {
+        if (!e.target.files) return;
+        const files = Array.from(e.target.files);
+        const slotsLeft = MAX_PHOTOS - photoItems.length;
+        files.slice(0, slotsLeft).forEach((file) => {
           if (!file.type.startsWith("image/")) return;
           const reader = new FileReader();
-          reader.onload = (e) => {
-            photos.push({
-              src: e.target.result,
-              caption: file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " ")
-            });
-            renderList();
+          reader.onload = (ev) => {
+            const img = new Image();
+            img.onload = () => {
+              photoItems.push({
+                id: "img_" + Date.now() + "_" + Math.random().toString(36).substr(2, 6),
+                file: file,
+                previewUrl: ev.target.result,
+                name: file.name.replace(/\.[^/.]+$/, "").replace(/[-_]/g, " "),
+                width: img.width,
+                height: img.height
+              });
+              renderPhotosList();
+            };
+            img.src = ev.target.result;
           };
           reader.readAsDataURL(file);
         });
-      }
-
-      function renderList() {
-        const container = document.getElementById("photosContainer");
-        const outGrid = document.getElementById("outPhotosGrid");
-        container.innerHTML = "";
-        outGrid.innerHTML = "";
-
-        photos.forEach((p, idx) => {
-          const div = document.createElement("div");
-          div.className = "photo-item";
-          div.innerHTML = `
-            <img src="${p.src}" class="photo-thumb" />
-            <input type="text" class="photo-caption" value="${p.caption}" data-idx="${idx}" placeholder="Room description" />
-            <button class="btn-del" data-idx="${idx}">✕</button>
-          `;
-          container.appendChild(div);
-
-          const outCard = document.createElement("div");
-          outCard.style.border = "1px solid #ddd";
-          outCard.style.borderRadius = "6px";
-          outCard.style.overflow = "hidden";
-          outCard.innerHTML = `
-            <img src="${p.src}" style="width: 100%; height: 180px; object-fit: cover; display: block;" />
-            <div style="padding: 8px; font-size: 13px; font-weight: 600; background: #fafafa;">${p.caption}</div>
-          `;
-          outGrid.appendChild(outCard);
-        });
-
-        document.querySelectorAll(".photo-caption").forEach(inp => {
-          inp.addEventListener("input", (e) => {
-            const idx = e.target.getAttribute("data-idx");
-            photos[idx].caption = e.target.value;
-            renderPrintDoc();
-          });
-        });
-
-        document.querySelectorAll(".btn-del").forEach(btn => {
-          btn.addEventListener("click", (e) => {
-            const idx = e.target.getAttribute("data-idx");
-            photos.splice(idx, 1);
-            renderList();
-          });
-        });
-      }
-
-      function renderPrintDoc() {
-        document.getElementById("outTitle").textContent = document.getElementById("pTitle").value;
-        document.getElementById("outAddress").textContent = document.getElementById("pAddress").value;
-        document.getElementById("outSubtitle").textContent = document.getElementById("pSubtitle").value;
-        document.getElementById("outAgent").textContent = `${document.getElementById("agName").value} • ${document.getElementById("agPhone").value}`;
-      }
-
-      ["pTitle", "pAddress", "pSubtitle", "agName", "agPhone"].forEach(id => {
-        document.getElementById(id).addEventListener("input", renderPrintDoc);
+        photosFileInput.value = "";
       });
+
+      function removePhoto(id) {
+        photoItems = photoItems.filter(p => p.id !== id);
+        renderPhotosList();
+      }
+
+      function updatePhotoCaption(id, val) {
+        const item = photoItems.find(p => p.id === id);
+        if (item) item.name = val;
+      }
+
+      function renderPhotosList() {
+        // Remove existing photo cards from grid (keep the add button)
+        const cards = photosGrid.querySelectorAll(".photo-card");
+        cards.forEach(c => c.remove());
+
+        if (photoItems.length === 0) {
+          emptyPlaceholder.style.display = "flex";
+          btnCreatePdf.disabled = true;
+        } else {
+          emptyPlaceholder.style.display = "none";
+          btnCreatePdf.disabled = false;
+        }
+
+        const remaining = MAX_PHOTOS - photoItems.length;
+        remainingCount.textContent = `${remaining} remaining`;
+        addPhotoBtn.style.display = remaining > 0 ? "flex" : "none";
+
+        photoItems.forEach((item, index) => {
+          const card = document.createElement("div");
+          card.className = "photo-card";
+          card.innerHTML = `
+            <div class="photo-thumb-wrap">
+              <img src="${item.previewUrl}" class="photo-thumb-img" alt="${item.name}" />
+              <div class="photo-index-badge">${index + 1}</div>
+              <button class="photo-del-btn" title="Remove Photo" onclick="removePhoto('${item.id}')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+            <div class="photo-caption-wrap">
+              <input
+                type="text"
+                class="photo-caption-input"
+                placeholder="Enter room name..."
+                value="${item.name}"
+                oninput="updatePhotoCaption('${item.id}', this.value)"
+              />
+            </div>
+          `;
+          photosGrid.insertBefore(card, addPhotoBtn);
+        });
+      }
+
+      // Real PDF Generation using jsPDF
+      btnCreatePdf.addEventListener("click", async () => {
+        if (photoItems.length === 0) return;
+
+        // Button loading state
+        btnCreatePdf.disabled = true;
+        btnCreatePdf.innerHTML = `
+          <svg class="animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" style="opacity: 0.25;"></circle>
+            <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span>Generating PDF...</span>
+        `;
+
+        await new Promise(r => setTimeout(r, 100));
+
+        try {
+          const { jsPDF } = window.jspdf;
+          const doc = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+          const pageWidth = doc.internal.pageSize.getWidth();
+          const pageHeight = doc.internal.pageSize.getHeight();
+
+          const title = propTitle.value.trim() || "Property Presentation";
+          let currentY = pageHeight / 2;
+
+          // 1. Cover Page
+          if (uploadedLogo) {
+            try {
+              const props = doc.getImageProperties(uploadedLogo);
+              const maxH = pageHeight * 0.45;
+              const maxW = pageWidth - 60;
+              let logoW = (props.width * maxH) / props.height;
+              let logoH = maxH;
+              if (logoW > maxW) {
+                logoW = maxW;
+                logoH = (props.height * maxW) / props.width;
+              }
+              const logoX = (pageWidth - logoW) / 2;
+              const logoY = (pageHeight - logoH) / 2 - 20;
+              doc.addImage(uploadedLogo, "JPEG", logoX, logoY, logoW, logoH);
+              currentY = logoY + logoH + 24;
+            } catch (err) {
+              console.warn("Could not render logo in PDF", err);
+            }
+          }
+
+          doc.setFontSize(28);
+          doc.setTextColor(30, 30, 30);
+          if (currentY > pageHeight - 30) currentY = pageHeight - 30;
+          doc.text(title, pageWidth / 2, currentY, { align: "center" });
+
+          doc.setFontSize(11);
+          doc.setTextColor(140, 140, 140);
+          const dateStr = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+          doc.text(`Generated on ${dateStr} • OneToBeam`, pageWidth / 2, pageHeight - 16, { align: "center" });
+
+          // 2. Photo Pages
+          for (let i = 0; i < photoItems.length; i++) {
+            const item = photoItems[i];
+            const isPortrait = item.height > item.width;
+            doc.addPage("a4", isPortrait ? "portrait" : "landscape");
+
+            const curPageW = doc.internal.pageSize.getWidth();
+            const curPageH = doc.internal.pageSize.getHeight();
+            const margin = 16;
+            const availW = curPageW - margin * 2;
+            const availH = curPageH - margin * 2 - (item.name ? 16 : 0);
+            const ratio = item.width / item.height;
+
+            let targetW = availW;
+            let targetH = targetW / ratio;
+            if (targetH > availH) {
+              targetH = availH;
+              targetW = targetH * ratio;
+            }
+
+            const imgX = (curPageW - targetW) / 2;
+            const imgY = margin + (availH - targetH) / 2;
+
+            try {
+              doc.addImage(item.previewUrl, "JPEG", imgX, imgY, targetW, targetH);
+            } catch (e) {
+              console.warn("Failed to add image page", e);
+            }
+
+            if (item.name) {
+              doc.setFontSize(15);
+              doc.setTextColor(50, 50, 50);
+              doc.text(item.name, curPageW / 2, curPageH - 12, { align: "center" });
+            }
+          }
+
+          // 3. Contact Details Page
+          const aName = agentName.value.trim();
+          const aTitle = agentTitle.value.trim();
+          const aPhone = agentPhone.value.trim();
+          const aEmail = agentEmail.value.trim();
+          const aWeb = agentWebsite.value.trim();
+
+          if (aName || aPhone || aEmail || aWeb) {
+            doc.addPage("a4", "landscape");
+            doc.setFontSize(24);
+            doc.setTextColor(30, 30, 30);
+            doc.text("Contact Details", pageWidth / 2, 55, { align: "center" });
+
+            doc.setLineWidth(0.6);
+            doc.setDrawColor(198, 165, 92);
+            doc.line(pageWidth / 2 - 35, 65, pageWidth / 2 + 35, 65);
+
+            let contactY = 90;
+            const printContactLine = (text, size = 14) => {
+              doc.setFontSize(size);
+              doc.setTextColor(50, 50, 50);
+              doc.text(text, pageWidth / 2, contactY, { align: "center" });
+              contactY += size * 0.5 + 8;
+            };
+
+            if (aName) printContactLine(aName, 20);
+            if (aTitle) printContactLine(aTitle, 13);
+            if (aName || aTitle) contactY += 6;
+            if (aPhone) printContactLine(`Phone: ${aPhone}`, 13);
+            if (aEmail) printContactLine(`Email: ${aEmail}`, 13);
+            if (aWeb) printContactLine(`Website: ${aWeb}`, 13);
+          }
+
+          // Save File
+          const fileName = `${title.replace(/[^a-z0-9]/gi, "_").toLowerCase()}_presentation.pdf`;
+          doc.save(fileName);
+
+        } catch (err) {
+          console.error("PDF Generation error", err);
+          alert("Error generating PDF presentation. Please check your image sizes and try again.");
+        } finally {
+          btnCreatePdf.disabled = false;
+          btnCreatePdf.innerHTML = `<span>Create PDF Presentation</span>`;
+        }
+      });
+
+      // Mobile Navbar toggle
+      const menuButton = document.getElementById("menuButton");
+      const navLinks = document.getElementById("navLinks");
+      if (menuButton && navLinks) {
+        menuButton.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      }
+
+      // Initialize
+      renderPhotosList();
     </script>
   </body>
 </html>

@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Auspicious Time Calculator | OneToBeam</title>
+    <title>Auspicious Time & Rahu Kalam Calculator | OneToBeam</title>
     <meta
       name="description"
       content="Find the best auspicious times (Shubh Muhurat) for property dealings and avoid Rahu Kalam. Instant calculation based on your exact location."
@@ -28,30 +28,52 @@
     <style>
       :root {
         --bg: #0a0a0a;
-        --bg-soft: #101010;
-        --surface: #151515;
-        --surface-2: #1b1b1b;
+        --bg-soft: #121212;
+        --surface: #161616;
+        --surface-2: #1e1e1e;
+        --surface-3: #242424;
         --text: #f5f5f2;
         --muted: #9b9b97;
         --line: rgba(255, 255, 255, 0.1);
         --accent: #c6a55c;
         --accent-light: #e5cb87;
         --accent-dark: #a88b48;
-        --max-width: 760px;
-        --radius-lg: 20px;
-        --radius-md: 14px;
+        --accent-glow: rgba(198, 165, 92, 0.15);
+        --danger: #ef4444;
+        --success: #10b981;
+        --max-width: 820px;
+        --radius-lg: 24px;
+        --radius-md: 16px;
         --radius-sm: 10px;
         --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { background: var(--bg); color: var(--text); font-family: var(--font-sans); line-height: 1.5; overflow-x: hidden; }
-      a { color: inherit; text-decoration: none; }
-      .container { width: min(var(--max-width), calc(100% - 40px)); margin: auto; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-            /* =========================================================
-   NAVBAR (Exact Parity with Index)
-========================================================= */
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-sans);
+        line-height: 1.5;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(var(--max-width), calc(100% - 40px));
+        margin: auto;
+      }
+
+      /* Navbar */
       .navbar {
         position: fixed;
         top: 0;
@@ -61,15 +83,11 @@
         display: flex;
         align-items: center;
         z-index: 1000;
-        background: rgba(10, 10, 10, 0.7);
+        background: rgba(10, 10, 10, 0.75);
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
-        border-bottom: 1px solid transparent;
+        border-bottom: 1px solid var(--line);
         transition: 0.3s ease;
-      }
-
-      .navbar.scrolled {
-        border-bottom-color: var(--line);
       }
 
       .nav-inner {
@@ -87,15 +105,8 @@
         left: 30px;
         top: 50%;
         transform: translateY(-50%);
-        font-size: 21px;
-        font-weight: 700;
-        letter-spacing: -0.8px;
         display: flex;
         align-items: center;
-      }
-
-      .logo span {
-        color: var(--accent);
       }
 
       .nav-links {
@@ -106,35 +117,21 @@
       }
 
       .nav-links a {
-        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         font-size: 13.5px;
         font-weight: 500;
         color: #cfcfcb;
         padding: 8px 18px;
-        min-width: 78px;
-        text-align: center;
         border-radius: 999px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        text-decoration: none;
         transition: 0.2s ease;
-        line-height: 1;
-        letter-spacing: 0;
       }
 
-      .nav-links a:hover {
-        color: #ffffff;
-        font-size: 13.5px;
-        font-weight: 500;
-        background: rgba(255, 255, 255, 0.08);
-      }
-
+      .nav-links a:hover,
       .nav-links a.active {
         color: #ffffff;
-        font-size: 13.5px;
-        font-weight: 500;
-        background: rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.08);
       }
 
       .nav-button {
@@ -142,15 +139,12 @@
         right: 30px;
         top: 50%;
         transform: translateY(-50%);
-        padding: 11px 20px;
+        padding: 10px 22px;
         background: var(--accent);
         color: #111;
         border-radius: 50px;
-        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         font-size: 13px;
         font-weight: 600;
-        line-height: 1;
-        letter-spacing: 0;
         transition: 0.2s ease;
       }
 
@@ -159,73 +153,549 @@
         transform: translateY(-50%) scale(1.02);
       }
 
-      .breadcrumb { padding-top: 115px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
-      .breadcrumb a:hover { color: var(--accent); }
-
-      .tool-wrapper { padding: 30px 0 60px; }
-      .page-title {
-        font-size: clamp(28px, 4vw, 36px); font-weight: 800; color: #ffffff; margin-bottom: 24px; text-align: center;
+      .menu-button {
+        display: none;
+        background: none;
+        border: 0;
+        color: white;
+        cursor: pointer;
       }
 
-      .card-box {
-        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 40px;
+      /* Hero Subheader */
+      .tool-hero {
+        padding-top: 120px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(20, 20, 20, 0.6) 0%, transparent 100%);
       }
 
-      .date-picker-row {
-        display: flex; align-items: center; justify-content: space-between; gap: 16px;
-        background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--radius-sm);
-        padding: 14px 20px; margin-bottom: 24px;
-      }
-      .date-picker-label { font-size: 15px; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 8px; }
-      .date-input {
-        background: #111111; border: 1px solid var(--line); border-radius: 8px; color: #ffffff;
-        font-family: var(--font-sans); font-size: 14px; font-weight: 600; padding: 8px 14px; outline: none;
-      }
-      .date-input:focus { border-color: var(--accent); }
-
-      .status-pill-banner {
-        padding: 18px 24px; border-radius: var(--radius-sm); background: rgba(34, 197, 94, 0.1);
-        border: 1px solid rgba(34, 197, 94, 0.3); color: #22c55e; margin-bottom: 24px;
-        display: flex; align-items: center; justify-content: space-between; font-weight: 700; font-size: 15px;
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 16px;
       }
 
-      .timings-list { display: flex; flex-direction: column; gap: 14px; }
-      .timing-card {
-        background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px;
-        padding: 16px 20px; display: flex; align-items: center; justify-content: space-between;
+      .breadcrumb a:hover {
+        color: var(--accent);
       }
-      .timing-title { font-size: 15px; font-weight: 700; color: #ffffff; margin-bottom: 2px; }
-      .timing-desc { font-size: 12px; color: var(--muted); }
-      .timing-val { font-size: 15px; font-weight: 800; color: var(--accent); }
 
-      /* Explainer */
+      .tool-hero-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      @media (min-width: 768px) {
+        .tool-hero-inner {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      .tool-hero h1 {
+        font-size: clamp(26px, 3.5vw, 36px);
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: -0.5px;
+      }
+
+      .tool-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        background: rgba(198, 165, 92, 0.12);
+        border: 1px solid rgba(198, 165, 92, 0.25);
+        color: var(--accent);
+        border-radius: 999px;
+        font-size: 12.5px;
+        font-weight: 600;
+        width: fit-content;
+      }
+
+      /* Tool Content */
+      .tool-content {
+        padding: 40px 0 100px;
+      }
+
+      /* Top Controller Bar */
+      .time-controller-bar {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        margin-bottom: 24px;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      /* Date Navigator */
+      .date-nav-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .nav-arrow-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .nav-arrow-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        background: var(--surface-3);
+      }
+
+      .date-display-box {
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .date-relative-tag {
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--accent);
+        margin-bottom: 4px;
+      }
+
+      .date-title-heading {
+        font-size: clamp(20px, 3vw, 26px);
+        font-weight: 700;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .date-title-heading:hover {
+        color: var(--accent);
+      }
+
+      /* Hidden Date Picker input */
+      #datePickerInput {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      /* Location Detector Row */
+      .location-bar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
+      }
+
+      .location-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13.5px;
+        color: var(--muted);
+      }
+
+      .location-info svg {
+        color: var(--accent);
+      }
+
+      .location-tag {
+        font-weight: 700;
+        color: #ffffff;
+      }
+
+      .location-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-loc {
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 600;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        color: var(--muted);
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        transition: all 0.2s ease;
+      }
+
+      .btn-loc:hover {
+        border-color: var(--accent);
+        color: #ffffff;
+      }
+
+      /* Live Status Banner */
+      .status-card {
+        border-radius: var(--radius-lg);
+        padding: 24px 28px;
+        margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        transition: all 0.3s ease;
+      }
+
+      .status-card.auspicious {
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.35);
+      }
+
+      .status-card.inauspicious {
+        background: rgba(239, 68, 68, 0.14);
+        border: 1px solid rgba(239, 68, 68, 0.35);
+      }
+
+      .status-icon-wrap {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .status-card.auspicious .status-icon-wrap {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+      }
+
+      .status-card.inauspicious .status-icon-wrap {
+        background: rgba(239, 68, 68, 0.2);
+        color: #ef4444;
+      }
+
+      .status-text-block h3 {
+        font-size: 18px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 4px;
+      }
+
+      .status-text-block p {
+        font-size: 13.5px;
+        color: var(--muted);
+      }
+
+      /* Timeline visual bar */
+      .timeline-wrap {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        margin-bottom: 28px;
+      }
+
+      .timeline-header {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12.5px;
+        color: var(--muted);
+        margin-bottom: 12px;
+      }
+
+      .timeline-header strong {
+        color: #ffffff;
+      }
+
+      .day-progress-bar {
+        position: relative;
+        height: 18px;
+        background: var(--surface-3);
+        border-radius: 999px;
+        overflow: hidden;
+        display: flex;
+      }
+
+      .segment-auspicious {
+        background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+        height: 100%;
+      }
+
+      .segment-rahu {
+        background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+        height: 100%;
+        position: relative;
+      }
+
+      .segment-abhijit {
+        background: linear-gradient(90deg, #f59e0b 0%, #d97706 100%);
+        height: 100%;
+      }
+
+      .timeline-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 14px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+
+      /* Timing Detail Cards */
+      .timing-cards-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      @media (min-width: 640px) {
+        .timing-cards-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .time-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 22px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all 0.25s ease;
+      }
+
+      .time-card:hover {
+        border-color: rgba(198, 165, 92, 0.4);
+        background: var(--surface-2);
+      }
+
+      .time-card.danger {
+        border-color: rgba(239, 68, 68, 0.3);
+      }
+
+      .time-card.danger:hover {
+        border-color: rgba(239, 68, 68, 0.6);
+      }
+
+      .time-card-info h4 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 4px;
+      }
+
+      .time-card.danger .time-card-info h4 {
+        color: #f87171;
+      }
+
+      .time-card-info p {
+        font-size: 12.5px;
+        color: var(--muted);
+      }
+
+      .time-card-val {
+        text-align: right;
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--accent);
+        font-feature-settings: "tnum";
+        white-space: nowrap;
+      }
+
+      .time-card.danger .time-card-val {
+        color: #f87171;
+      }
+
+      /* Explainer Box */
       .explainer-box {
-        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
-        padding: 32px; margin-bottom: 40px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 36px 32px;
+        margin-top: 48px;
       }
-      .explainer-box h2 { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 16px; }
-      .explainer-box p { color: var(--muted); font-size: 14.5px; line-height: 1.7; margin-bottom: 14px; }
-      .explainer-box ul { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 10px; }
-      .explainer-box li { font-size: 14px; color: #cfcfcb; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
-      .explainer-box li::before { content: "•"; color: var(--accent); font-weight: 800; }
+
+      .explainer-box h2 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 20px;
+      }
+
+      .explainer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      @media (min-width: 768px) {
+        .explainer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .explainer-grid p {
+        margin-bottom: 14px;
+      }
+
+      .explainer-grid strong {
+        color: #ffffff;
+      }
+
+      .feature-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .feature-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .feature-list li::before {
+        content: "•";
+        color: var(--accent);
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 1;
+      }
 
       .cta-promo {
-        background: linear-gradient(135deg, rgba(198, 165, 92, 0.15) 0%, rgba(198, 165, 92, 0.04) 100%);
-        border: 1px solid rgba(198, 165, 92, 0.35); border-radius: var(--radius-md); padding: 24px; text-align: center;
-      }
-      .cta-promo p { font-size: 15px; font-weight: 600; color: #ffffff; margin-bottom: 14px; }
-      .cta-promo a {
-        display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px;
-        background: var(--accent); color: #0a0a0a; border-radius: 50px; font-size: 13.5px; font-weight: 700;
+        margin-top: 40px;
+        padding-top: 28px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
       }
 
-      footer { border-top: 1px solid var(--line); padding: 60px 0 30px; background: #080808; }
-      .footer-bottom { display: flex; align-items: center; justify-content: space-between; color: #666; font-size: 13px; }
+      .cta-promo p {
+        color: var(--muted);
+        font-size: 14px;
+      }
 
-      @media (max-width: 640px) {
-        .date-picker-row { flex-direction: column; align-items: flex-start; }
-        .nav-links { display: none; }
-        .nav-button { display: none; }
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 24px;
+        background: rgba(198, 165, 92, 0.12);
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        border-radius: 999px;
+        font-size: 13.5px;
+        font-weight: 700;
+        transition: all 0.25s ease;
+      }
+
+      .cta-btn:hover {
+        background: var(--accent);
+        color: #0a0a0a;
+        transform: translateY(-2px);
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 50px 0 30px;
+        background: #080808;
+      }
+
+      .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #666;
+        font-size: 13px;
+      }
+
+      /* Mobile Navbar & Responsiveness */
+      @media (max-width: 768px) {
+        .logo {
+          position: static;
+          transform: none;
+        }
+        .menu-button {
+          position: static;
+          transform: none;
+          display: block;
+          margin-left: auto;
+        }
+        .nav-inner {
+          justify-content: space-between;
+          padding: 0 16px;
+        }
+        .nav-links {
+          position: fixed;
+          top: 78px;
+          left: 15px;
+          right: 15px;
+          padding: 25px;
+          margin-right: 0;
+          background: rgba(15, 15, 15, 0.96);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid var(--line);
+          border-radius: 18px;
+          flex-direction: column;
+          align-items: flex-start;
+          display: none;
+        }
+        .nav-links.active {
+          display: flex;
+        }
+        .nav-links a {
+          width: 100%;
+          text-align: left;
+          padding: 10px 14px;
+        }
+        .nav-button {
+          display: none;
+        }
       }
     </style>
   </head>
@@ -245,91 +715,202 @@
           <a href="index.html#iplex">i-PLEX</a>
           <a href="blog.html">Blog</a>
           <a href="gallery.html">Gallery</a>
-          <a href="tools.html">Free Tools</a>
+          <a href="tools.html" class="active">Free Tools</a>
           <a href="index.html#about">About</a>
         </nav>
         <a href="index.html#contact" class="nav-button">Book a Demo</a>
+        <button class="menu-button" id="menuButton" aria-label="Open Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </header>
 
-    <main class="container">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <span>/</span>
-        <a href="tools.html">Free Tools</a>
-        <span>/</span>
-        <span style="color: #ffffff;">Auspicious Time</span>
+    <!-- Subheader Banner -->
+    <section class="tool-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <a href="tools.html">Free Tools</a>
+          <span>/</span>
+          <span style="color: #ffffff;">Auspicious Time</span>
+        </div>
+        <div class="tool-hero-inner">
+          <h1>Auspicious Time Calculator</h1>
+          <div class="tool-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Free Tool for Deals</span>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="tool-wrapper">
-        <h1 class="page-title">Auspicious Time Calculator</h1>
+    <!-- Main Tool Body -->
+    <main class="tool-content">
+      <div class="container">
 
-        <div class="card-box">
-          <div class="date-picker-row">
-            <div class="date-picker-label">
-              <span>📅</span> Select Date & Location
+        <!-- Top Controller (Date & Location) -->
+        <div class="time-controller-bar">
+          <!-- Date Navigator -->
+          <div class="date-nav-row">
+            <button class="nav-arrow-btn" id="btnPrevDay" aria-label="Previous Day">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
+
+            <div class="date-display-box" id="datePickerTrigger">
+              <p class="date-relative-tag" id="relativeDayTag">Today 📅</p>
+              <h2 class="date-title-heading">
+                <span id="dateTitleText">Loading...</span>
+              </h2>
+              <input type="date" id="datePickerInput" />
             </div>
-            <input type="date" id="dateInput" class="date-input" />
+
+            <button class="nav-arrow-btn" id="btnNextDay" aria-label="Next Day">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
           </div>
 
-          <div class="status-pill-banner" id="statusBanner">
-            <span>✓ Auspicious window active now</span>
-            <span id="rahuStatusText" style="font-size: 13px; font-weight: 500;">No more Rahu Kalam today</span>
+          <!-- Location Detection Bar -->
+          <div class="location-bar">
+            <div class="location-info">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span>Location:</span>
+              <span class="location-tag" id="locationCityName">Detecting Location...</span>
+            </div>
+
+            <div class="location-actions">
+              <button class="btn-loc" id="btnGps">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
+                </svg>
+                <span>GPS Locate</span>
+              </button>
+              <button class="btn-loc" id="btnChangeCity">Change City</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Status Banner -->
+        <div class="status-card auspicious" id="statusCard">
+          <div class="status-icon-wrap" id="statusIcon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <div class="status-text-block">
+            <h3 id="statusHeading">Auspicious Time Active</h3>
+            <p id="statusSubtext">Favorable for token payment, negotiations, and agreement signing.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Visual Bar -->
+        <div class="timeline-wrap">
+          <div class="timeline-header">
+            <span>Sunrise: <strong id="timelineSunrise">06:00 AM</strong></span>
+            <span>Solar Noon: <strong id="timelineNoon">12:15 PM</strong></span>
+            <span>Sunset: <strong id="timelineSunset">06:30 PM</strong></span>
           </div>
 
-          <div class="timings-list">
-            <div class="timing-card">
-              <div>
-                <div class="timing-title">Abhijit Muhurat</div>
-                <div class="timing-desc">Supreme auspicious slot for contracts and agreements</div>
-              </div>
-              <div class="timing-val">11:58 AM – 12:46 PM</div>
-            </div>
+          <div class="day-progress-bar" id="dayProgressBar">
+            <div class="segment-auspicious" id="segPreRahu" style="width: 50%;"></div>
+            <div class="segment-rahu" id="segRahu" style="width: 12.5%;" title="Rahu Kalam"></div>
+            <div class="segment-auspicious" id="segPostRahu" style="width: 37.5%;"></div>
+          </div>
 
-            <div class="timing-card">
-              <div>
-                <div class="timing-title">Amrit Kaal</div>
-                <div class="timing-desc">Most favorable for token payment & auspicious beginnings</div>
-              </div>
-              <div class="timing-val">02:15 PM – 03:45 PM</div>
+          <div class="timeline-legend">
+            <div class="legend-item">
+              <span class="legend-dot" style="background: #10b981;"></span>
+              <span>Auspicious Window</span>
             </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background: #ef4444;"></span>
+              <span>Rahu Kalam (Avoid Deals)</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-dot" style="background: #c6a55c;"></span>
+              <span>Abhijit Muhurat (Golden Slot)</span>
+            </div>
+          </div>
+        </div>
 
-            <div class="timing-card">
-              <div>
-                <div class="timing-title">Shubh Choghadiya</div>
-                <div class="timing-desc">Favorable morning timing for initial client meetings</div>
-              </div>
-              <div class="timing-val">09:15 AM – 10:45 AM</div>
+        <!-- Timing Details List -->
+        <div class="timing-cards-grid">
+          <!-- 1. Abhijit Muhurat -->
+          <div class="time-card">
+            <div class="time-card-info">
+              <h4>Abhijit Muhurat</h4>
+              <p>Golden slot for agreements, token payments & key signings</p>
             </div>
+            <div class="time-card-val" id="timeAbhijit">11:58 AM – 12:46 PM</div>
+          </div>
 
-            <div class="timing-card">
-              <div>
-                <div class="timing-title" style="color: #ef4444;">Rahu Kalam (Avoid)</div>
-                <div class="timing-desc">Inauspicious window; avoid signing or token transfers</div>
-              </div>
-              <div class="timing-val" id="rahuWindow" style="color: #ef4444;">04:30 PM – 06:00 PM</div>
+          <!-- 2. Rahu Kalam -->
+          <div class="time-card danger">
+            <div class="time-card-info">
+              <h4>Rahu Kalam (Inauspicious)</h4>
+              <p>Avoid finalizing transactions or issuing token cheques</p>
             </div>
+            <div class="time-card-val" id="timeRahu">04:30 PM – 06:00 PM</div>
+          </div>
+
+          <!-- 3. Sunrise -->
+          <div class="time-card">
+            <div class="time-card-info">
+              <h4>Sunrise</h4>
+              <p>Beginning of auspicious Vedic day calculation</p>
+            </div>
+            <div class="time-card-val" id="timeSunrise">06:12 AM</div>
+          </div>
+
+          <!-- 4. Sunset -->
+          <div class="time-card">
+            <div class="time-card-info">
+              <h4>Sunset</h4>
+              <p>End of diurnal Muhurat calculation window</p>
+            </div>
+            <div class="time-card-val" id="timeSunset">06:24 PM</div>
           </div>
         </div>
 
         <!-- Explainer Box -->
         <div class="explainer-box">
           <h2>Why use Auspicious Time?</h2>
-          <p>PropTime is a free tool for real estate agents and property consultants to instantly identify the most favorable time slots for deal closings and site visits.</p>
-          <p>Closing a deal or inaugurating a new home are major life events. Clients often want to ensure these happen at the most fortuitous moments.</p>
-          <p>Auspicious Time helps you instantly advise clients on the best timings ("Shubh Muhurat") and avoid inauspicious periods like Rahu Kalam.</p>
-          <ul>
-            <li><strong>Avoid Rahu Kalam:</strong> Automatically calculated for your exact location.</li>
-            <li><strong>Plan Closings:</strong> Find the perfect slot for signing agreements.</li>
-            <li><strong>Guide Clients:</strong> Position yourself as a thoughtful, culturally aware agent.</li>
-            <li><strong>Instant & Free:</strong> No need to consult an almanac manually.</li>
-          </ul>
+          <div class="explainer-grid">
+            <div>
+              <p><strong>Auspicious Time</strong> is a <strong>free tool for real estate agents and property consultants</strong> to instantly identify the most favorable time slots for deal closings and site visits.</p>
+              <p>Closing a deal or inaugurating a new home are major life milestones. Clients often want to ensure these happen at fortuitous moments.</p>
+              <p><strong>Auspicious Time</strong> calculates real-time astronomical Muhurats based on your exact coordinates, so you can advise clients with confidence.</p>
+            </div>
+            <div>
+              <ul class="feature-list">
+                <li><span><strong>Avoid Rahu Kalam:</strong> Automatically calculated for your exact GPS coordinates.</span></li>
+                <li><span><strong>Plan Closings:</strong> Find the ideal slot for signing sale deeds and agreements.</span></li>
+                <li><span><strong>Guide Clients:</strong> Position yourself as a thoughtful, culturally aware consultant.</span></li>
+                <li><span><strong>100% Free:</strong> Instant calculations without consulting almanacs manually.</span></li>
+              </ul>
+            </div>
+          </div>
 
           <div class="cta-promo">
-            <p>Professional tools for your work. Cinematic 3D virtual showflats for your listings.</p>
-            <a href="index.html#iplex">OneToBeam i-PLEX →</a>
+            <p>Showcase your properties with immersive 3D virtual sales galleries that impress every buyer.</p>
+            <a href="index.html#iplex" class="cta-btn">OneToBeam i-PLEX →</a>
           </div>
         </div>
+
       </div>
     </main>
 
@@ -344,29 +925,316 @@
     </footer>
 
     <script>
-      const dateInput = document.getElementById("dateInput");
-      const today = new Date();
-      dateInput.value = today.toISOString().split("T")[0];
+      // Astronomical calculation based on SunCalc equations
+      const PI = Math.PI, sin = Math.sin, cos = Math.cos, tan = Math.tan, asin = Math.asin, atan2 = Math.atan2, acos = Math.acos;
+      const rad = PI / 180, dayMs = 1000 * 60 * 60 * 24, J1970 = 2440588, J2000 = 2451545;
 
-      const rahuWindows = [
-        "04:30 PM – 06:00 PM", // Sun
-        "07:30 AM – 09:00 AM", // Mon
-        "03:00 PM – 04:30 PM", // Tue
-        "12:00 PM – 01:30 PM", // Wed
-        "01:30 PM – 03:00 PM", // Thu
-        "10:30 AM – 12:00 PM", // Fri
-        "09:00 AM – 10:30 AM"  // Sat
-      ];
+      function toJulian(date) { return date.valueOf() / dayMs - 0.5 + J1970; }
+      function fromJulian(j) { return new Date((j + 0.5 - J1970) * dayMs); }
+      function toDays(date) { return toJulian(date) - J2000; }
 
-      function update() {
-        const d = new Date(dateInput.value || today);
-        const day = d.getDay();
-        const rahu = rahuWindows[day];
-        document.getElementById("rahuWindow").textContent = rahu;
+      const e = rad * 23.4397;
+      function rightAscension(l, b) { return atan2(sin(l) * cos(e) - tan(b) * sin(e), cos(l)); }
+      function declination(l, b) { return asin(sin(b) * cos(e) + cos(b) * sin(e) * sin(l)); }
+      function solarMeanAnomaly(d) { return rad * (357.5291 + 0.98560028 * d); }
+      function eclipticLongitude(M) {
+        const C = rad * (1.9148 * sin(M) + 0.02 * sin(2 * M) + 0.0003 * sin(3 * M));
+        const P = rad * 102.9372;
+        return M + C + P + PI;
+      }
+      function sunCoords(d) {
+        const M = solarMeanAnomaly(d);
+        const L = eclipticLongitude(M);
+        return { dec: declination(L, 0), ra: rightAscension(L, 0) };
       }
 
-      dateInput.addEventListener("change", update);
-      update();
+      function getSunTimes(date, lat, lng) {
+        const lw = rad * -lng;
+        const phi = rad * lat;
+        const d = toDays(date);
+        const n = Math.round(d - 0.0009 - lw / (2 * PI));
+        const ds = 0.0009 + (0 + lw) / (2 * PI) + n;
+        const M = solarMeanAnomaly(ds);
+        const L = eclipticLongitude(M);
+        const dec = declination(L, 0);
+        const Jnoon = J2000 + ds + 0.0053 * sin(M) - 0.0069 * sin(2 * L);
+
+        const h0 = -0.833 * rad;
+        const w0 = acos((sin(h0) - sin(phi) * sin(dec)) / (cos(phi) * cos(dec)));
+        const Jset = J2000 + 0.0009 + (w0 + lw) / (2 * PI) + n + 0.0053 * sin(M) - 0.0069 * sin(2 * L);
+        const Jrise = Jnoon - (Jset - Jnoon);
+
+        return {
+          sunrise: fromJulian(Jrise),
+          sunset: fromJulian(Jset),
+          solarNoon: fromJulian(Jnoon)
+        };
+      }
+
+      // Day of Week period for Rahu Kalam (1-indexed 8th parts of daytime)
+      const rahuPeriodMap = {
+        0: 8, // Sunday (8th period)
+        1: 2, // Monday (2nd period)
+        2: 7, // Tuesday (7th period)
+        3: 5, // Wednesday (5th period)
+        4: 6, // Thursday (6th period)
+        5: 4, // Friday (4th period)
+        6: 3  // Saturday (3rd period)
+      };
+
+      // State
+      let selectedDate = new Date();
+      let coords = { lat: 12.9716, lng: 77.5946 }; // Default Bengaluru
+      let locationName = "Bengaluru, KA";
+
+      // DOM Elements
+      const btnPrevDay = document.getElementById("btnPrevDay");
+      const btnNextDay = document.getElementById("btnNextDay");
+      const relativeDayTag = document.getElementById("relativeDayTag");
+      const dateTitleText = document.getElementById("dateTitleText");
+      const datePickerInput = document.getElementById("datePickerInput");
+      const datePickerTrigger = document.getElementById("datePickerTrigger");
+
+      const locationCityName = document.getElementById("locationCityName");
+      const btnGps = document.getElementById("btnGps");
+      const btnChangeCity = document.getElementById("btnChangeCity");
+
+      const statusCard = document.getElementById("statusCard");
+      const statusIcon = document.getElementById("statusIcon");
+      const statusHeading = document.getElementById("statusHeading");
+      const statusSubtext = document.getElementById("statusSubtext");
+
+      const timeSunrise = document.getElementById("timeSunrise");
+      const timeSunset = document.getElementById("timeSunset");
+      const timeAbhijit = document.getElementById("timeAbhijit");
+      const timeRahu = document.getElementById("timeRahu");
+
+      const timelineSunrise = document.getElementById("timelineSunrise");
+      const timelineNoon = document.getElementById("timelineNoon");
+      const timelineSunset = document.getElementById("timelineSunset");
+
+      const segPreRahu = document.getElementById("segPreRahu");
+      const segRahu = document.getElementById("segRahu");
+      const segPostRahu = document.getElementById("segPostRahu");
+
+      function formatTime(d) {
+        if (!d || isNaN(d)) return "--:--";
+        return d.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", hour12: true });
+      }
+
+      function updateCalculations() {
+        const sun = getSunTimes(selectedDate, coords.lat, coords.lng);
+        const dayDuration = sun.sunset.getTime() - sun.sunrise.getTime();
+        const partDuration = dayDuration / 8;
+
+        const dayOfWeek = selectedDate.getDay();
+        const rahuPart = rahuPeriodMap[dayOfWeek];
+
+        const rahuStart = new Date(sun.sunrise.getTime() + (rahuPart - 1) * partDuration);
+        const rahuEnd = new Date(rahuStart.getTime() + partDuration);
+
+        // Abhijit Muhurat (mid-day ~48 mins window centered on Solar Noon)
+        const abhijitStart = new Date(sun.solarNoon.getTime() - 24 * 60 * 1000);
+        const abhijitEnd = new Date(sun.solarNoon.getTime() + 24 * 60 * 1000);
+
+        // Fill Time Cards
+        timeSunrise.textContent = formatTime(sun.sunrise);
+        timeSunset.textContent = formatTime(sun.sunset);
+        timeAbhijit.textContent = `${formatTime(abhijitStart)} – ${formatTime(abhijitEnd)}`;
+        timeRahu.textContent = `${formatTime(rahuStart)} – ${formatTime(rahuEnd)}`;
+
+        timelineSunrise.textContent = formatTime(sun.sunrise);
+        timelineNoon.textContent = formatTime(sun.solarNoon);
+        timelineSunset.textContent = formatTime(sun.sunset);
+
+        // Timeline Progress Bar Widths
+        const prePct = Math.max(0, ((rahuStart.getTime() - sun.sunrise.getTime()) / dayDuration) * 100);
+        const rahuPct = Math.min(100, (partDuration / dayDuration) * 100);
+        const postPct = Math.max(0, 100 - prePct - rahuPct);
+
+        segPreRahu.style.width = `${prePct}%`;
+        segRahu.style.width = `${rahuPct}%`;
+        segPostRahu.style.width = `${postPct}%`;
+
+        // Check if selectedDate is today
+        const now = new Date();
+        const isToday = selectedDate.toDateString() === now.toDateString();
+
+        if (isToday) {
+          const nowMs = now.getTime();
+          if (nowMs >= rahuStart.getTime() && nowMs <= rahuEnd.getTime()) {
+            // Inside Rahu Kalam
+            const remMins = Math.ceil((rahuEnd.getTime() - nowMs) / 60000);
+            statusCard.className = "status-card inauspicious";
+            statusIcon.innerHTML = `
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            `;
+            statusHeading.textContent = "Rahu Kalam Active — Inauspicious";
+            statusSubtext.textContent = `Avoid closing agreements or transferring funds. Rahu Kalam ends in ~${remMins} minutes.`;
+          } else if (nowMs < rahuStart.getTime()) {
+            // Before Rahu Kalam
+            const diffMins = Math.floor((rahuStart.getTime() - nowMs) / 60000);
+            const hrs = Math.floor(diffMins / 60);
+            const mins = diffMins % 60;
+            const diffText = hrs > 0 ? `${hrs}h ${mins}m` : `${mins}m`;
+
+            statusCard.className = "status-card auspicious";
+            statusIcon.innerHTML = `
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+              </svg>
+            `;
+            statusHeading.textContent = "Auspicious Time Active";
+            statusSubtext.textContent = `Favorable window active. Next Rahu Kalam starts in ${diffText} (${formatTime(rahuStart)}).`;
+          } else {
+            // After Rahu Kalam
+            statusCard.className = "status-card auspicious";
+            statusIcon.innerHTML = `
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+              </svg>
+            `;
+            statusHeading.textContent = "Auspicious Time Active";
+            statusSubtext.textContent = `No more Rahu Kalam today. Highly auspicious for evening discussions and token payments.`;
+          }
+        } else {
+          statusCard.className = "status-card auspicious";
+          statusIcon.innerHTML = `
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+            </svg>
+          `;
+          statusHeading.textContent = "Daily Timings Calculated";
+          statusSubtext.textContent = `Plan your meetings around the Abhijit Muhurat (${formatTime(abhijitStart)} – ${formatTime(abhijitEnd)}) and avoid Rahu Kalam (${formatTime(rahuStart)} – ${formatTime(rahuEnd)}).`;
+        }
+
+        renderDateUI();
+      }
+
+      function renderDateUI() {
+        const now = new Date();
+        const diffDays = Math.round((new Date(selectedDate.getFullYear(), selectedDate.getMonth(), selectedDate.getDate()) - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / dayMs);
+
+        if (diffDays === 0) relativeDayTag.textContent = "Today 📅";
+        else if (diffDays === 1) relativeDayTag.textContent = "Tomorrow 📅";
+        else if (diffDays === -1) relativeDayTag.textContent = "Yesterday 📅";
+        else relativeDayTag.textContent = "Selected Date 📅";
+
+        dateTitleText.textContent = selectedDate.toLocaleDateString("en-US", {
+          weekday: "short",
+          month: "short",
+          day: "numeric",
+          year: "numeric"
+        });
+
+        datePickerInput.value = selectedDate.toISOString().split("T")[0];
+      }
+
+      btnPrevDay.addEventListener("click", () => {
+        selectedDate.setDate(selectedDate.getDate() - 1);
+        updateCalculations();
+      });
+
+      btnNextDay.addEventListener("click", () => {
+        selectedDate.setDate(selectedDate.getDate() + 1);
+        updateCalculations();
+      });
+
+      datePickerInput.addEventListener("change", (e) => {
+        if (e.target.value) {
+          const [y, m, d] = e.target.value.split("-").map(Number);
+          selectedDate = new Date(y, m - 1, d);
+          updateCalculations();
+        }
+      });
+
+      // Geolocation Handling
+      async function detectLocation() {
+        locationCityName.textContent = "Detecting...";
+        if ("geolocation" in navigator) {
+          navigator.geolocation.getCurrentPosition(
+            async (pos) => {
+              coords.lat = pos.coords.latitude;
+              coords.lng = pos.coords.longitude;
+              try {
+                const res = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${coords.lat}&longitude=${coords.lng}&localityLanguage=en`);
+                const data = await res.json();
+                locationName = `${data.city || data.locality || "Current Location"}, ${data.principalSubdivisionCode || ""}`.trim();
+                locationCityName.textContent = locationName;
+              } catch (e) {
+                locationCityName.textContent = `${coords.lat.toFixed(2)}° N, ${coords.lng.toFixed(2)}° E`;
+              }
+              updateCalculations();
+            },
+            async () => {
+              // Fallback to IP geolocation
+              try {
+                const res = await fetch("https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en");
+                const data = await res.json();
+                if (data.latitude && data.longitude) {
+                  coords.lat = data.latitude;
+                  coords.lng = data.longitude;
+                  locationName = `${data.city || data.locality || "Delhi"}, ${data.principalSubdivisionCode || ""}`.trim();
+                  locationCityName.textContent = locationName;
+                }
+              } catch (e) {
+                locationCityName.textContent = "Delhi (Default)";
+                coords = { lat: 28.6139, lng: 77.2090 };
+              }
+              updateCalculations();
+            }
+          );
+        } else {
+          locationCityName.textContent = "Delhi (Default)";
+          updateCalculations();
+        }
+      }
+
+      btnGps.addEventListener("click", detectLocation);
+
+      btnChangeCity.addEventListener("click", async () => {
+        const city = prompt("Enter your city name (e.g. Mumbai, Dubai, Bengaluru):");
+        if (city && city.trim()) {
+          locationCityName.textContent = "Searching...";
+          try {
+            const res = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(city.trim())}`);
+            const data = await res.json();
+            if (data && data.length > 0) {
+              coords.lat = parseFloat(data[0].lat);
+              coords.lng = parseFloat(data[0].lon);
+              locationName = data[0].display_name.split(",")[0];
+              locationCityName.textContent = locationName;
+              updateCalculations();
+            } else {
+              alert("City not found. Please try again.");
+              locationCityName.textContent = locationName;
+            }
+          } catch (e) {
+            alert("Error locating city.");
+            locationCityName.textContent = locationName;
+          }
+        }
+      });
+
+      // Mobile Navbar toggle
+      const menuButton = document.getElementById("menuButton");
+      const navLinks = document.getElementById("navLinks");
+      if (menuButton && navLinks) {
+        menuButton.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      }
+
+      // Live clock ticker
+      setInterval(updateCalculations, 10000);
+
+      // Initialize
+      detectLocation();
+      updateCalculations();
     </script>
   </body>
 </html>

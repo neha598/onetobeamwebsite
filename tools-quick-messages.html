@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -28,30 +28,50 @@
     <style>
       :root {
         --bg: #0a0a0a;
-        --bg-soft: #101010;
-        --surface: #151515;
-        --surface-2: #1b1b1b;
+        --bg-soft: #121212;
+        --surface: #161616;
+        --surface-2: #1e1e1e;
+        --surface-3: #242424;
         --text: #f5f5f2;
         --muted: #9b9b97;
         --line: rgba(255, 255, 255, 0.1);
         --accent: #c6a55c;
         --accent-light: #e5cb87;
         --accent-dark: #a88b48;
-        --max-width: 800px;
-        --radius-lg: 20px;
-        --radius-md: 14px;
+        --accent-glow: rgba(198, 165, 92, 0.15);
+        --max-width: 920px;
+        --radius-lg: 24px;
+        --radius-md: 16px;
         --radius-sm: 10px;
         --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
 
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { background: var(--bg); color: var(--text); font-family: var(--font-sans); line-height: 1.5; overflow-x: hidden; }
-      a { color: inherit; text-decoration: none; }
-      .container { width: min(var(--max-width), calc(100% - 40px)); margin: auto; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-            /* =========================================================
-   NAVBAR (Exact Parity with Index)
-========================================================= */
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-sans);
+        line-height: 1.5;
+        overflow-x: hidden;
+        min-height: 100vh;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(var(--max-width), calc(100% - 40px));
+        margin: auto;
+      }
+
+      /* Navbar */
       .navbar {
         position: fixed;
         top: 0;
@@ -61,15 +81,11 @@
         display: flex;
         align-items: center;
         z-index: 1000;
-        background: rgba(10, 10, 10, 0.7);
+        background: rgba(10, 10, 10, 0.75);
         backdrop-filter: blur(18px);
         -webkit-backdrop-filter: blur(18px);
-        border-bottom: 1px solid transparent;
+        border-bottom: 1px solid var(--line);
         transition: 0.3s ease;
-      }
-
-      .navbar.scrolled {
-        border-bottom-color: var(--line);
       }
 
       .nav-inner {
@@ -87,15 +103,8 @@
         left: 30px;
         top: 50%;
         transform: translateY(-50%);
-        font-size: 21px;
-        font-weight: 700;
-        letter-spacing: -0.8px;
         display: flex;
         align-items: center;
-      }
-
-      .logo span {
-        color: var(--accent);
       }
 
       .nav-links {
@@ -106,35 +115,21 @@
       }
 
       .nav-links a {
-        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         font-size: 13.5px;
         font-weight: 500;
         color: #cfcfcb;
         padding: 8px 18px;
-        min-width: 78px;
-        text-align: center;
         border-radius: 999px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        text-decoration: none;
         transition: 0.2s ease;
-        line-height: 1;
-        letter-spacing: 0;
       }
 
-      .nav-links a:hover {
-        color: #ffffff;
-        font-size: 13.5px;
-        font-weight: 500;
-        background: rgba(255, 255, 255, 0.08);
-      }
-
+      .nav-links a:hover,
       .nav-links a.active {
         color: #ffffff;
-        font-size: 13.5px;
-        font-weight: 500;
-        background: rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.08);
       }
 
       .nav-button {
@@ -142,15 +137,12 @@
         right: 30px;
         top: 50%;
         transform: translateY(-50%);
-        padding: 11px 20px;
+        padding: 10px 22px;
         background: var(--accent);
         color: #111;
         border-radius: 50px;
-        font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         font-size: 13px;
         font-weight: 600;
-        line-height: 1;
-        letter-spacing: 0;
         transition: 0.2s ease;
       }
 
@@ -159,88 +151,508 @@
         transform: translateY(-50%) scale(1.02);
       }
 
-      .breadcrumb { padding-top: 115px; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
-      .breadcrumb a:hover { color: var(--accent); }
-
-      .tool-wrapper { padding: 30px 0 60px; }
-      .page-title { font-size: clamp(28px, 4vw, 36px); font-weight: 800; color: #ffffff; margin-bottom: 4px; text-align: center; }
-      .page-subtitle { font-size: 20px; font-weight: 700; color: var(--accent); margin-bottom: 8px; text-align: center; }
-      .page-tagline { font-size: 14.5px; color: var(--muted); margin-bottom: 30px; text-align: center; }
-
-      .customizer-box {
-        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
-        padding: 24px 28px; margin-bottom: 28px;
+      .menu-button {
+        display: none;
+        background: none;
+        border: 0;
+        color: white;
+        cursor: pointer;
       }
-      .customizer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 16px; }
-      .input-group label { display: block; font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
-      .custom-input {
-        width: 100%; padding: 10px 14px; background: var(--surface-2); border: 1px solid var(--line);
-        border-radius: 8px; color: #ffffff; font-family: var(--font-sans); font-size: 13.5px; outline: none;
-      }
-      .custom-input:focus { border-color: var(--accent); }
 
-      /* Tone toggle buttons */
-      .tone-row { display: flex; align-items: center; gap: 12px; }
-      .tone-label { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; }
+      /* Hero Subheader */
+      .tool-hero {
+        padding-top: 120px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(180deg, rgba(20, 20, 20, 0.6) 0%, transparent 100%);
+      }
+
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 16px;
+      }
+
+      .breadcrumb a:hover {
+        color: var(--accent);
+      }
+
+      .tool-hero-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      @media (min-width: 768px) {
+        .tool-hero-inner {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      .tool-hero h1 {
+        font-size: clamp(26px, 3.5vw, 36px);
+        font-weight: 800;
+        color: #ffffff;
+        letter-spacing: -0.5px;
+      }
+
+      .tool-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 14px;
+        background: rgba(198, 165, 92, 0.12);
+        border: 1px solid rgba(198, 165, 92, 0.25);
+        color: var(--accent);
+        border-radius: 999px;
+        font-size: 12.5px;
+        font-weight: 600;
+        width: fit-content;
+      }
+
+      /* Main Tool Content */
+      .tool-content {
+        padding: 40px 0 100px;
+      }
+
+      .intro-heading-wrap {
+        text-align: center;
+        margin-bottom: 32px;
+      }
+
+      .intro-heading-wrap h2 {
+        font-size: clamp(30px, 4vw, 44px);
+        font-weight: 300;
+        color: #ffffff;
+        margin-bottom: 8px;
+      }
+
+      .intro-heading-wrap h2 span {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .intro-heading-wrap p {
+        color: var(--muted);
+        font-size: 15px;
+        max-width: 580px;
+        margin: auto;
+      }
+
+      /* Configurator Card */
+      .config-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 32px 28px;
+        margin-bottom: 32px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .config-grid-3 {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      @media (min-width: 768px) {
+        .config-grid-3 {
+          grid-template-columns: 1.2fr 1.2fr 1fr;
+        }
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      .text-input {
+        width: 100%;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 12px 16px;
+        color: #ffffff;
+        font-size: 14.5px;
+        font-family: var(--font-sans);
+        outline: none;
+        transition: all 0.2s ease;
+      }
+
+      .text-input:focus {
+        border-color: var(--accent);
+        background: var(--surface-3);
+      }
+
+      .select-wrap {
+        position: relative;
+      }
+
+      .select-input {
+        width: 100%;
+        appearance: none;
+        -webkit-appearance: none;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 12px 40px 12px 16px;
+        color: #ffffff;
+        font-size: 14.5px;
+        font-weight: 600;
+        font-family: var(--font-sans);
+        cursor: pointer;
+        outline: none;
+        transition: all 0.2s ease;
+      }
+
+      .select-input:focus,
+      .select-input:hover {
+        border-color: var(--accent);
+        background: var(--surface-3);
+      }
+
+      .select-input option {
+        background: #1a1a1a;
+        color: #ffffff;
+      }
+
+      .select-arrow {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: var(--accent);
+      }
+
+      /* Tone Segmented Switcher */
+      .tone-row {
+        display: flex;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        padding: 4px;
+        gap: 4px;
+      }
+
       .tone-btn {
-        padding: 6px 18px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line);
-        color: #cfcfcb; font-size: 12.5px; font-weight: 600; cursor: pointer; transition: 0.2s ease;
+        flex: 1;
+        padding: 10px 16px;
+        border-radius: 8px;
+        font-size: 13.5px;
+        font-weight: 600;
+        background: transparent;
+        border: none;
+        color: var(--muted);
+        cursor: pointer;
+        transition: all 0.25s ease;
       }
-      .tone-btn.active { background: var(--accent); color: #0a0a0a; border-color: var(--accent); }
 
-      /* Script List */
-      .scripts-list { display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px; }
-      .script-card {
-        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-md);
-        padding: 24px; transition: 0.2s ease;
+      .tone-btn:hover {
+        color: #ffffff;
       }
-      .script-card:hover { border-color: rgba(198, 165, 92, 0.35); }
+
+      .tone-btn.active {
+        background: var(--accent);
+        color: #0a0a0a;
+        box-shadow: 0 4px 12px rgba(198, 165, 92, 0.35);
+      }
+
+      /* Pill Group */
+      .pill-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .filter-pill {
+        padding: 8px 18px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+        color: var(--muted);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .filter-pill:hover {
+        border-color: rgba(198, 165, 92, 0.4);
+        color: #ffffff;
+      }
+
+      .filter-pill.active {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #0a0a0a;
+        box-shadow: 0 4px 14px rgba(198, 165, 92, 0.3);
+      }
+
+      /* Script List Cards */
+      .scripts-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .script-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-md);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        transition: all 0.25s ease;
+        position: relative;
+      }
+
+      @media (min-width: 768px) {
+        .script-card {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          padding: 26px 28px;
+        }
+      }
+
+      .script-card:hover {
+        border-color: rgba(198, 165, 92, 0.35);
+        background: #181818;
+      }
 
       .script-text {
-        font-size: 14px; color: #f5f5f2; line-height: 1.7; margin-bottom: 18px;
-        background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 16px;
+        color: #e5e5e2;
+        font-size: 14.5px;
+        line-height: 1.65;
+        white-space: pre-wrap;
+        flex-grow: 1;
       }
 
-      .script-actions { display: flex; align-items: center; gap: 10px; }
-      .btn-copy-script {
-        padding: 8px 16px; background: rgba(255, 255, 255, 0.08); border: 1px solid var(--line);
-        color: #ffffff; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;
-        display: flex; align-items: center; gap: 6px; transition: 0.2s ease;
-      }
-      .btn-copy-script:hover { background: rgba(255, 255, 255, 0.15); }
-      .btn-wa-script {
-        padding: 8px 18px; background: #25D366; color: #0a0a0a; border: none; border-radius: 8px;
-        font-size: 13px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px;
+      .card-actions {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        flex-shrink: 0;
       }
 
-      /* Explainer */
+      .action-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 18px;
+        border-radius: var(--radius-sm);
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+        border: none;
+      }
+
+      .btn-copy {
+        background: rgba(198, 165, 92, 0.12);
+        color: var(--accent);
+        border: 1px solid rgba(198, 165, 92, 0.25);
+      }
+
+      .btn-copy:hover {
+        background: var(--accent);
+        color: #0a0a0a;
+        border-color: var(--accent);
+      }
+
+      .btn-copy.copied {
+        background: #10b981;
+        color: #ffffff;
+        border-color: #10b981;
+      }
+
+      .btn-wa {
+        background: #25d366;
+        color: #ffffff;
+      }
+
+      .btn-wa:hover {
+        background: #1ebe5d;
+        transform: translateY(-1px);
+      }
+
+      /* Explainer Box */
       .explainer-box {
-        background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
-        padding: 32px; margin-bottom: 40px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 36px 32px;
+        margin-top: 48px;
       }
-      .explainer-box h2 { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 16px; }
-      .explainer-box p { color: var(--muted); font-size: 14.5px; line-height: 1.7; margin-bottom: 14px; }
-      .explainer-box ul { list-style: none; margin: 16px 0 24px; display: flex; flex-direction: column; gap: 10px; }
-      .explainer-box li { font-size: 14px; color: #cfcfcb; display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
-      .explainer-box li::before { content: "•"; color: var(--accent); font-weight: 800; }
+
+      .explainer-box h2 {
+        font-size: 22px;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 20px;
+      }
+
+      .explainer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 28px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.7;
+      }
+
+      @media (min-width: 768px) {
+        .explainer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .explainer-grid p {
+        margin-bottom: 14px;
+      }
+
+      .explainer-grid strong {
+        color: #ffffff;
+      }
+
+      .feature-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .feature-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .feature-list li::before {
+        content: "•";
+        color: var(--accent);
+        font-weight: 800;
+        font-size: 18px;
+        line-height: 1;
+      }
 
       .cta-promo {
-        background: linear-gradient(135deg, rgba(198, 165, 92, 0.15) 0%, rgba(198, 165, 92, 0.04) 100%);
-        border: 1px solid rgba(198, 165, 92, 0.35); border-radius: var(--radius-md); padding: 24px; text-align: center;
-      }
-      .cta-promo p { font-size: 15px; font-weight: 600; color: #ffffff; margin-bottom: 14px; }
-      .cta-promo a {
-        display: inline-flex; align-items: center; gap: 6px; padding: 10px 22px;
-        background: var(--accent); color: #0a0a0a; border-radius: 50px; font-size: 13.5px; font-weight: 700;
+        margin-top: 40px;
+        padding-top: 28px;
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
       }
 
-      footer { border-top: 1px solid var(--line); padding: 60px 0 30px; background: #080808; }
-      .footer-bottom { display: flex; align-items: center; justify-content: space-between; color: #666; font-size: 13px; }
+      .cta-promo p {
+        color: var(--muted);
+        font-size: 14px;
+      }
 
-      @media (max-width: 640px) {
-        .customizer-grid { grid-template-columns: 1fr; }
-        .nav-links { display: none; }
-        .nav-button { display: none; }
+      .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 24px;
+        background: rgba(198, 165, 92, 0.12);
+        border: 1px solid var(--accent);
+        color: var(--accent);
+        border-radius: 999px;
+        font-size: 13.5px;
+        font-weight: 700;
+        transition: all 0.25s ease;
+      }
+
+      .cta-btn:hover {
+        background: var(--accent);
+        color: #0a0a0a;
+        transform: translateY(-2px);
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 50px 0 30px;
+        background: #080808;
+      }
+
+      .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #666;
+        font-size: 13px;
+      }
+
+      /* Mobile Navbar & Responsiveness */
+      @media (max-width: 768px) {
+        .logo {
+          position: static;
+          transform: none;
+        }
+        .menu-button {
+          position: static;
+          transform: none;
+          display: block;
+          margin-left: auto;
+        }
+        .nav-inner {
+          justify-content: space-between;
+          padding: 0 16px;
+        }
+        .nav-links {
+          position: fixed;
+          top: 78px;
+          left: 15px;
+          right: 15px;
+          padding: 25px;
+          margin-right: 0;
+          background: rgba(15, 15, 15, 0.96);
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          border: 1px solid var(--line);
+          border-radius: 18px;
+          flex-direction: column;
+          align-items: flex-start;
+          display: none;
+        }
+        .nav-links.active {
+          display: flex;
+        }
+        .nav-links a {
+          width: 100%;
+          text-align: left;
+          padding: 10px 14px;
+        }
+        .nav-button {
+          display: none;
+        }
+        .config-card {
+          padding: 24px 18px;
+        }
       }
     </style>
   </head>
@@ -260,71 +672,134 @@
           <a href="index.html#iplex">i-PLEX</a>
           <a href="blog.html">Blog</a>
           <a href="gallery.html">Gallery</a>
-          <a href="tools.html">Free Tools</a>
+          <a href="tools.html" class="active">Free Tools</a>
           <a href="index.html#about">About</a>
         </nav>
         <a href="index.html#contact" class="nav-button">Book a Demo</a>
+        <button class="menu-button" id="menuButton" aria-label="Open Navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </header>
 
-    <main class="container">
-      <div class="breadcrumb">
-        <a href="index.html">Home</a>
-        <span>/</span>
-        <a href="tools.html">Free Tools</a>
-        <span>/</span>
-        <span style="color: #ffffff;">Quick Messages</span>
+    <!-- Subheader Banner -->
+    <section class="tool-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="index.html">Home</a>
+          <span>/</span>
+          <a href="tools.html">Free Tools</a>
+          <span>/</span>
+          <span style="color: #ffffff;">Quick Messages</span>
+        </div>
+        <div class="tool-hero-inner">
+          <h1>Real Estate WhatsApp Templates</h1>
+          <div class="tool-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span>Free Tool for Communication</span>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="tool-wrapper">
-        <h1 class="page-title">Real Estate WhatsApp Templates</h1>
-        <div class="page-subtitle">Quick Messages</div>
-        <p class="page-tagline">Generate professional updates for your clients in seconds.</p>
+    <!-- Main Tool Body -->
+    <main class="tool-content">
+      <div class="container">
 
-        <!-- Customizer -->
-        <div class="customizer-box">
-          <div class="customizer-grid">
-            <div class="input-group">
-              <label>Client Name</label>
-              <input type="text" id="vClient" class="custom-input" value="Rahul" />
-            </div>
-            <div class="input-group">
+        <!-- Intro Tagline -->
+        <div class="intro-heading-wrap">
+          <h2>Quick <span>Messages</span></h2>
+          <p>Generate professional updates for your clients in seconds.</p>
+        </div>
+
+        <!-- Configuration Card -->
+        <div class="config-card">
+          <!-- 3 Inputs: Agent Name, Client Name, Title -->
+          <div class="config-grid-3">
+            <div class="form-group">
               <label>Agent Name</label>
-              <input type="text" id="vAgent" class="custom-input" value="Amit" />
+              <input type="text" id="inpAgent" class="text-input" placeholder="Your Name" />
             </div>
-            <div class="input-group">
-              <label>Tone</label>
-              <div class="tone-row" style="margin-top: 6px;">
-                <button class="tone-btn active" id="btnFormal" data-tone="formal">Formal</button>
-                <button class="tone-btn" id="btnFriendly" data-tone="friendly">Friendly</button>
+            <div class="form-group">
+              <label>Client Name</label>
+              <input type="text" id="inpClient" class="text-input" placeholder="Client Name" />
+            </div>
+            <div class="form-group">
+              <label>Title</label>
+              <div class="select-wrap">
+                <select id="selTitle" class="select-input">
+                  <option value="Mr">Mr</option>
+                  <option value="Mrs">Mrs</option>
+                  <option value="Ms">Ms</option>
+                  <option value="Miss">Miss</option>
+                  <option value="Dr">Dr</option>
+                  <option value="Prof">Prof</option>
+                </select>
+                <div class="select-arrow">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path>
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
+
+          <!-- Tone Selector -->
+          <div class="form-group">
+            <label>Tone</label>
+            <div class="tone-row">
+              <button class="tone-btn active" id="btnFormal" data-tone="Formal">Formal</button>
+              <button class="tone-btn" id="btnFriendly" data-tone="Friendly & Casual">Friendly & Casual</button>
+            </div>
+          </div>
+
+          <!-- Category Selector -->
+          <div class="form-group">
+            <label>Category</label>
+            <div class="pill-group" id="categoryPills"></div>
+          </div>
+
+          <!-- Scenario Selector -->
+          <div class="form-group">
+            <label>Scenario</label>
+            <div class="pill-group" id="scenarioPills"></div>
+          </div>
         </div>
 
-        <!-- Scripts List -->
-        <div class="scripts-list" id="scriptsContainer">
-          <!-- Dynamically populated -->
-        </div>
+        <!-- Script List Cards -->
+        <div class="scripts-container" id="scriptsList"></div>
 
         <!-- Explainer Box -->
         <div class="explainer-box">
           <h2>Why use Quick Messages?</h2>
-          <p>Quick Messages is a free tool for real estate agents and property consultants to generate professional, ready-to-use WhatsApp updates and follow-ups for clients.</p>
-          <p>Response time is the #1 factor in converting real estate leads. Quick Messages gives you a library of battle-tested scripts for every scenario.</p>
-          <p>From "Cold Outreach" to "Scheduling Site Visits" to "Follow Ups", stop typing the same things over and over. Just copy, customize, and send.</p>
-          <ul>
-            <li><strong>Instant Templates:</strong> Pre-written scripts for WhatsApp & SMS.</li>
-            <li><strong>Tone Selection:</strong> Choose between "Formal" or "Friendly".</li>
-            <li><strong>Personalized:</strong> Auto-fill client and agent names.</li>
-            <li><strong>Boost Conversion:</strong> Professional communication builds trust.</li>
-          </ul>
+          <div class="explainer-grid">
+            <div>
+              <p><strong>Quick Messages</strong> is a <strong>free tool for real estate agents and property consultants</strong> to generate professional, ready-to-use WhatsApp updates and follow-ups for clients.</p>
+              <p>Response time is the #1 factor in converting real estate leads. <strong>Quick Messages</strong> gives you a library of battle-tested scripts for every scenario.</p>
+              <p>From "Cold Outreach" to "Scheduling Site Visits" to "Follow Ups", stop typing the same things over and over. Just copy, customize, and send.</p>
+            </div>
+            <div>
+              <ul class="feature-list">
+                <li><span><strong>Instant Templates:</strong> Pre-written scripts for WhatsApp & SMS.</span></li>
+                <li><span><strong>Tone Selection:</strong> Choose between "Formal" or "Friendly".</span></li>
+                <li><span><strong>Personalized:</strong> Auto-fill client and agent names.</span></li>
+                <li><span><strong>Boost Conversion:</strong> Professional communication builds trust.</span></li>
+              </ul>
+            </div>
+          </div>
 
           <div class="cta-promo">
             <p>If efficiency matters to you, you’ll appreciate OneToBeam. Immersive virtual showflats delivered in days.</p>
-            <a href="index.html#iplex">Try OneToBeam i-PLEX →</a>
+            <a href="index.html#iplex" class="cta-btn">OneToBeam i-PLEX →</a>
           </div>
         </div>
+
       </div>
     </main>
 
@@ -339,83 +814,277 @@
     </footer>
 
     <script>
-      let currentTone = "formal";
-
-      const scriptsData = {
-        formal: [
-          (c, a) => `Dear ${c},\n\nThank you for expressing interest in our property listing. It is a fantastic option with great connectivity and premium amenities. I would be happy to share the floor plans and brochure with you. Could we schedule a brief call to discuss your requirements in detail?\n\nWarm regards,\n${a}`,
-          (c, a) => `Dear ${c},\n\nI received your inquiry regarding the property. We appreciate your interest. I am available to answer any questions you may have regarding the pricing or the possession timeline. Please let me know a convenient time for me to call you.\n\nRegards,\n${a}`,
-          (c, a) => `Greetings ${c},\n\nThank you for reaching out. Since photos often miss the finer details, I have a comprehensive virtual tour of this apartment that highlights the layout and the view. I would love to send that to you so you can get a better feel for the home before visiting. May I share the link?\n\nBest,\n${a}`,
-          (c, a) => `Dear ${c},\n\nThank you for your inquiry. This specific property has generated significant interest recently due to its competitive pricing. If you are serious about this location, I would recommend we connect soon to discuss the details. I look forward to hearing from you.\n\nRegards,\n${a}`,
-          (c, a) => `Greetings ${c},\n\nI am the property consultant for the listing you viewed. I can provide you with a detailed cost breakdown and the layout options available in this society. Please simply reply with “Yes” if you would like me to forward these details to you on WhatsApp.\n\nRegards,\n${a}`
-        ],
-        friendly: [
-          (c, a) => `Hi ${c}! 😊\n\nThanks for checking out our property listing! It's one of the best projects in the area with amazing amenities and open views. Would love to send over the floor plans and pricing sheet. When would be a good time for a quick 2-minute chat?\n\nCheers,\n${a}`,
-          (c, a) => `Hey ${c}!\n\nSaw your inquiry about the apartment! Happy to help with any questions regarding pricing, bank offers, or when you can move in. Let me know when you're free to catch up!\n\nBest,\n${a}`,
-          (c, a) => `Hi ${c}! 👋\n\nThanks for reaching out! Photos don't really do justice to this property, so I've got a walkthrough video and 3D tour ready. Can I ping you the link here?\n\nWarmly,\n${a}`,
-          (c, a) => `Hey ${c}!\n\nJust wanted to let you know this specific unit is getting a lot of attention this week because of the great price. If you like the location, let's schedule a site visit before slots fill up!\n\nTalk soon,\n${a}`,
-          (c, a) => `Hi ${c}!\n\nI'm the consultant for the project you were looking at. I have the all-inclusive cost breakdown and layout options ready. Just reply 'Yes' and I'll send it right over!\n\nRegards,\n${a}`
-        ]
+      // The complete library of templates matching PropVidsAI
+      const templatesData = {
+        "Formal": {
+          "New Leads": {
+            "Web Inquiry Response": [
+              `Dear [Title] [Client Name],\nThank you for expressing interest in our property listing. It is a fantastic option with great connectivity and premium amenities. I would be happy to share the floor plans and brochure with you. Could we schedule a brief call to discuss your requirements in detail?\nWarm regards,\n[Agent Name]`,
+              `Dear [Title] [Client Name],\nI received your inquiry regarding the property. We appreciate your interest. I am available to answer any questions you may have regarding the pricing or the possession timeline. Please let me know a convenient time for me to call you.\nRegards,\n[Agent Name]`,
+              `Greetings [Title] [Client Name],\nThank you for reaching out. Since photos often miss the finer details, I have a comprehensive video tour of this apartment that highlights the layout and the view. I would love to send that to you so you can get a better feel for the home before visiting. May I share the link?\nBest,\n[Agent Name]`,
+              `Dear [Title] [Client Name],\nThank you for your inquiry. This specific property has generated significant interest recently due to its competitive pricing. If you are serious about this location, I would recommend we connect soon to discuss the details. I look forward to hearing from you.\nRegards,\n[Agent Name]`,
+              `Greetings [Title] [Client Name],\nI am the property consultant for the listing you viewed. I can provide you with a detailed cost breakdown and the layout options available in this society. Please simply reply with “Yes” if you would like me to forward these details to you on WhatsApp.\nRegards,\n[Agent Name]`
+            ],
+            "Cold Referral Outreach": [
+              `Dear [Title] [Client Name],\nI am writing to you upon the recommendation of our mutual contact. They mentioned that you might be looking for a property in this area. I would be honored to assist you in finding a home that suits your family’s needs.\nRegards,\n[Agent Name]`,
+              `Dear [Title] [Client Name],\nA mutual friend kindly shared your contact details with me. I understand you are currently exploring real estate options. I have a curated list of properties that match the criteria you are looking for. Would you be open to a brief discussion this week?\nBest regards,\n[Agent Name]`,
+              `Greetings [Title] [Client Name],\nMy name is [Agent Name]. I specialize in premium properties in this sector. If you have any queries regarding the current market rates or specific projects, I am at your disposal.\nWarm regards,\n[Agent Name]`,
+              `Greetings [Title] [Client Name],\nI recently helped a few families find homes in this specific locality and I believe I can offer you some excellent options as well. Please let me know when you have a moment to chat.\nRegards,\n[Agent Name]`,
+              `Dear [Title] [Client Name],\nI hope you are having a good day. I understand you have an interest in purchasing a property. I would be delighted to guide you through the available options and help you make an informed decision. Looking forward to connecting.\nRegards,\n[Agent Name]`
+            ]
+          },
+          "Logistics": {
+            "Scheduling Site Visit": [
+              `Dear [Title] [Client Name],\nRegarding the property we discussed, I have arranged for a viewing. Would you prefer a site visit on Saturday morning or Sunday afternoon? Please let me know what works best for your schedule.\nRegards,\n[Agent Name]`,
+              `Dear [Title] [Client Name],\nI would like to invite you and your family to visit the site and see the sample flat. It will give you a much better understanding of the space and the society amenities. When would be a convenient time for us to meet there?\nBest,\n[Agent Name]`,
+              `Greetings [Title] [Client Name],\nI have checked with the owner and the keys are available for a viewing this week. Please suggest a time slot that is convenient for you. I will ensure everything is ready for your visit.\nWarm regards,\n[Agent Name]`,
+              `Dear [Title] [Client Name],\nBefore you travel to the location, I can share a high-definition video walkthrough of the property. This will help you decide if it meets your expectations before we schedule the physical site visit. Shall I send the link?\nRegards,\n[Agent Name]`,
+              `Dear [Title] [Client Name],\nI hope this week is treating you well. Are you available for a site visit this weekend? I have shortlisted three properties that strictly meet your criteria and I would love to show them to you.\nRegards,\n[Agent Name]`
+            ],
+            "Running Late": [
+              `Dear [Title] [Client Name],\nplease accept my sincere apologies. Due to heavy traffic on the route, I am running approximately 15 minutes behind schedule. I am making my best effort to reach you as soon as possible.\nRegards,\n[Agent Name]`,
+              `Dear [Title] [Client Name],\nI am writing to inform you that I will be slightly delayed for our meeting. I expect to arrive in about 10 minutes. I apologize for the inconvenience and look forward to seeing you shortly.\nRegards,\n[Agent Name]`,
+              `Greetings [Title] [Client Name],\nUnfortunately, I am stuck in an unexpected traffic jam. I should be there in 20 minutes. If this disrupts your schedule, I am happy to reschedule for a later time today. Please let me know what you prefer.\nRegards,\n[Agent Name]`,
+              `Dear [Title] [Client Name],\nI am on my way but running a few minutes late. Please feel free to wait in the lobby or reception area, and I will be with you very shortly. Apologies for the delay.\nRegards,\n[Agent Name]`,
+              `Dear [Title] [Client Name],\nApologies for the delay. I am just 10 minutes away from the location. I appreciate your understanding. See you soon.\nRegards,\n[Agent Name]`
+            ]
+          },
+          "Follow Up": {
+            "Feedback Request": [
+              `Dear [Title] [Client Name],\nThank you for taking the time to visit the site today. I would value your honest feedback on the property—did it meet your expectations regarding the space and location?\nWarm regards,\n[Agent Name]`,
+              `Dear [Title] [Client Name],\nThank you for the visit. I hope the property appealed to you and your family. Please do let me know your thoughts once you have discussed it with them.\nRegards,\n[Agent Name]`,
+              `Greetings [Title] [Client Name],\nThanks for coming by. Regarding the apartment we saw, did you feel the price point was justified given the amenities provided? Your feedback helps me refine the search for you.\nBest,\n[Agent Name]`,
+              `Dear [Title] [Client Name],\nGreat meeting you today. In case you want to recall specific details of the rooms we saw, here is the video link again for your reference: [Link]. I look forward to hearing your thoughts.\nRegards,\n[Agent Name]`,
+              `Dear [Title] [Client Name],\nThank you for your time today. If this property is of interest, please let me know so I can speak to the owner regarding the best possible price. I await your response.\nRegards,\n[Agent Name]`
+            ]
+          }
+        },
+        "Friendly & Casual": {
+          "New Leads": {
+            "Web Inquiry Response": [
+              `Hi [Title] [Client Name]! 👋\nThanks for asking about the property. It’s a great pick. I’d love to chat quickly to see exactly what you’re looking for. When are you free?\n– [Agent Name]`,
+              `Hi [Title] [Client Name],\njust saw your inquiry come through. That listing is getting a lot of love today! 🏠 Let me know if you want to beat the crowd and see it this week.\n– [Agent Name]`,
+              `Hello [Title] [Client Name],\nthanks for the interest! Honestly, the photos don't show the best parts. I have a 1-minute video tour that shows the real vibe. Want me to send the link? 🎥\n– [Agent Name]`,
+              `Hi [Title] [Client Name],\nthanks for reaching out! I’m the agent for that property. No pressure at all—just reply with “Info” if you want the brochure, or “Visit” if you want to see it!\n– [Agent Name]`,
+              `Hello [Title] [Client Name],\nsaw you were checking out homes in the area. It’s a fantastic spot for families. Let me know if you need help navigating the market there!\n– [Agent Name]`
+            ],
+            "Cold Referral Outreach": [
+              `Hi [Title] [Client Name]!\nOur mutual friend told me you might be house hunting soon. I’d love to help you find a great spot. Let me know when you have a moment to chat!\n– [Agent Name]`,
+              `Hello [Title] [Client Name],\nI got your number from a friend. They said you’re looking for a place. I have a few “hidden gems” 💎 that aren't online yet. Want the details?\n– [Agent Name]`,
+              `Hi [Title] [Client Name],\nheard you’re looking to buy! Let me know how I can help make the process less stressful for you. 😊\n– [Agent Name]`,
+              `Hi [Title] [Client Name],\nI actually just helped a family find a place nearby. Happy to share some market insights if you’re interested!\n– [Agent Name]`,
+              `Hello [Title] [Client Name],\nhope you’re having a great week. I was suggested to connect with you regarding real estate. Let me know if you're free for a quick call later!\n– [Agent Name]`
+            ]
+          },
+          "Logistics": {
+            "Scheduling Site Visit": [
+              `Hi [Title] [Client Name],\nlet’s get you inside to see it! Does Saturday morning or Sunday afternoon work better for you? 🗓️\n– [Agent Name]`,
+              `Hi [Title] [Client Name],\nI think you're going to love this one. I have the keys 🔑 and can show you anytime this week. When works?\n– [Agent Name]`,
+              `Hello [Title] [Client Name],\nbring the family along! I’d love to show you the clubhouse and play area too. Let me know a good time for a site visit.\n– [Agent Name]`,
+              `Hi [Title] [Client Name],\nbefore we drive all the way there, check out this video tour I made: [Link]. If you like what you see, we can book a visit ASAP!\n– [Agent Name]`,
+              `Hello [Title] [Client Name],\nviewings are filling up fast for this weekend. Let me know if you can make it on Saturday at 11 AM?\n– [Agent Name]`
+            ],
+            "Running Late": [
+              `Hi [Title] [Client Name],\nso sorry! 🚗 Traffic is crazy today. I’ll be there in 15 mins. Thanks for waiting!\n– [Agent Name]`,
+              `Hi [Title] [Client Name],\nrunning about 10 mins late! My previous meeting went a little over. See you soon!\n– [Agent Name]`,
+              `Hello [Title] [Client Name],\nI’m stuck in a huge jam and might be 20 mins late. 😓 Do you want to wait, or should we push to later today?\n– [Agent Name]`,
+              `Hi [Title] [Client Name],\njust a heads up, I’m 5 minutes away! See you shortly.\n– [Agent Name]`,
+              `Hi [Title] [Client Name],\nrunning a bit late! Feel free to check out the lobby while you wait. I’m hurrying! 🏃‍♂️\n– [Agent Name]`
+            ]
+          },
+          "Follow Up": {
+            "Feedback Request": [
+              `Hi [Title] [Client Name],\ngreat meeting you! Be honest—did you love it, or should we keep looking? 🤔\n– [Agent Name]`,
+              `Hello [Title] [Client Name],\nthanks for coming by! On a scale of 1–10, how does this home rank for you?\n– [Agent Name]`,
+              `Hi [Title] [Client Name],\nhope the family liked the place! Let me know what everyone thought when you have a moment.\n– [Agent Name]`,
+              `Hello [Title] [Client Name],\nnow that you've seen it… do you think it's worth the asking price? I'd love to hear your thoughts.\n– [Agent Name]`,
+              `Hi [Title] [Client Name],\nin case you forgot which room was which, here’s the video link again: [Link]. Let me know if you want to move forward!\n– [Agent Name]`
+            ]
+          }
+        }
       };
 
-      function render() {
-        const c = document.getElementById("vClient").value || "Client";
-        const a = document.getElementById("vAgent").value || "Agent";
-        const container = document.getElementById("scriptsContainer");
-        container.innerHTML = "";
+      // State
+      let currentTone = "Formal";
+      let currentCategory = "New Leads";
+      let currentScenario = "Web Inquiry Response";
 
-        scriptsData[currentTone].forEach((fn, idx) => {
-          const text = fn(c, a);
+      // Elements
+      const inpAgent = document.getElementById("inpAgent");
+      const inpClient = document.getElementById("inpClient");
+      const selTitle = document.getElementById("selTitle");
+      const btnFormal = document.getElementById("btnFormal");
+      const btnFriendly = document.getElementById("btnFriendly");
+      const categoryPills = document.getElementById("categoryPills");
+      const scenarioPills = document.getElementById("scenarioPills");
+      const scriptsList = document.getElementById("scriptsList");
+
+      // Load saved agent name
+      const savedAgent = localStorage.getItem("onetobeam_agent_name") || localStorage.getItem("propvids_agent_name");
+      if (savedAgent) inpAgent.value = savedAgent;
+
+      inpAgent.addEventListener("input", (e) => {
+        localStorage.setItem("onetobeam_agent_name", e.target.value);
+        renderScripts();
+      });
+
+      inpClient.addEventListener("input", renderScripts);
+      selTitle.addEventListener("change", renderScripts);
+
+      btnFormal.addEventListener("click", () => {
+        currentTone = "Formal";
+        btnFormal.classList.add("active");
+        btnFriendly.classList.remove("active");
+        syncCategories();
+      });
+
+      btnFriendly.addEventListener("click", () => {
+        currentTone = "Friendly & Casual";
+        btnFriendly.classList.add("active");
+        btnFormal.classList.remove("active");
+        syncCategories();
+      });
+
+      function syncCategories() {
+        const catMap = templatesData[currentTone] || {};
+        const cats = Object.keys(catMap);
+        if (!cats.includes(currentCategory)) {
+          currentCategory = cats[0] || "";
+        }
+
+        categoryPills.innerHTML = "";
+        cats.forEach(c => {
+          const btn = document.createElement("button");
+          btn.className = `filter-pill ${c === currentCategory ? "active" : ""}`;
+          btn.textContent = c;
+          btn.addEventListener("click", () => {
+            currentCategory = c;
+            syncCategories();
+          });
+          categoryPills.appendChild(btn);
+        });
+
+        syncScenarios();
+      }
+
+      function syncScenarios() {
+        const catMap = (templatesData[currentTone] || {})[currentCategory] || {};
+        const scens = Object.keys(catMap);
+        if (!scens.includes(currentScenario)) {
+          currentScenario = scens[0] || "";
+        }
+
+        scenarioPills.innerHTML = "";
+        scens.forEach(s => {
+          const btn = document.createElement("button");
+          btn.className = `filter-pill ${s === currentScenario ? "active" : ""}`;
+          btn.textContent = s;
+          btn.addEventListener("click", () => {
+            currentScenario = s;
+            syncScenarios();
+          });
+          scenarioPills.appendChild(btn);
+        });
+
+        renderScripts();
+      }
+
+      function interpolate(template) {
+        const agent = inpAgent.value.trim() || "Agent";
+        const client = inpClient.value.trim();
+        const title = selTitle.value;
+
+        let res = template.replace(/\[Agent Name\]/g, agent);
+        if (client) {
+          res = res.replace(/\[Client Name\]/g, client);
+          res = res.replace(/\[Title\]/g, title).replace(/\[Salutation\]/g, title);
+        } else {
+          res = res.replace(/\[Client Name\]/g, "");
+          res = res.replace(/\[Title\]/g, "Hello").replace(/\[Salutation\]/g, "Hello");
+          res = res.replace(/\s+/g, " ");
+        }
+        return res;
+      }
+
+      function renderScripts() {
+        scriptsList.innerHTML = "";
+        const scripts = ((templatesData[currentTone] || {})[currentCategory] || {})[currentScenario] || [];
+
+        scripts.forEach((tmpl, idx) => {
+          const text = interpolate(tmpl);
           const encoded = encodeURIComponent(text);
 
           const card = document.createElement("div");
           card.className = "script-card";
-          card.innerHTML = `
-            <div class="script-text">${text.replace(/\n/g, '<br/>')}</div>
-            <div class="script-actions">
-              <button class="btn-copy-script" data-text="${encoded}">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>
-                <span>Copy Script</span>
-              </button>
-              <a href="https://api.whatsapp.com/send?text=${encoded}" target="_blank" class="btn-wa-script">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"></path></svg>
-                <span>Send on WhatsApp</span>
-              </a>
-            </div>
-          `;
-          container.appendChild(card);
-        });
 
-        document.querySelectorAll(".btn-copy-script").forEach(btn => {
-          btn.addEventListener("click", () => {
-            const raw = decodeURIComponent(btn.getAttribute("data-text"));
-            navigator.clipboard.writeText(raw).then(() => {
-              const span = btn.querySelector("span");
-              span.textContent = "Copied! ✓";
-              setTimeout(() => { span.textContent = "Copy Script"; }, 2000);
+          const textEl = document.createElement("p");
+          textEl.className = "script-text";
+          textEl.textContent = text;
+          card.appendChild(textEl);
+
+          const actionsEl = document.createElement("div");
+          actionsEl.className = "card-actions";
+
+          const copyBtn = document.createElement("button");
+          copyBtn.className = "action-btn btn-copy";
+          copyBtn.innerHTML = `
+            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+            </svg>
+            <span>Copy</span>
+          `;
+          copyBtn.addEventListener("click", () => {
+            navigator.clipboard.writeText(text).then(() => {
+              copyBtn.className = "action-btn btn-copy copied";
+              copyBtn.innerHTML = `
+                <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Copied!</span>
+              `;
+              setTimeout(() => {
+                copyBtn.className = "action-btn btn-copy";
+                copyBtn.innerHTML = `
+                  <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                  </svg>
+                  <span>Copy</span>
+                `;
+              }, 2000);
             });
           });
+
+          const waLink = document.createElement("a");
+          waLink.className = "action-btn btn-wa";
+          waLink.href = `https://api.whatsapp.com/send?text=${encoded}`;
+          waLink.target = "_blank";
+          waLink.rel = "noopener noreferrer";
+          waLink.innerHTML = `
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.586-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.173.086.274.072.376-.043.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.043.073.043.419-.101.824z" />
+            </svg>
+            <span>WhatsApp</span>
+          `;
+
+          actionsEl.appendChild(copyBtn);
+          actionsEl.appendChild(waLink);
+          card.appendChild(actionsEl);
+
+          scriptsList.appendChild(card);
         });
       }
 
-      document.getElementById("vClient").addEventListener("input", render);
-      document.getElementById("vAgent").addEventListener("input", render);
+      // Mobile Navbar toggle
+      const menuButton = document.getElementById("menuButton");
+      const navLinks = document.getElementById("navLinks");
+      if (menuButton && navLinks) {
+        menuButton.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      }
 
-      document.getElementById("btnFormal").addEventListener("click", () => {
-        currentTone = "formal";
-        document.getElementById("btnFormal").classList.add("active");
-        document.getElementById("btnFriendly").classList.remove("active");
-        render();
-      });
-
-      document.getElementById("btnFriendly").addEventListener("click", () => {
-        currentTone = "friendly";
-        document.getElementById("btnFriendly").classList.add("active");
-        document.getElementById("btnFormal").classList.remove("active");
-        render();
-      });
-
-      render();
+      // Initialize
+      syncCategories();
     </script>
   </body>
 </html>
