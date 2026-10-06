@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -566,13 +566,7 @@
 
       @media (max-width: 768px) {
         .hero-journey-flow {
-          gap: 8px 8px;
-          margin-top: 28px;
-        }
-        .hero-journey-flow .journey-item {
-          padding: 7px 12px;
-          font-size: 12.5px;
-          gap: 6px;
+          display: none !important;
         }
       }
 
@@ -3382,20 +3376,94 @@
           display: none;
         }
         .hero {
-          min-height: 90vh;
-          padding-top: 140px;
-          padding-bottom: 70px;
+          min-height: 100vh;
+          min-height: 100dvh;
+          display: flex;
+          align-items: flex-start;
+          padding-top: 86px;
+          padding-bottom: 50px;
+          text-align: left;
+          background:
+            linear-gradient(
+              180deg,
+              rgba(0, 0, 0, 0.3) 0%,
+              rgba(0, 0, 0, 0.1) 35%,
+              rgba(0, 0, 0, 0.45) 85%,
+              #0a0a0a 100%
+            ),
+            url("images/hero-image-mobile.webp")
+              center top/cover no-repeat;
+        }
+        .hero-content {
+          margin: 0 auto !important;
+          width: 100%;
+          transform: none;
+          text-align: left;
+          padding-left: 20px;
+        }
+        .hero-kicker {
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 1.2px;
+          line-height: 1.35;
+          max-width: 310px;
+          margin-bottom: 10px;
+          justify-content: flex-start;
+          text-align: left;
+          color: rgba(255, 255, 255, 0.85);
+        }
+        .hero-kicker::before {
+          display: none;
         }
         .hero h1 {
-          letter-spacing: -4px;
+          font-size: clamp(34px, 8.8vw, 40px);
+          line-height: 1.05;
+          letter-spacing: -1.5px;
+          max-width: 310px;
+          text-align: left;
+          margin-bottom: 12px;
         }
         .hero-bottom {
           flex-direction: column;
           align-items: flex-start;
-          gap: 25px;
+          gap: 12px;
+          margin-top: 0;
+          max-width: 320px;
         }
         .hero-text {
+          font-size: 12px;
+          line-height: 1.4;
+          max-width: 300px;
+          color: #d6d6d2;
+          text-align: left;
+          margin: 0 0 4px;
+        }
+        .hero-actions {
+          width: 100%;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+          margin-top: 4px;
+        }
+        .hero-actions .btn {
+          width: 215px;
           max-width: 100%;
+          text-align: center;
+          padding: 10px 18px;
+          font-size: 13px;
+          font-weight: 600;
+          border-radius: 50px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+        }
+        .hero-actions .btn-outline {
+          background: rgba(18, 18, 18, 0.45);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          border: 1px solid rgba(255, 255, 255, 0.35);
+          color: #ffffff;
         }
         .intro-grid {
           grid-template-columns: 1fr;
@@ -3576,43 +3644,67 @@
           text-align: center;
         }
         .hero {
-          min-height: auto;
-          padding-top: 120px;
-          padding-bottom: 60px;
-          display: block;
-          text-align: center;
+          min-height: 100vh;
+          min-height: 100dvh;
+          padding-top: 86px;
+          padding-bottom: 50px;
+          display: flex;
+          align-items: flex-start;
+          text-align: left;
         }
         .hero-content {
+          margin: 0 auto !important;
           width: 100%;
+          text-align: left;
+          padding-left: 20px;
         }
         .hero-kicker {
           font-size: 10px;
-          gap: 8px;
-          margin-bottom: 20px;
-          justify-content: center;
+          letter-spacing: 1.2px;
+          line-height: 1.35;
+          max-width: 310px;
+          margin-bottom: 10px;
+          justify-content: flex-start;
+          text-align: left;
+        }
+        .hero-kicker::before {
+          display: none;
         }
         .hero h1 {
-          letter-spacing: -3px;
-          max-width: 100%;
-          font-size: clamp(36px, 10vw, 60px);
-          line-height: 1.1;
+          letter-spacing: -1.5px;
+          max-width: 310px;
+          font-size: clamp(32px, 8.5vw, 38px);
+          line-height: 1.05;
+          text-align: left;
+          margin-bottom: 12px;
+        }
+        .hero-bottom {
+          max-width: 320px;
+          align-items: flex-start;
+          margin-top: 0;
+          gap: 12px;
         }
         .hero-text {
-          font-size: 14px;
-          max-width: 100%;
-          margin: 0 auto 24px;
+          font-size: 12px;
+          line-height: 1.4;
+          max-width: 300px;
+          margin: 0 0 4px;
+          text-align: left;
+          color: #d6d6d2;
         }
         .hero-actions {
           width: 100%;
           flex-direction: column;
-          gap: 12px;
-          align-items: stretch;
+          gap: 8px;
+          align-items: flex-start;
+          margin-top: 4px;
         }
         .hero-actions .btn {
-          width: 100%;
+          width: 215px;
+          max-width: 100%;
           text-align: center;
-          padding: 12px 20px;
-          font-size: 14px;
+          padding: 10px 18px;
+          font-size: 13px;
         }
         .offering-card .btn,
         .solution-card .solution-arrow,
@@ -3956,7 +4048,7 @@
             Turn floor plans, CGI, 360° renders, videos and project content into one connected interactive property experience - built for selling properties before and during construction.
           </p>
           <div class="hero-actions">
-            <a href="#iplex" class="btn btn-primary">Explore Live i-PLEX</a>
+            <a href="#iplex" class="btn btn-primary">Explore Live i-PLEX &rarr;</a>
             <a href="#contact" class="btn btn-outline" onclick="if(window.openModal){openModal();return false;}">Book a Demo</a>
           </div>
         </div>
