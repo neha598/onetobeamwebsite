@@ -404,6 +404,46 @@
         box-shadow: 0 4px 14px rgba(198, 165, 92, 0.3);
       }
 
+      /* Scenario & Messages Card */
+      .chats-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 32px 28px;
+        margin-bottom: 32px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .scenario-section {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .scenario-label {
+        display: block;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--muted);
+      }
+
+      .chats-card .script-card {
+        background: var(--surface-2);
+        border: 1px solid var(--line);
+      }
+
+      .chats-card .script-card:hover {
+        background: var(--surface-3);
+        border-color: rgba(198, 165, 92, 0.35);
+      }
+
       /* Script List Cards */
       .scripts-container {
         display: flex;
@@ -650,7 +690,8 @@
         .nav-button {
           display: none;
         }
-        .config-card {
+        .config-card,
+        .chats-card {
           padding: 24px 18px;
         }
       }
@@ -765,15 +806,19 @@
             <div class="pill-group" id="categoryPills"></div>
           </div>
 
-          <!-- Scenario Selector -->
-          <div class="form-group">
-            <label>Scenario</label>
-            <div class="pill-group" id="scenarioPills"></div>
-          </div>
         </div>
 
-        <!-- Script List Cards -->
-        <div class="scripts-container" id="scriptsList"></div>
+        <!-- Scenario & Messages Card -->
+        <div class="chats-card">
+          <!-- Scenario Selector -->
+          <div class="scenario-section">
+            <label class="scenario-label">Scenario</label>
+            <div class="pill-group" id="scenarioPills"></div>
+          </div>
+
+          <!-- Script List Cards -->
+          <div class="scripts-container" id="scriptsList"></div>
+        </div>
 
         <!-- Explainer Box -->
         <div class="explainer-box">

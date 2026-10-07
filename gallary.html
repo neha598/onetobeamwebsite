@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gallery & Portfolio â€” OneToBeam | Virtual Tours & Experiential 3D</title>
+    <title>Gallery & Portfolio — OneToBeam | Virtual Tours & Experiential 3D</title>
     <meta name="description" content="Explore OneToBeam's comprehensive portfolio of Floor Plan to Virtual Tours, Photo Shoot to Virtual Tours, and interactive Virtual Configurators for real estate developers and designers." />
     <meta name="keywords" content="virtual tour portfolio, 3D architectural models, virtual staging real estate, photo shoot to virtual tour, plotted development virtual tour, real estate 3D visualization" />
     <meta name="author" content="OneToBeam" />
@@ -17,14 +17,14 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="OneToBeam" />
-    <meta property="og:title" content="Gallery & Portfolio â€” OneToBeam Virtual Tours & 3D" />
+    <meta property="og:title" content="Gallery & Portfolio — OneToBeam Virtual Tours & 3D" />
     <meta property="og:description" content="Explore OneToBeam's portfolio of Floor Plan to Virtual Tours, Virtual Staging, and interactive real estate configurators." />
     <meta property="og:url" content="https://onetobeam.com/gallery.html" />
     <meta property="og:image" content="https://www.onetobeam.com/website/images/OneToBeam%20Logo.webp" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Gallery & Portfolio â€” OneToBeam" />
+    <meta name="twitter:title" content="Gallery & Portfolio — OneToBeam" />
     <meta name="twitter:description" content="Explore OneToBeam's portfolio of Floor Plan to Virtual Tours, Virtual Staging, and interactive real estate configurators." />
     <meta name="twitter:image" content="https://www.onetobeam.com/website/images/OneToBeam%20Logo.webp" />
 
@@ -148,7 +148,7 @@
         height: 100%;
       }
 
-      .logo {
+      .navbar .logo {
         position: absolute;
         left: 30px;
         top: 50%;
@@ -161,9 +161,17 @@
         gap: 12px;
       }
 
-      .logo img {
+      .navbar .logo img,
+      .footer-brand .logo img {
         height: 32px;
         width: auto;
+      }
+
+      .footer-brand .logo {
+        position: static;
+        transform: none;
+        display: inline-flex;
+        align-items: center;
       }
 
       .nav-links {
@@ -1409,7 +1417,7 @@
       <div class="hero-kicker">Portfolio &amp; Work Showcase</div>
       <h1>Our Work &amp; <span>Gallery</span></h1>
       <p>
-        Explore OneToBeamâ€™s portfolio of interactive virtual tours, architectural 3D simulations, photoshoot walkthroughs, and custom virtual configurators.
+        Explore OneToBeam’s portfolio of interactive virtual tours, architectural 3D simulations, photoshoot walkthroughs, and custom virtual configurators.
       </p>
 
       <div class="gallery-stats">
@@ -1447,7 +1455,7 @@
           Virtual Configurator <span class="count">4</span>
         </button>
         <button class="filter-btn" data-filter="virtualStaging">
-          Virtual Staging <span class="count">1</span>
+          Virtual Staging <span class="count">8</span>
         </button>
       </div>
     </div>
@@ -1457,26 +1465,23 @@
 ========================================================= -->
     <section class="gallery-section">
       <div class="gallery-grid" id="filterable-cards">
-        <!-- CARD: VIRTUAL STAGING -->
+                <!-- CARD: VIRTUAL STAGING 1 -->
         <article class="gallery-card" data-name="virtualStaging">
           <div
             class="gallery-media staging-card-trigger"
+            data-staging-index="0"
             style="cursor: pointer;"
             role="button"
             tabindex="0"
-            aria-label="Open Virtual Staging Photos"
+            aria-label="Open Virtual Staging Photo 1"
           >
             <img
               class="gallery-image"
               src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-1.webp"
-              alt="Virtual Staging - 8 Interactive Photos"
+              alt="Virtual Staging - Photo 1"
               loading="lazy"
             />
             <div class="category-pill">Virtual Staging</div>
-            <div class="staging-count-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-              8 Photos
-            </div>
           </div>
           <div class="gallery-content">
             <div class="gallery-type-label">Virtual Staging</div>
@@ -1485,9 +1490,290 @@
               <button
                 type="button"
                 class="btn-preview staging-card-trigger"
+                data-staging-index="0"
                 style="background: transparent; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-family: inherit; font-size: 13px;"
               >
-                View 8 Images
+                View Image
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+              <button class="btn-enquire card-enquire-btn" data-title="Virtual Staging">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD: VIRTUAL STAGING 2 -->
+        <article class="gallery-card" data-name="virtualStaging">
+          <div
+            class="gallery-media staging-card-trigger"
+            data-staging-index="1"
+            style="cursor: pointer;"
+            role="button"
+            tabindex="0"
+            aria-label="Open Virtual Staging Photo 2"
+          >
+            <img
+              class="gallery-image"
+              src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-2.webp"
+              alt="Virtual Staging - Photo 2"
+              loading="lazy"
+            />
+            <div class="category-pill">Virtual Staging</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Staging</div>
+            <h3 class="gallery-title">Virtual Staging</h3>
+            <div class="gallery-card-footer">
+              <button
+                type="button"
+                class="btn-preview staging-card-trigger"
+                data-staging-index="1"
+                style="background: transparent; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-family: inherit; font-size: 13px;"
+              >
+                View Image
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+              <button class="btn-enquire card-enquire-btn" data-title="Virtual Staging">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD: VIRTUAL STAGING 3 -->
+        <article class="gallery-card" data-name="virtualStaging">
+          <div
+            class="gallery-media staging-card-trigger"
+            data-staging-index="2"
+            style="cursor: pointer;"
+            role="button"
+            tabindex="0"
+            aria-label="Open Virtual Staging Photo 3"
+          >
+            <img
+              class="gallery-image"
+              src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-3.webp"
+              alt="Virtual Staging - Photo 3"
+              loading="lazy"
+            />
+            <div class="category-pill">Virtual Staging</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Staging</div>
+            <h3 class="gallery-title">Virtual Staging</h3>
+            <div class="gallery-card-footer">
+              <button
+                type="button"
+                class="btn-preview staging-card-trigger"
+                data-staging-index="2"
+                style="background: transparent; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-family: inherit; font-size: 13px;"
+              >
+                View Image
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+              <button class="btn-enquire card-enquire-btn" data-title="Virtual Staging">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD: VIRTUAL STAGING 4 -->
+        <article class="gallery-card" data-name="virtualStaging">
+          <div
+            class="gallery-media staging-card-trigger"
+            data-staging-index="3"
+            style="cursor: pointer;"
+            role="button"
+            tabindex="0"
+            aria-label="Open Virtual Staging Photo 4"
+          >
+            <img
+              class="gallery-image"
+              src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-4.webp"
+              alt="Virtual Staging - Photo 4"
+              loading="lazy"
+            />
+            <div class="category-pill">Virtual Staging</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Staging</div>
+            <h3 class="gallery-title">Virtual Staging</h3>
+            <div class="gallery-card-footer">
+              <button
+                type="button"
+                class="btn-preview staging-card-trigger"
+                data-staging-index="3"
+                style="background: transparent; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-family: inherit; font-size: 13px;"
+              >
+                View Image
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+              <button class="btn-enquire card-enquire-btn" data-title="Virtual Staging">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD: VIRTUAL STAGING 5 -->
+        <article class="gallery-card" data-name="virtualStaging">
+          <div
+            class="gallery-media staging-card-trigger"
+            data-staging-index="4"
+            style="cursor: pointer;"
+            role="button"
+            tabindex="0"
+            aria-label="Open Virtual Staging Photo 5"
+          >
+            <img
+              class="gallery-image"
+              src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-5.webp"
+              alt="Virtual Staging - Photo 5"
+              loading="lazy"
+            />
+            <div class="category-pill">Virtual Staging</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Staging</div>
+            <h3 class="gallery-title">Virtual Staging</h3>
+            <div class="gallery-card-footer">
+              <button
+                type="button"
+                class="btn-preview staging-card-trigger"
+                data-staging-index="4"
+                style="background: transparent; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-family: inherit; font-size: 13px;"
+              >
+                View Image
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+              <button class="btn-enquire card-enquire-btn" data-title="Virtual Staging">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD: VIRTUAL STAGING 6 -->
+        <article class="gallery-card" data-name="virtualStaging">
+          <div
+            class="gallery-media staging-card-trigger"
+            data-staging-index="5"
+            style="cursor: pointer;"
+            role="button"
+            tabindex="0"
+            aria-label="Open Virtual Staging Photo 6"
+          >
+            <img
+              class="gallery-image"
+              src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-6.webp"
+              alt="Virtual Staging - Photo 6"
+              loading="lazy"
+            />
+            <div class="category-pill">Virtual Staging</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Staging</div>
+            <h3 class="gallery-title">Virtual Staging</h3>
+            <div class="gallery-card-footer">
+              <button
+                type="button"
+                class="btn-preview staging-card-trigger"
+                data-staging-index="5"
+                style="background: transparent; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-family: inherit; font-size: 13px;"
+              >
+                View Image
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+              <button class="btn-enquire card-enquire-btn" data-title="Virtual Staging">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD: VIRTUAL STAGING 7 -->
+        <article class="gallery-card" data-name="virtualStaging">
+          <div
+            class="gallery-media staging-card-trigger"
+            data-staging-index="6"
+            style="cursor: pointer;"
+            role="button"
+            tabindex="0"
+            aria-label="Open Virtual Staging Photo 7"
+          >
+            <img
+              class="gallery-image"
+              src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-7.webp"
+              alt="Virtual Staging - Photo 7"
+              loading="lazy"
+            />
+            <div class="category-pill">Virtual Staging</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Staging</div>
+            <h3 class="gallery-title">Virtual Staging</h3>
+            <div class="gallery-card-footer">
+              <button
+                type="button"
+                class="btn-preview staging-card-trigger"
+                data-staging-index="6"
+                style="background: transparent; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-family: inherit; font-size: 13px;"
+              >
+                View Image
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </button>
+              <button class="btn-enquire card-enquire-btn" data-title="Virtual Staging">Book Demo</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD: VIRTUAL STAGING 8 -->
+        <article class="gallery-card" data-name="virtualStaging">
+          <div
+            class="gallery-media staging-card-trigger"
+            data-staging-index="7"
+            style="cursor: pointer;"
+            role="button"
+            tabindex="0"
+            aria-label="Open Virtual Staging Photo 8"
+          >
+            <img
+              class="gallery-image"
+              src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-8.webp"
+              alt="Virtual Staging - Photo 8"
+              loading="lazy"
+            />
+            <div class="category-pill">Virtual Staging</div>
+          </div>
+          <div class="gallery-content">
+            <div class="gallery-type-label">Virtual Staging</div>
+            <h3 class="gallery-title">Virtual Staging</h3>
+            <div class="gallery-card-footer">
+              <button
+                type="button"
+                class="btn-preview staging-card-trigger"
+                data-staging-index="7"
+                style="background: transparent; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-family: inherit; font-size: 13px;"
+              >
+                View Image
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                   <polyline points="15 3 21 3 21 9"></polyline>
@@ -1926,7 +2212,7 @@
       <div class="cta-box">
         <h2>Bring Your Real Estate Project to <span>Life</span></h2>
         <p>
-          Whether you need interactive 3D virtual showflats from CAD/BIM floor plans, 360 photoshoot virtual tours, or bespoke design configurators â€” OneToBeam delivers results that accelerate property sales.
+          Whether you need interactive 3D virtual showflats from CAD/BIM floor plans, 360 photoshoot virtual tours, or bespoke design configurators — OneToBeam delivers results that accelerate property sales.
         </p>
         <div class="cta-actions">
           <a href="#demo" class="btn-gold" id="ctaBookDemo">
@@ -2046,7 +2332,7 @@
           <input
             type="hidden"
             name="subject"
-            value="New Demo Request â€” OneToBeam Gallery"
+            value="New Demo Request — OneToBeam Gallery"
           />
           <input type="hidden" name="from_name" value="OneToBeam Website" />
           <div class="form-row">
@@ -2089,55 +2375,18 @@
     <!-- =========================================================
      VIRTUAL STAGING LIGHTBOX MODAL (5 IMAGES)
 ========================================================= -->
-    <div class="staging-modal-overlay" id="stagingModal" role="dialog" aria-modal="true" aria-label="Virtual Staging Gallery">
+        <div class="staging-modal-overlay" id="stagingModal" role="dialog" aria-modal="true" aria-label="Virtual Staging">
       <div class="staging-modal-container">
         <button class="staging-modal-close" id="stagingModalClose" aria-label="Close Lightbox">&times;</button>
         
         <div class="staging-modal-header">
           <div class="staging-modal-title">Virtual Staging Showcase</div>
-          <div class="staging-modal-counter" id="stagingCounter">Photo 1 of 5</div>
         </div>
 
         <div class="staging-stage">
-          <button class="staging-nav-btn prev" id="stagingPrev" aria-label="Previous image">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
-          </button>
-
           <div class="staging-image-wrap">
-            <img id="stagingMainImg" src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-1.webp" alt="Virtual Staging Photo" />
+            <img id="stagingMainImg" src="" alt="Virtual Staging Photo" />
           </div>
-
-          <button class="staging-nav-btn next" id="stagingNext" aria-label="Next image">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
-          </button>
-        </div>
-
-        <!-- Thumbnail Selector -->
-        <div class="staging-thumbs" id="stagingThumbs">
-          <button class="staging-thumb active" data-index="0" aria-label="Thumbnail 1">
-            <img src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-1.webp" alt="Thumbnail 1" />
-          </button>
-          <button class="staging-thumb" data-index="1" aria-label="Thumbnail 2">
-            <img src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-2.webp" alt="Thumbnail 2" />
-          </button>
-          <button class="staging-thumb" data-index="2" aria-label="Thumbnail 3">
-            <img src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-3.webp" alt="Thumbnail 3" />
-          </button>
-          <button class="staging-thumb" data-index="3" aria-label="Thumbnail 4">
-            <img src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-4.webp" alt="Thumbnail 4" />
-          </button>
-          <button class="staging-thumb" data-index="4" aria-label="Thumbnail 5">
-            <img src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-5.webp" alt="Thumbnail 5" />
-          </button>
-          <button class="staging-thumb" data-index="5" aria-label="Thumbnail 6">
-            <img src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-6.webp" alt="Thumbnail 6" />
-          </button>
-          <button class="staging-thumb" data-index="6" aria-label="Thumbnail 7">
-            <img src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-7.webp" alt="Thumbnail 7" />
-          </button>
-          <button class="staging-thumb" data-index="7" aria-label="Thumbnail 8">
-            <img src="https://www.onetobeam.com/website/gallery/images/virtual-staging/staging-8.webp" alt="Thumbnail 8" />
-          </button>
         </div>
       </div>
     </div>
@@ -2358,58 +2607,16 @@
         }
 
         // =========================================================
-        // VIRTUAL STAGING 5-IMAGE LIGHTBOX MODAL
+        // VIRTUAL STAGING SINGLE IMAGE MODAL
         // =========================================================
-        const stagingImages = [
-          { src: "gallery/images/virtual-staging/staging-1.webp", title: "Virtual Staging Ã¢â‚¬â€ Photo 1" },
-          { src: "gallery/images/virtual-staging/staging-2.webp", title: "Virtual Staging Ã¢â‚¬â€ Photo 2" },
-          { src: "gallery/images/virtual-staging/staging-3.webp", title: "Virtual Staging Ã¢â‚¬â€ Photo 3" },
-          { src: "gallery/images/virtual-staging/staging-4.webp", title: "Virtual Staging Ã¢â‚¬â€ Photo 4" },
-          { src: "gallery/images/virtual-staging/staging-5.webp", title: "Virtual Staging Ã¢â‚¬â€ Photo 5" },
-          { src: "gallery/images/virtual-staging/staging-6.webp", title: "Virtual Staging Ã¢â‚¬â€ Photo 6" },
-          { src: "gallery/images/virtual-staging/staging-7.webp", title: "Virtual Staging Ã¢â‚¬â€ Photo 7" },
-          { src: "gallery/images/virtual-staging/staging-8.webp", title: "Virtual Staging Ã¢â‚¬â€ Photo 8" }
-        ];
-
-        let currentStagingIdx = 0;
         const stagingModal = document.getElementById("stagingModal");
         const stagingMainImg = document.getElementById("stagingMainImg");
-        const stagingCounter = document.getElementById("stagingCounter");
         const stagingModalClose = document.getElementById("stagingModalClose");
-        const stagingPrevBtn = document.getElementById("stagingPrev");
-        const stagingNextBtn = document.getElementById("stagingNext");
-        const stagingThumbButtons = document.querySelectorAll(".staging-thumb");
 
-        function showStagingImage(index) {
-          if (index < 0) index = stagingImages.length - 1;
-          if (index >= stagingImages.length) index = 0;
-          currentStagingIdx = index;
-
-          if (stagingMainImg) {
-            stagingMainImg.style.opacity = "0";
-            setTimeout(() => {
-              stagingMainImg.src = stagingImages[index].src;
-              stagingMainImg.alt = stagingImages[index].title;
-              stagingMainImg.style.opacity = "1";
-            }, 120);
-          }
-
-          if (stagingCounter) {
-            stagingCounter.textContent = `Photo ${index + 1} of ${stagingImages.length}`;
-          }
-
-          stagingThumbButtons.forEach((thumb, i) => {
-            if (i === index) {
-              thumb.classList.add("active");
-            } else {
-              thumb.classList.remove("active");
-            }
-          });
-        }
-
-        function openStagingModal(startIndex = 0) {
-          if (!stagingModal) return;
-          showStagingImage(startIndex);
+        function openStagingModal(imgSrc, imgAlt) {
+          if (!stagingModal || !stagingMainImg) return;
+          stagingMainImg.src = imgSrc;
+          stagingMainImg.alt = imgAlt || "Virtual Staging Photo";
           stagingModal.classList.add("active");
           document.body.style.overflow = "hidden";
         }
@@ -2421,15 +2628,19 @@
         }
 
         document.querySelectorAll(".staging-card-trigger").forEach((el) => {
-          el.addEventListener("click", (e) => {
+          function handleOpen(e) {
             e.preventDefault();
             e.stopPropagation();
-            openStagingModal(0);
-          });
+            const card = el.closest(".gallery-card");
+            const img = card ? card.querySelector(".gallery-image") : null;
+            if (img) {
+              openStagingModal(img.src, img.alt);
+            }
+          }
+          el.addEventListener("click", handleOpen);
           el.addEventListener("keydown", (e) => {
             if (e.key === "Enter" || e.key === " ") {
-              e.preventDefault();
-              openStagingModal(0);
+              handleOpen(e);
             }
           });
         });
@@ -2437,28 +2648,6 @@
         if (stagingModalClose) {
           stagingModalClose.addEventListener("click", closeStagingModal);
         }
-
-        if (stagingPrevBtn) {
-          stagingPrevBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            showStagingImage(currentStagingIdx - 1);
-          });
-        }
-
-        if (stagingNextBtn) {
-          stagingNextBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            showStagingImage(currentStagingIdx + 1);
-          });
-        }
-
-        stagingThumbButtons.forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            e.stopPropagation();
-            const idx = parseInt(btn.getAttribute("data-index"), 10);
-            showStagingImage(idx);
-          });
-        });
 
         if (stagingModal) {
           stagingModal.addEventListener("click", (e) => {
@@ -2472,10 +2661,6 @@
           if (stagingModal && stagingModal.classList.contains("active")) {
             if (e.key === "Escape") {
               closeStagingModal();
-            } else if (e.key === "ArrowLeft") {
-              showStagingImage(currentStagingIdx - 1);
-            } else if (e.key === "ArrowRight") {
-              showStagingImage(currentStagingIdx + 1);
             }
           }
         });
