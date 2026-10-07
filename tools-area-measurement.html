@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Area Measurement Tool | OneToBeam</title>
+    <title>Real Estate Land &amp; Plot Area Measurement Tool | OneToBeam</title>
     <meta
       name="description"
-      content="Measure and calculate property, plot, and land area dimensions accurately on satellite imagery. Free real estate area measurement tool by OneToBeam."
+      content="Measure and calculate property, plot, and land boundaries accurately on satellite imagery with instant sq ft, acres, guntha, and hectare calculations. Free real estate tool by OneToBeam."
     />
     <meta
       name="keywords"
@@ -19,6 +19,44 @@
     <link rel="icon" type="image/png" sizes="50x50" href="Fevicon/Favicon_onetobeam_Black_50.png" />
     <link rel="apple-touch-icon" href="Fevicon/Favicon_onetobeam_Black_50.png" />
     <meta name="theme-color" content="#0a0a0a" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OneToBeam" />
+    <meta property="og:title" content="Real Estate Land &amp; Plot Area Measurement Tool | OneToBeam" />
+    <meta property="og:description" content="Visually trace property, plot, or field boundaries on high-resolution satellite imagery to calculate exact area measurements instantly." />
+    <meta property="og:url" content="https://onetobeam.com/tools-area-measurement.html" />
+    <meta property="og:image" content="https://www.onetobeam.com/website/images/OneToBeam%20Logo.webp" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Area Measurement Tool | OneToBeam" />
+    <meta name="twitter:description" content="Calculate and visualize property, plot, and land boundaries on satellite imagery." />
+    <meta name="twitter:image" content="https://www.onetobeam.com/website/images/OneToBeam%20Logo.webp" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "OneToBeam Area Measurement Tool",
+      "url": "https://onetobeam.com/tools-area-measurement.html",
+      "description": "Interactive satellite boundary mapping and land area measurement calculator for real estate developers, brokers, and buyers.",
+      "applicationCategory": "RealEstateApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "OneToBeam",
+        "url": "https://onetobeam.com/",
+        "logo": "https://www.onetobeam.com/website/images/OneToBeam%20Logo.webp"
+      }
+    }
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,8 +80,991 @@
       href="https://cdn.jsdelivr.net/npm/@geoman-io/leaflet-geoman-free@2.20.2/dist/leaflet-geoman.css"
     />
 
-    <!-- Modular Stylesheet (assets/styles.css) -->
-    <link rel="stylesheet" href="assets/styles.css" />
+    <!-- Embedded Stylesheet (Self-Contained) -->
+    <style>
+/**
+ * Area Measurement Tool - Stylesheet
+ * Section 12: assets/styles.css
+ */
+
+:root {
+  --bg: #0a0a0a;
+  --bg-soft: #121212;
+  --surface: #161616;
+  --surface-2: #1e1e1e;
+  --surface-3: #242424;
+  --text: #f5f5f2;
+  --muted: #9b9b97;
+  --muted-dim: #6e6e69;
+  --line: rgba(255, 255, 255, 0.1);
+  --line-light: rgba(255, 255, 255, 0.16);
+  --accent: #c6a55c;
+  --accent-light: #e5cb87;
+  --accent-dark: #a88b48;
+  --accent-glow: rgba(198, 165, 92, 0.2);
+  --success: #34d399;
+  --danger: #ef4444;
+  --max-width: 1200px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 8px;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(var(--max-width), calc(100% - 40px));
+  margin: auto;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 78px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.75);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+  transition: 0.3s ease;
+}
+
+.nav-inner {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  height: 100%;
+}
+
+.logo {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-right: 170px;
+}
+
+.nav-links a {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #cfcfcb;
+  padding: 8px 18px;
+  border-radius: 999px;
+  transition: 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-button {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 11px 20px;
+  background: var(--accent);
+  color: #111;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.nav-button:hover {
+  background: var(--accent-light);
+  transform: translateY(-50%) scale(1.02);
+}
+
+.menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  padding: 8px;
+  margin-left: auto;
+}
+
+/* Hero Section */
+.tool-hero {
+  padding-top: 116px;
+  padding-bottom: 20px;
+}
+
+.back-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 16px;
+  transition: color 0.2s ease;
+}
+
+.back-nav:hover {
+  color: var(--accent);
+}
+
+.tool-hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tool-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  background: rgba(198, 165, 92, 0.12);
+  border: 1px solid rgba(198, 165, 92, 0.25);
+  color: var(--accent);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.tool-hero h1 {
+  font-size: clamp(26px, 3.2vw, 36px);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.tool-hero p {
+  font-size: 14.5px;
+  color: var(--muted);
+  max-width: 720px;
+  line-height: 1.5;
+}
+
+/* Workstation Layout */
+.measurement-workstation {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding-bottom: 30px;
+}
+
+/* Map Container & Card */
+.map-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Top Map Action Bar */
+.map-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 20px;
+  background: #111111;
+  border-bottom: 1px solid var(--line);
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid var(--line-light);
+  background: var(--surface-2);
+  color: var(--text);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.action-btn:hover {
+  background: var(--surface-3);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.action-btn.primary {
+  background: var(--accent);
+  color: #0a0a0a;
+  border-color: var(--accent);
+  box-shadow: 0 4px 14px rgba(198, 165, 92, 0.25);
+}
+
+.action-btn.primary:hover {
+  background: var(--accent-light);
+  color: #000;
+  transform: translateY(-1px);
+}
+
+.action-btn.active {
+  background: var(--accent);
+  color: #0a0a0a;
+  border-color: var(--accent);
+}
+
+.action-btn.danger {
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
+
+.action-btn.danger:hover {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: var(--danger);
+  color: #ffffff;
+}
+
+.action-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Address & Coordinates Search Box */
+.search-box-wrap {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  background: var(--surface-2);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 3px 6px 3px 14px;
+  transition: all 0.25s ease;
+  min-width: 250px;
+}
+
+.search-box-wrap:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(198, 165, 92, 0.35);
+  background: var(--surface-3);
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  outline: none;
+  width: 220px;
+  padding: 5px 0;
+}
+
+.search-input::placeholder {
+  color: #d8d8d4;
+  opacity: 0.95;
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.search-input::-webkit-input-placeholder {
+  color: #d8d8d4;
+  opacity: 0.95;
+}
+
+.search-input::-moz-placeholder {
+  color: #d8d8d4;
+  opacity: 0.95;
+}
+
+.search-input:-ms-input-placeholder {
+  color: #d8d8d4;
+}
+
+.search-submit-btn {
+  background: var(--accent);
+  color: #0a0a0a;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 6px;
+}
+
+.search-submit-btn:hover {
+  background: var(--accent-light);
+  transform: scale(1.08);
+}
+
+/* Search Marker Pin & Pulse */
+.search-pin-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.search-pin-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+  position: relative;
+  z-index: 2;
+}
+
+.search-pin-pulse {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(198, 165, 92, 0.45);
+  animation: searchPulse 1.8s infinite ease-out;
+  z-index: 1;
+}
+
+@keyframes searchPulse {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.5; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* Map Viewport */
+#map {
+  width: 100%;
+  height: 560px;
+  background: #0d0d0d;
+  z-index: 1;
+}
+
+/* Custom Leaflet Controls Theme */
+.leaflet-bar a {
+  background-color: #1a1a1a !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  color: #e5e5e5 !important;
+}
+
+.leaflet-bar a:hover {
+  background-color: var(--accent) !important;
+  color: #111111 !important;
+}
+
+.leaflet-container {
+  font-family: var(--font-sans) !important;
+}
+
+/* Touch-friendly Geoman Vertex Handles (Risk 14 Mitigation) */
+.leaflet-pm-draggable,
+.marker-icon {
+  touch-action: none;
+}
+
+.leaflet-marker-icon.leaflet-div-icon {
+  border-radius: 50% !important;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.8) !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(10, 10, 10, 0.85) !important;
+  color: #999994 !important;
+  font-size: 11px !important;
+  backdrop-filter: blur(6px);
+  padding: 4px 8px !important;
+}
+
+.leaflet-control-attribution a {
+  color: var(--accent) !important;
+}
+
+/* Results Dashboard */
+.results-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.results-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.results-title-group h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.results-title-group p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.results-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Measurement Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.metric-box {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.metric-box:hover {
+  border-color: rgba(198, 165, 92, 0.35);
+  transform: translateY(-2px);
+}
+
+.metric-box.primary-metric {
+  background: linear-gradient(135deg, rgba(198, 165, 92, 0.12) 0%, rgba(26, 26, 26, 0.95) 100%);
+  border-color: rgba(198, 165, 92, 0.35);
+}
+
+.metric-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metric-value {
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.metric-unit {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  margin-top: 4px;
+}
+
+/* Secondary metrics row */
+.secondary-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  padding: 16px;
+  background: #111111;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  margin-bottom: 22px;
+}
+
+.sub-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sub-metric span:first-child {
+  font-size: 11.5px;
+  color: var(--muted-dim);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.sub-metric span:last-child {
+  font-size: 15px;
+  font-weight: 700;
+  color: #e5e5e0;
+}
+
+/* Disclaimer Banner */
+.disclaimer-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  background: rgba(198, 165, 92, 0.08);
+  border: 1px solid rgba(198, 165, 92, 0.25);
+  color: #d8c79d;
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+
+.disclaimer-banner svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent);
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #1e1e1e;
+  border: 1px solid var(--accent);
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Quick Instructions Guide */
+.guide-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 60px;
+}
+
+.guide-panel h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+
+.guide-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.guide-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(198, 165, 92, 0.15);
+  border: 1px solid rgba(198, 165, 92, 0.3);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-info h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f0f0ed;
+  margin-bottom: 4px;
+}
+
+.step-info p {
+  font-size: 12.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 40px 0 25px;
+  background: #080808;
+}
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #666;
+  font-size: 13px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .secondary-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .guide-steps {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 860px) {
+  .logo {
+    position: static;
+    transform: none;
+  }
+
+  .nav-inner {
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+
+  .nav-button {
+    display: none;
+  }
+
+  .menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 76px;
+    left: 14px;
+    right: 14px;
+    padding: 20px 16px;
+    background: rgba(14, 14, 14, 0.98);
+    backdrop-filter: blur(24px);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    flex-direction: column;
+    align-items: stretch;
+    display: none;
+    margin-right: 0;
+    z-index: 1001;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 12px 16px;
+  }
+
+  .tool-hero {
+    padding-top: 96px;
+    padding-bottom: 16px;
+  }
+
+  .tool-hero h1 {
+    font-size: 27px;
+    line-height: 1.2;
+  }
+
+  .tool-hero p {
+    font-size: 13.5px;
+  }
+
+  .map-card {
+    border-radius: var(--radius-md);
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .map-toolbar {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .toolbar-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .toolbar-group .action-btn {
+    flex: 1 1 calc(50% - 6px);
+    padding: 9px 8px;
+    font-size: 12px;
+    justify-content: center;
+    min-width: 0;
+    white-space: nowrap;
+  }
+
+  #btnDraw {
+    flex: 1 1 100%;
+    font-weight: 700;
+  }
+
+  .search-box-wrap {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin-top: 2px;
+    padding: 3px 6px 3px 12px;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-input {
+    width: 100%;
+    flex: 1;
+    min-width: 0;
+    font-size: 12.5px;
+  }
+
+  .search-submit-btn {
+    flex-shrink: 0;
+  }
+
+  .status-pill {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    font-size: 11.5px;
+    padding: 6px 8px;
+    white-space: normal;
+  }
+
+  #map {
+    height: 380px;
+    min-height: 320px;
+  }
+
+  .map-status-bar {
+    padding: 8px 12px;
+    font-size: 11.5px;
+  }
+
+  .results-card {
+    padding: 20px 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .results-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .results-actions {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  .results-actions .action-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .metric-card {
+    padding: 16px 14px;
+  }
+
+  .metric-value {
+    font-size: 28px;
+  }
+
+  .secondary-metrics {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .sub-metric-card {
+    padding: 10px 12px;
+  }
+
+  .guide-card {
+    padding: 22px 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .guide-card h2 {
+    font-size: 19px;
+  }
+
+  .guide-steps {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .faq-section {
+    padding: 22px 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .faq-section h2 {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: calc(100% - 20px);
+  }
+
+  .tool-hero h1 {
+    font-size: 24px;
+  }
+
+  #map {
+    height: 340px;
+  }
+
+  .toolbar-group {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar-group .action-btn,
+  .toolbar-group:first-child .action-btn.danger {
+    grid-column: span 1;
+  }
+
+  .search-box-wrap {
+    grid-column: span 1;
+  }
+}
+
+    </style>
   </head>
 
   <body>
@@ -348,12 +1369,855 @@
     <!-- Turf.js -->
     <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
 
-    <!-- Modular Application Scripts (Section 12 Architecture) -->
-    <script src="src/config.js"></script>
-    <script src="src/measurement.js"></script>
-    <script src="src/ui.js"></script>
-    <script src="src/map.js"></script>
-    <script src="src/drawing.js"></script>
-    <script src="src/main.js"></script>
+    <!-- Embedded Application Scripts (Self-Contained) -->
+    <script>
+/**
+ * Configuration & Constants for Area Measurement Tool
+ * Section 12 & 15: config.js & Reference Notes
+ * 
+ * References:
+ * - Esri Basemap Tiles: https://developers.arcgis.com/rest/static-basemap-tiles/
+ * - Esri Leaflet Sample: https://developers.arcgis.com/esri-leaflet/samples/basemap-with-labels/
+ * - Leaflet Project: https://github.com/Leaflet/Leaflet (BSD-2-Clause)
+ * - Leaflet-Geoman: https://geoman.io/docs/leaflet (MIT)
+ * - Turf.js Area API: https://turfjs.org/docs/7.0.0/api/area (MIT)
+ */
+window.AppConfig = {
+  // Esri Credentials & Tile Endpoints
+  esri: {
+    apiKey: "", // Optional ArcGIS Location Platform API key
+    imageryUrl: "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    labelsUrl: "https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
+    maxZoom: 19,
+    attribution: 'Tiles &copy; <a href="https://www.esri.com/" target="_blank" rel="noopener">Esri</a> &mdash; Source: Esri, Maxar, Earthstar Geographics'
+  },
+
+  // Map Default View (Center on India PropTech Hub / Bangalore)
+  map: {
+    initialCenter: [12.9716, 77.5946],
+    initialZoom: 16,
+    maxZoom: 19
+  },
+
+  // Polygon Styling for Leaflet-Geoman
+  drawing: {
+    color: "#c6a55c",
+    fillColor: "#c6a55c",
+    fillOpacity: 0.32,
+    weight: 2.5,
+    snapDistance: 20
+  },
+
+  // Conversion Multipliers as per Section 6 (Measurement Logic)
+  conversions: {
+    SQ_METERS_TO_SQ_FEET: 10.7639104167,
+    SQ_METERS_TO_HECTARES: 10000,
+    SQ_METERS_TO_ACRES: 4046.8564224,
+    SQ_METERS_TO_GUNTHA: 101.17141,
+    METERS_TO_FEET: 3.280839895
+  }
+};
+
+
+/**
+ * Turf.js Measurement & Unit Conversions
+ * Section 12: measurement.js
+ */
+window.Measurement = (function () {
+  /**
+   * Format number with standard commas and decimals
+   */
+  function format(num, decimals = 2) {
+    if (isNaN(num) || num === null || num === undefined) return "0.00";
+    return Number(num).toLocaleString("en-US", {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    });
+  }
+
+  /**
+   * Compute full measurement metrics from a GeoJSON Polygon
+   * @param {Object} geojson - Valid GeoJSON Polygon Feature
+   * @returns {Object|null} Metric values in all units
+   */
+  function compute(geojson) {
+    if (!geojson || !geojson.geometry || !geojson.geometry.coordinates || typeof turf === "undefined") {
+      return null;
+    }
+
+    try {
+      // 1. Geodesic area in square metres via Turf.js
+      const areaSqM = turf.area(geojson);
+      if (areaSqM <= 0) return null;
+
+      const conf = window.AppConfig.conversions;
+
+      // 2. Unit conversions (Section 6)
+      const areaSqFt = areaSqM * conf.SQ_METERS_TO_SQ_FEET;
+      const areaHectares = areaSqM / conf.SQ_METERS_TO_HECTARES;
+      const areaAcres = areaSqM / conf.SQ_METERS_TO_ACRES;
+      const areaGuntha = areaSqM / conf.SQ_METERS_TO_GUNTHA;
+
+      // 3. Perimeter in metres and feet via Turf.js
+      let perimeterMeters = 0;
+      try {
+        const line = turf.polygonToLine(geojson);
+        perimeterMeters = turf.length(line, { units: "kilometers" }) * 1000;
+      } catch (e) {
+        perimeterMeters = 0;
+      }
+      const perimeterFeet = perimeterMeters * conf.METERS_TO_FEET;
+
+      return {
+        sqM: areaSqM,
+        sqFt: areaSqFt,
+        hectares: areaHectares,
+        acres: areaAcres,
+        guntha: areaGuntha,
+        perimeterM: perimeterMeters,
+        perimeterFt: perimeterFeet
+      };
+    } catch (err) {
+      console.error("Measurement error:", err);
+      return null;
+    }
+  }
+
+  return {
+    compute: compute,
+    format: format
+  };
+})();
+
+
+/**
+ * UI State & Results Display Controller
+ * Section 12: ui.js
+ */
+window.UI = (function () {
+  const elements = {};
+
+  function init() {
+    elements.valSqM = document.getElementById("valSqM");
+    elements.valSqFt = document.getElementById("valSqFt");
+    elements.valAcres = document.getElementById("valAcres");
+    elements.valHectares = document.getElementById("valHectares");
+    elements.valPerimeterM = document.getElementById("valPerimeterM");
+    elements.valPerimeterFt = document.getElementById("valPerimeterFt");
+    elements.valGuntha = document.getElementById("valGuntha");
+
+    elements.statusText = document.getElementById("statusText");
+    elements.statusDot = document.getElementById("statusDot");
+
+    elements.btnEdit = document.getElementById("btnEdit");
+    elements.btnEditText = document.getElementById("btnEditText");
+    elements.btnClear = document.getElementById("btnClear");
+    elements.btnCopyGeoJSON = document.getElementById("btnCopyGeoJSON");
+    elements.btnDownloadGeoJSON = document.getElementById("btnDownloadGeoJSON");
+    elements.toastMsg = document.getElementById("toastMsg");
+    elements.toastText = document.getElementById("toastText");
+  }
+
+  function showToast(message) {
+    if (!elements.toastMsg) return;
+    elements.toastText.textContent = message;
+    elements.toastMsg.classList.add("show");
+    setTimeout(() => {
+      elements.toastMsg.classList.remove("show");
+    }, 2400);
+  }
+
+  function setStatus(text, dotColor = "var(--accent)") {
+    if (elements.statusText) elements.statusText.textContent = text;
+    if (elements.statusDot) {
+      elements.statusDot.style.background = dotColor;
+      elements.statusDot.style.boxShadow = `0 0 8px ${dotColor}`;
+    }
+  }
+
+  function updateMetrics(metrics) {
+    if (!metrics) {
+      resetMetrics();
+      return;
+    }
+
+    const fmt = window.Measurement.format;
+
+    elements.valSqM.textContent = fmt(metrics.sqM, 2);
+    elements.valSqFt.textContent = fmt(metrics.sqFt, 2);
+    elements.valAcres.textContent = fmt(metrics.acres, 4);
+    elements.valHectares.textContent = fmt(metrics.hectares, 4);
+    elements.valPerimeterM.textContent = fmt(metrics.perimeterM, 2) + " m";
+    elements.valPerimeterFt.textContent = fmt(metrics.perimeterFt, 2) + " ft";
+    elements.valGuntha.textContent = fmt(metrics.guntha, 2) + " Guntha";
+
+    elements.btnEdit.disabled = false;
+    elements.btnClear.disabled = false;
+    elements.btnCopyGeoJSON.disabled = false;
+    elements.btnDownloadGeoJSON.disabled = false;
+
+    setStatus(`Enclosed: ${fmt(metrics.sqFt, 2)} sq ft (${fmt(metrics.sqM, 2)} m²)`, "var(--success)");
+  }
+
+  function resetMetrics() {
+    if (elements.valSqM) elements.valSqM.textContent = "0.00";
+    if (elements.valSqFt) elements.valSqFt.textContent = "0.00";
+    if (elements.valAcres) elements.valAcres.textContent = "0.0000";
+    if (elements.valHectares) elements.valHectares.textContent = "0.0000";
+    if (elements.valPerimeterM) elements.valPerimeterM.textContent = "0.00 m";
+    if (elements.valPerimeterFt) elements.valPerimeterFt.textContent = "0.00 ft";
+    if (elements.valGuntha) elements.valGuntha.textContent = "0.00 Guntha";
+
+    if (elements.btnEdit) {
+      elements.btnEdit.disabled = true;
+      elements.btnEdit.classList.remove("active");
+    }
+    if (elements.btnEditText) elements.btnEditText.textContent = "Edit Shape";
+    if (elements.btnClear) elements.btnClear.disabled = true;
+    if (elements.btnCopyGeoJSON) elements.btnCopyGeoJSON.disabled = true;
+    if (elements.btnDownloadGeoJSON) elements.btnDownloadGeoJSON.disabled = true;
+
+    setStatus('Ready — Select "Draw Area" to begin', "var(--accent)");
+  }
+
+  function setEditMode(isEditing) {
+    if (!elements.btnEdit) return;
+    if (isEditing) {
+      elements.btnEdit.classList.add("active");
+      elements.btnEditText.textContent = "Done Editing";
+      setStatus("Drag white corner handles to adjust boundary. Click 'Done' when finished.", "var(--accent)");
+    } else {
+      elements.btnEdit.classList.remove("active");
+      elements.btnEditText.textContent = "Edit Shape";
+      setStatus("Editing complete.", "var(--success)");
+    }
+  }
+
+  return {
+    init: init,
+    updateMetrics: updateMetrics,
+    resetMetrics: resetMetrics,
+    setStatus: setStatus,
+    setEditMode: setEditMode,
+    showToast: showToast
+  };
+})();
+
+
+/**
+ * Leaflet Map & Esri Imagery Layer Initializer
+ * Section 12: map.js
+ */
+window.MapModule = (function () {
+  let mapInstance = null;
+  let esriImageryLayer = null;
+  let esriLabelsLayer = null;
+  let labelsVisible = true;
+  let searchMarker = null;
+
+  function init() {
+    const config = window.AppConfig;
+
+    // Initialize Leaflet Map
+    mapInstance = L.map("map", {
+      center: config.map.initialCenter,
+      zoom: config.map.initialZoom,
+      zoomControl: false,
+      maxZoom: config.map.maxZoom
+    });
+
+    // Top-left Zoom Controls
+    L.control.zoom({ position: "topleft" }).addTo(mapInstance);
+
+    // Esri World Imagery Base Layer
+    let imageryUrl = config.esri.imageryUrl;
+    if (config.esri.apiKey) {
+      imageryUrl += `?token=${encodeURIComponent(config.esri.apiKey)}`;
+    }
+
+    esriImageryLayer = L.tileLayer(imageryUrl, {
+      maxZoom: config.esri.maxZoom,
+      attribution: config.esri.attribution
+    }).addTo(mapInstance);
+
+    // Esri Reference Labels Layer (Boundaries & Places)
+    esriLabelsLayer = L.tileLayer(config.esri.labelsUrl, {
+      maxZoom: config.esri.maxZoom,
+      attribution: ""
+    }).addTo(mapInstance);
+
+    return mapInstance;
+  }
+
+  function toggleLabels() {
+    if (!mapInstance || !esriLabelsLayer) return false;
+    labelsVisible = !labelsVisible;
+
+    if (labelsVisible) {
+      mapInstance.addLayer(esriLabelsLayer);
+    } else {
+      mapInstance.removeLayer(esriLabelsLayer);
+    }
+    return labelsVisible;
+  }
+
+  function locateUser(onSuccess, onError) {
+    if (!navigator.geolocation) {
+      if (onError) onError("Geolocation is not supported by your browser.");
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const { latitude, longitude } = pos.coords;
+        if (mapInstance) {
+          mapInstance.flyTo([latitude, longitude], 17, { duration: 1.5 });
+          placeSearchPin(latitude, longitude, "Your Current Location");
+        }
+        if (onSuccess) onSuccess(pos.coords);
+      },
+      (err) => {
+        if (onError) onError("Location access denied or unavailable.");
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  }
+
+  function parseCoordinates(input) {
+    if (!input || typeof input !== "string") return null;
+    const trimmed = input.trim();
+    // Matches "12.345, 77.890" or "-12.345, -77.890"
+    const commaMatch = trimmed.match(/^([+-]?\d+(?:\.\d+)?)\s*,\s*([+-]?\d+(?:\.\d+)?)$/);
+    if (commaMatch) {
+      const lat = parseFloat(commaMatch[1]);
+      const lng = parseFloat(commaMatch[2]);
+      if (lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180) {
+        return { lat, lng };
+      }
+    }
+    // Matches "12.345 77.890"
+    const spaceMatch = trimmed.match(/^([+-]?\d+(?:\.\d+)?)\s+([+-]?\d+(?:\.\d+)?)$/);
+    if (spaceMatch) {
+      const lat = parseFloat(spaceMatch[1]);
+      const lng = parseFloat(spaceMatch[2]);
+      if (lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180) {
+        return { lat, lng };
+      }
+    }
+    return null;
+  }
+
+  async function searchLocation(query, onSuccess, onError) {
+    if (!mapInstance || !query || !query.trim()) {
+      if (onError) onError("Please enter a valid address or coordinates.");
+      return;
+    }
+
+    const trimmed = query.trim();
+
+    // 1. Check if user typed coordinates (e.g. 12.9716, 77.5946)
+    const coords = parseCoordinates(trimmed);
+    if (coords) {
+      placeSearchPin(coords.lat, coords.lng, `Coordinates: ${coords.lat.toFixed(5)}, ${coords.lng.toFixed(5)}`);
+      mapInstance.flyTo([coords.lat, coords.lng], 17, { duration: 1.5 });
+      if (onSuccess) onSuccess(`Coordinates: ${coords.lat.toFixed(5)}, ${coords.lng.toFixed(5)}`);
+      return;
+    }
+
+    // 2. Geocode address via Esri World Geocoding Service
+    try {
+      const esriUrl = `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?f=json&singleLine=${encodeURIComponent(trimmed)}&maxLocations=1`;
+      const res = await fetch(esriUrl);
+      const data = await res.json();
+
+      if (data && data.candidates && data.candidates.length > 0) {
+        const candidate = data.candidates[0];
+        const lat = candidate.location.y;
+        const lng = candidate.location.x;
+        const label = candidate.address || trimmed;
+
+        placeSearchPin(lat, lng, label);
+        mapInstance.flyTo([lat, lng], 17, { duration: 1.5 });
+        if (onSuccess) onSuccess(label);
+        return;
+      }
+    } catch (err) {
+      console.warn("Esri geocode error, trying fallback:", err);
+    }
+
+    // 3. Fallback: OpenStreetMap Nominatim
+    try {
+      const osmUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(trimmed)}&limit=1`;
+      const res = await fetch(osmUrl, {
+        headers: { "Accept-Language": "en" }
+      });
+      const data = await res.json();
+
+      if (data && data.length > 0) {
+        const item = data[0];
+        const lat = parseFloat(item.lat);
+        const lng = parseFloat(item.lon);
+        const label = item.display_name || trimmed;
+
+        placeSearchPin(lat, lng, label);
+        mapInstance.flyTo([lat, lng], 17, { duration: 1.5 });
+        if (onSuccess) onSuccess(label);
+        return;
+      }
+    } catch (err) {
+      console.warn("OSM geocode error:", err);
+    }
+
+    if (onError) onError("Location not found. Please try a different query.");
+  }
+
+  function placeSearchPin(lat, lng, label) {
+    if (!mapInstance) return;
+    if (searchMarker) {
+      mapInstance.removeLayer(searchMarker);
+    }
+
+    // Custom golden pulse pin marker
+    const pinIcon = L.divIcon({
+      className: "search-pin-container",
+      html: `<div class="search-pin-pulse"></div><div class="search-pin-dot"></div>`,
+      iconSize: [24, 24],
+      iconAnchor: [12, 12]
+    });
+
+    searchMarker = L.marker([lat, lng], { icon: pinIcon }).addTo(mapInstance);
+    if (label) {
+      searchMarker.bindPopup(`<strong style="color:#c6a55c">Location</strong><br>${label}`).openPopup();
+    }
+  }
+
+  function getMap() {
+    return mapInstance;
+  }
+
+  return {
+    init: init,
+    toggleLabels: toggleLabels,
+    locateUser: locateUser,
+    searchLocation: searchLocation,
+    getMap: getMap
+  };
+})();
+
+
+/**
+ * Leaflet-Geoman Polygon Drawing & Editing Controller
+ * Section 12: drawing.js
+ */
+window.Drawing = (function () {
+  let activePolygon = null;
+  let isEditing = false;
+  let onMeasurementChangeCallback = null;
+
+  function init(map, onChange) {
+    onMeasurementChangeCallback = onChange;
+    const config = (window.AppConfig && window.AppConfig.drawing) || {
+      color: "#c6a55c",
+      fillColor: "#c6a55c",
+      fillOpacity: 0.32,
+      weight: 2.5,
+      snapDistance: 20
+    };
+
+    if (!map) return;
+
+    // Check if Leaflet-Geoman is available
+    if (!map.pm) {
+      console.warn("Leaflet-Geoman library not detected on map instance.");
+      return;
+    }
+
+    // Set Global Geoman Options
+    try {
+      map.pm.setGlobalOptions({
+        snappable: true,
+        snapDistance: config.snapDistance,
+        allowSelfIntersection: false,
+        templineStyle: {
+          color: config.color,
+          weight: 2.5,
+          dashArray: "6, 6"
+        },
+        hintlineStyle: {
+          color: "#e5cb87",
+          dashArray: "4, 6"
+        },
+        pathOptions: {
+          color: config.color,
+          fillColor: config.fillColor,
+          fillOpacity: config.fillOpacity,
+          weight: config.weight
+        }
+      });
+    } catch (err) {
+      console.error("Geoman options error:", err);
+    }
+
+    // Listen to Geoman create event
+    map.on("pm:create", (e) => {
+      // Remove any previously drawn polygon (Single active polygon MVP scope)
+      if (activePolygon && activePolygon !== e.layer) {
+        map.removeLayer(activePolygon);
+      }
+
+      activePolygon = e.layer;
+
+      // Apply primary golden styling
+      activePolygon.setStyle({
+        color: config.color,
+        fillColor: config.fillColor,
+        fillOpacity: config.fillOpacity,
+        weight: config.weight
+      });
+
+      // Bind vertex modification events
+      ["pm:edit", "pm:dragend", "pm:vertexadded", "pm:vertexremoved", "pm:markerdragend"].forEach((ev) => {
+        activePolygon.on(ev, triggerUpdate);
+      });
+
+      // Fit map to completed polygon
+      map.fitBounds(activePolygon.getBounds(), {
+        padding: [40, 40],
+        maxZoom: 18
+      });
+
+      triggerUpdate();
+    });
+  }
+
+  function triggerUpdate() {
+    if (!activePolygon) {
+      if (onMeasurementChangeCallback) onMeasurementChangeCallback(null);
+      return;
+    }
+
+    try {
+      const geojson = activePolygon.toGeoJSON();
+      const metrics = window.Measurement ? window.Measurement.compute(geojson) : null;
+      if (onMeasurementChangeCallback) onMeasurementChangeCallback(metrics, geojson);
+    } catch (e) {
+      console.error("Trigger update failed:", e);
+    }
+  }
+
+  function startDrawing(map) {
+    if (!map || !map.pm) {
+      console.error("Geoman is not available on map.");
+      return;
+    }
+
+    if (isEditing) {
+      toggleEdit(map);
+    }
+
+    // If a polygon already exists, clear it for redraw
+    if (activePolygon) {
+      clear(map);
+    }
+
+    map.pm.enableDraw("Polygon", {
+      snappable: true,
+      snapDistance: 20
+    });
+  }
+
+  function stopDrawing(map) {
+    if (map && map.pm && map.pm.globalDrawModeEnabled()) {
+      map.pm.disableDraw();
+    }
+  }
+
+  function toggleEdit(map) {
+    if (!activePolygon || !map || !map.pm) return false;
+
+    if (isEditing) {
+      map.pm.disableGlobalEditMode();
+      isEditing = false;
+    } else {
+      map.pm.enableGlobalEditMode({
+        allowSelfIntersection: false
+      });
+      isEditing = true;
+    }
+    return isEditing;
+  }
+
+  function clear(map) {
+    if (activePolygon && map) {
+      map.removeLayer(activePolygon);
+      activePolygon = null;
+    }
+    if (map && map.pm && map.pm.globalDrawModeEnabled()) {
+      map.pm.disableDraw();
+    }
+    if (map && map.pm && isEditing) {
+      map.pm.disableGlobalEditMode();
+      isEditing = false;
+    }
+    triggerUpdate();
+  }
+
+  function getActiveGeoJSON() {
+    if (!activePolygon) return null;
+    return activePolygon.toGeoJSON();
+  }
+
+  function hasPolygon() {
+    return activePolygon !== null;
+  }
+
+  return {
+    init: init,
+    startDrawing: startDrawing,
+    stopDrawing: stopDrawing,
+    toggleEdit: toggleEdit,
+    clear: clear,
+    getActiveGeoJSON: getActiveGeoJSON,
+    hasPolygon: hasPolygon
+  };
+})();
+
+
+/**
+ * Area Measurement Tool - App Startup & Orchestration
+ * Section 12: main.js
+ */
+document.addEventListener("DOMContentLoaded", () => {
+  // Mobile Nav Toggle
+  const menuButton = document.getElementById("menuButton");
+  const navLinks = document.getElementById("navLinks");
+  if (menuButton && navLinks) {
+    menuButton.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  }
+
+  // 1. Initialize UI Elements
+  if (window.UI) {
+    window.UI.init();
+  }
+
+  // 2. Initialize Leaflet Map
+  let map = null;
+  try {
+    map = window.MapModule.init();
+  } catch (err) {
+    console.error("Map initialization failed:", err);
+  }
+
+  // 3. Initialize Drawing Module with Change Callback
+  if (map && window.Drawing) {
+    try {
+      window.Drawing.init(map, (metrics, geojson) => {
+        if (metrics) {
+          window.UI.updateMetrics(metrics);
+        } else {
+          window.UI.resetMetrics();
+        }
+      });
+    } catch (err) {
+      console.error("Drawing init error:", err);
+    }
+  }
+
+  // 4. Bind Toolbar Buttons
+  const btnDraw = document.getElementById("btnDraw");
+  const btnDrawText = document.getElementById("btnDrawText");
+  const btnEdit = document.getElementById("btnEdit");
+  const btnClear = document.getElementById("btnClear");
+  const btnLabels = document.getElementById("btnLabels");
+  const labelsBtnText = document.getElementById("labelsBtnText");
+  const btnLocate = document.getElementById("btnLocate");
+  const btnCopyGeoJSON = document.getElementById("btnCopyGeoJSON");
+  const btnDownloadGeoJSON = document.getElementById("btnDownloadGeoJSON");
+
+  // Map drawing state events
+  if (map) {
+    map.on("pm:drawstart", ({ shape }) => {
+      if (shape === "Polygon") {
+        if (btnDraw) btnDraw.classList.add("active");
+        if (btnDrawText) btnDrawText.textContent = "Finish / Cancel";
+        if (window.UI) window.UI.setStatus("Click on the map to add boundary corners. Click first point to finish.");
+      }
+    });
+
+    map.on("pm:drawend", () => {
+      if (btnDraw) btnDraw.classList.remove("active");
+      if (btnDrawText) btnDrawText.textContent = "Draw Area";
+      if (window.Drawing && !window.Drawing.hasPolygon() && window.UI) {
+        window.UI.setStatus('Ready — Select "Draw Area" to begin');
+      }
+    });
+  }
+
+  // Draw Button
+  if (btnDraw && map) {
+    btnDraw.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (map.pm && map.pm.globalDrawModeEnabled()) {
+        window.Drawing.stopDrawing(map);
+        btnDraw.classList.remove("active");
+        if (btnDrawText) btnDrawText.textContent = "Draw Area";
+      } else {
+        window.Drawing.startDrawing(map);
+        btnDraw.classList.add("active");
+        if (btnDrawText) btnDrawText.textContent = "Finish / Cancel";
+        if (window.UI) window.UI.setStatus("Click on the map to add boundary corners. Click first point to finish.");
+      }
+    });
+  }
+
+  // Edit Button
+  if (btnEdit && map) {
+    btnEdit.addEventListener("click", (e) => {
+      e.preventDefault();
+      const isNowEditing = window.Drawing.toggleEdit(map);
+      if (window.UI) window.UI.setEditMode(isNowEditing);
+    });
+  }
+
+  // Clear Button
+  if (btnClear && map) {
+    btnClear.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.Drawing.clear(map);
+      if (window.UI) {
+        window.UI.resetMetrics();
+        window.UI.showToast("Boundary removed.");
+      }
+      if (btnDraw) btnDraw.classList.remove("active");
+      if (btnDrawText) btnDrawText.textContent = "Draw Area";
+    });
+  }
+
+  // Toggle Labels
+  if (btnLabels) {
+    btnLabels.addEventListener("click", (e) => {
+      e.preventDefault();
+      const isVisible = window.MapModule.toggleLabels();
+      if (labelsBtnText) labelsBtnText.textContent = isVisible ? "Labels: On" : "Labels: Off";
+      btnLabels.classList.toggle("active", !isVisible);
+    });
+  }
+
+  // Locate Me
+  if (btnLocate) {
+    btnLocate.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (window.UI) window.UI.setStatus("Locating your position...");
+      window.MapModule.locateUser(
+        () => {
+          if (window.UI) {
+            window.UI.setStatus("Located. Trace the boundaries around your site.");
+            window.UI.showToast("Location found!");
+          }
+        },
+        (errMsg) => {
+          if (window.UI) {
+            window.UI.setStatus("Location access unavailable.");
+            window.UI.showToast(errMsg);
+          }
+        }
+      );
+    });
+  }
+
+  // Address & Coordinates Search
+  const inputSearch = document.getElementById("inputSearch");
+  const btnSearch = document.getElementById("btnSearch");
+
+  function triggerSearch() {
+    if (!inputSearch) return;
+    const query = inputSearch.value.trim();
+    if (!query) {
+      if (window.UI) window.UI.showToast("Please enter an address or coordinates.");
+      inputSearch.focus();
+      return;
+    }
+
+    if (window.UI) window.UI.setStatus(`Searching for "${query}"...`);
+    if (btnSearch) btnSearch.disabled = true;
+
+    window.MapModule.searchLocation(
+      query,
+      (label) => {
+        if (btnSearch) btnSearch.disabled = false;
+        if (window.UI) {
+          window.UI.setStatus(`Found: ${label}. Trace your boundaries.`);
+          window.UI.showToast(`Found: ${label}`);
+        }
+      },
+      (errMsg) => {
+        if (btnSearch) btnSearch.disabled = false;
+        if (window.UI) {
+          window.UI.setStatus(errMsg);
+          window.UI.showToast(errMsg);
+        }
+      }
+    );
+  }
+
+  if (btnSearch) {
+    btnSearch.addEventListener("click", (e) => {
+      e.preventDefault();
+      triggerSearch();
+    });
+  }
+
+  if (inputSearch) {
+    inputSearch.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        triggerSearch();
+      }
+    });
+  }
+
+  // Copy GeoJSON
+  if (btnCopyGeoJSON) {
+    btnCopyGeoJSON.addEventListener("click", (e) => {
+      e.preventDefault();
+      const geojson = window.Drawing.getActiveGeoJSON();
+      if (!geojson) return;
+
+      navigator.clipboard
+        .writeText(JSON.stringify(geojson, null, 2))
+        .then(() => {
+          if (window.UI) window.UI.showToast("GeoJSON copied to clipboard!");
+        })
+        .catch(() => {
+          alert("Unable to copy to clipboard.");
+        });
+    });
+  }
+
+  // Download GeoJSON
+  if (btnDownloadGeoJSON) {
+    btnDownloadGeoJSON.addEventListener("click", (e) => {
+      e.preventDefault();
+      const geojson = window.Drawing.getActiveGeoJSON();
+      if (!geojson) return;
+
+      const jsonString = JSON.stringify(geojson, null, 2);
+      const blob = new Blob([jsonString], { type: "application/geo+json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `area-measurement-${Date.now()}.geojson`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      if (window.UI) window.UI.showToast("GeoJSON downloaded!");
+    });
+  }
+});
+
+    </script>
   </body>
 </html>
