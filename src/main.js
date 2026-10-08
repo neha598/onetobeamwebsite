@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Locate Me
+  // Current Location
   if (btnLocate) {
     btnLocate.addEventListener("click", (e) => {
       e.preventDefault();

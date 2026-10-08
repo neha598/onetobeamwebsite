@@ -825,9 +825,17 @@ footer {
     transform: none;
   }
 
+  .navbar {
+    height: 58px;
+  }
+
+  .logo img {
+    height: 26px !important;
+  }
+
   .nav-inner {
     justify-content: space-between;
-    padding: 0 16px;
+    padding: 0 14px;
   }
 
   .nav-button {
@@ -839,21 +847,21 @@ footer {
     align-items: center;
     justify-content: center;
     color: white;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     margin-left: auto;
   }
 
   .nav-links {
     position: fixed;
-    top: 76px;
+    top: 58px;
     left: 14px;
     right: 14px;
-    padding: 20px 16px;
+    padding: 16px 14px;
     background: rgba(14, 14, 14, 0.98);
     backdrop-filter: blur(24px);
     border: 1px solid var(--line);
-    border-radius: 18px;
+    border-radius: 16px;
     flex-direction: column;
     align-items: stretch;
     display: none;
@@ -867,21 +875,53 @@ footer {
 
   .nav-links a {
     width: 100%;
-    padding: 12px 16px;
+    padding: 10px 14px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 14px;
+    padding-right: 14px;
+    box-sizing: border-box;
   }
 
   .tool-hero {
-    padding-top: 96px;
-    padding-bottom: 16px;
+    padding-top: 66px;
+    padding-bottom: 6px;
+  }
+
+  .back-nav {
+    font-size: 11.5px;
+    gap: 5px;
+    margin-bottom: 3px;
+  }
+
+  .tool-badge {
+    display: none;
   }
 
   .tool-hero h1 {
-    font-size: 27px;
+    font-size: 19px;
+    font-weight: 700;
     line-height: 1.2;
+    margin-bottom: 2px;
+    letter-spacing: -0.3px;
   }
 
   .tool-hero p {
-    font-size: 13.5px;
+    font-size: 11.5px;
+    line-height: 1.35;
+    color: var(--muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .measurement-workstation {
+    gap: 8px;
+    padding-bottom: 24px;
   }
 
   .map-card {
@@ -892,177 +932,283 @@ footer {
   }
 
   .map-toolbar {
-    padding: 10px;
+    padding: 8px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 8px;
+    gap: 5px;
     width: 100%;
     box-sizing: border-box;
+    background: #111111;
   }
 
-  .toolbar-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
+  /* Drawing actions in 1 neat row: Draw Area, Edit Shape, Clear */
+  .toolbar-group:first-child {
+    display: grid;
+    grid-template-columns: 1.3fr 1.15fr 0.85fr;
+    gap: 5px;
     width: 100%;
   }
 
-  .toolbar-group .action-btn {
-    flex: 1 1 calc(50% - 6px);
-    padding: 9px 8px;
-    font-size: 12px;
+  .toolbar-group:first-child .action-btn {
+    padding: 7px 4px;
+    font-size: 11.5px;
     justify-content: center;
     min-width: 0;
     white-space: nowrap;
+    gap: 4px;
+  }
+
+  .toolbar-group:first-child .action-btn svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
   }
 
   #btnDraw {
-    flex: 1 1 100%;
     font-weight: 700;
   }
 
+  /* Group 2: Labels & Current Location, Search bar, Status */
+  .toolbar-group:last-child {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 5px;
+    width: 100%;
+  }
+
+  #btnLabels,
+  #btnLocate {
+    padding: 7px 6px;
+    font-size: 11.5px;
+    justify-content: center;
+    min-width: 0;
+    white-space: nowrap;
+    gap: 5px;
+  }
+
+  #btnLabels svg,
+  #btnLocate svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+  }
+
   .search-box-wrap {
-    flex: 1 1 100%;
+    grid-column: 1 / -1;
     width: 100%;
     max-width: 100%;
     min-width: 0;
     box-sizing: border-box;
-    margin-top: 2px;
-    padding: 3px 6px 3px 12px;
+    margin: 0;
+    padding: 2px 4px 2px 10px;
     display: flex;
     align-items: center;
+    height: 33px;
   }
 
   .search-input {
     width: 100%;
     flex: 1;
     min-width: 0;
-    font-size: 12.5px;
+    font-size: 12px;
+    padding: 3px 0;
   }
 
   .search-submit-btn {
+    width: 25px;
+    height: 25px;
     flex-shrink: 0;
+    margin-left: 4px;
   }
 
   .status-pill {
-    flex: 1 1 100%;
+    grid-column: 1 / -1;
     width: 100%;
     max-width: 100%;
     justify-content: center;
     text-align: center;
     box-sizing: border-box;
-    font-size: 11.5px;
-    padding: 6px 8px;
+    font-size: 11px;
+    padding: 4px 6px;
     white-space: normal;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.04);
+    margin: 0;
   }
 
   #map {
-    height: 380px;
-    min-height: 320px;
+    height: 240px;
+    min-height: 200px;
   }
 
-  .map-status-bar {
-    padding: 8px 12px;
-    font-size: 11.5px;
-  }
-
+  /* Results Card */
   .results-card {
-    padding: 20px 14px;
+    padding: 10px 12px;
     border-radius: var(--radius-md);
   }
 
   .results-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .results-title-group h2 {
+    font-size: 14.5px;
+    font-weight: 700;
+  }
+
+  .results-title-group p {
+    display: none;
   }
 
   .results-actions {
-    width: 100%;
     display: flex;
-    gap: 8px;
+    gap: 5px;
   }
 
   .results-actions .action-btn {
-    flex: 1;
-    justify-content: center;
-    padding: 8px 10px;
-    font-size: 12px;
+    padding: 5px 9px;
+    font-size: 11px;
+    border-radius: 20px;
+    gap: 4px;
   }
 
+  .results-actions .action-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* 2x2 Grid for Primary Metrics */
   .metrics-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 8px;
   }
 
-  .metric-card {
-    padding: 16px 14px;
+  .metric-box {
+    padding: 7px 10px;
+    border-radius: 8px;
+  }
+
+  .metric-label {
+    font-size: 10px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    letter-spacing: 0.3px;
+    gap: 4px;
+  }
+
+  .metric-label svg {
+    width: 11px;
+    height: 11px;
   }
 
   .metric-value {
-    font-size: 28px;
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.15;
   }
 
+  .metric-unit {
+    font-size: 9.5px;
+    margin-top: 1px;
+  }
+
+  /* Secondary Metrics in 3 columns */
   .secondary-metrics {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
+    padding: 7px 8px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+  }
+
+  .sub-metric {
+    gap: 2px;
+  }
+
+  .sub-metric span:first-child {
+    font-size: 9px;
+    line-height: 1.1;
+  }
+
+  .sub-metric span:last-child {
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* Disclaimer Banner */
+  .disclaimer-banner {
+    padding: 8px 10px;
+    font-size: 11px;
+    line-height: 1.4;
     gap: 8px;
+    margin-bottom: 0;
   }
 
-  .sub-metric-card {
-    padding: 10px 12px;
+  .disclaimer-banner svg {
+    width: 14px;
+    height: 14px;
   }
 
-  .guide-card {
-    padding: 22px 14px;
-    border-radius: var(--radius-md);
+  /* Quick 3-Step Guide */
+  .guide-panel {
+    padding: 14px 12px;
+    margin-bottom: 24px;
   }
 
-  .guide-card h2 {
-    font-size: 19px;
+  .guide-panel h3 {
+    font-size: 14.5px;
+    margin-bottom: 10px;
   }
 
   .guide-steps {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
   }
 
-  .faq-section {
-    padding: 22px 14px;
-    border-radius: var(--radius-md);
+  .guide-step {
+    gap: 10px;
   }
 
-  .faq-section h2 {
-    font-size: 19px;
+  .step-num {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .step-info h4 {
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  .step-info p {
+    font-size: 11.5px;
+    line-height: 1.35;
+  }
+
+  /* Footer */
+  footer {
+    padding: 24px 0 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    font-size: 12px;
   }
 }
 
-@media (max-width: 480px) {
-  .container {
-    width: calc(100% - 20px);
-  }
-
-  .tool-hero h1 {
-    font-size: 24px;
-  }
-
-  #map {
-    height: 340px;
-  }
-
-  .toolbar-group {
-    grid-template-columns: 1fr;
-  }
-
-  .toolbar-group .action-btn,
-  .toolbar-group:first-child .action-btn.danger {
-    grid-column: span 1;
-  }
-
-  .search-box-wrap {
-    grid-column: span 1;
-  }
-}
 
     </style>
   </head>
@@ -1165,7 +1311,7 @@ footer {
                   <circle cx="12" cy="12" r="10"></circle>
                   <polygon points="12 8 8 16 12 14 16 16 12 8"></polygon>
                 </svg>
-                Locate Me
+                Current Location
               </button>
 
               <!-- Address & Coordinates Search Box -->
@@ -1316,7 +1462,7 @@ footer {
               <div class="step-num">1</div>
               <div class="step-info">
                 <h4>Locate the Site</h4>
-                <p>Pan &amp; zoom on the satellite map, or tap "Locate Me" to jump to your current GPS position.</p>
+                <p>Pan &amp; zoom on the satellite map, or tap "Current Location" to jump to your current GPS position.</p>
               </div>
             </div>
             <div class="guide-step">

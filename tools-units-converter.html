@@ -613,53 +613,307 @@
         font-size: 13px;
       }
 
-      /* Mobile Navbar & Responsiveness */
+      /* Mobile Navbar & Responsiveness (Strictly Mobile UI) */
       @media (max-width: 768px) {
+        .navbar {
+          height: 56px;
+        }
+
         .logo {
           position: static;
           transform: none;
         }
+
+        .logo img {
+          height: 26px !important;
+        }
+
         .menu-button {
           position: static;
           transform: none;
-          display: block;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
           margin-left: auto;
         }
+
         .nav-inner {
           justify-content: space-between;
-          padding: 0 16px;
+          padding: 0 14px;
         }
+
         .nav-links {
           position: fixed;
-          top: 78px;
-          left: 15px;
-          right: 15px;
-          padding: 25px;
+          top: 56px;
+          left: 14px;
+          right: 14px;
+          padding: 18px 16px;
           margin-right: 0;
-          background: rgba(15, 15, 15, 0.96);
+          background: rgba(15, 15, 15, 0.98);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
           border: 1px solid var(--line);
-          border-radius: 18px;
+          border-radius: 16px;
           flex-direction: column;
           align-items: flex-start;
           display: none;
+          z-index: 1001;
         }
+
         .nav-links.active {
           display: flex;
         }
+
         .nav-links a {
           width: 100%;
           text-align: left;
           padding: 10px 14px;
         }
+
         .nav-button {
           display: none;
         }
+
+        .container {
+          width: 100%;
+          max-width: 100%;
+          padding-left: 12px;
+          padding-right: 12px;
+          box-sizing: border-box;
+        }
+
+        /* Compact Hero Section */
+        .tool-hero {
+          padding-top: 64px;
+          padding-bottom: 6px;
+          border-bottom: none;
+        }
+
+        .breadcrumb {
+          display: none;
+        }
+
+        .tool-hero-inner {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          gap: 6px;
+        }
+
+        .tool-hero h1 {
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.3px;
+        }
+
+        .tool-badge {
+          display: none;
+        }
+
+        /* Main Tool Content Container */
+        .tool-content {
+          padding: 8px 0 24px;
+        }
+
+        /* Converter Card */
         .converter-card {
-          padding: 24px 18px;
+          padding: 12px 10px;
+          border-radius: var(--radius-md);
+          margin-bottom: 16px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Mode Switcher Tabs */
+        .mode-switcher-wrap {
+          margin-bottom: 8px;
+        }
+
+        .mode-switcher {
+          padding: 3px;
+        }
+
+        .mode-tab {
+          padding: 5px 22px;
+          font-size: 12px;
+        }
+
+        /* Converter Grid: Clean Row-Pair for FROM & TO */
+        .converter-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .input-panel {
+          display: grid;
+          grid-template-columns: 1fr 1.25fr;
+          grid-template-rows: auto auto;
+          column-gap: 8px;
+          row-gap: 2px;
+          align-items: center;
+        }
+
+        .panel-header {
+          grid-column: 1 / -1;
+          margin-bottom: 0;
+          height: auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .panel-label {
+          font-size: 10px;
+          letter-spacing: 1px;
+        }
+
+        .rounded-pill {
+          font-size: 9px;
+          padding: 1px 6px;
+        }
+
+        .large-input,
+        .result-input {
+          grid-column: 1;
+          font-size: 21px;
+          font-weight: 700;
+          padding: 2px 0;
+          line-height: 1.2;
+          border-bottom-width: 1.5px;
+        }
+
+        .select-wrap {
+          grid-column: 2;
+          margin-top: 0;
+        }
+
+        .select-box {
+          padding: 6px 28px 6px 8px;
+          font-size: 12px;
+          font-weight: 600;
+          border-radius: 8px;
+          height: 33px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+
+        .select-arrow {
+          right: 8px;
+        }
+
+        .select-arrow svg {
+          width: 14px;
+          height: 14px;
+        }
+
+        /* Swap Button */
+        .swap-col {
+          padding: 2px 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .swap-btn {
+          width: 28px;
+          height: 28px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .swap-btn svg {
+          width: 14px;
+          height: 14px;
+        }
+
+        /* Also Equal To Matrix */
+        .also-equal-wrap {
+          margin-top: 10px;
+          padding-top: 8px;
+          border-top: 1px solid var(--line);
+        }
+
+        .also-equal-heading {
+          font-size: 11px;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.8px;
+          margin-bottom: 6px;
+        }
+
+        .matrix-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 5px;
+        }
+
+        .matrix-card {
+          padding: 6px 8px;
+          border-radius: 8px;
+        }
+
+        .matrix-card-val {
+          font-size: 14px;
+          font-weight: 700;
+          line-height: 1.15;
+        }
+
+        .matrix-card-unit {
+          font-size: 9.5px;
+          font-weight: 600;
+          letter-spacing: 0.3px;
+          margin-top: 2px;
+        }
+
+        /* Explainer Box & Features */
+        .explainer-box {
+          padding: 16px 14px;
+          border-radius: var(--radius-md);
+          margin-top: 16px;
+        }
+
+        .explainer-box h2 {
+          font-size: 16px;
+          margin-bottom: 12px;
+        }
+
+        .explainer-grid {
+          font-size: 13px;
+          gap: 16px;
+          line-height: 1.5;
+        }
+
+        .cta-promo {
+          margin-top: 20px;
+          padding-top: 16px;
+          gap: 10px;
+        }
+
+        .cta-promo p {
+          font-size: 12px;
+        }
+
+        .cta-btn {
+          padding: 8px 18px;
+          font-size: 12px;
+        }
+
+        /* Footer */
+        footer {
+          padding: 24px 0 20px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 6px;
+          text-align: center;
+          font-size: 12px;
         }
       }
+
     </style>
   </head>
 

@@ -785,50 +785,363 @@
         font-size: 13px;
       }
 
-      /* Mobile Navbar & Responsiveness */
+      /* Mobile Navbar & Responsiveness (Strictly Mobile UI) */
       @media (max-width: 768px) {
+        .navbar {
+          height: 56px;
+        }
+
         .logo {
           position: static;
           transform: none;
         }
+
+        .logo img {
+          height: 26px !important;
+        }
+
         .menu-button {
           position: static;
           transform: none;
-          display: block;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
           margin-left: auto;
         }
+
         .nav-inner {
           justify-content: space-between;
-          padding: 0 16px;
+          padding: 0 14px;
         }
+
         .nav-links {
           position: fixed;
-          top: 78px;
-          left: 15px;
-          right: 15px;
-          padding: 25px;
+          top: 56px;
+          left: 14px;
+          right: 14px;
+          padding: 18px 16px;
           margin-right: 0;
-          background: rgba(15, 15, 15, 0.96);
+          background: rgba(15, 15, 15, 0.98);
           backdrop-filter: blur(20px);
           -webkit-backdrop-filter: blur(20px);
           border: 1px solid var(--line);
-          border-radius: 18px;
+          border-radius: 16px;
           flex-direction: column;
           align-items: flex-start;
           display: none;
+          z-index: 1001;
         }
+
         .nav-links.active {
           display: flex;
         }
+
         .nav-links a {
           width: 100%;
           text-align: left;
           padding: 10px 14px;
         }
+
         .nav-button {
           display: none;
         }
+
+        .container {
+          width: 100%;
+          max-width: 100%;
+          padding-left: 12px;
+          padding-right: 12px;
+          box-sizing: border-box;
+        }
+
+        /* Compact Hero Section */
+        .tool-hero {
+          padding-top: 64px;
+          padding-bottom: 6px;
+          border-bottom: none;
+        }
+
+        .breadcrumb {
+          display: none;
+        }
+
+        .tool-hero-inner {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          gap: 6px;
+        }
+
+        .tool-hero h1 {
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 1.2;
+          letter-spacing: -0.3px;
+        }
+
+        .tool-badge {
+          display: none;
+        }
+
+        /* Main Content Container */
+        .tool-content {
+          padding: 6px 0 24px;
+        }
+
+        /* Auspicious App Card */
+        .auspicious-app-card {
+          padding: 12px 10px;
+          border-radius: var(--radius-md);
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Date Navigator */
+        .auspicious-date-nav {
+          margin-bottom: 6px;
+        }
+
+        .date-kicker-tag {
+          font-size: 9.5px;
+          letter-spacing: 1.5px;
+          margin-bottom: 2px;
+        }
+
+        .date-select-row {
+          gap: 10px;
+        }
+
+        .date-arrow-btn {
+          width: 28px;
+          height: 28px;
+        }
+
+        .date-arrow-btn svg {
+          width: 18px;
+          height: 18px;
+        }
+
+        .date-title-heading {
+          font-size: 20px;
+          font-weight: 800;
+        }
+
+        /* Status Pill Badge */
+        .status-pill-badge {
+          padding: 4px 12px;
+          font-size: 11px;
+          margin-bottom: 6px;
+          gap: 5px;
+        }
+
+        /* Headline Countdown */
+        .headline-countdown-text {
+          font-size: 18px;
+          font-weight: 800;
+          margin-bottom: 6px;
+          line-height: 1.2;
+        }
+
+        /* Location Display & Toolbar */
+        .location-display-line {
+          font-size: 12px;
+          margin-bottom: 6px;
+          gap: 6px;
+        }
+
+        .location-display-line svg {
+          width: 14px;
+          height: 14px;
+        }
+
+        .location-search-toolbar {
+          padding: 4px 8px;
+          gap: 6px;
+          border-radius: 8px;
+          margin-bottom: 8px;
+          width: 100%;
+          box-sizing: border-box;
+          justify-content: center;
+        }
+
+        .btn-use-gps {
+          padding: 4px 10px;
+          font-size: 11px;
+          border-radius: 6px;
+          gap: 4px;
+        }
+
+        .btn-use-gps svg {
+          width: 12px;
+          height: 12px;
+        }
+
+        .location-or-divider {
+          font-size: 9px;
+        }
+
+        .city-search-box {
+          gap: 4px;
+        }
+
+        .city-search-box input {
+          padding: 4px 8px;
+          font-size: 11px;
+          width: 120px;
+          border-radius: 6px;
+        }
+
+        .btn-city-go {
+          padding: 4px 12px;
+          font-size: 11px;
+          border-radius: 6px;
+        }
+
+        /* Sun Times Row */
+        .sun-times-row {
+          gap: 20px;
+          font-size: 11.5px;
+          margin-bottom: 34px;
+        }
+
+        .sun-time-item {
+          gap: 5px;
+        }
+
+        .sun-time-item span:first-child {
+          font-size: 14px !important;
+        }
+
+        /* 24-Hour Timeline Graph */
+        .timeline-graph-wrapper {
+          padding: 0 4px;
+          margin-bottom: 28px;
+        }
+
+        .timeline-bar-rail {
+          height: 28px;
+        }
+
+        .timeline-tick-label {
+          font-size: 8px;
+        }
+
+        .needle-center-dot {
+          top: 23px;
+          width: 8px;
+          height: 8px;
+        }
+
+        .current-time-needle {
+          top: -8px;
+          bottom: -4px;
+        }
+
+        .needle-tooltip-box {
+          padding: 2px 6px;
+          border-radius: 6px;
+        }
+
+        .needle-tooltip-title {
+          font-size: 7.5px;
+        }
+
+        .needle-tooltip-time {
+          font-size: 11px;
+        }
+
+        .rahu-time-labels {
+          top: calc(100% + 4px);
+          height: 16px;
+        }
+
+        .rahu-label-start,
+        .rahu-label-end {
+          font-size: 10px;
+        }
+
+        /* Avoid / Auspicious Bottom Card */
+        .avoid-auspicious-card {
+          padding: 8px 12px;
+          margin: 10px auto 0;
+          gap: 3px;
+          border-radius: 12px;
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        .avoid-header-title {
+          font-size: 12px;
+          gap: 5px;
+        }
+
+        .avoid-header-title span:first-child {
+          font-size: 13px !important;
+        }
+
+        .avoid-time-val {
+          font-size: 17px;
+          font-weight: 800;
+          line-height: 1.2;
+        }
+
+        .auspicious-footer-line {
+          font-size: 10.5px;
+          gap: 5px;
+          margin-top: 1px;
+        }
+
+        .auspicious-footer-line span:first-child {
+          font-size: 12px !important;
+        }
+
+        /* Explainer Box */
+        .explainer-box {
+          padding: 16px 14px;
+          border-radius: var(--radius-md);
+          margin-top: 16px;
+        }
+
+        .explainer-box h2 {
+          font-size: 16px;
+          margin-bottom: 12px;
+        }
+
+        .explainer-grid {
+          font-size: 13px;
+          gap: 16px;
+          line-height: 1.5;
+        }
+
+        .cta-promo {
+          margin-top: 20px;
+          padding-top: 16px;
+          gap: 10px;
+        }
+
+        .cta-promo p {
+          font-size: 12px;
+        }
+
+        .cta-btn {
+          padding: 8px 18px;
+          font-size: 12px;
+        }
+
+        /* Footer */
+        footer {
+          padding: 24px 0 20px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 6px;
+          text-align: center;
+          font-size: 12px;
+        }
       }
+
     </style>
   </head>
 
